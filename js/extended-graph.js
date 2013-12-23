@@ -132,12 +132,12 @@ function renderExtendedGraph(target, data) {
 		formatter: function(series, x, y, formattedX, formattedY, d) {
 			return "<span class='y-hover-label-name'>" + series.name + "</span> - &nbsp;<span class='y-hover-label-value'>" + Rickshaw.Fixtures.Number.formatBase1024KMGTPShort(y) + "</span>";
 		},
-		xFormatter: function(x) {
-			return moment(((x - 7200) * 1000), "").format("YYYY-MM-DD HH:mm")
-		}
-	});
+	    xFormatter: function(x) {
+	        return moment(((x - 3600) * 1000), "").format("YYYY-MM-DD HH:mm")
+	    }
+	} );
 
-	var annotator = new Rickshaw.Graph.Annotate({
+	var annotator = new Rickshaw.Graph.Annotate( {
 		graph: extendedChart,
 		element: document.getElementById('timeline')
 	});
