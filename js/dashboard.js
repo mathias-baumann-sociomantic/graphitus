@@ -121,11 +121,15 @@ function updateGraphs() {
 		updateGraph(i);
 	}
 
-	$('#dashboards-view').waitForImages(function() {
+	/*$('#dashboards-view').waitForImages(function() {
 		lastExecution = Math.floor((new Date() - lastUpdate) / 1000);
 		lastUpdate = new Date();
 		hideProgress();
-	});
+	});*/
+
+	lastExecution = Math.floor((new Date() - lastUpdate) / 1000);
+	lastUpdate = new Date();
+	hideProgress();
 	console.log("Update complete in: " + (new Date() - lastUpdate) + "ms");
 }
 
