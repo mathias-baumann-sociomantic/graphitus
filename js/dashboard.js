@@ -363,9 +363,6 @@ function getMetricsQueryUrl() {
 
 function renderDynamicParamGroup(paramGroupName, paramGroup) {
 	var query = generateDynamicQuery(dynamicParams[paramGroupName].query);
-	if (!endsWith(query, ".*")) {
-		query = query + ".*";
-	}
 	var queryUrl = getMetricsQueryUrl() + query;
 	$.ajax({
 		type: 'GET',
