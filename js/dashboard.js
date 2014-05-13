@@ -370,18 +370,26 @@ function renderDynamicParamGroup(paramGroupName, paramGroup) {
 		dataType: 'json',
 		success: function(data) {
 			var parameters = new Array();
+			var parametersSorted = new Array();
 			if (paramGroup.showAll) {
 				parameters["All"] = new Array();
 				parameters["All"][paramGroupName] = new Array();
 				parameters["All"][paramGroupName] = (paramGroup.showAllValue) ? applyParameters(paramGroup.showAllValue) : "*";
 			}
+
 			$.each(data.metrics, function(i, metric) {
 				var paramValue = getParamValueFromPath(paramGroup, metric);
-				parameters[paramValue] = new Array();
-				parameters[paramValue][paramGroupName] = new Array();
-				parameters[paramValue][paramGroupName] = paramValue;
-				parameters.sort();
+				parametersSorted.push(paramValue);
 			});
+			parametersSorted.sort();
+
+			$.each(parametersSorted, function(sortedIndex, sortedValue) {
+				parameters[sortedValue] = new Array();
+				parameters[sortedValue][paramGroupName] = new Array();
+				parameters[sortedValue][paramGroupName] = sortedValue;
+			});
+
+			parameters.sort();
 			config.parameters[paramGroupName] = parameters;
 			renderValueParamGroup(paramGroupName, parameters);
 		},
