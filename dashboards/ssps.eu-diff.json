@@ -1,0 +1,25 @@
+{
+"comment":["created by Hans 10/6 1014, can probably be removed"],
+        "title":"SSP loglines diff 1w EU",
+        "width" : 400,
+        "defaultLineWidth":1,
+        "timeBack":"6h",
+        "height" : 141,
+        "columns" : 2,
+        "refresh" : true,
+        "legend" : true,
+        "defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=-100",
+        "dataTemplates":[
+        {
+                "title":"${explode} - SSP loglines diff [Processed Loglines/s]",
+                "target": [
+"diffSeries(timeShift(eu-*.reef.reef_ssp-${explode}.loglines, \"1w\"),eu-*.reef.reef_ssp-${explode}.loglines)"
+                ],
+                "query":"eu-*.reef.reef_ssp-*",
+                "regex":"-(.*)", 
+                "index":2
+        }
+        ],
+        "data":[
+        ]
+}

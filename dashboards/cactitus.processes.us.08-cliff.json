@@ -1,0 +1,45 @@
+{
+	"title":"Cliff Stats [US]",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"dataTemplates":[
+	],
+	"data":[
+	{
+		"title":"Cliff Stats [BidMap Size]",
+		"target": [
+			"cactiStyle(alias(us-*.cacti_cliff.cacti_cliff_stats.bid_map, \"Bid Map Size\"))"
+		]
+	},
+	{
+		"title":"Cliff Stats [Memory]",
+		"target": [
+			"cactiStyle(alias(us-*.cacti_cliff.cacti_cliff_stats.memory, \"MB used\"))"
+		]
+	},
+	{
+		"title":"Cliff Stats [Processed Bids/s]",
+		"target": [
+			"cactiStyle(alias(scale(us-*.cacti_cliff.cacti_cliff_stats.bids, 0.03333), \"Bids processed/s\"))"
+		]
+	},
+	{
+		"title":"Cliff Stats [Sql Queries/s]",
+		"target": [
+			"cactiStyle(alias(scale(us-*.cacti_cliff.cacti_cliff_stats.sql_queries, 0.03333), \"SQL Queries/s\"))"
+		]
+	},
+	{
+		"title":"Cliff Stats [Sql Queue Status]",
+		"target": [
+			"cactiStyle(alias(us-*.cacti_cliff.cacti_cliff_stats.sql_queue, \"Sql Queue %\"))"
+		]
+	}
+	]
+}

@@ -1,0 +1,83 @@
+{
+	"title":"Propulsor Backend DHT Requests",
+		"width" : 500,
+		"defaultLineWidth":1,
+		"timeBack":"6h",
+		"height" : 300,
+		"columns" : 2,
+		"refresh" : true,
+		"defaultParameters":"areaMode=none&lineWidth=1&fontSize=11",
+		"dataTemplates" : [
+		{
+			"title":"${explode} Backend DHT Requests/sec [01]",
+			"target" : [
+				"aliasByNode(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-01.dht_total,0.1),0.03333),3)",
+				"aliasByNode(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-01.dht_timeout,0.1),0.03333),3)",
+				"aliasByNode(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-01.dht_qfull,0.1),0.03333),3)"
+			],
+			"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_be_stats-01",
+			"regex" : "(.*)",
+			"index" : 0,
+			"params" : "hideLegend=false&colorList=black,red,green&logBase=10&yMin=0.1&yMax=10000&minorY=10"
+		},
+		{
+			"title":"${explode} Backend DHT Requests/sec [02]",
+			"target" : [
+				"aliasByNode(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-02.dht_total,0.1),0.03333),3)",
+				"aliasByNode(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-02.dht_timeout,0.1),0.03333),3)",
+				"aliasByNode(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-02.dht_qfull,0.1),0.03333),3)"
+			],
+			"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_be_stats-02",
+			"regex" : "(.*)",
+			"index" : 0,
+			"params" : "hideLegend=false&colorList=black,red,green&logBase=10&yMin=0.1&yMax=10000&minorY=10"
+		},
+		{
+			"title":"${explode} DHT Backend Requests/sec [03]",
+			"target" : [
+				"aliasByNode(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-03.dht_total,0.1),0.03333),3)",
+				"aliasByNode(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-03.dht_timeout,0.1),0.03333),3)",
+				"aliasByNode(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-03.dht_qfull,0.1),0.03333),3)"
+			],
+			"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_be_stats-03",
+			"regex" : "(.*)",
+			"index" : 0,
+			"params" : "hideLegend=false&colorList=black,red,green&logBase=10&yMin=0.1&yMax=10000&minorY=10"
+		},
+		{
+			"title":"${explode} DHT Backend Requests/sec [04]",
+			"target" : [
+				"aliasByNode(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-04.dht_total,0.1),0.03333),3)",
+				"aliasByNode(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-04.dht_timeout,0.1),0.03333),3)",
+				"aliasByNode(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-04.dht_qfull,0.1),0.03333),3)"
+			],
+			"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_be_stats-04",
+			"regex" : "(.*)",
+			"index" : 0,
+			"params" : "hideLegend=false&colorList=black,red,green&logBase=10&yMin=0.1&yMax=10000&minorY=10"
+		}
+		],
+		"data":[
+		{
+			"title":"[${continent}] Most Deviant Backend DHT Requests/sec",
+			"target" : [
+					"aliasByNode(mostDeviant(5, scale(${continent}-*.cacti_propulsor.cacti_propulsor_be_stats-*.dht_total,0.03333333)),0,3)"
+				],
+			"params" : "yMin=0&hideLegend=false"
+		}
+	],
+	"parameters": {
+                "continent": {
+                        "All" : {"continent" : "*",
+                                 "cont-nice" : "All" },
+                        "EU" : {"continent" : "eu",
+                                 "cont-nice" : "EU" },
+                        "US" : {"continent" : "us",
+                                 "cont-nice" : "US" },
+                        "AP" : {"continent" : "ap",
+                                 "cont-nice" : "AP" },
+                        "USAP" : {"continent" : "usap",
+                                 "cont-nice" : "USAP" }
+		}
+	}			
+}

@@ -1,0 +1,49 @@
+{
+	"title":"Aqua Stats [EU]",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"dataTemplates":[
+	{
+		"title":"Aqua stats [Node ${explode}]",
+		"target": [
+			"cactiStyle(alias(scale(${explode}.cacti_aqua-*.cacti_aqua.total_queue_handled, 0.03333), \"Total Queue Handled\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_aqua-*.cacti_aqua.pending, 0.03333), \"Pending\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_aqua-*.cacti_aqua.overflow, 0.03333), \"Overflow\"))"
+		],
+                "query":"eu-*.cacti_aqua-*.cacti_aqua.*",
+                "regex":"(.*)",
+                "index":0
+        },
+
+	{
+		"title":"Aqua SSP - ${explode} [Node eu-064]",
+		"target": [
+			"cactiStyle(alias(scale(eu-064.cacti_aqua-1.cacti_aqua_ssp-${explode}.total_processed, 0.03333), \"Total Processed\"))"
+		],
+                "query":"eu-*.cacti_aqua-1.cacti_aqua_ssp-*",
+                "regex":"cacti_aqua_ssp-(.*)",
+                "index":2
+        },
+	{
+		"title":"Aqua SSP - ${explode} [Node eu-102]",
+		"target": [
+			"cactiStyle(alias(scale(eu-102.cacti_aqua-2.cacti_aqua_ssp-${explode}.total_processed, 0.03333), \"Total Processed\"))"
+		],
+                "query":"eu-*.cacti_aqua-2.cacti_aqua_ssp-*",
+                "regex":"cacti_aqua_ssp-(.*)",
+                "index":2
+        }
+	],
+	"data":[
+	]
+}
+
+
+
+

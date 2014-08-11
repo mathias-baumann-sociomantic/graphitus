@@ -1,0 +1,69 @@
+{
+	"title":"Coral Stats [AP]",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"dataTemplates":[
+	],
+	"data":[
+	{
+		"title":"Coral Stats [Campaign Map]",
+		"target": [
+			"cactiStyle(alias(ap-*.cacti_coral.cacti_coral_stats.campaign_map, \"Size of Campaign Map\"))"
+		]
+	},
+	{
+		"title":"Coral Stats [Click Map]",
+		"target": [
+			"cactiStyle(alias(ap-*.cacti_coral.cacti_coral_stats.click_map, \"Size of the click map\"))"
+		]
+	},
+	{
+		"title":"Coral Stats [Conversion Errors/s]",
+		"target": [
+			"cactiStyle(alias(scale(ap-*.cacti_coral.cacti_coral_stats.conversion_errors, 0.03333), \"Conversion Errors\"))"
+		]
+	},
+	{
+		"title":"Coral Stats [Currency Map]",
+		"target": [
+			"cactiStyle(alias(ap-*.cacti_coral.cacti_coral_stats.currency_mappings, \"Size of Currency Map\"))"
+		]
+	},
+	{
+		"title":"Coral Stats [DHT queue]",
+		"target": [
+			"cactiStyle(alias(ap-*.cacti_coral.cacti_coral_stats.dht_queue, \"Fill status of the DHT queue\"))"
+		]
+	},
+	{
+		"title":"Coral Stats [Memory]",
+		"target": [
+			"cactiStyle(alias(ap-*.cacti_coral.cacti_coral_stats.memory, \"MB used\"))"
+		]
+	},
+	{
+		"title":"Coral Stats [Processed Loglines/s]",
+		"target": [
+			"cactiStyle(alias(scale(ap-*.cacti_coral.cacti_coral_stats.loglines, 0.03333), \"Loglines Processed/s\"))"
+		]
+	},
+	{
+		"title":"Coral Stats [Referrer Map]'",
+		"target": [
+			"cactiStyle(alias(ap-*.cacti_coral.cacti_coral_stats.referrer_map, \"Size of Referrer Map\"))"
+		]
+	},
+	{
+		"title":"Coral Stats [Sale/Lead Map]",
+		"target": [
+			"cactiStyle(alias(ap-*.cacti_coral.cacti_coral_stats.salelead_map, \"Size of the Sale/Lead map\"))"
+		]
+	}
+	]
+}

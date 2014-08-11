@@ -1,0 +1,33 @@
+{
+    "title":"Queue Channel Usage [US]",
+        "width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+        "height":141,
+        "columns":2,
+	"refresh":true,
+        "legend":false,
+	"defaultParameters":"yMin=0&fontSize=9&areaMode=all&areaAlpha=0.4&colorList=orange,red",
+	"dataTemplates" : [
+	{
+		"title":"us-007 - Queue Channel Usage [${explode}]",
+		"target":[
+			"aliasByMetric(us-*.cacti_queue.cacti_queue_node_stats.${explode})"
+		],
+		"query":"us-*.cacti_queue.cacti_queue_node_stats.*",
+		"regex":"^(.*)",
+		"index":3
+	},
+	{
+		"title":"us-048 - Queue Channel Usage [${explode}]",
+		"target":[
+			"aliasByMetric(us-*.cacti_queue.cacti_admedia_queue_stats_us.${explode})"
+		],
+		"query":"us-*.cacti_queue.cacti_admedia_queue_stats_us.adme*",
+		"regex":"^(.*)",
+		"index":3
+	}
+	],
+	"data":[
+        ]
+}

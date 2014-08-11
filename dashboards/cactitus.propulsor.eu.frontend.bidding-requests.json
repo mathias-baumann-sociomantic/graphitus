@@ -1,0 +1,99 @@
+{
+	"title":"Propulsor Frontend Bidding Requests",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"defaultParameters":"fontSize=9",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"dataTemplates" : [
+	{
+		"title":"${explode} Propulsor Stats [Bidding Requests/s] [01]",
+		"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${explode}.cacti_propulsor-01.cacti_propulsor_fe_stats-${ssp}.requests,0.033333333),0.0001),2,\"sumSeries\"),0))",
+		"query" : "${continent}-*.cacti_propulsor-01.cacti_propulsor_fe_*",
+		"regex" : "(.*)",
+		"index" : 0,
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=100"
+	},
+	{
+		"title":"${explode} Propulsor Stats [Bidding Requests/s] [02]",
+		"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${explode}.cacti_propulsor-02.cacti_propulsor_fe_stats-${ssp}.requests,0.033333333),0.0002),2,\"sumSeries\"),0))",
+		"query" : "${continent}-*.cacti_propulsor-02.cacti_propulsor_fe_*",
+		"regex" : "(.*)",
+		"index" : 0,
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=100"
+	},
+	{
+		"title":"${explode} Propulsor Stats [Bidding Requests/s] [03]",
+		"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${explode}.cacti_propulsor-03.cacti_propulsor_fe_stats-${ssp}.requests,0.033333333),0.0003),2,\"sumSeries\"),0))",
+		"query" : "${continent}-*.cacti_propulsor-03.cacti_propulsor_fe_*",
+		"regex" : "(.*)",
+		"index" : 0,
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=100"
+	},
+	{
+		"title":"${explode} Propulsor Stats [Bidding Requests/s] [04]",
+		"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${explode}.cacti_propulsor-04.cacti_propulsor_fe_stats-${ssp}.requests,0.033333333),0.0001),2,\"sumSeries\"),0))",
+		"query" : "${continent}-*.cacti_propulsor-04.cacti_propulsor_fe_*",
+		"regex" : "(.*)",
+		"index" : 0,
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=100"
+	},
+	{
+		"title":"${explode} Propulsor Stats [Bidding Requests/s] [05]",
+		"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${explode}.cacti_propulsor-05.cacti_propulsor_fe_stats-${ssp}.requests,0.033333333),0.0002),2,\"sumSeries\"),0))",
+		"query" : "${continent}-*.cacti_propulsor-05.cacti_propulsor_fe_*",
+		"regex" : "(.*)",
+		"index" : 0,
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=100"
+	},
+	{
+		"title":"${explode} Propulsor Stats [Bidding Requests/s] [06]",
+		"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${explode}.cacti_propulsor-06.cacti_propulsor_fe_stats-${ssp}.requests,0.033333333),0.0003),2,\"sumSeries\"),0))",
+		"query" : "${continent}-*.cacti_propulsor-06.cacti_propulsor_fe_*",
+		"regex" : "(.*)",
+		"index" : 0,
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=100"
+	},
+	{
+		"title":"${explode} Propulsor Stats [Bidding Requests/s] [07]",
+		"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${explode}.cacti_propulsor-07.cacti_propulsor_fe_stats-${ssp}.requests,0.033333333),0.0002),2,\"sumSeries\"),0))",
+		"query" : "${continent}-*.cacti_propulsor-07.cacti_propulsor_fe_*",
+		"regex" : "(.*)",
+		"index" : 0,
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=100"
+	},
+	{
+		"title":"${explode} Propulsor Stats [Bidding Requests/s] [08]",
+		"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${explode}.cacti_propulsor-08.cacti_propulsor_fe_stats-${ssp}.requests,0.033333333),0.0003),2,\"sumSeries\"),0))",
+		"query" : "${continent}-*.cacti_propulsor-08.cacti_propulsor_fe_*",
+		"regex" : "(.*)",
+		"index" : 0,
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=100"
+	}
+	],
+	"data":[
+	],
+	"parameters": {
+		"continent": {
+			"EU" : {"continent" : "eu",
+				"cont-nice" : "EU" },
+			"AP" : {"continent" : "ap",
+				"cont-nice" : "AP" },
+			"US" : {"continent" : "us",
+				"cont-nice" : "US" },
+			"USAP" : {"continent" : "usap",
+				"cont-nice" : "USAP" },
+			"All" : {"continent" : "*",
+				"cont-nice" : "All" }
+		},
+		"ssp" : {
+			"type" : "dynamic",
+			"query" : "${continent}-*.cacti_propulsor-*.cacti_propulsor_fe_stats-*",
+			"index" : 2,
+			"regex" : "-(.*)",
+			"showAll": true
+		}
+	}			
+}

@@ -1,0 +1,40 @@
+{
+	"title":"Coast Stats [EU]",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"dataTemplates":[
+	{
+		"title":"${explode} - Coast Stats",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_coast.cacti_coast_stats.dht_put, \"Records written to the DHT\"))",
+			"cactiStyle(alias(${explode}.cacti_coast.cacti_coast_stats.admediasource_put, \"Admedia Source\"))",
+			"cactiStyle(alias(${explode}.cacti_coast.cacti_coast_stats.admedium_put, \"Admedia\"))",
+			"cactiStyle(alias(${explode}.cacti_coast.cacti_coast_stats.adpan_put, \"Adpan\"))",
+			"cactiStyle(alias(${explode}.cacti_coast.cacti_coast_stats.campaign_put, \"Campaign\"))",
+			"cactiStyle(alias(${explode}.cacti_coast.cacti_coast_stats.currency_put, \"Currency\"))"
+		],
+		"query":"eu-*.cacti_coast.cacti_coast_stats.*",
+		"regex":"(.*)",	
+		"index":0
+        },
+	{
+		"title":"${explode} - Coast Errors",
+		"target": [
+			"cactiStyle(alias(scale(${explode}.cacti_coast.cacti_coast_stats.dht_errors, 0.03333), \"DHT Errors\"))",
+			"cactiStyle(alias(${explode}.cacti_coast.cacti_coast_stats.mysql_errors, \"MySQL Errors\"))",
+			"cactiStyle(alias(${explode}.cacti_coast.cacti_coast_stats.struct_errors, \"Struct Errors\"))"
+		],
+		"query":"eu-*.cacti_coast.cacti_coast_stats.*",
+		"regex":"(.*)",	
+		"index":0
+        }
+	],
+	"data":[
+	]
+}

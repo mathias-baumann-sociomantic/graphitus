@@ -1,0 +1,63 @@
+{
+	"title":"Frontend Bids",
+		"width" : 600,
+		"defaultLineWidth":1,
+		"timeBack":"6h",
+		"height" : 300,
+		"columns" : 2,
+		"refresh" : true,
+		"dataTemplates" : [
+		{
+			"title":"${explode} Bids/sec [01]",
+			"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${explode}.cacti_propulsor-01.cacti_propulsor_fe_stats-${ssp}.bids,0.033333333),0.0001),2,\"sumSeries\"),0))",
+
+			"query" : "${continent}-*.cacti_propulsor-01.cacti_propulsor_fe_*",
+			"regex" : "(.*)",
+			"index" : 0,
+			"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10"
+		},
+		{
+			"title":"${explode} Bids/sec [02]",
+			"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${explode}.cacti_propulsor-02.cacti_propulsor_fe_stats-${ssp}.bids,0.033333333),0.0002),2,\"sumSeries\"),0))",
+
+			"query" : "${continent}-*.cacti_propulsor-02.cacti_propulsor_fe_*",
+			"regex" : "(.*)",
+			"index" : 0,
+			"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10"
+		},
+		{
+			"title":"${explode} Bids/sec [03]",
+			"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${explode}.cacti_propulsor-03.cacti_propulsor_fe_stats-${ssp}.bids,0.033333333),0.0003),2,\"sumSeries\"),0))",
+
+			"query" : "${continent}-*.cacti_propulsor-03.cacti_propulsor_fe_*",
+			"regex" : "(.*)",
+			"index" : 0,
+			"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10"
+		}
+		],
+		"data":[
+		{
+			"title":"${continent} Most Deviant Total Bids/sec",
+			"target" : [
+					"cactiStyle(aliasByNode(mostDeviant(5, scale(${continent}-*.cacti_propulsor-*.cacti_propulsor_fe_stats-total.bids,0.03333333)),0,3))"
+				],
+			"params" : "yMin=0&hideLegend=false"
+		}
+	],
+		"parameters": {
+			"continent": {
+				"EU" : {"continent" : "eu" },
+				"US" : {"continent" : "us" },
+				"AP" : {"continent" : "ap" },
+				"USAP" : {"continent" : "usap" }
+			},
+                  "ssp" : {
+                                "type" : "dynamic",
+                                "query" : "${continent}-*.cacti_propulsor-*.cacti_propulsor_fe_stats-*",
+                                "index" : 2,
+                                "regex" : "-(.*)",
+                                "showAll": true
+                        }
+
+		}			
+}

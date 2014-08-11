@@ -1,0 +1,80 @@
+{
+	"title":"Hydrosphere Stats [AP]",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"data":[
+	{
+		"title":"Hydrosphere Stats [1] - ap-001",
+		"target": [
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-1.logline_in, \"Loglines processed/s\"))",
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-1.logline_out, \"Loglines written/s\"))",
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-1.usr_retargeting_out, \"Retargeting profiles gen./s\"))",
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-1.user_yield_out, \"Yield Profiles generated/s\"))"
+		]
+	},
+	{
+		"title":"Hydrosphere Stats [2] - ap-027",
+		"target": [
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-2.logline_in, \"Loglines processed/s\"))",
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-2.logline_out, \"Loglines written/s\"))",
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-2.usr_retargeting_out, \"Retargeting profiles gen./s\"))",
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-2.user_yield_out, \"Yield Profiles generated/s\"))"
+		]
+	},
+	{
+		"title":"Hydrosphere Actions [1] - ap-001",
+		"target": [
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-1.view_out, \"Loglines processed/s\"))",
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-1.lead_out, \"Loglines written/s\"))",
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-1.click_out, \"Retargeting profiles gen./s\"))",
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-1.basket_out, \"Retargeting profiles gen./s\"))",
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-1.sale_out, \"Yield Profiles generated/s\"))"
+		]
+	},
+	{
+		"title":"Hydrosphere Actions [2] - ap-027",
+		"target": [
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-2.view_out, \"Loglines processed/s\"))",
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-2.lead_out, \"Loglines written/s\"))",
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-2.click_out, \"Retargeting profiles gen./s\"))",
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-2.basket_out, \"Retargeting profiles gen./s\"))",
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-2.sale_out, \"Yield Profiles generated/s\"))"
+		]
+	},
+	{
+		"title":"Hydrosphere Overflow [1] - ap-001",
+		"target": [
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-1.overflow, \"Overflow\"))"
+		]
+	},
+	{
+		"title":"Hydrosphere Overflow [2] - ap-027",
+		"target": [
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-2.overflow, \"Overflow\"))"
+		]
+	},
+
+	{
+		"title":"Hydrosphere Delays [1] - ap-001",
+		"target": [
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-1.average_queue_delay, \"Avg Queue Delay\"))",
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-1.max_queue_delay, \"Max Queue Delay\"))"
+		]
+	},
+	{
+		"title":"Hydrosphere Delays [2] - ap-027",
+		"target": [
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-2.average_queue_delay, \"Avg Queue Delay\"))",
+			"cactiStyle(alias(ap-*.cacti_hydrosphere.cacti_hydrosphere_stats-2.max_queue_delay, \"Max Queue Delay\"))"
+		]
+	}
+	]
+}
+
+

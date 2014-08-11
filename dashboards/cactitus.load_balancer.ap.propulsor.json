@@ -1,0 +1,70 @@
+{
+	"title":"Propulsor LB Stats [AP]",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"dataTemplates" : [
+	{
+		"title":"${explode} - Propulsor LB- Network Traffic [eth0]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes, \"Received Bytes\"))",
+			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_txbytes, \"Sent bytes\"))"
+		],
+		"query":"${continent}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"${explode} - Propulsor LB - Sockets Pipes Files",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.files, \"Files\"))",
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.pipes, \"Pipes\"))",
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.tcp, \"TCP\"))",
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.udp, \"UDP\"))",
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.unix, \"Unix\"))"
+		],
+		"query":"${continent}.cacti_sfpstat.cacti_sfpstat.files",
+		"regex":"(.*)",
+		"index":0
+	}
+	],
+	"data":[
+	{
+		"title":"Aggregate: Propulsor LB - Network Traffic [eth0]",
+		"target": [
+			"cactiStyle(alias(sumSeries(${continent}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes), \"Received Bytes\"))",
+			"cactiStyle(alias(sumSeries(${continent}.cacti_netdev-eth0.cacti_netdev.NETDEV_txbytes), \"Sent bytes\"))"
+		]
+	},
+	{
+		"title":"Aggregate: Propulsor LB - Sockets Pipes Files",
+		"target": [
+			"cactiStyle(alias(sumSeries(${continent}.cacti_sfpstat.cacti_sfpstat.files), \"Files\"))",
+			"cactiStyle(alias(sumSeries(${continent}.cacti_sfpstat.cacti_sfpstat.pipes), \"Pipes\"))",
+			"cactiStyle(alias(sumSeries(${continent}.cacti_sfpstat.cacti_sfpstat.tcp), \"TCP\"))",
+			"cactiStyle(alias(sumSeries(${continent}.cacti_sfpstat.cacti_sfpstat.udp), \"UDP\"))",
+			"cactiStyle(alias(sumSeries(${continent}.cacti_sfpstat.cacti_sfpstat.unix), \"Unix\"))"
+		]
+	}
+	],
+	"parameters": {
+		"continent": {
+			"AP" : {"continent" : "{ap-002,ap-035}", 
+				"continent-nice" : "AP" },
+			"EU" : {"continent" : "{eu-007,eu-008,eu-010,eu-019,eu-020,eu-105,eu-106}", 
+				"continent-nice" : "EU" },
+			"US" : {"continent" : "{us-031,us-032,us-033,us-034,us-035,us-040,us-041,us-042,us-043,us-046}", 
+				"continent-nice" : "US" },
+			"USAP" : {"continent" : "usap-01", 
+				"continent-nice" : "US / AP" },
+			"All" : {"continent" : "*", "continent-nice" : "ALL" }
+		}
+	}
+
+
+}

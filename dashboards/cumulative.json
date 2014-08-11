@@ -1,0 +1,42 @@
+{
+	"title":"Cumulative Bid Stats",
+	"width" : 1500,
+	"defaultLineWidth":1,
+	"timeBack":"1d",
+	"height" : 1000,
+	"columns" : 1,
+	"refresh" : true,
+	"legend" : false,
+	"data":[
+		{
+			"title": "Cumulative Bid Requests",
+			"target": "aliasSub(integral(groupByNode(${continent}-*.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\")), \"integral\\(cacti_propulsor_fe_stats-(.*)\\)\", \"\\1\")",
+			"params": "yMin=0&areaAlpha=0.5&areaMode=all&lineWidth=2"
+		},
+		{
+			"title": "Cumulative Bid Responses",
+			"target": "aliasSub(integral(groupByNode(${continent}-*.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.bids, 2, \"sumSeries\")), \"integral\\(cacti_propulsor_fe_stats-(.*)\\)\", \"\\1\")",
+			"params": "yMin=0&areaAlpha=0.5&areaMode=all&lineWidth=2"
+		}
+	],
+	"parameters": {
+		"continent": {
+                        "All" : {"continent" : "*",
+                                 "cont-nice" : "All" },
+                        "EU" : {"continent" : "eu",
+                                 "cont-nice" : "EU" },
+                        "US" : {"continent" : "us",
+                                 "cont-nice" : "US" },
+                        "AP" : {"continent" : "ap",
+                                 "cont-nice" : "AP" }
+                },
+		"ssp" : {
+                        "type" : "dynamic",
+                        "query" : "${continent}-*.cacti_propulsor-*.cacti_propulsor_fe_stats-*",
+                        "index" : 2,
+                        "regex" : "-(.+)",
+                        "showAll": true,
+                        "defaultValue" : "total"
+                }
+	}
+}

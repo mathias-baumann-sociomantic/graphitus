@@ -1,0 +1,111 @@
+{
+	"title":"Propulsor SSP Yandex Stats",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&hideLegend=true&colorList=blue,green,black,red,green&yMin=0",
+	"dataTemplates" : [
+	{
+		"title":"${explode} Propulsor Frontend Stats [Yandex] [01]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor-01.cacti_propulsor_fe_stats-yandex_eu.requests,\"Requests\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor-01.cacti_propulsor_fe_stats-yandex_eu.bids,\"Bids\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor-01.cacti_propulsor_fe_stats-yandex_eu.errors,\"Errors\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor-01.cacti_propulsor_fe_stats-yandex_eu",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Frontend Stats [Yandex] [02]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor-02.cacti_propulsor_fe_stats-yandex_eu.requests,\"Requests\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor-02.cacti_propulsor_fe_stats-yandex_eu.bids,\"Bids\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor-02.cacti_propulsor_fe_stats-yandex_eu.errors,\"Errors\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor-02.cacti_propulsor_fe_stats-yandex_eu",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Frontend Stats [Yandex] [03]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor-03.cacti_propulsor_fe_stats-yandex_eu.requests,\"Requests\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor-03.cacti_propulsor_fe_stats-yandex_eu.bids,\"Bids\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor-03.cacti_propulsor_fe_stats-yandex_eu.errors,\"Errors\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor-03.cacti_propulsor_fe_stats-yandex_eu",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Frontend Stats [Yandex] [04]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor-04.cacti_propulsor_fe_stats-yandex_eu.requests,\"Requests\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor-04.cacti_propulsor_fe_stats-yandex_eu.bids,\"Bids\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor-04.cacti_propulsor_fe_stats-yandex_eu.errors,\"Errors\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor-04.cacti_propulsor_fe_stats-yandex_eu",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Frontend Stats [Yandex] [05]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor-05.cacti_propulsor_fe_stats-yandex_eu.requests,\"Requests\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor-05.cacti_propulsor_fe_stats-yandex_eu.bids,\"Bids\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor-05.cacti_propulsor_fe_stats-yandex_eu.errors,\"Errors\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor-05.cacti_propulsor_fe_stats-yandex_eu",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Frontend Stats [Yandex] [06]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor-06.cacti_propulsor_fe_stats-yandex_eu.requests,\"Requests\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor-06.cacti_propulsor_fe_stats-yandex_eu.bids,\"Bids\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor-06.cacti_propulsor_fe_stats-yandex_eu.errors,\"Errors\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor-06.cacti_propulsor_fe_stats-yandex_eu",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Frontend Stats [Yandex] [07]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor-07.cacti_propulsor_fe_stats-yandex_eu.requests,\"Requests\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor-07.cacti_propulsor_fe_stats-yandex_eu.bids,\"Bids\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor-07.cacti_propulsor_fe_stats-yandex_eu.errors,\"Errors\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor-07.cacti_propulsor_fe_stats-yandex_eu",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Frontend Stats [Yandex] [08]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor-08.cacti_propulsor_fe_stats-yandex_eu.requests,\"Requests\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor-08.cacti_propulsor_fe_stats-yandex_eu.bids,\"Bids\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor-08.cacti_propulsor_fe_stats-yandex_eu.errors,\"Errors\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor-08.cacti_propulsor_fe_stats-yandex_eu",
+		"regex" : "(.*)",
+		"index" : 0
+	}
+	],
+	"data":[
+	],
+	"parameters": {
+		"continent": {
+			"EU" : {"continent" : "eu" },
+			"AP" : {"continent" : "ap" },
+			"US" : {"continent" : "us" },
+			"USAP" : {"continent" : "usap" },
+			"All" : {"continent" : "*" }
+		}
+	}			
+}

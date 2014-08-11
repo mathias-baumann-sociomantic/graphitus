@@ -1,0 +1,59 @@
+{
+	"title":"DHT Memory",
+        "width" : 490,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+        "height" : 220,
+        "columns" : 2,
+	"refresh" : true,
+        "legend" : true,
+	"defaultParameters":"areaMode=none&lineWidth=2&yMin=0&fontSize=11",
+	"defaultParametersDiscarded":"&colorList=%23B34BFD,%23C87CFF,%239D63FF,%235E00FF,%238C00FF,%23B969FB,%23F85F00,%23F8002D,%23F82700",
+
+
+	"dataTemplatesUnused" : [
+	{
+		"title":"DHT Memory Usage % on ${explode}",
+		"target":"alias(scale(divideSeries(sumSeries(${explode}-*.cacti_dht.cacti_dht_mem_ps.bytes_ps_*), sumSeries(${explode}-*.cacti_memory.cacti_memory.STAT_memtotal)), 100), \"% mem usage\")",
+		"query":"${continent}-*.cacti_dht.cacti_dht_mem_ps.bytes_ps_*",
+		"regex":"^(.*)-.*",
+		"index":0,
+		"params":"yMin=0&areaMode=none&yMax=100"
+	}
+	],
+
+
+
+        "data":[
+        {
+            "title":"Aggregate - DHT Handled Connections",
+            "target": [
+		"alias(sum(${continent}-*.cacti_dht*.cacti_dht_stats.DHT_handle_connects), \"connections\")"
+		]
+
+        },
+	{
+            "title":"Aggregate - DHT bytes/s sent/received",
+            "target": [
+		"alias(sum(${continent}-*.cacti_dht*.cacti_dht_stats.DHT_sent_bytes), \"bytes sent\")",
+		"alias(sum(${continent}-*.cacti_dht*.cacti_dht_stats.DHT_received_bytes), \"bytes received\")"
+		]
+        },
+	{
+            "title":"Aggregate - DHT Memory Usage",
+            "target": [
+		"alias(sum(${continent}-*.cacti_dht-*.cacti_dht_mem.bytes_ps,${continent}-*.cacti_dht.cacti_dht_mem_ps.bytes_ps_*), \"bytes ps\")",
+		"alias(sum(${continent}-*.cacti_dht-*.cacti_dht_mem.bytes_dht,${continent}-*.cacti_dht.cacti_dht_mem_dht.bytes_dht_*), \"bytes dht\")"
+		]
+        }
+        ],
+	"parameters": {
+                "continent": {
+                        "All" : {"continent" : "*" },
+                        "EU" : {"continent" : "eu" },
+                        "US" : {"continent" : "us" },
+                        "AP" : {"continent" : "ap" },
+                        "USAP" : {"continent" : "usap" }
+		}
+	}			
+}

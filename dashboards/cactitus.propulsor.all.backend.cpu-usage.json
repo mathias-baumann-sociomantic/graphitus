@@ -1,0 +1,100 @@
+{
+	"title":"Propulsor Backend CPU usage",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"defaultParameters":"fontSize=9&areaMode=all&hideLegend=true&colorList=green,red&yMin=0&yMax=100",
+	"dataTemplates" : [
+	{
+		"title":"${explode} - Propulsor Backend Stats [CPU] [01]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_cpu-01.cpu_usage,\"CPU\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_cpu-01",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} - Propulsor Backend Stats [CPU] [02]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_cpu-02.cpu_usage,\"CPU\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_cpu-02",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} - Propulsor Backend Stats [CPU] [03]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_cpu-03.cpu_usage,\"CPU\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_cpu-03",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} - Propulsor Backend Stats [CPU] [04]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_cpu-04.cpu_usage,\"CPU\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_cpu-04",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} - Propulsor Backend Stats [CPU] [05]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_cpu-05.cpu_usage,\"CPU\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_cpu-05",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} - Propulsor Backend Stats [CPU] [06]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_cpu-06.cpu_usage,\"CPU\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_cpu-06",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} - Propulsor Backend Stats [CPU] [07]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_cpu-07.cpu_usage,\"CPU\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_cpu-07",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} - Propulsor Backend Stats [CPU] [08]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_cpu-08.cpu_usage,\"CPU\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_cpu-08",
+		"regex" : "(.*)",
+		"index" : 0
+	}
+	],
+	"data":[
+	],
+	"parameters": {
+       	        "continent": {
+                        "All" : {"continent" : "*",
+                                 "cont-nice" : "All" },
+                        "EU" : {"continent" : "eu",
+                                 "cont-nice" : "EU" },
+                        "US" : {"continent" : "us",
+                                 "cont-nice" : "US" },
+                        "AP" : {"continent" : "ap",
+                                 "cont-nice" : "AP" },
+                        "USAP" : {"continent" : "usap",
+                                 "cont-nice" : "USAP" }
+		}
+	}			
+}

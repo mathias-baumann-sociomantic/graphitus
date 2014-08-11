@@ -1,0 +1,69 @@
+{
+    "title":"Coral Stats",
+        "width" : 490,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+        "height" : 220,
+        "columns" : 2,
+	"refresh" : true,
+        "legend" : false,
+        "data":[
+        {
+            "title":"Loglines",
+            "target": [
+		"cactiStyle(aliasByNode(scale(sortByMinima(${continent}-${version}.cacti_coral.cacti_coral_stats.loglines),0.03333),0))"
+		],
+		"params" : "yMin=0&areaAlpha=0.5&areaMode=all&lineWidth=2&colorList=%23B34BFD,%23C87CFF,%239D63FF,%235E00FF,%238C00FF,%23B969FB,%23F85F00,%23F8002D,%23F82700"
+
+        },
+        {
+            "title":"ConversionErrors",
+            "target": [
+			"aliasByNode(scale(${continent}-${version}.cacti_coral.cacti_coral_stats.conversion_errors,0.033333),3)"
+			]
+        },
+	{
+		"title" : "Currency Mappings",
+		"params" : "lineWidth=2",
+		"target" : "aliasByNode(${continent}-${version}.cacti_coral.cacti_coral_stats.currency_mappings,0,3)"
+	},
+	{
+		"title" : "Referrer Map",
+		"params" : "lineWidth=2",
+		"target" : "aliasByNode(${continent}-${version}.cacti_coral.cacti_coral_stats.referrer_map,0,3)"
+	},
+	{
+		"title" : "Campaign Map",
+		"params" : "areaAlpha=0.4&areaMode=all&yMin=0",
+		"target" : "aliasByNode(sortByMinima(${continent}-${version}.cacti_coral.cacti_coral_stats.campaign_map),0,3)"
+	},
+	{
+		"title" : "DHT Queue",
+		"target" : "aliasByNode(${continent}-${version}.cacti_coral.cacti_coral_stats.dht_queue,0,3)",
+		"params" : "yMin=0&lineWidth=2" 
+	},
+	{
+		"title" : "Click Maps",
+		"target" : [
+			"aliasByNode(${continent}-${version}.cacti_coral.cacti_coral_stats.click_map,0,3)" ],
+		"params" : "areaMode=all&areaAlpha=0.4"
+	},
+	{
+		"title" : "Memory Usage",
+		"params" : "areaAlpha=0.4&areaMode=all&yMin=0",
+		"target" : "aliasByNode(sortByMinima(${continent}-${version}.cacti_coral.cacti_coral_stats.memory),0,3)"
+	}
+        ],
+	"parameters": {
+		"continent": {
+			"All": {"continent" : "*" },
+			"EU" : {"continent" : "eu" },
+			"US" : {"continent" : "us" },
+			"AP" : {"continent" : "ap" }
+			},
+		"version" : {
+			"All" : { "version" : "*" },
+			"live" : { "version" : "{137,011,010}" }
+		}
+	}			
+}

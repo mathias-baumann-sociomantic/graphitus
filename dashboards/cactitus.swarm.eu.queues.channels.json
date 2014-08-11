@@ -1,0 +1,56 @@
+{
+    "title":"Queue Channel Usage [EU]",
+        "width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+        "height":141,
+        "columns":2,
+	"refresh":true,
+        "legend":false,
+	"defaultParameters":"yMin=0&fontSize=9&areaMode=all&areaAlpha=0.4&colorList=orange,red",
+	"dataTemplates" : [
+	{
+		"title":"eu-095 - Bidding Queue Channel Usage [${explode}]",
+		"target":[
+			"aliasByMetric(eu-*.cacti_queue.cacti_queue_node_stats-bidding.${explode})"
+		],
+		"query":"eu-*.cacti_queue.cacti_queue_node_stats-bidding.cliff",
+		"regex":"^(.*)",
+		"index":3
+	},
+	{
+		"title":"eu-095 - Queue Channel Usage [${explode}]",
+		"target":[
+			"aliasByMetric(eu-*.cacti_queue.cacti_queue_node_stats.${explode})"
+		],
+		"queryExplanation":"Weird matching to overcome obsolete cliff metric from matching",
+		"query":"eu-*.cacti_queue.cacti_queue_node_stats.?[a-k,m-z]*",
+		"regex":"^(.*)",
+		"index":3
+	},
+	{
+		"title":"eu-061 - Queue Channel Usage [${explode}]",
+		"target":[
+			"aliasByMetric(eu-*.cacti_queue.queue_stats-${explode}.usage)"
+		],
+		"query":"eu-*.cacti_queue.queue_stats-adme*",
+		"regex":"^queue_stats-(.*)",
+		"index":2,
+		"params":"yMax=100"
+	}
+	],
+	"dataTemplatesUnused" : [
+	{
+		"comment":"This is deprecated and should disappear. Kept for backwards reference. Remove if you don't know what all this is about",
+		"title":"eu-061 - (OLD RANGES) Queue Channel Usage [${explode}]",
+		"target":[
+			"aliasByMetric(eu-*.cacti_queue.cacti_admedia_queue_stats_eu.${explode})"
+		],
+		"query":"eu-*.cacti_queue.cacti_admedia_queue_stats_eu.adme*",
+		"regex":"^(.*)",
+		"index":3
+	}
+	],
+	"data":[
+        ]
+}

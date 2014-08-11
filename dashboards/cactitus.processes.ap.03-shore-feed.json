@@ -1,0 +1,68 @@
+{
+	"title":"Shore Feed Stats [${continent-nice}]",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"dataTemplates" : [
+	{
+		"title":"${explode} - Shore Feed Stats [Processed Records/s]",
+		"target": [
+			"cactiStyle(alias(scale(${explode}.cacti_shore.cacti_shore_feed_stats.feed_record,0.003333), \"Records processed/s\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_shore.cacti_shore_feed_stats.cache_hit,0.003333), \"Cache hits/s\"))"
+		],
+		"query":"${continent}-*.cacti_shore.cacti_shore_feed_stats.*",
+		"regex":"(.*)",
+		"index":0
+	},
+
+
+	{
+		"title":"${explode} - Shore Feed Stats [Defective Feeds]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_shore.cacti_shore_feed_stats.feeds, \"Total number of feeds\"))",
+			"cactiStyle(alias(${explode}.cacti_shore.cacti_shore_feed_stats.defective_feed, \"Defective Feedss\"))"
+		],
+		"query":"${continent}-*.cacti_shore.cacti_shore_feed_stats.*",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"${explode} - Shore Feed Stats [Errors]",
+		"target": [
+			"cactiStyle(alias(scale(${explode}.cacti_shore.cacti_shore_feed_stats.errors,0.003333), \"Errors/s\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_shore.cacti_shore_feed_stats.send_failures,0.003333), \"Send failures/s\"))"
+		],
+		"query":"${continent}-*.cacti_shore.cacti_shore_feed_stats.*",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"${explode} - Shore Feed Stats [Activity/s]",
+		"target": [
+			"cactiStyle(alias(scale(${explode}.cacti_shore.cacti_shore_feed_stats.new_admedia,0.003333), \"New admedia/s\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_shore.cacti_shore_feed_stats.changed,0.003333), \"Changed/s\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_shore.cacti_shore_feed_stats.retired,0.003333), \"Retired\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_shore.cacti_shore_feed_stats.stale,0.003333), \"Stale/s\"))"
+		],
+		"query":"${continent}-*.cacti_shore.cacti_shore_feed_stats.*",
+		"regex":"(.*)",
+		"index":0
+	}
+	],
+	"data":[
+	],
+	"parameters": {
+		"continent": {
+			"AP" : {"continent" : "ap", "continent-nice" : "AP" },
+			"US" : {"continent" : "us", "continent-nice" : "US" },
+			"USAP" : {"continent" : "usap", "continent-nice" : "US / AP" },
+			"All" : {"continent" : "*", "continent-nice" : "ALL" }
+		}
+	}
+}
+

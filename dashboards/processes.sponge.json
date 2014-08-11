@@ -1,0 +1,47 @@
+{          
+    "title":"Sponge",
+        "width" : 560,
+        "height" : 220,
+        "defaultLineWidth" : 1,
+        "timeBack":"1d",
+        "columns" : 2, 
+        "refresh" : true, 
+        "legend" : false, 
+        "data":[ 
+        {
+            "title":"EU Records Scanned",
+            "target": "eu-061.cacti_sponge.*.records_scanned"                        
+        },
+        {
+            "title":"EU Records Removed",
+            "target": "eu-061.cacti_sponge.*.records_removed"                        
+        },
+        {
+            "title":"US Records Scanned",
+            "target":"us-039.cacti_sponge.*.records_scanned"
+        },
+        {
+            "title":"US Records Removed",
+            "target":"us-039.cacti_sponge.*.records_removed"
+        },
+        {
+            "title":"US/AP Records Scanned",
+            "target":"usap-003.cacti_sponge.*.records_scanned"
+        },
+        {
+            "title":"US/AP Records Removed",
+            "target":"usap-003.cacti_sponge.*.records_removed"
+        },
+        {
+            "title":"AP Records Scanned",
+            "target":"ap-013.cacti_sponge.*.records_scanned"
+        },
+        {
+            "title":"AP Records Removed",
+            "target":"ap-013.cacti_sponge.*.records_removed"
+        }
+	],        
+        "parameters": {
+		
+        }
+}

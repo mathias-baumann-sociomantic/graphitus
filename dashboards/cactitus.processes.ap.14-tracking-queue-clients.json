@@ -1,0 +1,118 @@
+{
+	"title":"Tracking Queue Stats [${continent-nice}]",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"dataTemplates":[
+	{
+		"title":"${explode} - Reef Stats [Processed Loglines/s]",
+		"target": [
+			"cactiStyle(alias(scale(${explode}.cacti_reef.cacti_reef_stats.loglines, 0.03333), \"Loglines Processed/s\"))"
+		],
+		"query":"${continent}-*.cacti_reef.cacti_reef_stats.loglines",
+		"regex":"(.*)",	
+		"index":0
+        },
+	{
+		"title":"${explode} - Reef Network Traffic bytes [eth0]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes, \"Received Bytes\"))",
+			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_txbytes, \"Sent bytes\"))"
+		],
+		"query":"${continent}-*.cacti_reef.cacti_reef_stats.loglines",
+		"regex":"(.*)",	
+		"index":0
+        },
+	{
+		"title":"${explode} - Hydrosphere Stats [1]",
+		"target": [
+			"cactiStyle(alias(scale(${explode}.cacti_hydrosphere.cacti_hydrosphere_stats-*.logline_in, 0.03333), \"Loglines processed/s\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_hydrosphere.cacti_hydrosphere_stats-*.logline_out, 0.03333), \"Loglines written/s\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_hydrosphere.cacti_hydrosphere_stats-*.usr_retargeting_out, 0.03333), \"Retargeting profiles gen./s\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_hydrosphere.cacti_hydrosphere_stats-*.user_yield_out, 0.03333), \"Yield Profiles generated/s\"))"
+		],
+		"query":"${continent}-*.cacti_hydrosphere.cacti_hydrosphere_stats-1.*",
+		"regex":"(.*)",	
+		"index":0
+        },
+	{
+		"title":"${explode} - Hydrosphere Stats [2]",
+		"target": [
+			"cactiStyle(alias(scale(${explode}.cacti_hydrosphere.cacti_hydrosphere_stats-*.logline_in, 0.03333), \"Loglines processed/s\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_hydrosphere.cacti_hydrosphere_stats-*.logline_out, 0.03333), \"Loglines written/s\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_hydrosphere.cacti_hydrosphere_stats-*.usr_retargeting_out, 0.03333), \"Retargeting profiles gen./s\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_hydrosphere.cacti_hydrosphere_stats-*.user_yield_out, 0.03333), \"Yield Profiles generated/s\"))"
+		],
+		"query":"${continent}-*.cacti_hydrosphere.cacti_hydrosphere_stats-2.*",
+		"regex":"(.*)",	
+		"index":0
+        },
+	{
+		"title":"${explode} - Hydrosphere Network Traffic bytes [eth0]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes, \"Received Bytes\"))",
+			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_txbytes, \"Sent bytes\"))"
+		],
+		"query":"${continent}-*..cacti_hydrosphere.cacti_hydrosphere_stats-*.*",
+		"regex":"(.*)",	
+		"index":0
+        },
+
+	{
+		"title":"${explode} - Shore Stream Stats [Admedia written/s]",
+		"target": [
+			"cactiStyle(alias(scale(${explode}.cacti_shore.cacti_shore_stream_stats.admedium, 0.003333), \"Admedia written/s\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_shore.cacti_shore_stream_stats.cache_hit, 0.003333), \"Cache hits/s\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_shore.cacti_shore_stream_stats.invalid_admedia, 0.003333), \"Invalid admedia/s\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_shore.cacti_shore_stream_stats.parse_error, 0.003333), \"Parse errors/s\"))"
+		],
+		"query":"${continent}-*.cacti_shore.cacti_shore_stream_stats.*",
+		"regex":"(.*)",	
+		"index":0
+        },
+	{
+		"title":"${explode} - Shore Stream Stats [Processed Loglines/s]",
+		"target": [
+			"cactiStyle(alias(scale(${explode}.cacti_shore.cacti_shore_stream_stats.loglines, 0.03333), \"Records processed/s\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_shore.cacti_shore_stream_stats.bots, -0.03333), \"Total - Bots\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_shore.cacti_shore_stream_stats.inactive, 0.03333), \"Feed+API views/s\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_shore.cacti_shore_stream_stats.admedium, 0.03333), \"Stream written/s\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_shore.cacti_shore_stream_stats.cache_hit, 0.03333), \"Stream cache hit\"))"
+		],
+		"query":"${continent}-*.cacti_shore.cacti_shore_stream_stats.*",
+		"regex":"(.*)",	
+		"index":0
+        },
+	{
+		"title":"${explode} - Shore Stream Network Traffic bytes [eth0]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes, \"Received Bytes\"))",
+			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_txbytes, \"Sent bytes\"))"
+		],
+		"query":"${continent}-*.cacti_shore.cacti_shore_stream_stats.*",
+		"regex":"(.*)",	
+		"index":0
+        }
+	],
+	"data":[
+	],
+	"parameters": {
+                "continent": {
+                        "AP" : {"continent" : "ap",
+				"continent-nice" : "AP" },
+                        "EU" : {"continent" : "eu", 
+				"continent-nice" : "EU" },
+                        "US" : {"continent" : "us",
+				"continent-nice" : "US" },
+                        "USAP" : {"continent" : "usap",
+				"continent-nice" : "US / AP" },
+                        "All" : {"continent" : "*",
+				"continent-nice" : "ALL" }
+                }
+	}
+}

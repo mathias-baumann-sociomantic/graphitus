@@ -1,0 +1,226 @@
+{
+	"title":"Host stats",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"dataTemplates" : [
+	{
+		"title":"01. Context Switches [${explode}]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_contextswitch.cacti_contextswitch.STAT_context_swtchs, \"Context Switches\"))"
+		],
+		"query":"${server}.cacti_contextswitch.cacti_contextswitch.STAT_context_swtchs",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"02. CPU Usage [${explode}]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_idle, \"CPU Idle\"))",
+			"cactiStyle(alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_user, \"CPU User\"))",
+			"cactiStyle(alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_nice, \"CPU Nice\"))",
+			"cactiStyle(alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_system, \"CPU System\"))",
+			"cactiStyle(alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_iowait, \"CPU Iowait\"))",
+			"cactiStyle(alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_irq, \"CPU Irq\"))",
+			"cactiStyle(alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_softirq, \"CPU Softirq\"))",
+			"cactiStyle(alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_steal, \"CPU Steal\"))",
+			"cactiStyle(alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_guest, \"CPU Guest\"))"
+		],
+		"params":"areaMode=stacked",
+		"query":"${server}.cacti_cpu.cacti_cpu.STAT_CPU_guest",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"03. Disk Elapsed IO Time (ms) [${explode}] [sda]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_disk-sda.cacti_disk_io_time.DISK_io_time, \"Io Time\"))",
+			"cactiStyle(alias(${explode}.cacti_disk-sda.cacti_disk_io_time.DISK_io_time_weghtd, \"Io Time Weighted\"))"
+		],
+		"query":"${server}.cacti_disk-sda.cacti_disk_io_time.DISK_io_time_weghtd",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"03. Disk Elapsed IO Time (ms) [${explode}] [sdb]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_disk-sdb.cacti_disk_io_time.DISK_io_time, \"Io Time\"))",
+			"cactiStyle(alias(${explode}.cacti_disk-sdb.cacti_disk_io_time.DISK_io_time_weghtd, \"Io Time Weighted\"))"
+		],
+		"query":"${server}.cacti_disk-sdb.cacti_disk_io_time.DISK_io_time_weghtd",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"04. Disk Operations [${explode}] [md3]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_disk-md3.cacti_disk_ops.DISK_reads, \"Reads\"))",
+			"cactiStyle(alias(${explode}.cacti_disk-md3.cacti_disk_ops.DISK_reads_merged, \"Reads Merged\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_disk-md3.cacti_disk_ops.DISK_writes, -1), \"Writes\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_disk-md3.cacti_disk_ops.DISK_writes_merged, -1), \"Writes Merged\"))"
+		],
+		"params":"yMin=",
+		"query":"${server}.cacti_disk-md3.cacti_disk_ops.DISK_reads",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"05. Disk Read/Write Time (ms) [${explode}] [sda]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_disk-sda.cacti_disk_rw_time.DISK_time_spnt_rdng, \"Time Spent Reading\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_disk-sda.cacti_disk_rw_time.DISK_tme_spnt_wrtng, -1), \"Time Spent Writing\"))"
+		],
+		"params":"yMin=",
+		"query":"${server}.cacti_disk-sda.cacti_disk_rw_time.DISK_time_spnt_rdng",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"05. Disk Read/Write Time (ms) [${explode}] [sdb]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_disk-sdb.cacti_disk_rw_time.DISK_time_spnt_rdng, \"Time Spent Reading\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_disk-sdb.cacti_disk_rw_time.DISK_tme_spnt_wrtng, -1), \"Time Spent Writing\"))"
+		],
+		"params":"yMin=",
+		"query":"${server}.cacti_disk-sdb.cacti_disk_rw_time.DISK_time_spnt_rdng",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"06. Disk Sectors Read/Written [${explode}] [RAID]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_disk-md3.cacti_disk_sec_rdwt.DISK_sectors_read, \"Sectors Read\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_disk-md3.cacti_disk_sec_rdwt.DISK_sectors_writtn, -1), \"Sectors Written\"))"
+		],
+		"params":"yMin=",
+		"query":"${server}.cacti_disk-md3.cacti_disk_sec_rdwt.DISK_sectors_read",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"07. Disk Usage [${explode}] [/]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_df-root.cacti_df.DISKFREE_used, \"Used\"))",
+			"cactiStyle(alias(${explode}.cacti_df-root.cacti_df.DISKFREE_available, \"Free\"))"
+		],
+		"params":"areaMode=stacked",
+		"query":"${server}.cacti_df-root.cacti_df.DISKFREE_used",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"07. Disk Usage [${explode}] [/srv]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_df-srv.cacti_df.DISKFREE_used, \"Used\"))",
+			"cactiStyle(alias(${explode}.cacti_df-srv.cacti_df.DISKFREE_available, \"Free\"))"
+		],
+		"params":"areaMode=stacked",
+		"query":"${server}.cacti_df-srv.cacti_df.DISKFREE_used",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"08. Forks [${explode}]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_forks.cacti_forks.STAT_forks, \"Forks\"))"
+		],
+		"query":"${server}.cacti_forks.cacti_forks.STAT_forks",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"09. Interrupts [${explode}]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_interrupts.cacti_interrupts.STAT_interrupts, \"Interrupts\"))"
+		],
+		"query":"${server}.cacti_interrupts.cacti_interrupts.STAT_interrupts",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"10. Load Average [${explode}]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_load.cacti_load.STAT_loadavg, \"Loadavg\"))"
+		],
+		"query":"${server}.cacti_load.cacti_load.STAT_loadavg",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"11. Memory [${explode}]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_memory.cacti_memory.STAT_memused, \"Memused\"))",
+			"cactiStyle(alias(${explode}.cacti_memory.cacti_memory.STAT_memcached, \"Memcached\"))",
+			"cactiStyle(alias(${explode}.cacti_memory.cacti_memory.STAT_membuffer, \"Membuffer\"))",
+			"cactiStyle(alias(${explode}.cacti_memory.cacti_memory.STAT_memshared, \"Memshared\"))",
+			"cactiStyle(alias(${explode}.cacti_memory.cacti_memory.STAT_memfree, \"Memfree\"))"
+		],
+		"params":"areaMode=stacked",
+		"query":"${server}.cacti_memory.cacti_memory.STAT_memfree",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"12. Network Traffic bytes [${explode}] [eth0]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes, \"Received Bytes\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_txbytes, 1), \"Sent bytes\"))"
+		],
+		"query":"${server}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"13. Number of Users [${explode}]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_users.cacti_users.STAT_numusers, \"Numusers\"))"
+		],
+		"params":"",
+		"query":"${server}.cacti_users.cacti_users.STAT_numusers",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"14. Sockets Pipes Files [${explode}]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.files, \"Files\"))",
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.pipes, \"Pipes\"))",
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.tcp, \"TCP\"))",
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.udp, \"UDP\"))",
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.unix, \"Unix\"))"
+		],
+		"query":"${server}.",
+		"regex":"(.*)",
+		"index":0
+	}
+	],
+	"data":[
+	],
+	"parameters": {
+		"continent": {
+			"USAP" : {"continent" : "usap",
+				"continent-nice" : "US/AP" },
+			"EU" : {"continent" : "eu",
+				"continent-nice" : "EU" },
+			"US" : {"continent" : "us",
+				"continent-nice" : "US" },
+			"AP" : {"continent" : "ap",
+				"continent-nice" : "AP" },
+			"All" : {"continent" : "*", "continent-nice" : "ALL" }
+		},
+		"server" : {
+			"type" : "dynamic",
+			"query" : "${continent}-*",
+			"index" : 0,
+			"regex" : "(.*)",
+			"showAll": true,
+			"showAllValue" : "${continent}-*",
+			"defaultValue" : "${continent}-*"
+		}
+	}
+}

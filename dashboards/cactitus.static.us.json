@@ -1,0 +1,62 @@
+{
+	"title":"Static Stats US",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"dataTemplates" : [
+	{
+		"title":"${explode} - Static (live) - Nginx Requests/sec",
+		"target" : [
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_sockets.nginx_accepts), \"Total Accepts\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_sockets.nginx_handled), \"Total Handled\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_sockets.nginx_requests), \"Total Requests\"))"
+		],
+		"query" : "{us-049,us-050,us-051}.cacti_nginx.cacti_nginx_sockets",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} - Static (live) - Nginx Clients",
+		"target" : [
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_active), \"Total Active\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_reading), \"Total Reading\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_waiting), \"Total Waiting\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_writing), \"Total Writing\"))"
+		],
+		"query" : "{us-049,us-050,us-051}.cacti_nginx.cacti_nginx_clients",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} - Static (source) - Nginx Requests/sec",
+		"target" : [
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_sockets.nginx_accepts), \"Total Accepts\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_sockets.nginx_handled), \"Total Handled\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_sockets.nginx_requests), \"Total Requests\"))"
+		],
+		"query" : "{us-052,us-053}.cacti_nginx.cacti_nginx_sockets",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} - Static (source) - Nginx Clients",
+		"target" : [
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_active), \"Total Active\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_reading), \"Total Reading\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_waiting), \"Total Waiting\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_writing), \"Total Writing\"))"
+		],
+		"query" : "{us-052,us-053}.cacti_nginx.cacti_nginx_clients",
+		"regex" : "(.*)",
+		"index" : 0
+	}
+	],
+	"data":[
+	]
+}
+

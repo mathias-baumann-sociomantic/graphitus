@@ -1,0 +1,151 @@
+{
+	"title":"Static Stats",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"data":[
+	{
+		"title":"Aggregate - Statics (live) - Nginx Requests/sec [Total]",
+		"target": [
+			"cactiStyle(alias(sum({ap-011,ap-012,ap-014,ap-015,eu-003,eu-004,eu-011,eu-022,eu-023,eu-024,eu-025,eu-040,eu-096,us-049,us-050,us-051}.cacti_nginx.cacti_nginx_sockets.nginx_accepts), \"Total Accepts\"))",
+			"cactiStyle(alias(sum({ap-011,ap-012,ap-014,ap-015,eu-003,eu-004,eu-011,eu-022,eu-023,eu-024,eu-025,eu-040,eu-096,us-049,us-050,us-051}.cacti_nginx.cacti_nginx_sockets.nginx_handled), \"Total Handled\"))",
+			"cactiStyle(alias(sum({ap-011,ap-012,ap-014,ap-015,eu-003,eu-004,eu-011,eu-022,eu-023,eu-024,eu-025,eu-040,eu-096,us-049,us-050,us-051}.cacti_nginx.cacti_nginx_sockets.nginx_requests), \"Total Requests\"))"
+		]
+	},
+	{
+		"title":"Aggregate - Statics (live) - Nginx Clients [Total]",
+		"target": [
+			"cactiStyle(alias(sum({ap-011,ap-012,ap-014,ap-015,eu-003,eu-004,eu-011,eu-022,eu-023,eu-024,eu-025,eu-040,eu-096,us-049,us-050,us-051}.cacti_nginx.cacti_nginx_clients.nginx_active), \"Total Active\"))",
+			"cactiStyle(alias(sum({ap-011,ap-012,ap-014,ap-015,eu-003,eu-004,eu-011,eu-022,eu-023,eu-024,eu-025,eu-040,eu-096,us-049,us-050,us-051}.cacti_nginx.cacti_nginx_clients.nginx_reading), \"Total Reading\"))",
+			"cactiStyle(alias(sum({ap-011,ap-012,ap-014,ap-015,eu-003,eu-004,eu-011,eu-022,eu-023,eu-024,eu-025,eu-040,eu-096,us-049,us-050,us-051}.cacti_nginx.cacti_nginx_clients.nginx_waiting), \"Total Waiting\"))",
+			"cactiStyle(alias(sum({ap-011,ap-012,ap-014,ap-015,eu-003,eu-004,eu-011,eu-022,eu-023,eu-024,eu-025,eu-040,eu-096,us-049,us-050,us-051}.cacti_nginx.cacti_nginx_clients.nginx_writing), \"Total Writing\"))"
+		]
+	},
+	{
+		"title":"Aggregate - Statics (live) - Nginx Requests/sec [EU]",
+		"target": [
+			"cactiStyle(alias(sum({eu-003,eu-004,eu-011,eu-022,eu-023,eu-024,eu-025,eu-040,eu-096}.cacti_nginx.cacti_nginx_sockets.nginx_accepts), \"Total Accepts\"))",
+			"cactiStyle(alias(sum({eu-003,eu-004,eu-011,eu-022,eu-023,eu-024,eu-025,eu-040,eu-096}.cacti_nginx.cacti_nginx_sockets.nginx_handled), \"Total Handled\"))",
+			"cactiStyle(alias(sum({eu-003,eu-004,eu-011,eu-022,eu-023,eu-024,eu-025,eu-040,eu-096}.cacti_nginx.cacti_nginx_sockets.nginx_requests), \"Total Requests\"))"
+		]
+	},
+	{
+		"title":"Aggregate - Statics (live) - Nginx Clients [EU]",
+		"target": [
+			"cactiStyle(alias(sum({eu-003,eu-004,eu-011,eu-022,eu-023,eu-024,eu-025,eu-040,eu-096}.cacti_nginx.cacti_nginx_clients.nginx_active), \"Total Active\"))",
+			"cactiStyle(alias(sum({eu-003,eu-004,eu-011,eu-022,eu-023,eu-024,eu-025,eu-040,eu-096}.cacti_nginx.cacti_nginx_clients.nginx_reading), \"Total Reading\"))",
+			"cactiStyle(alias(sum({eu-003,eu-004,eu-011,eu-022,eu-023,eu-024,eu-025,eu-040,eu-096}.cacti_nginx.cacti_nginx_clients.nginx_waiting), \"Total Waiting\"))",
+			"cactiStyle(alias(sum({eu-003,eu-004,eu-011,eu-022,eu-023,eu-024,eu-025,eu-040,eu-096}.cacti_nginx.cacti_nginx_clients.nginx_writing), \"Total Writing\"))"
+		]
+	},
+	{
+		"title":"Aggregate - Statics (live) - Nginx Requests/sec [US]",
+		"target": [
+			"cactiStyle(alias(sum({us-049,us-050,us-051}.cacti_nginx.cacti_nginx_sockets.nginx_accepts), \"Total Accepts\"))",
+			"cactiStyle(alias(sum({us-049,us-050,us-051}.cacti_nginx.cacti_nginx_sockets.nginx_handled), \"Total Handled\"))",
+			"cactiStyle(alias(sum({us-049,us-050,us-051}.cacti_nginx.cacti_nginx_sockets.nginx_requests), \"Total Requests\"))"
+		]
+	},
+	{
+		"title":"Aggregate - Statics (live) - Nginx Clients [US]",
+		"target": [
+			"cactiStyle(alias(sum({us-049,us-050,us-051}.cacti_nginx.cacti_nginx_clients.nginx_active), \"Total Active\"))",
+			"cactiStyle(alias(sum({us-049,us-050,us-051}.cacti_nginx.cacti_nginx_clients.nginx_reading), \"Total Reading\"))",
+			"cactiStyle(alias(sum({us-049,us-050,us-051}.cacti_nginx.cacti_nginx_clients.nginx_waiting), \"Total Waiting\"))",
+			"cactiStyle(alias(sum({us-049,us-050,us-051}.cacti_nginx.cacti_nginx_clients.nginx_writing), \"Total Writing\"))"
+		]
+	},
+	{
+		"title":"Aggregate - Statics (live) - Nginx Requests/sec [AP]",
+		"target": [
+			"cactiStyle(alias(sum({ap-011,ap-012,ap-014,ap-015}.cacti_nginx.cacti_nginx_sockets.nginx_accepts), \"Total Accepts\"))",
+			"cactiStyle(alias(sum({ap-011,ap-012,ap-014,ap-015}.cacti_nginx.cacti_nginx_sockets.nginx_handled), \"Total Handled\"))",
+			"cactiStyle(alias(sum({ap-011,ap-012,ap-014,ap-015}.cacti_nginx.cacti_nginx_sockets.nginx_requests), \"Total Requests\"))"
+		]
+	},
+	{
+		"title":"Aggregate - Statics (live) - Nginx Clients [AP]",
+		"target": [
+			"cactiStyle(alias(sum({ap-011,ap-012,ap-014,ap-015}.cacti_nginx.cacti_nginx_clients.nginx_active), \"Total Active\"))",
+			"cactiStyle(alias(sum({ap-011,ap-012,ap-014,ap-015}.cacti_nginx.cacti_nginx_clients.nginx_reading), \"Total Reading\"))",
+			"cactiStyle(alias(sum({ap-011,ap-012,ap-014,ap-015}.cacti_nginx.cacti_nginx_clients.nginx_waiting), \"Total Waiting\"))",
+			"cactiStyle(alias(sum({ap-011,ap-012,ap-014,ap-015}.cacti_nginx.cacti_nginx_clients.nginx_writing), \"Total Writing\"))"
+		]
+	},
+	{
+		"title":"Aggregate - Statics (source) - Nginx Requests/sec [Total]",
+		"target": [
+			"cactiStyle(alias(sum({eu-079,eu-080,eu-081,eu-082,eu-097,eu-133,eu-134,eu-135,eu-136,us-052,us-053,ap-028,ap-029,ap-030,ap-031,ap-032,ap-033}.cacti_nginx.cacti_nginx_sockets.nginx_accepts), \"Total Accepts\"))",
+			"cactiStyle(alias(sum({eu-079,eu-080,eu-081,eu-082,eu-097,eu-133,eu-134,eu-135,eu-136,us-052,us-053,ap-028,ap-029,ap-030,ap-031,ap-032,ap-033}.cacti_nginx.cacti_nginx_sockets.nginx_handled), \"Total Handled\"))",
+			"cactiStyle(alias(sum({eu-079,eu-080,eu-081,eu-082,eu-097,eu-133,eu-134,eu-135,eu-136,us-052,us-053,ap-028,ap-029,ap-030,ap-031,ap-032,ap-033}.cacti_nginx.cacti_nginx_sockets.nginx_requests), \"Total Requests\"))"
+		]
+	},
+	{
+		"title":"Aggregate - Statics (source) - Nginx Clients [Total]",
+		"target": [
+			"cactiStyle(alias(sum({eu-079,eu-080,eu-081,eu-082,eu-097,eu-133,eu-134,eu-135,eu-136,us-052,us-053,ap-028,ap-029,ap-030,ap-031,ap-032,ap-033}.cacti_nginx.cacti_nginx_clients.nginx_active), \"Total Active\"))",
+			"cactiStyle(alias(sum({eu-079,eu-080,eu-081,eu-082,eu-097,eu-133,eu-134,eu-135,eu-136,us-052,us-053,ap-028,ap-029,ap-030,ap-031,ap-032,ap-033}.cacti_nginx.cacti_nginx_clients.nginx_reading), \"Total Reading\"))",
+			"cactiStyle(alias(sum({eu-079,eu-080,eu-081,eu-082,eu-097,eu-133,eu-134,eu-135,eu-136,us-052,us-053,ap-028,ap-029,ap-030,ap-031,ap-032,ap-033}.cacti_nginx.cacti_nginx_clients.nginx_waiting), \"Total Waiting\"))",
+			"cactiStyle(alias(sum({eu-079,eu-080,eu-081,eu-082,eu-097,eu-133,eu-134,eu-135,eu-136,us-052,us-053,ap-028,ap-029,ap-030,ap-031,ap-032,ap-033}.cacti_nginx.cacti_nginx_clients.nginx_writing), \"Total Writing\"))"
+		]
+	},
+	{
+		"title":"Aggregate - Statics (source) - Nginx Requests/sec [EU]",
+		"target": [
+			"cactiStyle(alias(sum({eu-079,eu-080,eu-081,eu-082,eu-097,eu-133,eu-134,eu-135,eu-136}.cacti_nginx.cacti_nginx_sockets.nginx_accepts), \"Total Accepts\"))",
+			"cactiStyle(alias(sum({eu-079,eu-080,eu-081,eu-082,eu-097,eu-133,eu-134,eu-135,eu-136}.cacti_nginx.cacti_nginx_sockets.nginx_handled), \"Total Handled\"))",
+			"cactiStyle(alias(sum({eu-079,eu-080,eu-081,eu-082,eu-097,eu-133,eu-134,eu-135,eu-136}.cacti_nginx.cacti_nginx_sockets.nginx_requests), \"Total Requests\"))"
+		]
+	},
+	{
+		"title":"Aggregate - Statics (source) - Nginx Clients [EU]",
+		"target": [
+			"cactiStyle(alias(sum({eu-079,eu-080,eu-081,eu-082,eu-097,eu-133,eu-134,eu-135,eu-136}.cacti_nginx.cacti_nginx_clients.nginx_active), \"Total Active\"))",
+			"cactiStyle(alias(sum({eu-079,eu-080,eu-081,eu-082,eu-097,eu-133,eu-134,eu-135,eu-136}.cacti_nginx.cacti_nginx_clients.nginx_reading), \"Total Reading\"))",
+			"cactiStyle(alias(sum({eu-079,eu-080,eu-081,eu-082,eu-097,eu-133,eu-134,eu-135,eu-136}.cacti_nginx.cacti_nginx_clients.nginx_waiting), \"Total Waiting\"))",
+			"cactiStyle(alias(sum({eu-079,eu-080,eu-081,eu-082,eu-097,eu-133,eu-134,eu-135,eu-136}.cacti_nginx.cacti_nginx_clients.nginx_writing), \"Total Writing\"))"
+		]
+	},
+	{
+		"title":"Aggregate - Statics (source) - Nginx Requests/sec [US]",
+		"target": [
+			"cactiStyle(alias(sum({us-052,us-053}.cacti_nginx.cacti_nginx_sockets.nginx_accepts), \"Total Accepts\"))",
+			"cactiStyle(alias(sum({us-052,us-053}.cacti_nginx.cacti_nginx_sockets.nginx_handled), \"Total Handled\"))",
+			"cactiStyle(alias(sum({us-052,us-053}.cacti_nginx.cacti_nginx_sockets.nginx_requests), \"Total Requests\"))"
+		]
+	},
+	{
+		"title":"Aggregate - Statics (source) - Nginx Clients [US]",
+		"target": [
+			"cactiStyle(alias(sum({us-052,us-053}.cacti_nginx.cacti_nginx_clients.nginx_active), \"Total Active\"))",
+			"cactiStyle(alias(sum({us-052,us-053}.cacti_nginx.cacti_nginx_clients.nginx_reading), \"Total Reading\"))",
+			"cactiStyle(alias(sum({us-052,us-053}.cacti_nginx.cacti_nginx_clients.nginx_waiting), \"Total Waiting\"))",
+			"cactiStyle(alias(sum({us-052,us-053}.cacti_nginx.cacti_nginx_clients.nginx_writing), \"Total Writing\"))"
+		]
+	},
+	{
+		"title":"Aggregate - Statics (source) - Nginx Requests/sec [AP]",
+		"target": [
+			"cactiStyle(alias(sum({ap-028,ap-029,ap-030,ap-031,ap-032,ap-033}.cacti_nginx.cacti_nginx_sockets.nginx_accepts), \"Total Accepts\"))",
+			"cactiStyle(alias(sum({ap-028,ap-029,ap-030,ap-031,ap-032,ap-033}.cacti_nginx.cacti_nginx_sockets.nginx_handled), \"Total Handled\"))",
+			"cactiStyle(alias(sum({ap-028,ap-029,ap-030,ap-031,ap-032,ap-033}.cacti_nginx.cacti_nginx_sockets.nginx_requests), \"Total Requests\"))"
+		]
+	},
+	{
+		"title":"Aggregate - Statics (source) - Nginx Clients [AP]",
+		"target": [
+			"cactiStyle(alias(sum({ap-028,ap-029,ap-030,ap-031,ap-032,ap-033}.cacti_nginx.cacti_nginx_clients.nginx_active), \"Total Active\"))",
+			"cactiStyle(alias(sum({ap-028,ap-029,ap-030,ap-031,ap-032,ap-033}.cacti_nginx.cacti_nginx_clients.nginx_reading), \"Total Reading\"))",
+			"cactiStyle(alias(sum({ap-028,ap-029,ap-030,ap-031,ap-032,ap-033}.cacti_nginx.cacti_nginx_clients.nginx_waiting), \"Total Waiting\"))",
+			"cactiStyle(alias(sum({ap-028,ap-029,ap-030,ap-031,ap-032,ap-033}.cacti_nginx.cacti_nginx_clients.nginx_writing), \"Total Writing\"))"
+		]
+	}
+	]
+}
+
+

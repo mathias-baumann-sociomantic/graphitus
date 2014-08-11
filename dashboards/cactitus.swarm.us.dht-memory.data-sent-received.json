@@ -1,0 +1,55 @@
+{
+    "title":"DHT Data sent/received [US]",
+        "width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+        "height" : 141,
+        "columns" : 2,
+	"refresh" : true,
+        "legend" : false,
+	"defaultParameters":"yMin=0&fontSize=9&areaMode=All&areaAlpha=0.4&colorList=green,red",
+        "dataTemplates":[		
+        {
+		"title":"${explode} DHT bytes/s sent/received [Node 1]",
+		"target": [
+			"alias(${explode}.cacti_dht-1.cacti_dht_stats.DHT_sent_bytes, \"bytes sent\")",
+			"alias(${explode}.cacti_dht-1.cacti_dht_stats.DHT_received_bytes, \"bytes received\")"
+		],
+                "query":"us-*.cacti_dht-1.cacti_dht_stats",
+                "regex":"^(.*)",
+                "index":0
+        },
+        {
+		"title":"${explode} DHT bytes/s sent/received [Node 2]",
+		"target": [
+			"alias(${explode}.cacti_dht-2.cacti_dht_stats.DHT_sent_bytes, \"bytes sent\")",
+			"alias(${explode}.cacti_dht-2.cacti_dht_stats.DHT_received_bytes, \"bytes received\")"
+		],
+                "query":"us-*.cacti_dht-2.cacti_dht_stats",
+                "regex":"^(.*)",
+                "index":0
+        },
+        {
+		"title":"${explode} DHT bytes/s sent/received [Node 3]",
+		"target": [
+			"alias(${explode}.cacti_dht-3.cacti_dht_stats.DHT_sent_bytes, \"bytes sent\")",
+			"alias(${explode}.cacti_dht-3.cacti_dht_stats.DHT_received_bytes, \"bytes received\")"
+		],
+                "query":"us-*.cacti_dht-3.cacti_dht_stats",
+                "regex":"^(.*)",
+                "index":0
+        },
+        {
+		"title":"${explode} DHT bytes/s sent/received [Node 4]",
+		"target": [
+			"alias(${explode}.cacti_dht-4.cacti_dht_stats.DHT_sent_bytes, \"bytes sent\")",
+			"alias(${explode}.cacti_dht-4.cacti_dht_stats.DHT_received_bytes, \"bytes received\")"
+		],
+                "query":"us-*.cacti_dht-4.cacti_dht_stats",
+                "regex":"^(.*)",
+                "index":0
+        }
+        ],
+        "data":[
+	]
+}

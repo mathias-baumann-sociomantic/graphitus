@@ -1,0 +1,37 @@
+{
+	"title":"SSP User Matching Stats",
+	"width" : 750,
+	"defaultLineWidth":1,
+	"timeBack":"1w",
+	"height" : 1000,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : true,
+	"data": [
+		{
+			"title": "Worst SSPs - User Matching (gross)",
+			"target": [
+				"aliasSub(highestAverage(groupByNode(exclude(timeShift(${continent}-*.cacti_propulsor*.cacti_propulsor_fe_stats-*.userid_errors, \"45s\"), \"total\"), 2, \"sumSeries\"), 8), \"cacti_propulsor_fe_stats-(.*)\", \"\\1\")"
+			]
+		},
+		{
+			"title": "Worst SSPs - User Matching (%)",
+			"target": [
+				"aliasSub(highestAverage(asPercent(groupByNode(exclude(timeShift(${continent}-*.cacti_propulsor*.cacti_propulsor_fe_stats-*.userid_errors, \"45s\"), \"total\"), 2, \"sumSeries\"), groupByNode(exclude(timeShift(${continent}-*.cacti_propulsor*.cacti_propulsor_fe_stats-*.requests, \"45s\"), \"total\"), 2, \"sumSeries\")), 8), \"asPercent\\(cacti_propulsor_fe_stats-(.*),.*\", \"\\1\")"
+			],
+			"params": "yMin=0&yMax=100"
+		}
+	],
+	"parameters": {
+		"continent": {
+			"All" : {"continent" : "*",
+				 "cont-nice" : "All" },
+			"EU" : {"continent" : "eu",
+				 "cont-nice" : "EU" },
+			"US" : {"continent" : "us",
+				 "cont-nice" : "US" },
+			"AP" : {"continent" : "ap",
+				 "cont-nice" : "AP" }
+		}
+	}			
+}

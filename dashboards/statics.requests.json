@@ -1,0 +1,40 @@
+{
+	"title":"Static Stats",
+		"width" : 500,
+		"defaultLineWidth":1,
+		"timeBack":"6h",
+		"height" : 300,
+		"columns" : 2,
+		"refresh" : true,
+		"dataTemplates" : [
+		{
+			"title":"Nginx ${continent}-${explode} Requests/sec",
+			"target" : "aliasByNode(${continent}-${explode}.cacti_nginx.cacti_nginx_sockets.nginx_*,0,3)",
+			"query" : "${continent}-*.cacti_nginx.cacti_nginx_sockets.nginx_requests",
+			"regex" : "-(.*)",
+			"index" : 0,
+			"params" : "yMin=0&hideLegend=false"
+		}
+		],
+		"data":[
+		{
+			"title":"${continent} Nginx Total Requests/sec",
+			"target" : "groupByNode(${continent}-*.cacti_nginx.cacti_nginx_sockets.nginx_*,3,\"sumSeries\")",
+			"params" : "yMin=0&hideLegend=false"
+		},
+		{
+			"title":"Nginx Stats Compared/sec",
+			"target" : [
+				"groupByNode(${continent}-*.cacti_nginx.cacti_nginx_sockets.nginx_*,3,\"sumSeries\")",
+				"groupByNode(timeShift(${continent}-*.cacti_nginx.cacti_nginx_sockets.nginx_*,\"1d\"),3,\"sumSeries\")"
+					]
+		}
+	],
+		"parameters": {
+			"continent": {
+				"EU" : {"continent" : "eu" },
+				"US" : {"continent" : "us" },
+				"AP" : {"continent" : "ap" }
+			}
+		}			
+}

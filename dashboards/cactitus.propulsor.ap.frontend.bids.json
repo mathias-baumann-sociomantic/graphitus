@@ -1,0 +1,102 @@
+{
+	"title":"Propulsor Frontend Bids",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"defaultParameters":"fontSize=9",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"dataTemplates" : [
+	{
+		"title":"${explode} Propulsor Stats [Bids/sec] [01]",
+		"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${explode}.cacti_propulsor-01.cacti_propulsor_fe_stats-${ssp}.bids,0.033333333),0.0001),2,\"sumSeries\"),0))",
+
+		"query" : "${continent}-*.cacti_propulsor-01.cacti_propulsor_fe_*",
+		"regex" : "(.*)",
+		"index" : 0,
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10"
+	},
+	{
+		"title":"${explode} Propulsor Stats [Bids/sec] [02]",
+		"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${explode}.cacti_propulsor-02.cacti_propulsor_fe_stats-${ssp}.bids,0.033333333),0.0002),2,\"sumSeries\"),0))",
+		"query" : "${continent}-*.cacti_propulsor-02.cacti_propulsor_fe_*",
+		"regex" : "(.*)",
+		"index" : 0,
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10"
+	},
+	{
+		"title":"${explode} Propulsor Stats [Bids/sec] [03]",
+		"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${explode}.cacti_propulsor-03.cacti_propulsor_fe_stats-${ssp}.bids,0.033333333),0.0003),2,\"sumSeries\"),0))",
+		"query" : "${continent}-*.cacti_propulsor-03.cacti_propulsor_fe_*",
+		"regex" : "(.*)",
+		"index" : 0,
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10"
+	},
+	{
+		"title":"${explode} Propulsor Stats [Bids/sec] [04]",
+		"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${explode}.cacti_propulsor-04.cacti_propulsor_fe_stats-${ssp}.bids,0.033333333),0.0001),2,\"sumSeries\"),0))",
+
+		"query" : "${continent}-*.cacti_propulsor-04.cacti_propulsor_fe_*",
+		"regex" : "(.*)",
+		"index" : 0,
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10"
+	},
+	{
+		"title":"${explode} Propulsor Stats [Bids/sec] [05]",
+		"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${explode}.cacti_propulsor-05.cacti_propulsor_fe_stats-${ssp}.bids,0.033333333),0.0002),2,\"sumSeries\"),0))",
+		"query" : "${continent}-*.cacti_propulsor-05.cacti_propulsor_fe_*",
+		"regex" : "(.*)",
+		"index" : 0,
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10"
+	},
+	{
+		"title":"${explode} Propulsor Stats [Bids/sec] [06]",
+		"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${explode}.cacti_propulsor-06.cacti_propulsor_fe_stats-${ssp}.bids,0.033333333),0.0003),2,\"sumSeries\"),0))",
+		"query" : "${continent}-*.cacti_propulsor-06.cacti_propulsor_fe_*",
+		"regex" : "(.*)",
+		"index" : 0,
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10"
+	},
+	{
+		"title":"${explode} Propulsor Stats [Bids/sec] [07]",
+		"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${explode}.cacti_propulsor-07.cacti_propulsor_fe_stats-${ssp}.bids,0.033333333),0.0002),2,\"sumSeries\"),0))",
+		"query" : "${continent}-*.cacti_propulsor-07.cacti_propulsor_fe_*",
+		"regex" : "(.*)",
+		"index" : 0,
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10"
+	},
+	{
+		"title":"${explode} Propulsor Stats [Bids/sec] [08]",
+		"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${explode}.cacti_propulsor-08.cacti_propulsor_fe_stats-${ssp}.bids,0.033333333),0.0003),2,\"sumSeries\"),0))",
+		"query" : "${continent}-*.cacti_propulsor-08.cacti_propulsor_fe_*",
+		"regex" : "(.*)",
+		"index" : 0,
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10"
+	}
+	],
+	"data":[
+	],
+	"parameters": {
+		"continent": {
+			"AP" : {"continent" : "ap",
+				"cont-nice" : "AP" },
+			"EU" : {"continent" : "eu",
+				"cont-nice" : "EU" },
+			"US" : {"continent" : "us",
+				"cont-nice" : "US" },
+			"USAP" : {"continent" : "usap",
+				"cont-nice" : "USAP" },
+			"All" : {"continent" : "*",
+				"cont-nice" : "All" }
+		},
+                "ssp" : {
+                        "type" : "dynamic",
+                        "query" : "${continent}-*.cacti_propulsor-*.cacti_propulsor_fe_stats-*",
+                        "index" : 2,
+                        "regex" : "-(.*)",
+                        "showAll": true
+                }
+
+	}			
+}

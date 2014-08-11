@@ -1,0 +1,72 @@
+{
+	"title":"Shore Stream Stats [US]",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"data":[
+	{
+		"title":"us-048 - Shore Stream Stats [Admedia written/s]",
+		"target": [
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_stream_stats.admedium,0.003333), \"Admedia written/s\"))",
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_stream_stats.cache_hit,0.003333), \"Cache hits/s\"))",
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_stream_stats.invalid_admedia,0.003333), \"Invalid admedia/s\"))",
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_stream_stats.parse_error,0.003333), \"Parse errors/s\"))"
+		]
+	},
+	{
+		"title":"us-048 - Shore Stream Stats [Processed Loglines/s]",
+		"target": [
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_stream_stats.loglines,0.003333), \"Records processed/s\"))",
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_stream_stats.bots,0.003333), \"Bots\"))",
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_stream_stats.inactive,0.003333), \"Feed+API views/s\"))",
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_stream_stats.admedium,0.003333), \"Stream written/s\"))",
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_stream_stats.cache_hit,0.003333), \"Stream cache hit\"))"
+		]
+	},
+	{
+		"title":"us-048 - Shore API Stats [Admedia written/s]",
+		"target": [
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_api_stats.admedium,0.003333), \"Admedia written/s\"))",
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_api_stats.cache_hit,0.003333), \"Cache hits/s\"))",
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_api_stats.invalid,0.003333), \"Invalid admedia/s\"))",
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_api_stats.download_failed,0.003333), \"Download failures/s\"))"
+		]
+	},
+	{
+		"title":"us-048 - Shore API Stats [Processed Loglines/s]",
+		"target": [
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_api_stats.logline,0.003333), \"Records processed/s\"))",
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_api_stats.bots,0.003333), \"Bots\"))",
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_api_stats.inactive,0.003333), \"Feed+stream views/s\"))",
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_api_stats.admedium,0.003333), \"API written/s\"))",
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_api_stats.cache_hit,0.003333), \"Cache hits/s\"))"
+		]
+	},
+	{
+		"title":"us-048 - Shore Stream Stats [Errors]",
+		"target": [
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_stream_stats.parse_error,0.003333), \"Parse errors/s\"))",
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_stream_stats.invalid_admedia,0.003333), \"Invalid admedia/s\"))"
+		]
+	},
+	{
+		"title":"us-048 - Shore Stream Stats [Cache Efficiency(%)]",
+		"target": [
+			"cactiStyle(alias(scale(divideSeries(us-048.cacti_shore.cacti_shore_stream_stats.cache_hit,sumSeries(us-048.cacti_shore.cacti_shore_stream_stats.cache_hit,us-048.cacti_shore.cacti_shore_stream_stats.admedium)),100), \"Cache hits percentage\"))"
+		],
+		"params":"yMin=0&yMax=100"
+	},
+	{
+		"title":"us-048 - Shore Stream Stats [Cache Stats]",
+		"target": [
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_stream_stats.cache_hit,0.003333), \"Cache hits\"))",
+			"cactiStyle(alias(scale(us-048.cacti_shore.cacti_shore_stream_stats.cache_size,0.003333), \"Cache size\"))"
+		]
+	}
+	]
+}

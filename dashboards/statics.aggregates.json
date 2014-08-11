@@ -1,0 +1,21 @@
+{
+	"title":"Static Aggregated Stats",
+		"width" : 500,
+		"defaultLineWidth":1,
+		"timeBack":"12h",
+		"height" : 300,
+		"columns" : 2,
+		"refresh" : true,
+		"dataTemplates" : [
+		{
+			"title":"${explode} Requests/sec",
+			"target" : "cactiStyle(aliasSub(groupByNode(${explode}-*.cacti_nginx.cacti_nginx_sockets.nginx_*,3,\"sumSeries\"),\"nginx_\",\"\"))",
+			"query" : "*-*.cacti_nginx.cacti_nginx_sockets.nginx_requests",
+			"regex" : "(.*)-",
+			"index" : 0,
+			"params" : "yMin=0&hideLegend=false"
+		}
+		],
+		"data":[
+		]
+}

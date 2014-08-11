@@ -1,0 +1,50 @@
+{
+	"title":"System Stats",
+		"width" : 500,
+		"defaultLineWidth":1,
+		"timeBack":"2h",
+		"height" : 500,
+		"columns" : 2,
+		"refresh" : true,
+		"legend" : true,
+		"data":[
+		{
+			"title":"CPU Usage",
+			"target" : "aliasSub(aliasByMetric(sortByMaxima(${continent}-${number}.cacti_cpu.cacti_cpu.*)), \"STAT_CPU_(.*)\", \"\\1\")",
+			"params" : "areaMode=stacked"
+
+		},
+		{
+			"title":"Memory Usage",
+			"target" : "aliasSub(aliasByMetric(exclude(sortByMaxima(${continent}-${number}.cacti_memory.cacti_memory.*),\"memtotal\")), \"STAT_mem(.*)\", \"\\1\")",
+			"params" : "areaMode=stacked"
+
+		},
+		{
+			"title":"Disk Usage (%)",
+			"target" : "aliasSub(aliasByNode(asPercent(${continent}-${number}.cacti_df-*.cacti_df.DISKFREE_used, groupByNode(${continent}-${number}.cacti_df-*.cacti_df.*, 2, \"sumSeries\")), 1), \"cacti_df-(\\w+)\", \"\\1\")",
+			"params" : "yMax=100"
+		},
+		{
+			"title":"File Descriptors",
+			"target" : "aliasByNode(${continent}-${number}.cacti_sfpstat.cacti_sfpstat.*, 3)",
+			"params" : ""
+		}
+	],
+		"parameters": {
+			"continent": {
+				"EU" : {"continent" : "eu" },
+				"US" : {"continent" : "us" },
+				"AP" : {"continent" : "ap" },
+				"USAP" : {"continent" : "usap" }
+			},
+			"number" : {
+				"type" : "dynamic",
+				"query" : "${continent}-*",
+				"index" : 0,
+				"regex" : "-(.*)",
+				"showAll": false
+			}
+
+		}			
+}

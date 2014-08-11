@@ -1,0 +1,53 @@
+{
+	"title":"Periscope Stats [US]",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"dataTemplates":[
+	{
+		"title":"${explode} - Periscope Stats [Adpans Processed]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_periscope.cacti_periscope_stats.total_adpans, \"Total Adpans\"))",
+			"cactiStyle(alias(${explode}.cacti_periscope.cacti_periscope_stats.skipped_campigns, \"Skipped Campigns\"))"
+		],
+		"query":"us-*.cacti_periscope.cacti_periscope_stats.*",
+		"regex":"(.*)",	
+		"index":0
+        },
+	{
+		"title":"${explode} - Periscope Stats [Analyzed Profiles]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_periscope.cacti_periscope_stats.analyzed_profiles, \"Analyzed Profiles\"))"
+		],
+		"query":"us-*.cacti_periscope.cacti_periscope_stats.*",
+		"regex":"(.*)",	
+		"index":0
+        },
+	{
+		"title":"${explode} - Periscope Stats [Processing Result]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_periscope.cacti_periscope_stats.processing_result, \"Processing Result\"))"
+		],
+		"query":"us-*.cacti_periscope.cacti_periscope_stats.*",
+		"regex":"(.*)",	
+		"index":0
+        },
+	{
+		"title":"${explode} - Periscope Stats [Memory Usage]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_periscope.cacti_periscope_stats.mem_allocated, \"Memory Allocated\"))",
+			"cactiStyle(alias(${explode}.cacti_periscope.cacti_periscope_stats.mem_free, \"Memory Free\"))"
+		],
+		"query":"us-*.cacti_periscope.cacti_periscope_stats.*",
+		"regex":"(.*)",	
+		"index":0
+        }
+	],
+	"data":[
+	]
+}

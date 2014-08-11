@@ -1,0 +1,108 @@
+{
+	"title":"Propulsor Frontend Client Connections",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&hideLegend=true&colorList=blue,green,black,red,green&yMin=0",
+	"dataTemplates" : [
+	{
+		"title":"${explode} Propulsor Stats [Connections] [01]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_stats-01.connections_total,\"Total\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_stats-01.connections_busy,\"Busy\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_stats-01",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Stats [Connections] [02]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_stats-02.connections_total,\"Total\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_stats-02.connections_busy,\"Busy\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_stats-02",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Stats [Connections] [03]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_stats-03.connections_total,\"Total\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_stats-03.connections_busy,\"Busy\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_stats-03",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Stats [Connections] [04]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_stats-04.connections_total,\"Total\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_stats-04.connections_busy,\"Busy\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_stats-04",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Stats [Connections] [05]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_stats-05.connections_total,\"Total\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_stats-05.connections_busy,\"Busy\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_stats-05",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Stats [Connections] [06]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_stats-06.connections_total,\"Total\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_stats-06.connections_busy,\"Busy\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_stats-06",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Stats [Connections] [07]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_stats-07.connections_total,\"Total\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_stats-07.connections_busy,\"Busy\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_stats-07",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Stats [Connections] [08]",
+		"target" : [
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_stats-08.connections_total,\"Total\"))",
+			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_stats-08.connections_busy,\"Busy\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_stats-08",
+		"regex" : "(.*)",
+		"index" : 0
+	}
+	],
+	"data":[
+	],
+	"parameters": {
+		"continent": {
+			"USAP" : {"continent" : "usap",
+				"cont-nice" : "USAP" },
+			"AP" : {"continent" : "ap",
+				"cont-nice" : "AP" },
+			"EU" : {"continent" : "eu",
+				"cont-nice" : "EU" },
+			"US" : {"continent" : "us",
+				"cont-nice" : "US" },
+			"All" : {"continent" : "*",
+				"cont-nice" : "All" }
+		}
+	}			
+}

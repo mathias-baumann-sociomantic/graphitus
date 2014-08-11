@@ -1,0 +1,81 @@
+{
+	"title":"UI Stats - MySQL",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"dataTemplates" : [
+	{
+		"title":"UI MySQL Metadata [${explode}] - Command statistics",
+		"target": [
+			"cactiStyle(alias(${explode}.mysql-sonar_metadata.mysql_commands-change_db.value, \"Change_DB\"))",
+			"cactiStyle(alias(${explode}.mysql-sonar_metadata.mysql_commands-select.value, \"Select\"))",
+			"cactiStyle(alias(${explode}.mysql-sonar_metadata.mysql_commands-insert.value, \"Insert\"))",
+			"cactiStyle(alias(${explode}.mysql-sonar_metadata.mysql_commands-update.value, \"Update\"))",
+			"cactiStyle(alias(${explode}.mysql-sonar_metadata.mysql_commands-delete.value, \"Delete\"))"
+		],
+		"query":"eu-*.mysql-sonar_metadata.mysql_commands-*",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"UI MySQL Metadata [${explode}] - MySQL Traffic",
+		"target": [
+			"cactiStyle(alias(${explode}.mysql-sonar_metadata.mysql_octets.rx, \"Bytes Inbound\"))",
+			"cactiStyle(alias(${explode}.mysql-sonar_metadata.mysql_octets.tx, \"Bytes Outbound\"))"
+		],
+		"query":"eu-*.mysql-sonar_metadata.mysql_octets*",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"UI MySQL Metadata [${explode}] - Network Traffic [eth0]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes, \"Bytes Received\"))",
+			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_txbytes, \"Bytes Sent\"))"
+		],
+		"query":"eu-*.mysql-sonar_metadata.mysql_octets*",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"UI MySQL Reporting [${explode}] - Command statistics",
+		"target": [
+			"cactiStyle(alias(${explode}.mysql-sonar_reporting.mysql_commands-change_db.value, \"Change_DB\"))",
+			"cactiStyle(alias(${explode}.mysql-sonar_reporting.mysql_commands-select.value, \"Select\"))",
+			"cactiStyle(alias(${explode}.mysql-sonar_reporting.mysql_commands-insert.value, \"Insert\"))",
+			"cactiStyle(alias(${explode}.mysql-sonar_reporting.mysql_commands-update.value, \"Update\"))",
+			"cactiStyle(alias(${explode}.mysql-sonar_reporting.mysql_commands-delete.value, \"Delete\"))"
+		],
+		"query":"eu-*.mysql-sonar_reporting.mysql_commands-*",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"UI MySQL Reporting [${explode}] - MySQL Traffic",
+		"target": [
+			"cactiStyle(alias(${explode}.mysql-sonar_reporting.mysql_octets.rx, \"Bytes Inbound\"))",
+			"cactiStyle(alias(${explode}.mysql-sonar_reporting.mysql_octets.tx, \"Bytes Outbound\"))"
+		],
+		"query":"eu-*.mysql-sonar_reporting.mysql_octets*",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"UI MySQL Reporting [${explode}] - Network Traffic [eth0]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes, \"Bytes Received\"))",
+			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_txbytes, \"Bytes Sent\"))"
+		],
+		"query":"eu-*.mysql-sonar_reporting.mysql_octets*",
+		"regex":"(.*)",
+		"index":0
+	}
+	],
+	"data":[
+	]
+}

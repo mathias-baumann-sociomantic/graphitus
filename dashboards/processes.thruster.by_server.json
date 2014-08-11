@@ -1,0 +1,84 @@
+{
+	"title":"Thruster Stats by Server",
+		"defaultLineWidth":1,
+		"timeBack":"6h",
+		"columns" : 2,
+		"refresh" : true,
+		"legend" : true,
+		"width" : 640,
+		"height" : 480,
+		"defaultParameters":"areaMode=none&lineWidth=1&yMin=0&fontSize=11",
+		"data":[
+		{
+			"title":"Summed Bidding Requests/s [${continent}-${server}/${instance}]",
+			"params":"logBase=10&yMin=1001&yMax=100000&minorY=10",
+			"target": [
+				"alias(sum(${continent}-${server}.cacti_propulsor.cacti_propulsor_be_stats-${instance}.requests_total), \"Total\")",
+			"alias(sum(${continent}-${server}.cacti_propulsor.cacti_propulsor_be_stats-${instance}.requests_above_1ms), \"> 1 ms\")", 
+			"alias(sum(${continent}-${server}.cacti_propulsor.cacti_propulsor_be_stats-${instance}.requests_above_10ms), \"> 10 ms\")"
+				],
+			"params" : "width=490&height=440"
+		},
+		{
+			"title":"Summed DHT Requests/s] [${continent}-${server}/${instance}]",
+			"params":"logBase=10&yMin=1&yMax=1000000&minorY=10",
+			"target": [
+				"alias(offset(sum(${continent}-${server}.cacti_propulsor.cacti_propulsor_be_stats-${instance}.dht_total), 0.1), \"Total\")",
+			"alias(offset(sum(${continent}-${server}.cacti_propulsor.cacti_propulsor_be_stats-${instance}.dht_timeout), 0.1), \"Timeout\")", 
+			"alias(offset(sum(${continent}-${server}.cacti_propulsor.cacti_propulsor_be_stats-${instance}.dht_qfull), 0.1), \"Queue Full\")"
+				],
+			"params" : "width=490&height=440"
+		},
+		{
+			"title":"Summed DHT Requests per Bidding Request per Second] [${continent}-${server}/${instance}]",
+			"target": [
+				"alias(divideSeries(sum(${continent}-${server}.cacti_propulsor.cacti_propulsor_be_stats-${instance}.dht_total), sum(${continent}-${server}.cacti_propulsor.cacti_propulsor_be_stats-${instance}.requests_total)), \"DHT requests to Bid Requests\")"
+			],
+			"params" : "width=490&height=440"
+		},
+		{
+			"title":"Summed Timed-Out DHT Requests per Second as Percentage of Total DHT Requests] [${continent}-${server}/${instance}]",
+			"target": [
+				"alias(asPercent(sum(${continent}-${server}.cacti_propulsor.cacti_propulsor_be_stats-${instance}.dht_timeout), sum(${continent}-${server}.cacti_propulsor.cacti_propulsor_be_stats-${instance}.dht_total)), \"Percent Timeouts\")"
+			],
+			"params" : "width=490&height=440"
+		},
+		{
+			"title":"CPU Usage [${continent}-${server}/${instance}]",
+			"target": [
+				"aliasSub(${continent}-${server}.cacti_propulsor.cacti_propulsor_cpu-${instance}.cpu_usage, \"^([^-]+-[^.]+)\\.cacti_propulsor\\.cacti_propulsor_cpu-([^.]+).*\", \"\\1/\\2\")"
+				],
+			"params" : "hideLegend="
+		}
+	],
+		"parameters": {
+			"continent": {
+				"All" : {"continent" : "*",
+					"cont-nice" : "All" },
+				"EU" : {"continent" : "eu",
+					"cont-nice" : "EU" },
+				"US" : {"continent" : "us",
+					"cont-nice" : "US" },
+				"AP" : {"continent" : "ap",
+					"cont-nice" : "AP" },
+				"USAP" : {"continent" : "usap",
+					"cont-nice" : "USAP" }
+			},
+			"server" : {
+				"type" : "dynamic",
+				"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_be_stats-*",
+				"index" : 0,
+				"regex" : "-(.*)",
+				"showAll": true,
+				"defaultValue" : "*"
+			},
+			"instance" : {
+				"type" : "dynamic",
+				"query" : "${continent}-${server}.cacti_propulsor.cacti_propulsor_be_stats-*",
+				"index" : 2,
+				"regex" : "-(.*)",
+				"showAll": true,
+				"defaultValue" : "*"
+			}
+		}
+}

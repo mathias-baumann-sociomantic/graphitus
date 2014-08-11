@@ -1,0 +1,68 @@
+{
+	"title":"Sonar LB Stats [AP]",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"dataTemplates" : [
+	{
+		"title":"${explode} - Sonar LB- Network Traffic [eth0]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes, \"Received Bytes\"))",
+			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_txbytes, \"Sent bytes\"))"
+		],
+		"query":"${continent}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"${explode} - Sonar LB - Sockets Pipes Files",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.files, \"Files\"))",
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.pipes, \"Pipes\"))",
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.tcp, \"TCP\"))",
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.udp, \"UDP\"))",
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.unix, \"Unix\"))"
+		],
+		"query":"${continent}.cacti_sfpstat.cacti_sfpstat.files",
+		"regex":"(.*)",
+		"index":0
+	}
+	],
+	"data":[
+	{
+		"title":"Aggregate: Sonar LB - Network Traffic [eth0]",
+		"target": [
+			"cactiStyle(alias(sumSeries(${continent}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes), \"Received Bytes\"))",
+			"cactiStyle(alias(sumSeries(${continent}.cacti_netdev-eth0.cacti_netdev.NETDEV_txbytes), \"Sent bytes\"))"
+		]
+	},
+	{
+		"title":"Aggregate: Sonar LB - Sockets Pipes Files",
+		"target": [
+			"cactiStyle(alias(sumSeries(${continent}.cacti_sfpstat.cacti_sfpstat.files), \"Files\"))",
+			"cactiStyle(alias(sumSeries(${continent}.cacti_sfpstat.cacti_sfpstat.pipes), \"Pipes\"))",
+			"cactiStyle(alias(sumSeries(${continent}.cacti_sfpstat.cacti_sfpstat.tcp), \"TCP\"))",
+			"cactiStyle(alias(sumSeries(${continent}.cacti_sfpstat.cacti_sfpstat.udp), \"UDP\"))",
+			"cactiStyle(alias(sumSeries(${continent}.cacti_sfpstat.cacti_sfpstat.unix), \"Unix\"))"
+		]
+	}
+	],
+	"parameters": {
+		"continent": {
+			"AP" : {"continent" : "{ap-016,ap-017,ap-018,ap-019,ap-020,ap-025}",
+				"continent-nice" : "AP" },
+			"EU" : {"continent" : "{eu-018,eu-037,eu-041,eu-052,eu-066,eu-067,eu-083,eu-084,eu-093,eu-094}",
+				"continent-nice" : "EU" },
+			"US" : {"continent" : "{us-037,us-038,us-045}",
+				"continent-nice" : "US" },
+			"All" : {"continent" : "*", "continent-nice" : "ALL" }
+		}
+	}
+
+
+}

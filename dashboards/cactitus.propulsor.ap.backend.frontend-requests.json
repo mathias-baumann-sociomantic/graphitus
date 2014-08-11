@@ -1,0 +1,116 @@
+{
+	"title":"Propulsor Backend Bidding Requests",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"defaultParameters":"fontSize=9&hideLegend=true&colorList=black,green,red",
+	"dataTemplates" : [
+	{
+		"title":"${explode} - Propulsor Stats (Bidding Requests/s) [01]",
+		"target" : [
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-01.requests_total,0.1),0.0333333),\"Total\"))",
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-01.requests_above_1ms,0.1),0.0333333),\"> 1 ms\"))",
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-01.requests_above_10ms,0.1),0.0333333),\"> 10 ms\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_be_stats-01",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} - Propulsor Stats (Bidding Requests/s) [02]",
+		"target" : [
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-02.requests_total,0.1),0.0333333),\"Total\"))",
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-02.requests_above_1ms,0.1),0.0333333),\"> 1 ms\"))",
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-02.requests_above_10ms,0.1),0.0333333),\"> 10 ms\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_be_stats-02",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} - Propulsor Stats (Bidding Requests/s) [03]",
+		"target" : [
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-03.requests_total,0.1),0.0333333),\"Total\"))",
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-03.requests_above_1ms,0.1),0.0333333),\"> 1 ms\"))",
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-03.requests_above_10ms,0.1),0.0333333),\"> 10 ms\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_be_stats-03",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} - Propulsor Stats (Bidding Requests/s) [04]",
+		"target" : [
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-04.requests_total,0.1),0.0333333),\"Total\"))",
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-04.requests_above_1ms,0.1),0.0333333),\"> 1 ms\"))",
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-04.requests_above_10ms,0.1),0.0333333),\"> 10 ms\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_be_stats-04",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} - Propulsor Stats (Bidding Requests/s) [05]",
+		"target" : [
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-05.requests_total,0.1),0.0333333),\"Total\"))",
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-05.requests_above_1ms,0.1),0.0333333),\"> 1 ms\"))",
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-05.requests_above_10ms,0.1),0.0333333),\"> 10 ms\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_be_stats-05",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} - Propulsor Stats (Bidding Requests/s) [06]",
+		"target" : [
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-06.requests_total,0.1),0.0333333),\"Total\"))",
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-06.requests_above_1ms,0.1),0.0333333),\"> 1 ms\"))",
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-06.requests_above_10ms,0.1),0.0333333),\"> 10 ms\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_be_stats-06",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} - Propulsor Stats (Bidding Requests/s) [07]",
+		"target" : [
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-07.requests_total,0.1),0.0333333),\"Total\"))",
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-07.requests_above_1ms,0.1),0.0333333),\"> 1 ms\"))",
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-07.requests_above_10ms,0.1),0.0333333),\"> 10 ms\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_be_stats-07",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} - Propulsor Stats (Bidding Requests/s) [08]",
+		"target" : [
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-08.requests_total,0.1),0.0333333),\"Total\"))",
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-08.requests_above_1ms,0.1),0.0333333),\"> 1 ms\"))",
+			"cactiStyle(alias(scale(offset(${explode}.cacti_propulsor.cacti_propulsor_be_stats-08.requests_above_10ms,0.1),0.0333333),\"> 10 ms\"))"
+		],
+		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_be_stats-08",
+		"regex" : "(.*)",
+		"index" : 0
+	}
+	],
+	"data":[
+	],
+	"parameters": {
+		"continent": {
+			"AP" : {"continent" : "ap",
+				"cont-nice" : "AP" },
+			"EU" : {"continent" : "eu",
+				"cont-nice" : "EU" },
+			"US" : {"continent" : "us",
+				"cont-nice" : "US" },
+			"USAP" : {"continent" : "usap",
+				"cont-nice" : "USAP" },
+			"All" : {"continent" : "*",
+				"cont-nice" : "All" }
+		}
+	}			
+}

@@ -1,0 +1,84 @@
+{
+	"title":"Propulsor Frontend Backend Requests",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"defaultParameters":"fontSize=9&hideLegend=true&colorList=red,blue",
+	"dataTemplates" : [
+	{
+		"title":"${explode} Propulsor Frontend Stats [Backend Requests/sec] [01]",
+		"target" : "cactiStyle(aliasByNode(scale(${explode}.cacti_propulsor-01.cacti_propulsor_fe.bidder_*,0.03333333),3))",
+		"query" : "${continent}-*.cacti_propulsor-01.cacti_propulsor_fe",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Frontend Stats [Backend Requests/sec] [02]",
+		"target" : "cactiStyle(aliasByNode(scale(${explode}.cacti_propulsor-02.cacti_propulsor_fe.bidder_*,0.03333333),3))",
+		"query" : "${continent}-*.cacti_propulsor-02.cacti_propulsor_fe",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Frontend Stats [Backend Requests/sec] [03]",
+		"target" : "cactiStyle(aliasByNode(scale(${explode}.cacti_propulsor-03.cacti_propulsor_fe.bidder_*,0.03333333),3))",
+		"query" : "${continent}-*.cacti_propulsor-03.cacti_propulsor_fe",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Frontend Stats [Backend Requests/sec] [04]",
+		"target" : "cactiStyle(aliasByNode(scale(${explode}.cacti_propulsor-04.cacti_propulsor_fe.bidder_*,0.03333333),3))",
+		"query" : "${continent}-*.cacti_propulsor-04.cacti_propulsor_fe",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Frontend Stats [Backend Requests/sec] [05]",
+		"target" : "cactiStyle(aliasByNode(scale(${explode}.cacti_propulsor-05.cacti_propulsor_fe.bidder_*,0.03333333),3))",
+		"query" : "${continent}-*.cacti_propulsor-05.cacti_propulsor_fe",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Frontend Stats [Backend Requests/sec] [06]",
+		"target" : "cactiStyle(aliasByNode(scale(${explode}.cacti_propulsor-06.cacti_propulsor_fe.bidder_*,0.03333333),3))",
+		"query" : "${continent}-*.cacti_propulsor-06.cacti_propulsor_fe",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Frontend Stats [Backend Requests/sec] [07]",
+		"target" : "cactiStyle(aliasByNode(scale(${explode}.cacti_propulsor-07.cacti_propulsor_fe.bidder_*,0.03333333),3))",
+		"query" : "${continent}-*.cacti_propulsor-07.cacti_propulsor_fe",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"${explode} Propulsor Frontend Stats [Backend Requests/sec] [08]",
+		"target" : "cactiStyle(aliasByNode(scale(${explode}.cacti_propulsor-08.cacti_propulsor_fe.bidder_*,0.03333333),3))",
+		"query" : "${continent}-*.cacti_propulsor-08.cacti_propulsor_fe",
+		"regex" : "(.*)",
+		"index" : 0
+	}
+	],
+	"data":[
+	],
+	"parameters": {
+		"continent": {
+			"US" : {"continent" : "us",
+				"cont-nice" : "US" },
+			"AP" : {"continent" : "ap",
+				"cont-nice" : "AP" },
+			"EU" : {"continent" : "eu",
+				"cont-nice" : "EU" },
+			"USAP" : {"continent" : "usap",
+				"cont-nice" : "USAP" },
+			"All" : {"continent" : "*",
+				"cont-nice" : "All" }
+		}
+	}			
+}

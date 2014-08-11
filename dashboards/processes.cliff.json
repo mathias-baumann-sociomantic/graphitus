@@ -1,0 +1,86 @@
+{
+    "title":"Cliff Stats",
+        "width" : 490,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+        "height" : 220,
+        "columns" : 2,
+	"refresh" : true,
+        "legend" : false,
+        "data":[
+        {
+            "title":"Bids",
+            "target": [
+		"cactiStyle(aliasByNode(scale(sortByMinima(${continent}-*.cacti_cliff.cacti_cliff_stats.bids),0.03333),0))"
+		],
+		"params" : "yMin=0&areaAlpha=0.5&areaMode=all&lineWidth=2&colorList=%23B34BFD,%23C87CFF,%239D63FF,%235E00FF,%238C00FF,%23B969FB,%23F85F00,%23F8002D,%23F82700"
+
+        },
+	{
+            "title":"Bid Requests",
+            "target": [
+		"cactiStyle(aliasByNode(scale(sortByMinima(${continent}-*.cacti_cliff.cacti_cliff_stats.bid_requests),0.03333),0))"
+		],
+		"params" : "yMin=0&areaAlpha=0.5&areaMode=all&lineWidth=2&colorList=%23FFEF00,%23FFD832,%23D9BD45,%23F7E48E"
+
+        },
+	{
+            "title":"Bid Request Packets",
+            "target": [
+		"cactiStyle(aliasByNode(scale(sortByMinima(${continent}-*.cacti_cliff.cacti_cliff_stats.bid_request_packets),0.03333),0))"
+		],
+		"params" : "yMin=0&areaAlpha=0.5&areaMode=all&lineWidth=2&colorList=%2303FF28,%2300B01A,%23008714,%2353925D"
+
+        },
+	{
+		"title" : "Bid Aggr. Map",
+		"params" : "lineWidth=2",
+		"target" : "aliasByNode(${continent}-*.cacti_cliff.cacti_cliff_stats.bid_map,0,3)"
+	},
+	{
+		"title" : "Bid Req. Aggr. Map",
+		"params" : "lineWidth=2",
+		"target" : "aliasByNode(${continent}-*.cacti_cliff.cacti_cliff_stats.bid_request_map,0,3)"
+	},
+	{
+		"title" : "SQL Queue",
+		"target" : "aliasByNode(${continent}-*.cacti_cliff.cacti_cliff_stats.sql_queue,0,3)",
+		"params" : "yMin=0&lineWidth=2" 
+	},
+	{
+		"title" : "Memory Usage",
+		"params" : "areaAlpha=0.4&areaMode=all&yMin=0",
+		"target" : "aliasByNode(sortByMinima(${continent}-*.cacti_cliff.cacti_cliff_stats.memory),0,3)"
+	},
+        {
+            "title":"SQL Queries/s",
+            "target": [
+		"aliasByNode(scale(${continent}-*.cacti_cliff.cacti_cliff_stats.sql_queries,0.033333),0,3)"
+		],
+		"params" : "lineWidth=2"
+        },
+        {
+            "title":"SQL Updates/s",
+            "target": [
+		"aliasByNode(scale(${continent}-*.cacti_cliff.cacti_cliff_stats.sql_updates,0.033333),0,3)"
+		],
+		"params" : "lineWidth=2"
+        },
+        {
+            "title":"SQL Delay Avg",
+            "target": [
+		"aliasByNode(${continent}-*.cacti_cliff.cacti_cliff_stats.sql_delay_*,0,3)"
+		],
+		"params" : "lineWidth=2"
+        }
+        ],
+	"parameters": {
+		"continent": {
+			"All": {"continent" : "*" },
+			"EU" : {"continent" : "eu" },
+			"US" : {"continent" : "us" },
+			"AP" : {"continent" : "ap" },
+			"USAP" : {"continent" : "usap" }
+			}
+	}			
+}

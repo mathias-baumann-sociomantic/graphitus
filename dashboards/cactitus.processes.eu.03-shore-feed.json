@@ -1,0 +1,66 @@
+{
+	"title":"Shore Feed Stats [EU]",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"dataTemplates" : [
+	{
+		"title":"eu-061 - Shore Feed Stats [Processed Records/s] [Node ${explode}]",
+		"target": [
+			"cactiStyle(alias(scale(eu-061.cacti_shore.cacti_shore_feed_stats-${explode}.feed_record,0.003333), \"Records processed/s\"))",
+			"cactiStyle(alias(scale(eu-061.cacti_shore.cacti_shore_feed_stats-${explode}.cache_hit,0.003333), \"Cache hits/s\"))"
+		],
+		"query":"eu-061.cacti_shore.cacti_shore_feed_stats-*.*",
+		"regex":"cacti_shore_feed_stats-(.*)",
+		"index":2
+	},
+
+
+	{
+		"title":"eu-061 - Shore Feed Stats [Defective Feeds] [Node ${explode}]",
+		"target": [
+			"cactiStyle(alias(eu-061.cacti_shore.cacti_shore_feed_stats-${explode}.feeds, \"Total number of feeds\"))",
+			"cactiStyle(alias(eu-061.cacti_shore.cacti_shore_feed_stats-${explode}.defective_feed, \"Defective Feedss\"))"
+		],
+		"query":"eu-061.cacti_shore.cacti_shore_feed_stats-*.*",
+		"regex":"cacti_shore_feed_stats-(.*)",
+		"index":2
+	},
+	{
+		"title":"eu-061 - Shore Feed Stats [Errors] [Node ${explode}]",
+		"target": [
+			"cactiStyle(alias(scale(eu-061.cacti_shore.cacti_shore_feed_stats-${explode}.errors,0.003333), \"Errors/s\"))",
+			"cactiStyle(alias(scale(eu-061.cacti_shore.cacti_shore_feed_stats-${explode}.send_failures,0.003333), \"Send failures/s\"))"
+		],
+		"query":"eu-061.cacti_shore.cacti_shore_feed_stats-*.*",
+		"regex":"cacti_shore_feed_stats-(.*)",
+		"index":2
+	},
+	{
+		"title":"eu-061 - Shore Feed Stats [Activity/s] [Node ${explode}]",
+		"target": [
+			"cactiStyle(alias(scale(eu-061.cacti_shore.cacti_shore_feed_stats-${explode}.new_admedia,0.003333), \"New admedia/s\"))",
+			"cactiStyle(alias(scale(eu-061.cacti_shore.cacti_shore_feed_stats-${explode}.changed,0.003333), \"Changed/s\"))",
+			"cactiStyle(alias(scale(eu-061.cacti_shore.cacti_shore_feed_stats-${explode}.retired,0.003333), \"Retired\"))",
+			"cactiStyle(alias(scale(eu-061.cacti_shore.cacti_shore_feed_stats-${explode}.stale,0.003333), \"Stale/s\"))"
+		],
+		"query":"eu-061.cacti_shore.cacti_shore_feed_stats-*.*",
+		"regex":"cacti_shore_feed_stats-(.*)",
+		"index":2
+	}
+	],
+	"data":[
+	{
+		"title":"eu-061 - Aggregates Shore Feed [Defective Feeds]",
+		"target": [
+			"cactiStyle(alias(sumSeries(eu-061.cacti_shore.cacti_shore_feed_stats-*.feeds), \"Total number of feeds\"))",
+			"cactiStyle(alias(sumSeries(eu-061.cacti_shore.cacti_shore_feed_stats-*.defective_feed), \"Total number of Defective Feeds\"))"
+		]
+	}
+	]
+}

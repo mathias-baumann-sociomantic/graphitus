@@ -1,0 +1,136 @@
+{
+	"title":"Nautica Stats [AP]",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"dataTemplates_notUsedDueToNamingInconsistency_fixAndRecover":[
+	{
+		"title":"Nautica Tracking-Records Totals Stats [Node ${explode}]",
+		"target": [
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.Trcking_Rcrds_Rtrvd, 0.03333), \"Total Tracking Records Received\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.Trcking_Parse_Errs, 0.03333), \"Tracking Records Parse Errors\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.JSON_Parse_Errors, 0.03333), \"Traking Records JSON Errors\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.Unknwn_Trckng_Rcrds, 0.03333), \"Unknown Tracking Records\"))"
+		],
+		"query":"ap-*.cacti_nautica.cacti_nautica_stats-*",
+		"regex":"cacti_nautica_stats-(.*)",
+		"index":2
+	},
+	{
+		"title":"Nautica Tracking-Records Ratios Stats [Node ${explode}]",
+		"target": [
+			"alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.RtioRcrds1Ad2TtlAds, 0.03333), \"Ratio Of Tracking Records With 1 Admeduim To Total Records\")",
+			"alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.RtioRcrdsNoAd2TtlAd, 0.03333), \"Ratio Of Tracking Records With No Admedia To Total Records\")"
+		],
+		"query":"ap-*.cacti_nautica.cacti_nautica_stats-*",
+		"regex":"cacti_nautica_stats-(.*)",
+		"index":2
+	},
+	{
+		"title":"Nautica DHT Totals Stats [Node ${explode}]",
+		"target": [
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.WrtnRltdPrdctsTotal, 0.003333), \"Total Profiles Written\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.WrtnRltdPrdctsPrfls, 0.003333), \"Total Related-Products Profiles Written\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.WrtnRltdPrdcts_C_BS, 0.003333), \"Total Category-BS Written\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.WrtnRltdPrdcts_M_BS, 0.003333), \"Total Manufacturer-BS Written\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.WrtnRltdPrdcts_S_BS, 0.003333), \"Total Shop-BS Written\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.Admedia_Removed, 0.003333), \"Total Admedia Removed\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.FinalRltdsPrdctsFew, 0.003333), \"Profiles With Few Related-Profiles\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.FinalRltdPrdctsZero, 0.003333), \"Profiles With Zero Related-Products\"))"
+		],
+		"query":"ap-*.cacti_nautica.cacti_nautica_stats-*",
+		"regex":"cacti_nautica_stats-(.*)",
+		"index":2
+	},
+	{
+		"title":"Nautica DHT Ratios Stats [Node ${explode}]",
+		"target": [
+			"alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.RatioFew2TotalWrtn, 0.003333), \"Ratio of Profile with Few Records / Total Written\")",
+			"alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.RatioZero2TotalWrtn, 0.003333), \"Ratio of Profile with Zero Records / Total Written\")"
+		],
+		"query":"ap-*.cacti_nautica.cacti_nautica_stats-*",
+		"regex":"cacti_nautica_stats-(.*)",
+		"index":2
+	},
+	{
+		"title":"Nautica Processing Stats [Node ${explode}]",
+		"target": [
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.BS_Created_Ctgry, 0.003333), \"Num. Of Created Bestsellers Categories\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.BS_Created_Mnfctr, 0.003333), \"Num. Of Created Bestsellers Manufacturers\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.MD_Frm_Other_Adpans, 0.003333), \"Metadata From Other Adpans (Hash Collision)\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.Duplct_Items_Rmvd, 0.003333), \"Duplicate Items Removed\"))"
+		],
+		"query":"ap-*.cacti_nautica.cacti_nautica_stats-*",
+		"regex":"cacti_nautica_stats-(.*)",
+		"index":2
+	},
+	{
+		"title":"Nautica Processing Stats (Total) [Node ${explode}]",
+		"target": [
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats-${explode}.Ttl_Prfls_Cnt_Rcrds, 0.003333), \"Total Products in Log Lines\"))"
+		],
+		"query":"ap-*.cacti_nautica.cacti_nautica_stats-*",
+		"regex":"cacti_nautica_stats-(.*)",
+		"index":2
+	}
+	],
+	"data":[
+	{
+		"title":"Nautica Tracking-Records Totals Stats",
+		"target": [
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.Trcking_Rcrds_Rtrvd, 0.03333), \"Total Tracking Records Received\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.Trcking_Parse_Errs, 0.03333), \"Tracking Records Parse Errors\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.JSON_Parse_Errors, 0.03333), \"Traking Records JSON Errors\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.Unknwn_Trckng_Rcrds, 0.03333), \"Unknown Tracking Records\"))"
+		]
+	},
+	{
+		"title":"Nautica Tracking-Records Ratios Stats",
+		"target": [
+			"alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.RtioRcrds1Ad2TtlAds, 0.03333), \"Ratio Of Tracking Records With 1 Admeduim To Total Records\")",
+			"alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.RtioRcrdsNoAd2TtlAd, 0.03333), \"Ratio Of Tracking Records With No Admedia To Total Records\")"
+		]
+	},
+	{
+		"title":"Nautica DHT Totals Stats",
+		"target": [
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.WrtnRltdPrdctsTotal, 0.003333), \"Total Profiles Written\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.WrtnRltdPrdctsPrfls, 0.003333), \"Total Related-Products Profiles Written\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.WrtnRltdPrdcts_C_BS, 0.003333), \"Total Category-BS Written\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.WrtnRltdPrdcts_M_BS, 0.003333), \"Total Manufacturer-BS Written\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.WrtnRltdPrdcts_S_BS, 0.003333), \"Total Shop-BS Written\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.Admedia_Removed, 0.003333), \"Total Admedia Removed\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.FinalRltdsPrdctsFew, 0.003333), \"Profiles With Few Related-Profiles\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.FinalRltdPrdctsZero, 0.003333), \"Profiles With Zero Related-Products\"))"
+		]
+	},
+	{
+		"title":"Nautica DHT Ratios Stats",
+		"target": [
+			"alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.RatioFew2TotalWrtn, 0.003333), \"Ratio of Profile with Few Records / Total Written\")",
+			"alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.RatioZero2TotalWrtn, 0.003333), \"Ratio of Profile with Zero Records / Total Written\")"
+		]
+	},
+	{
+		"title":"Nautica Processing Stats",
+		"target": [
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.BS_Created_Ctgry, 0.003333), \"Num. Of Created Bestsellers Categories\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.BS_Created_Mnfctr, 0.003333), \"Num. Of Created Bestsellers Manufacturers\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.MD_Frm_Other_Adpans, 0.003333), \"Metadata From Other Adpans (Hash Collision)\"))",
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.Duplct_Items_Rmvd, 0.003333), \"Duplicate Items Removed\"))"
+		]
+	},
+	{
+		"title":"Nautica Processing Stats (Total)",
+		"target": [
+			"cactiStyle(alias(scale(ap-*.cacti_nautica.cacti_nautica_stats.Ttl_Prfls_Cnt_Rcrds, 0.003333), \"Total Products in Log Lines\"))"
+		]
+	}
+	]
+}
+

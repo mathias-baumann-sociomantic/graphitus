@@ -1,0 +1,62 @@
+{
+	"title":"Static Stats EU",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"dataTemplates" : [
+	{
+		"title":"[live] ${explode} - Static (live) - Nginx Requests/sec",
+		"target" : [
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_sockets.nginx_accepts), \"Total Accepts\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_sockets.nginx_handled), \"Total Handled\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_sockets.nginx_requests), \"Total Requests\"))"
+		],
+		"query" : "{eu-003,eu-004,eu-011,eu-022,eu-023,eu-024,eu-025,eu-040,eu-096}.cacti_nginx.cacti_nginx_sockets",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"[live] ${explode} - Static (live) - Nginx Clients",
+		"target" : [
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_active), \"Total Active\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_reading), \"Total Reading\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_waiting), \"Total Waiting\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_writing), \"Total Writing\"))"
+		],
+		"query" : "{eu-003,eu-004,eu-011,eu-022,eu-023,eu-024,eu-025,eu-040,eu-096}.cacti_nginx.cacti_nginx_clients",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"[source] ${explode} - Static (source) - Nginx Requests/sec",
+		"target" : [
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_sockets.nginx_accepts), \"Total Accepts\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_sockets.nginx_handled), \"Total Handled\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_sockets.nginx_requests), \"Total Requests\"))"
+		],
+		"query" : "{eu-079,eu-080,eu-081,eu-082,eu-097,eu-133,eu-134,eu-135,eu-136,eu-138,eu-139,eu-140,eu-141,eu-142,eu-143,eu-144,eu-145}.cacti_nginx.cacti_nginx_sockets",
+		"regex" : "(.*)",
+		"index" : 0
+	},
+	{
+		"title":"[source] ${explode} - Static (source) - Nginx Clients",
+		"target" : [
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_active), \"Total Active\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_reading), \"Total Reading\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_waiting), \"Total Waiting\"))",
+			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_writing), \"Total Writing\"))"
+		],
+		"query" : "{eu-079,eu-080,eu-081,eu-082,eu-097,eu-133,eu-134,eu-135,eu-136,eu-138,eu-139,eu-140,eu-141,eu-142,eu-143,eu-144,eu-145}.cacti_nginx.cacti_nginx_sockets",
+		"regex" : "(.*)",
+		"index" : 0
+	}
+	],
+	"data":[
+	]
+}
+

@@ -1,0 +1,34 @@
+{
+    "title":"Swarm DHT-Memory Aggregates [US]",
+        "width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+        "height" : 141,
+        "columns" : 2,
+	"refresh" : true,
+        "legend" : false,
+	"defaultParameters":"areaMode=none&lineWidth=1&yMin=0&fontSize=9",
+        "data":[
+        {
+            "title":"Aggregate - DHT Handled Connections [US]",
+            "target": [
+		"alias(sum(us-*.cacti_dht*.cacti_dht_stats.DHT_handle_connects), \"connections\")"
+		]
+
+        },
+	{
+            "title":"Aggregate - DHT bytes/s sent/received [US]",
+            "target": [
+		"alias(sum(us-*.cacti_dht*.cacti_dht_stats.DHT_sent_bytes), \"bytes sent\")",
+		"alias(sum(us-*.cacti_dht*.cacti_dht_stats.DHT_received_bytes), \"bytes received\")"
+		]
+        },
+	{
+            "title":"Aggregate - DHT Memory Usage [US]",
+            "target": [
+		"alias(sum(us-*.cacti_dht-*.cacti_dht_mem.bytes_ps,us-*.cacti_dht.cacti_dht_mem_ps.bytes_ps_*), \"bytes ps\")",
+		"alias(sum(us-*.cacti_dht-*.cacti_dht_mem.bytes_dht,us-*.cacti_dht.cacti_dht_mem_dht.bytes_dht_*), \"bytes dht\")"
+		]
+        }
+	]
+}

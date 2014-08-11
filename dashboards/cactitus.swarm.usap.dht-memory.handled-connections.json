@@ -1,0 +1,43 @@
+{
+    "title":"DHT Handled Connections [AP / US]",
+        "width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+        "height" : 141,
+        "columns" : 2,
+	"refresh" : true,
+        "legend" : false,
+	"defaultParameters":"yMin=0&fontSize=9&areaMode=All&areaAlpha=0.4&colorList=blue,green,red",
+        "dataTemplates":[		
+        {
+		"title":"${explode} DHT Handled Connections [Node 1]",
+		"target": "alias(${explode}.cacti_dht-1.cacti_dht_stats.DHT_handle_connects, \"Handled Connections\")",
+                "query":"usap-*.cacti_dht-1.cacti_dht_stats",
+                "regex":"^(.*)",
+                "index":0
+        },
+        {
+		"title":"${explode} DHT Handled Connections [Node 2]",
+		"target": "alias(${explode}.cacti_dht-2.cacti_dht_stats.DHT_handle_connects, \"Handled Connections\")",
+                "query":"usap-*.cacti_dht-2.cacti_dht_stats",
+                "regex":"^(.*)",
+                "index":0
+        },
+        {
+		"title":"${explode} DHT Handled Connections [Node 3]",
+		"target": "alias(${explode}.cacti_dht-3.cacti_dht_stats.DHT_handle_connects, \"Handled Connections\")",
+                "query":"usap-*.cacti_dht-3.cacti_dht_stats",
+                "regex":"^(.*)",
+                "index":0
+        },
+        {
+		"title":"${explode} DHT Handled Connections [Node 4]",
+		"target": "alias(${explode}.cacti_dht-4.cacti_dht_stats.DHT_handle_connects, \"Handled Connections\")",
+                "query":"usap-*.cacti_dht-4.cacti_dht_stats",
+                "regex":"^(.*)",
+                "index":0
+        }
+        ],
+        "data":[
+	]
+}

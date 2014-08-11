@@ -1,0 +1,33 @@
+{          
+    "title":"Dashboard Title",
+        "width" : 560,
+        "height" : 220,
+        "defaultLineWidth" : 1,
+        "timeBack":"2h",
+        "columns" : 2, 
+        "refresh" : true, 
+        "legend" : false, 
+        "data":[ 
+        {
+            "title":"Graph Title",
+            "target": [
+                "graph-source-definition1",
+                "graph-source-definition2"
+                ],
+                "params" : "graph parameters"       
+        }, 
+        {
+            "title":"Graph Title 2",
+            "target": "graph-source-definition"                        
+        }
+	],        
+        "parameters": {
+                "continent": {
+                        "All": {"continent" : "*" },
+                        "EU" : {"continent" : "eu" },
+                        "US" : {"continent" : "us" },
+                        "AP" : {"continent" : "ap" },
+                        "USAP" : {"continent" : "usap" }
+                        }
+        }
+}

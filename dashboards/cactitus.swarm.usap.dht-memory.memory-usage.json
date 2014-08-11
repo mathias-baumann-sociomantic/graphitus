@@ -1,0 +1,57 @@
+{
+    "title":"DHT Memory Usage [AP / US]",
+        "width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+        "height":141,
+        "columns":2,
+	"refresh":true,
+        "legend":false,
+	"defaultParameters":"yMin=0&fontSize=9&areaMode=all&areaAlpha=0.4&colorList=orange,red",
+	"dataTemplates" : [
+	{
+		"title":"DHT Memory Usage on ${explode} [Node 1]",
+		"target":[
+			"alias(${explode}.cacti_dht.cacti_dht_mem_*.bytes_ps_1,\"bytes ps\")",
+			"alias(${explode}.cacti_dht.cacti_dht_mem_*.bytes_dht_1,\"bytes dht\")"
+		],
+		"query":"usap-*.cacti_dht.cacti_dht_mem_*.bytes_*",
+		"regex":"^(.*)",
+		"index":0
+	}
+        ],
+        "dataTemplatesUnused" : [
+	{
+		"title":"DHT Memory Usage on ${explode} [Node 2]",
+		"target":[
+			"alias(${explode}.cacti_dht.cacti_dht_mem_*.bytes_ps_2,\"bytes ps\")",
+			"alias(${explode}.cacti_dht.cacti_dht_mem_*.bytes_dht_2,\"bytes dht\")"
+		],
+		"query":"usap-*.cacti_dht.cacti_dht_mem_*.bytes_*",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"DHT Memory Usage on ${explode} [Node 3]",
+		"target":[
+			"alias(${explode}.cacti_dht.cacti_dht_mem_*.bytes_ps_3,\"bytes ps\")",
+			"alias(${explode}.cacti_dht.cacti_dht_mem_*.bytes_dht_3,\"bytes dht\")"
+		],
+		"query":"usap-*.cacti_dht.cacti_dht_mem_*.bytes_*",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"DHT Memory Usage on ${explode} [Node 4]",
+		"target":[
+			"alias(${explode}.cacti_dht.cacti_dht_mem_*.bytes_ps_4,\"bytes ps\")",
+			"alias(${explode}.cacti_dht.cacti_dht_mem_*.bytes_dht_4,\"bytes dht\")"
+		],
+		"query":"usap-*.cacti_dht.cacti_dht_mem_*.bytes_*",
+		"regex":"^(.*)",
+		"index":0
+	}
+	],
+	"data":[
+        ]
+}

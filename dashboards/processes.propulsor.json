@@ -1,0 +1,40 @@
+{
+	"title":"Propulsor Stats",
+		"width" : 1000,
+		"defaultLineWidth":1,
+		"timeBack":"2d",
+		"height" : 500,
+		"columns" : 2,
+		"refresh" : true,
+		"legend" : true,
+		"data":[
+		{
+			"title":"All SSP Requests",
+			"target" : "aliasSub(groupByNode(scale(offset(${continent}-*.cacti_propulsor-*.cacti_propulsor_fe_stats-${ssp}.requests,0.0001),0.03333333),2,\"sumSeries\"),\".*-\",\"\")",
+			"params" : "logBase=10&yMin=5&yMax=10000"
+
+		},
+		{
+			"title":"All SSP Bids",
+			"target" : "aliasSub(groupByNode(scale(offset(${continent}-*.cacti_propulsor-*.cacti_propulsor_fe_stats-${ssp}.bids,0.0001),0.03333333),2,\"sumSeries\"),\".*-\",\"\")",
+			"params" : "logBase=10&yMin=1&yMax=1000"
+
+		}
+	],
+		"parameters": {
+			"continent": {
+				"EU" : {"continent" : "eu" },
+				"US" : {"continent" : "us" },
+				"AP" : {"continent" : "ap" },
+				"USAP" : {"continent" : "usap" }
+			},
+			"ssp" : {
+				"type" : "dynamic",
+				"query" : "${continent}-*.cacti_propulsor-*.cacti_propulsor_fe_stats-*",
+				"index" : 2,
+				"regex" : "-(.*)",
+				"showAll": true
+			}
+
+		}			
+}

@@ -1,0 +1,52 @@
+{
+	"title":"Frontend DHT Requests",
+		"width" : 500,
+		"defaultLineWidth":1,
+		"timeBack":"6h",
+		"height" : 300,
+		"columns" : 2,
+		"refresh" : true,
+		"dataTemplates" : [
+		{
+			"title":"${explode} DHT Requests/sec [01]",
+			"target" : "cactiStyle(aliasByNode(scale(${explode}.cacti_propulsor.cacti_propulsor_stats-01.dht_*,0.03333333),3))",
+			"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_stats-01",
+			"regex" : "(.*)",
+			"index" : 0,
+			"params" : "hideLegend=false&colorList=blue,red"
+		},
+		{
+			"title":"${explode} DHT Requests/sec [02]",
+			"target" : "cactiStyle(aliasByNode(scale(${explode}.cacti_propulsor.cacti_propulsor_stats-02.dht_*,0.03333333),3))",
+			"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_stats-02",
+			"regex" : "(.*)",
+			"index" : 0,
+			"params" : "hideLegend=false&colorList=blue,red"
+		},
+		{
+			"title":"${explode} DHT Requests/sec [03]",
+			"target" : "cactiStyle(aliasByNode(scale(${explode}.cacti_propulsor.cacti_propulsor_stats-03.dht_*,0.03333333),3))",
+			"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_stats-03",
+			"regex" : "(.*)",
+			"index" : 0,
+			"params" : "hideLegend=false&colorList=blue,red"
+		}
+		],
+		"data":[
+		{
+			"title":"${continent} Most Deviant DHT Requests/sec",
+			"target" : [
+					"cactiStyle(aliasByNode(mostDeviant(5, scale(${continent}-*.cacti_propulsor.cacti_propulsor_stats-*.dht_total,0.03333333)),0,3))"
+				],
+			"params" : "yMin=0&hideLegend=false"
+		}
+	],
+		"parameters": {
+			"continent": {
+				"EU" : {"continent" : "eu" },
+				"US" : {"continent" : "us" },
+				"AP" : {"continent" : "ap" },
+				"USAP" : {"continent" : "usap" }
+			}
+		}			
+}

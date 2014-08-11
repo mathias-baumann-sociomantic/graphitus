@@ -1,0 +1,44 @@
+{
+    "title":"Queue Stats",
+        "width" : 490,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+        "height" : 220,
+        "columns" : 2,
+	"refresh" : true,
+        "legend" : false,
+        "data":[
+        {
+            "title":"DhtSync - user_yield",
+            "target": [
+		"cactiStyle(alias(ap-027.cacti_dht.cacti_dht_sync_stats.user_yield_bytes, \"bytes\"))"
+		],
+		"params" : "yMin=0&areaAlpha=0.5&areaMode=all&lineWidth=2&colorList=%23B34BFD,%23C87CFF,%239D63FF,%235E00FF,%238C00FF,%23B969FB,%23F85F00,%23F8002D,%23F82700"
+
+        },
+	{
+            "title":"DhtSync - other channels",
+            "target": [
+		"cactiStyle(alias(ap-027.cacti_dht.cacti_dht_sync_stats.test_bytes, \"bytes\"))"
+		],
+		"params" : "yMin=0&areaAlpha=0.5&areaMode=all&lineWidth=2&colorList=%23C87CFF,%239D63FF,%235E00FF,%238C00FF,%23B969FB,%23F85F00,%23F8002D,%23F82700"
+
+        },
+	{
+            "title":"DhtSync - Connections",
+            "target": [
+		"cactiStyle(alias(ap-027.cacti_dht.cacti_dht_sync_stats.connections_handled, \"connections\"))"
+		],
+		"params" : "yMin=0&areaAlpha=0.5&areaMode=all&lineWidth=2&colorList=%239D63FF,%235E00FF,%238C00FF,%23B969FB,%23F85F00,%23F8002D,%23F82700"
+
+        }
+        ],
+	"parameters": {
+		"continent": {
+			"All": {"continent" : "*" },
+			"EU" : {"continent" : "eu" },
+			"US" : {"continent" : "us" },
+			"AP" : {"continent" : "ap" }
+			}
+	}			
+}

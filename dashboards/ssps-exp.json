@@ -1,0 +1,131 @@
+{
+	"title":"SSP Stats",
+		"width" : 550,
+		"defaultLineWidth":1,
+		"timeBack":"6h",
+		"height" : 250,
+		"columns" : 2,
+		"refresh" : true,
+		"legend" : true,
+		"data":[
+		{
+			"title": "Bidding Requests/s",
+			"target" : [
+				"aliasSub(aliasByNode(keepLastValue(groupByNode(scale(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 0.033333333), 2, \"sumSeries\"), 2), 0), \"^.*-\", \"\")"
+			],
+			"params" : "hideLegend=true"
+		},
+		{
+			"title": "Bids/s",
+			"target" : [
+				"aliasSub(aliasByNode(groupByNode(scale(timeShift(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.bids, \"45s\"),0.033333333),2,\"sumSeries\"),0),\"^.*-\", \"\")"
+			],
+			"params" : "hideLegend=true"
+		},
+		{
+			"title": "Wins/s",
+			"target" : [
+				"aliasSub(aliasByNode(groupByNode(scale(timeShift(${continent}-${server}.reef.reef_ssp-${ssp}.loglines, \"45s\"),0.033333333),2,\"sumSeries\"),0),\"^.*-\", \"\")"
+			],
+			"params" : "hideLegend=true"
+		},
+		{
+			"title": "Propulsor FE Errors/s (%)",
+			"target" : [
+				"asPercent(timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.errors, 2, \"sumSeries\"), \"45s\"), timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), \"45s\"))"
+			],
+			"params" : "hideLegend=true"
+		},
+		{
+			"title": "Propulsor FE User Match Errors/s (%)",
+			"target" : [
+				"asPercent(timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.userid_errors, 2, \"sumSeries\"), \"45s\"), timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), \"45s\"))"
+			],
+			"params" : "hideLegend=true"
+		},
+		{
+			"title": "Propulsor FE Blocked Referrers/s (%)",
+			"target" : [
+				"asPercent(timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.blocked_referrers, 2, \"sumSeries\"), \"45s\"), timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), \"45s\"))"
+			],
+			"params" : "hideLegend=true"
+		},
+		{
+			"title": "Propulsor FE AdSize Errors/s (%)",
+			"target" : [
+				"asPercent(timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.adsize_errors, 2, \"sumSeries\"), \"45s\"), timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), \"45s\"))"
+			],
+			"params" : "hideLegend=true"
+		},
+		{
+			"title": "New Connections/s",
+			"target" : [
+				"aliasSub(aliasByNode(groupByNode(timeShift(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.new_ssp_connections, \"45s\"),2,\"sumSeries\"),0),\"^.*-\", \"\")"
+			],
+			"params" : "hideLegend=true"
+		},
+		{
+			"title": "Total Connections",
+			"target" : [
+				"aliasSub(aliasByNode(groupByNode(timeShift(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.ssp_connections, \"45s\"),2,\"sumSeries\"),0),\"^.*-\", \"\")"
+			],
+			"params" : "hideLegend=true"
+		},
+		{
+			"title": "Test Requests/s",
+			"target" : [
+				"aliasSub(aliasByNode(groupByNode(scale(timeShift(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.tests, \"45s\"),0.033333333),2,\"sumSeries\"),0),\"^.*-\", \"\")"
+			],
+			"params" : "hideLegend=true"
+		},
+		{
+			"title": "User Matching Requests/s",
+			"target" : [
+				"aliasSub(aliasByNode(groupByNode(scale(timeShift(${continent}-${server}.cacti_aqua*.cacti_aqua_ssp-${ssp}.total_processed, \"45s\"),0.033333333),2,\"sumSeries\"),0),\"^.*-\", \"\")"
+			],
+			"params" : "hideLegend=true"
+		},
+		{
+			"title": "Reef Logline Errors/s",
+			"target" : [
+				"aliasSub(aliasByNode(groupByNode(scale(timeShift(${continent}-${server}.reef.reef_ssp-${ssp}.errors, \"45s\"),0.033333333),2,\"sumSeries\"),0),\"^.*-\", \"\")"
+			],
+			"params" : "hideLegend=true"
+		},
+		{
+			"title": "CID Fails/s",
+			"target" : [
+				"aliasSub(aliasByNode(groupByNode(scale(timeShift(${continent}-${server}.reef.reef_ssp-${ssp}.failedcids, \"45s\"),0.033333333),2,\"sumSeries\"),0),\"^.*-\", \"\")"
+			],
+			"params" : "hideLegend=true"
+		}
+	],
+	"parameters": {
+		"continent": {
+			"All" : {"continent" : "*",
+				 "cont-nice" : "All" },
+			"EU" : {"continent" : "eu",
+				 "cont-nice" : "EU" },
+			"US" : {"continent" : "us",
+				 "cont-nice" : "US" },
+			"AP" : {"continent" : "ap",
+				 "cont-nice" : "AP" }
+		},
+		"server" : {
+			"type" : "dynamic",
+			"query" : "${continent}-*.cacti_propulsor-*",
+			"index" : 0,
+			"regex" : "-(.*)",
+			"showAll": true,
+			"defaultValue" : "*"
+		},
+		"ssp" : {
+			"type" : "dynamic",
+			"query" : "${continent}-${server}.cacti_propulsor-*.cacti_propulsor_fe_stats-*",
+			"index" : 2,
+			"regex" : "-(.+)",
+			"showAll": true,
+			"defaultValue" : "total"
+		}
+	}			
+}

@@ -1,0 +1,48 @@
+{
+	"title":"Propulsor Frontend Stats",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"columns" : 2,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"data":[
+	{
+		"title":"Aggregate - Propulsor Frontend Stats [Backend Requests/s] [${continent}]",
+		"target": [
+			"cactiStyle(alias(sum(${continent}-*.cacti_propulsor-*.cacti_propulsor_fe.bidder_total), \"Total Total\"))",
+			"cactiStyle(alias(sum(${continent}-*.cacti_propulsor-*.cacti_propulsor_fe.bidder_timeouts), \"Total Timeout\"))"
+		]
+	},
+	{
+		"title":"Aggregate - Propulsor Frontend Stats [Connections] [${continent}]",
+		"target": [
+			"cactiStyle(alias(sum(${continent}-*.cacti_propulsor.cacti_propulsor_stats-*.connections_total), \"Total Total\"))",
+			"cactiStyle(alias(sum(${continent}-*.cacti_propulsor.cacti_propulsor_stats-*.connections_busy), \"Total Busy\"))"
+		]
+	},
+	{
+		"title":"Aggregate - Propulsor Frontend Stats [DHT Requests/s] [${continent}]",
+		"target": [
+			"cactiStyle(alias(sum(${continent}-*.cacti_propulsor.cacti_propulsor_stats-*.dht_total), \"Total Total\"))",
+			"cactiStyle(alias(sum(${continent}-*.cacti_propulsor.cacti_propulsor_stats-*.dht_timeouts), \"Total Timeout\"))"
+		]
+	}
+	],
+	"parameters": {
+		"continent": {
+			"AP" : {"continent" : "ap",
+				"cont-nice" : "AP" },
+			"EU" : {"continent" : "eu",
+				"cont-nice" : "EU" },
+			"US" : {"continent" : "us",
+				"cont-nice" : "US" },
+			"USAP" : {"continent" : "usap",
+				"cont-nice" : "USAP" },
+			"All" : {"continent" : "*",
+				"cont-nice" : "All" }
+		}
+	}			
+}

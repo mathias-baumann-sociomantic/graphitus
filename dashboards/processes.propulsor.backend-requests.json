@@ -1,0 +1,55 @@
+{
+	"title":"Frontend Backend Requests",
+		"width" : 600,
+		"defaultLineWidth":1,
+		"timeBack":"6h",
+		"height" : 300,
+		"columns" : 2,
+		"refresh" : true,
+		"dataTemplates" : [
+		{
+			"title":"${explode} Backend Requests/sec [01]",
+			"target" : "cactiStyle(aliasByNode(scale(${explode}.cacti_propulsor-01.cacti_propulsor_fe.bidder_*,0.03333333),3))",
+			"query" : "${continent}-*.cacti_propulsor-01.cacti_propulsor_fe",
+			"regex" : "(.*)",
+			"index" : 0,
+			"params" : "hideLegend=false&colorList=red,blue"
+		},
+		{
+			"title":"${explode} Backend Requests/sec [02]",
+			"target" : "cactiStyle(aliasByNode(scale(${explode}.cacti_propulsor-02.cacti_propulsor_fe.bidder_*,0.03333333),3))",
+			"query" : "${continent}-*.cacti_propulsor-02.cacti_propulsor_fe",
+			"regex" : "(.*)",
+			"index" : 0,
+			"params" : "hideLegend=false&colorList=red,blue"
+		},
+		{
+			"title":"${explode} Backend Requests/sec [03]",
+			"target" : "cactiStyle(aliasByNode(scale(${explode}.cacti_propulsor-03.cacti_propulsor_fe.bidder_*,0.03333333),3))",
+			"query" : "${continent}-*.cacti_propulsor-03.cacti_propulsor_fe",
+			"regex" : "(.*)",
+			"index" : 0,
+			"params" : "hideLegend=false&colorList=red,blue"
+		}
+		],
+		"data":[
+		{
+			"title":"${continent} Most Deviant Backend Requests [Total]",
+			"target" : "cactiStyle(aliasByNode(mostDeviant(6,scale(${continent}-*.cacti_propulsor-03.cacti_propulsor_fe.bidder_total,0.03333333)),0,3))",
+			"params" : "yMin=0&hideLegend=false"
+		},
+		{
+			"title":"${continent} Most Deviant Backend Requests [Timeouts]",
+			"target" : "cactiStyle(aliasByNode(mostDeviant(6,scale(${continent}-*.cacti_propulsor-03.cacti_propulsor_fe.bidder_timeouts,0.03333333)),0,3))",
+			"params" : "yMin=0&hideLegend=false"
+		}
+	],
+		"parameters": {
+			"continent": {
+				"EU" : {"continent" : "eu" },
+				"US" : {"continent" : "us" },
+				"AP" : {"continent" : "ap" },
+				"USAP" : {"continent" : "usap" }
+			}
+		}			
+}
