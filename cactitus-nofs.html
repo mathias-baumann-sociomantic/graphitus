@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script type="text/javascript" src="libs/mktree//mktree.js"></script>
+    <link rel="stylesheet" href="libs/mktree/mktree.css" type="text/css">
+</head>
+
+<body onload=expandTree('cactitus');return false;">
+
+<table style="width:100%; height:100%" cellpadding="0" cellspacing="0">
+<tr><td class="dashboards_menu">                                                                                                                                                                                <body>
+<ul class="mktree" id="cactitus">
+    <li>item 1<ul>
+        <li>item 1</li>
+        <li>item 2<ul>
+            <li>item 1</li>
+            <li>item 2</li>
+            <li>item 3</li>
+            <li>item 4</li>
+        </ul>
+        </li>
+        <li>item 3</li>
+        <li>item 4<ul>
+            <li>item 1</li>
+            <li>item 2</li>
+            <li>item 3</li>
+            <li>item 4</li>
+        </ul>
+        </li>
+    </ul>
+    </li>
+    <li>item 2<ul>
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+        <li>item 4</li>
+    </ul>
+    </li>
+    <li>item 3<ul>
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+        <li><a href="https://srv-monitor.sociomantic.com:8080/graphitus/dashboard.html?id=processes.reef.campaigns&legend=false&average=false&sum=false&showEvents=false&timeBack=2h&continent=All&version=All&campaign=0" target="cactitus_dashboards">item 4</a></li>
+    </ul>
+    </li>
+    <li>item 4</li>
+</ul>
+</td>
+<td class="dashboards_container">
+<iframe width="100%" name="cactitus_dashboards"></iframe>
+</td></tr>
+</table>
