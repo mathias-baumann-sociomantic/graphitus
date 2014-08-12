@@ -19,6 +19,13 @@ This code is inspired by and extended from Stuart Langridge's aqlist code:
     and Dave Lindquist's menuDropDown.js (http://www.gazingus.org/dhtml/?id=109)
 */
 
+  setDefault("treeClass","mktree");
+  setDefault("nodeClosedClass","liClosed");
+  setDefault("nodeOpenClass","liOpen");
+  setDefault("nodeBulletClass","liBullet");
+  setDefault("nodeLinkClass","bullet");
+  setDefault("preProcessTrees",true);
+
 // Automatically attach a listener to the window onload, to convert the trees
 addEvent(window,"load",convertTrees);
 

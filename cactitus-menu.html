@@ -15,10 +15,18 @@
 
 <body>
 
+<div style="padding-top: 5px; padding-left:15px">
+<a href="#" class="button" onclick="expandTree('cactitus');return false;">Expand</a> <br> <a class="button" href="#" onclick="collapseTree('cactitus'); return false;">Collapse</a>
+</div>
+
 <ul class = "mktree" id = "cactitus">
 </ul>
 
 <hr>
+
+<div style="padding-top: 5px; padding-left:15px">
+<a href="#" class="button" onclick="expandTree('cactitus-hosts');return false;">Expand</a> <br> <a class="button" href="#" onclick="collapseTree('cactitus-hosts'); return false;">Collapse</a>
+</div>
 
 <ul class = "mktree" id = "cactitus-hosts">
 </ul>
@@ -67,106 +75,89 @@ function hostify(hostName) {
 	return(res);
 }
 
+$.ajaxSetup({
+    async: false
+});
 
-(function() {
-        $.ajax({
-                type: "get",
-                url: "dashboard-index.json",
-                dataType: 'json',
-                success: function(json) {
-                        var tree = new Graphitus.Tree();
-                        var data = json.rows;
-			var j = 0;
-			var menulist = "";
-                        for (i in json.rows) {
-// uncomment to include only cactitus.* menus
-//				if (json.rows[i].id.substring(0, 8) == "cactitus") {
-	                                tree.add(json.rows[i].id);
-//					j++;
-//				}
-                        }
 
-			dashboards=tree.getRoot();
-
-			function printTree(treeRoot, branchName, branchPath) {
-				var localTree = treeRoot;
-				var localPath = branchPath;
-				var localBranch = branchName;
-				var link = "https://srv-monitor.sociomantic.com:8080/graphitus/dashboard.html?id=";
-				if (_.size(localTree) == 0) {
-					// is leaf
-// build link as is or extracting DC to parameter?
-					link += (localPath + localBranch);
-//					link += (parametrizeDC(localPath + localBranch));
-					menulist += ('<li><a href="' + link + '" target="cactitus_dashboards">' + localBranch + '</a></li>\n\r');
-				} else {
-					menulist += ("<li>" + localBranch + "<ul>\n\r");
-					localPath += (localBranch + ".");
-					for (leaf in localTree) {
-						printTree(localTree[leaf], leaf, localPath);
-					}
-					menulist += ("</ul></li>\n\r");
-				}
+$.getJSON("dashboard-index.json", function(json) {
+       	var tree = new Graphitus.Tree();
+	var data = json.rows;
+	var j = 0;
+	var menulist = "";
+	for (i in json.rows) {
+        	tree.add(json.rows[i].id);
+	}
+	
+	dashboards=tree.getRoot();
+	
+	function printTree(treeRoot, branchName, branchPath) {
+		var localTree = treeRoot;
+		var localPath = branchPath;
+		var localBranch = branchName;
+		var link = "https://srv-monitor.sociomantic.com:8080/graphitus/dashboard.html?id=";
+		if (_.size(localTree) == 0) {
+			// is leaf
+			link += (localPath + localBranch);
+			menulist += ('<li class="liBullet"><a href="' + link + '" target="cactitus_dashboards">' + localBranch + '</a></li>\n\r');
+		} else {
+			menulist += ('<li class="liOpen"<span class="bullet">&nbsp;' + localBranch + '</span><ul>\n\r');
+			localPath += (localBranch + ".");
+			for (leaf in localTree) {
+				printTree(localTree[leaf], leaf, localPath);
 			}
-
-			var parent="";
-		        for (idx in dashboards) {
-				printTree(dashboards[idx], idx, parent);
-		        }
-			$(menulist).appendTo("#cactitus");
+			menulist += ('</ul></li>\n\r');
 		}
-        });
-})();
+	}
+	
+	var parent="";
+	for (idx in dashboards) {
+		printTree(dashboards[idx], idx, parent);
+	}
+	$(menulist).appendTo("#cactitus");
 
+	expandTree('cactitus');
+		
+});
 
-(function() {
-        $.ajax({
-                type: "get",
-                url: "https://srv-monitor.sociomantic.com:8080/metrics/find?format=completer&query=",
-                dataType: 'json',
-                success: function(json) {
-                        var tree = new Graphitus.Tree();
-                        var data = json.metrics;
-			var j = 0;
-			var menulist = "";
-                        for (i in json.metrics) {
-				tree.add(hostify(json.metrics[i].name));
-                        }
-
-			dashboards=tree.getRoot();
-
-			function printTree(treeRoot, branchName, branchPath) {
-				var localTree = treeRoot;
-				var localPath = branchPath;
-				var localBranch = branchName;
-				var link = "https://srv-monitor.sociomantic.com:8080/graphitus/dashboard.html?id=";
-				if (_.size(localTree) == 0) {
-					// is leaf
-// build link as is or extracting DC to parameter?
-					link += (parametrizeDC(parametrizeHostname(localPath + localBranch,2)));
-					menulist += ('<li><a href="' + link + '" target="cactitus_dashboards">' + localBranch + '</a></li>\n\r');
-				} else {
-					menulist += ("<li>" + localBranch + "<ul>\n\r");
-					localPath += (localBranch + ".");
-					for (leaf in localTree) {
-						printTree(localTree[leaf], leaf, localPath);
-					}
-					menulist += ("</ul></li>\n\r");
-				}
+$.getJSON("https://srv-monitor.sociomantic.com:8080/metrics/find?format=completer&query=", function(json) {
+	var tree = new Graphitus.Tree();
+	var data = json.metrics;
+	var j = 0;
+	var menulist = "";
+	for (i in json.metrics) {
+		tree.add(hostify(json.metrics[i].name));
+	}
+	
+	dashboards=tree.getRoot();
+	
+	function printTree(treeRoot, branchName, branchPath) {
+		var localTree = treeRoot;
+		var localPath = branchPath;
+		var localBranch = branchName;
+		var link = "https://srv-monitor.sociomantic.com:8080/graphitus/dashboard.html?id=";
+		if (_.size(localTree) == 0) {
+			// is leaf
+			link += (parametrizeDC(parametrizeHostname(localPath + localBranch,2)));
+			menulist += ('<li class="liBullet"><a href="' + link + '" target="cactitus_dashboards">' + localBranch + '</a></li>\n\r');
+		} else {
+			menulist += ('<li class="liOpen"<span class="bullet">&nbsp;' + localBranch + '</span><ul>\n\r');
+			localPath += (localBranch + ".");
+			for (leaf in localTree) {
+				printTree(localTree[leaf], leaf, localPath);
 			}
-
-			var parent="";
-		        for (idx in dashboards) {
-				printTree(dashboards[idx], idx, parent);
-		        }
-			$(menulist).appendTo("#cactitus-hosts");
-convertTrees();
-//convertTrees();
-expandTree('cactitus');
-expandTree('cactitus-hosts');
+			menulist += ('</ul></li>\n\r');
 		}
-        });
-})();
+	}
+	
+	var parent="";
+	for (idx in dashboards) {
+		printTree(dashboards[idx], idx, parent);
+	}
+	$(menulist).appendTo("#cactitus-hosts");
+	
+	expandTree('cactitus-hosts');
+});
 
 
 
