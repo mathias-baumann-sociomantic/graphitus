@@ -32,6 +32,11 @@
 </ul>
 
 <script>
+$.ajaxSetup({
+    async: false
+});
+
+
 var dashboards=new Array();
 
 
@@ -75,52 +80,7 @@ function hostify(hostName) {
 	return(res);
 }
 
-$.ajaxSetup({
-    async: false
-});
-
-
-$.getJSON("dashboard-index.json", function(json) {
-       	var tree = new Graphitus.Tree();
-	var data = json.rows;
-	var j = 0;
-	var menulist = "";
-	for (i in json.rows) {
-        	tree.add(json.rows[i].id);
-	}
-	
-	dashboards=tree.getRoot();
-	
-	function printTree(treeRoot, branchName, branchPath) {
-		var localTree = treeRoot;
-		var localPath = branchPath;
-		var localBranch = branchName;
-		var link = "https://srv-monitor.sociomantic.com:8080/graphitus/dashboard.html?id=";
-		if (_.size(localTree) == 0) {
-			// is leaf
-			link += (localPath + localBranch);
-			menulist += ('<li class="liBullet"><a href="' + link + '" target="cactitus_dashboards">' + localBranch + '</a></li>\n\r');
-		} else {
-			menulist += ('<li class="liOpen"<span class="bullet">&nbsp;' + localBranch + '</span><ul>\n\r');
-			localPath += (localBranch + ".");
-			for (leaf in localTree) {
-				printTree(localTree[leaf], leaf, localPath);
-			}
-			menulist += ('</ul></li>\n\r');
-		}
-	}
-	
-	var parent="";
-	for (idx in dashboards) {
-		printTree(dashboards[idx], idx, parent);
-	}
-	$(menulist).appendTo("#cactitus");
-
-	expandTree('cactitus');
-		
-});
-
-$.getJSON("https://srv-monitor.sociomantic.com:8080/metrics/find?format=completer&query=", function(json) {
+function buildHosts(json) {
 	var tree = new Graphitus.Tree();
 	var data = json.metrics;
 	var j = 0;
@@ -155,9 +115,67 @@ $.getJSON("https://srv-monitor.sociomantic.com:8080/metrics/find?format=complete
 		printTree(dashboards[idx], idx, parent);
 	}
 	$(menulist).appendTo("#cactitus-hosts");
+	collapseTree('cactitus-hosts');
+}
+
+function buildCactitus(json) {
+       	var tree = new Graphitus.Tree();
+	var data = json.rows;
+	var j = 0;
+	var menulist = "";
+	for (i in json.rows) {
+        	tree.add(json.rows[i].id);
+	}
 	
-	expandTree('cactitus-hosts');
-});
+	dashboards=tree.getRoot();
+	
+	function printTree(treeRoot, branchName, branchPath) {
+		var localTree = treeRoot;
+		var localPath = branchPath;
+		var localBranch = branchName;
+		var link = "https://srv-monitor.sociomantic.com:8080/graphitus/dashboard.html?id=";
+		if (_.size(localTree) == 0) {
+			// is leaf
+			link += (localPath + localBranch);
+			menulist += ('<li class="liBullet"><a href="' + link + '" target="cactitus_dashboards">' + localBranch + '</a></li>\n\r');
+		} else {
+			menulist += ('<li class="liOpen"<span class="bullet">&nbsp;' + localBranch + '</span><ul>\n\r');
+			localPath += (localBranch + ".");
+			for (leaf in localTree) {
+				printTree(localTree[leaf], leaf, localPath);
+			}
+			menulist += ('</ul></li>\n\r');
+		}
+	}
+	
+	var parent="";
+	for (idx in dashboards) {
+		printTree(dashboards[idx], idx, parent);
+	}
+	$(menulist).appendTo("#cactitus");
+	collapseTree('cactitus');
+};
+
+
+(function() {
+	$.ajax({
+                type: "get",
+                url: "dashboard-index.json",
+                dataType: 'json',
+                success: buildCactitus
+	});
+
+})();
+
+(function() {
+	$.ajax({
+                type: "get",
+                url: "https://srv-monitor.sociomantic.com:8080/metrics/find?format=completer&query=*&jsonp=buildHosts",
+                dataType: 'jsonp',
+                success: buildHosts
+	});
+
+})();
 
 
 
