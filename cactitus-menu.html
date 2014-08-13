@@ -36,9 +36,9 @@ $.ajaxSetup({
     async: false
 });
 
+loadGraphitusConfig(function(){});
 
 var dashboards=new Array();
-
 
 function parametrizeDC(dashboardPath) {
 	dashboardPath+=""; 
@@ -95,7 +95,7 @@ function buildHosts(json) {
 		var localTree = treeRoot;
 		var localPath = branchPath;
 		var localBranch = branchName;
-		var link = "https://srv-monitor.sociomantic.com:8080/graphitus/dashboard.html?id=";
+		var link = graphitusConfig.graphitusUrl + "/dashboard.html?id=";
 		if (_.size(localTree) == 0) {
 			// is leaf
 			link += (parametrizeDC(parametrizeHostname(localPath + localBranch,2)));
@@ -133,7 +133,7 @@ function buildCactitus(json) {
 		var localTree = treeRoot;
 		var localPath = branchPath;
 		var localBranch = branchName;
-		var link = "https://srv-monitor.sociomantic.com:8080/graphitus/dashboard.html?id=";
+		var link = graphitusConfig.graphitusUrl + "/dashboard.html?id=";
 		if (_.size(localTree) == 0) {
 			// is leaf
 			link += (localPath + localBranch);
@@ -170,7 +170,7 @@ function buildCactitus(json) {
 (function() {
 	$.ajax({
                 type: "get",
-                url: "https://srv-monitor.sociomantic.com:8080/metrics/find?format=completer&query=*&jsonp=buildHosts",
+                url: graphitusConfig.graphiteUrl + "/metrics/find?format=completer&query=*&jsonp=buildHosts",
                 dataType: 'jsonp',
                 success: buildHosts
 	});
