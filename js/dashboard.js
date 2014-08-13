@@ -92,6 +92,12 @@ function loadDashboard() {
 			console.log("rendered view");
 			loadView();
 			console.log("view loaded");
+        		if (config.columns != null) {
+				var graphsPadding = 20;
+				var dasboardsViewWidth = config.columns * ( config.width + graphsPadding);
+				$('#dashboards-view').css({'width':dasboardsViewWidth});
+				console.log("adjust view to columns setting: " + config.columns + " columns");
+        		}
 			$("#loader").hide();
 
 			if (config.slideshow == "true") {
