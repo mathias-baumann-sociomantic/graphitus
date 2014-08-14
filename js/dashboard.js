@@ -747,7 +747,7 @@ function showExtendedGraph(idx) {
 	$('#extendedGraph').lightbox({
 		resizeToFit: false
 	});
-	loadExtendedGraph(rawTargets[idx], config.title, config.data[idx].title);
+	loadExtendedGraph(rawTargets[idx], config.title, applyParameters(config.data[idx].title));
 	$(".rickshaw_legend").css("height", $(window).height() - 220);
 }
 
@@ -757,7 +757,16 @@ function showHistogram(idx) {
 	$('#hitogramLightbox').lightbox({
 		resizeToFit: false
 	});
-	loadHistogram(rawTargets[idx], config.title, config.data[idx].title);
+	loadHistogram(rawTargets[idx], config.title, applyParameters(config.data[idx].title));
+}
+
+function showGraphEvolution(idx) {
+	$(".lightbox-content").css("width", $(window).width() - 100);
+	$(".lightbox-content").css("height", $(window).height() - 100);
+	$('#graphEvolutionLightbox').lightbox({
+		resizeToFit: false
+	});
+	loadGraphEvolution(rawTargets[idx], config.title, applyParameters(config.data[idx].title));
 }
 
 function togglePinnedParametersToolbar() {

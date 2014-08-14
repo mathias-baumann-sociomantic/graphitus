@@ -35,7 +35,7 @@
 <script type="text/javascript" src="js/dashboard.js"></script>
 <script type="text/javascript" src="js/extensions.js"></script>
 <script type="text/javascript" src="js/extended-graph.js"></script>
-<script type="text/javascript" src="js/histogram.js"></script>
+<script type="text/javascript" src="js/graph-evolution.js"></script>
 <script type="text/javascript" src="js/slideshow.js"></script>
 <script type="text/javascript" src="js/grafana.js"></script>
 
@@ -48,88 +48,45 @@ $(document).ready(function() {
 <script type="text/template" id="tmpl-dashboards-view">
 <% for (idx in config.data) { %>
     <% for(col=0; col<config.columns; col++) { %>
-		<% if( (idx % config.columns) == col) { %>
-        <div id="item<%=idx%>" class="well span<%=12/config.columns%>" style="width:<%=config.width%>px">
-	    <h5 class="pull-left" style="margin: 0px;">
-                <span id="title<%=idx%>"></span>
-                <% if(config.data[idx].description){ %>
-                    <a href="#" rel="tooltip" data-toggle="tooltip" title="<%=applyParameters(config.data[idx].description)%>"><i class="fa fa-question-circle"/></a>
-                <% } %>
-            </h5>
-<!-- remove useless buttons
-            <div class="pull-right">
-            <div class="pull-left btn-group" style="visibility:hidden">
-                <a class="btn btn-mini btn-success dropdown-toggle hspacer" data-toggle="dropdown" href="#" title="Functions..."><i class="fa fa-lg fa-cogs"></i><span class="fa fa-lg fa-caret-down"></span></a>
-                <ul class="dropdown-menu">      
-                    <li>
-                        <input id="yMin<%=idx%>" type="text" class="input-mini hspacer" placeholder="yMin">
-                        <label class="pull-right hspacer">
-                           <a target="_blank" class="label label-info pull-left" href="http://graphite.readthedocs.org/en/1.0/url-api.html"><i class="fa fa-question-circle"></i> Help</a>
-                        </label>
-                    </li>
-                    <li>
-                        <input id="yMax<%=idx%>" type="text" class="input-mini hspacer" placeholder="yMax">
-                    </li>
-                    <li>
-                        <input id="otherUrlParamName<%=idx%>" type="text" class="input-mini hspacer" placeholder="name">
-                        
-                        <input id="otherUrlParamValue<%=idx%>" type="text" class="input-mini hspacer" placeholder="value">
-                    </li>                    
-                    <li>
-                         <label>
-                            <button class="btn btn-mini btn-primary pull-right hspacer" onclick="updateGraph(<%=idx%>);">Update</button>
-                         </label>
-                    </li>
-                </ul>
+        <% if( (idx % config.columns) == col) { %>
+            <div id="item<%=idx%>" class="well span<%=12/config.columns%>" style="width:<%=config.width%>px">
+                <h5 class="pull-left" style="margin: 0px;">
+                    <span id="title<%=idx%>"></span>
+                    <% if(config.data[idx].description){ %>
+                        <a href="#" rel="tooltip" data-toggle="tooltip" title="<%=applyParameters(config.data[idx].description)%>"><i class="fa fa-question-circle"/></a>
+                    <% } %>
+                    <div class="pull-right">
+                        <a href="#" onclick="showGraphEvolution(<%=idx%>); return false;" title="Show graph evolution"><img src="images/btn_graphevolution.png" width="20px"/></a>
+                        <a href="#" onclick="showExtendedGraph(<%=idx%>); return false;" title="Show extended graph"><img src="images/btn_extendedgraph.png" width="20px"/></a>
+                    </div>
+                </h5>
+                <a href="#" onclick="showGraphEvolution(<%=idx%>); return false;"><img id="img<%=idx%>" class="img-rounded" width="<%=config.width%>" height="<%=config.height%>"/></a>
+<!--                <a href="#" onclick="showExtendedGraph(<%=idx%>); return false;"><img id="img<%=idx%>" class="img-rounded" width="<%=config.width%>" height="<%=config.height%>"/></a> -->
+                <br/>
+                <div id="sourceContainer<%=idx%>"class="hide">
+                    <div><textarea id="source<%=idx%>" style="width:<%=config.width-10%>px" class="source" placeholder="Target Source"></textarea></div>
+                    <div><input type="text" id="graphParams<%=idx%>" style="width:<%=config.width-10%>px" placeholder="Additional URL Parameters" class="source"/></div>
+                    <button class="btn btn-mini" onclick="updateSource(<%=idx%>);">Update</button>
+               </div>
             </div>
-            <div class="pull-left btn-group" style="visibility:hidden">
-                <a class="btn btn-mini btn-warning dropdown-toggle hspacer" data-toggle="dropdown" href="#" title="Images..."><i class="fa fa-lg fa-picture-o"></i><span class="fa fa-lg fa-caret-down"></span></a>
-                <ul class="dropdown-menu">      
-                    <li class="navbar-text"><a id="lLink<%=idx%>" href="#" target="_blank"><i class="fa fa-lg fa-picture-o"></i> large</a></li>
-                    <li class="navbar-text"><a id="mLink<%=idx%>" href="#" target="_blank"><i class="fa fa-lg fa-picture-o"></i> medium</a></li>
-                    <li class="navbar-text"><a id="sLink<%=idx%>" href="#" target="_blank"><i class="fa fa-lg fa-picture-o"></i> small</a></li>
-                </ul>
-            </div>
-            <div class="pull-right">
-                <a href="#" class="btn btn-mini btn-primary pull-right hspacer" onclick="toggleSource(<%=idx%>); return false;" title="Source"><i class="fa fa-lg fa-list"></i></a>
-                <a id="gLink<%=idx%>" href="#" title="Graphlot"><button class="btn btn-mini btn-info pull-right hspacer"><i class="fa fa-lg fa-signal"></i></button></a>
-                <a href="#" class="btn btn-mini pull-right hspacer" onclick="showHistogram(<%=idx%>); return false;" title="Histogram"><i class="fa fa-lg fa-bar-chart-o"></i></a>
-                </div> 
-            </div>
-            <br/>            
-/remove useless buttons -->
-
-            	<div class="pull-left">
-	            <a href="#" onclick="showExtendedGraph(<%=idx%>); return false;"><img id="img<%=idx%>" class="img-rounded" width="<%=config.width%>" height="<%=config.height%>"/></a>
-            	</div>
-            	<div class="pull-right">
-                  <a id="gLink<%=idx%>" href="#" title="Graphlot"><button class="btn btn-mini btn-info pull-right hspacer"><i class="fa fa-lg fa-signal"></i></button></a>
-            	</div>
-            <br/>
-            <div id="sourceContainer<%=idx%>"class="hide">
-                <div><textarea id="source<%=idx%>" style="width:<%=config.width-10%>px" class="source" placeholder="Target Source"></textarea></div>
-                <div><input type="text" id="graphParams<%=idx%>" style="width:<%=config.width-10%>px" placeholder="Additional URL Parameters" class="source"/></div>
-                <button class="btn btn-mini" onclick="updateSource(<%=idx%>);">Update</button>
-            </div>
-        </div>
-	    <% } %>
-	<% } %>
+        <% } %>
+    <% } %>
 <% } %>
 </script>
 <script type="text/template" id="tmpl-dashboards-menu">
 <% if(isLeaf){ %>
-    <li>
-        <a href="dashboard.html?id=<%= path %>"><%= name %></a>
-    </li>
+  <li>
+    <a href="dashboard.html?id=<%= path %>"><%= name %></a>
+  </li>
 <% }else{ %>
-    <li class="dropdown-submenu">
-        <a tabindex="-1" href="#"><%= name %></a>
-        <ul class="dropdown-menu">
-            <% for (node in dashboardsRoot) { %>
-                <%= generateDashboardsMenu(node, path + "." + node, dashboardsRoot[node], depth++) %>
-            <% } %>
-        </ul>
-    </li>
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="#"><%= name %></a>
+      <ul class="dropdown-menu">
+        <% for (node in dashboardsRoot) { %>
+          <%= generateDashboardsMenu(node, path + "." + node, dashboardsRoot[node], depth++) %>
+        <% } %>
+      </ul>
+  </li>
 <% } %> 
 </script>
 <script type="text/template" id="tmpl-toolbar">
@@ -259,149 +216,149 @@ $(document).ready(function() {
 </head>
 <body lang="en">
     <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <form  id="toolbar" class="navbar-form form-inline pull-left">
-        </form>
-      </div>
+        <div class="navbar-inner">
+            <form  id="toolbar" class="navbar-form form-inline pull-left">
+            </form>
+        </div>
     </div>
     <div style="margin-top: 48px;"></div>
     <div id="parameters-toolbar" class="navbar navbar-inverse" style="z-index: 999;">
-      <div class="navbar-inner">
-        <form class="navbar-form form-inline">
-            <span class="pull-left" style="width: 95%">
-            <ul class="nav" id="parametersToolbarContent" ></ul>
-            </span>
-            <span class="pull-right" style="margin-top: 3px"><a href='#' class="btn btn-mini btn-inverse" id="parametersToolbarPin" onclick="togglePinnedParametersToolbar();"><i class="fa fa-lg fa-lock"></i></a></span>
-        </form>
-      </div>    
+        <div class="navbar-inner">
+            <form class="navbar-form form-inline">
+                <span class="pull-left" style="width: 95%">
+                    <ul class="nav" id="parametersToolbarContent" ></ul>
+                </span>
+                <span class="pull-right" style="margin-top: 3px">
+                    <a href='#' class="btn btn-mini btn-inverse" id="parametersToolbarPin" onclick="togglePinnedParametersToolbar();"><i class="fa fa-lg fa-lock"></i></a>
+                </span>
+            </form>
+        </div>
     </div>
     <div id="message" class="hide"></div>
     <center>
         <div id="loader" class="progress progress-striped active" style="width: 30%;">
-          <div id="progressBar" class="bar" style="width: 100%;">Loading Dashboard...</div>
+            <div id="progressBar" class="bar" style="width: 100%;">Loading Dashboard...</div>
         </div>
     </center>          
     <div id="dashboards-view" class="container" style="width: 100%; float: left">
     </div>
     
-	<div id="extendedGraph" class="lightbox hide fade" tabindex="-1" role="dialog" aria-hidden="true">
-	    <div class='lightbox-header'>
-	        <button type="button" class="close" data-dismiss="lightbox" aria-hidden="true">&times;</button>
-	    </div>
-		<div class='lightbox-content'>
-			<div class="navbar navbar-inverse">
-				<div class="navbar-inner">
-						<ul class="nav">
-							<li><label class="navbar-text" id="extendedGraphTitle"></label></li>
-							<li class="divider-vertical"></li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bar-chart"></i> Options<b class="fa fa-lg fa-caret-down"></b></a>
-								<ul class="dropdown-menu" style="width: 400px;text-align: left;">
-								    <div style="margin-left: 10px;">
-									   <form id="extendedChartOptionsForm" style="width: 400px;padding-bottom: 0px;">
-									        <h1>Chart Options</h1>
-									        <section>
-									            <div id="renderer_form" class="toggler">
-									                <input type="radio" name="renderer" id="area" value="area" checked>
-									                <label for="area">area</label>
-									                <input type="radio" name="renderer" id="bar" value="bar">
-									                <label for="bar">bar</label>
-									                <input type="radio" name="renderer" id="line" value="line">
-									                <label for="line">line</label>
-									                <input type="radio" name="renderer" id="scatter" value="scatterplot">
-									                <label for="scatter">scatter</label>
-									            </div>
-									        </section>
-									        <section>
-									            <div id="offset_form">
-									                <label for="stack">
-									                    <input type="radio" name="offset" id="stack" value="zero" checked>
-									                    <span>stack</span>
-									                </label>
-									                <label for="stream">
-									                    <input type="radio" name="offset" id="stream" value="wiggle">
-									                    <span>stream</span>
-									                </label>
-									                <label for="pct">
-									                    <input type="radio" name="offset" id="pct" value="expand">
-									                    <span>pct</span>
-									                </label>
-									                <label for="value">
-									                    <input type="radio" name="offset" id="value" value="value">
-									                    <span>value</span>
-									                </label>
-									            </div>
-									            <div id="interpolation_form">
-									                <label for="cardinal">
-									                    <input type="radio" name="interpolation" id="cardinal" value="cardinal" checked>
-									                    <span>cardinal</span>
-									                </label>
-									                <label for="linear">
-									                    <input type="radio" name="interpolation" id="linear" value="linear">
-									                    <span>linear</span>
-									                </label>
-									                <label for="step">
-									                    <input type="radio" name="interpolation" id="step" value="step-after">
-									                    <span>step</span>
-									                </label>
-									            </div>
-									        </section>
-									        <section>
-									            <h6>Smoothing</h6>
-                                                    <div id="smoother" style="width: 80%; padding-left: 5px;"></div>
-									        </section>
-									        <section><span class="trademark">powered by <a href="http://code.shutterstock.com/rickshaw/" target="_blank">rickshaw</a></span></section>
-									    </form>
-									  </div>
-								</ul>
-							</li>
-                            <li style="width: 400px;">
-                                <div id="lightboxProgress" class="progress progress-striped active" style="margin-top: 10px;">
-                                    <div class="bar" id="lightboxProgressText" style="width: 100%;"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <label class="hide label label-warning" style="margin-top: 10px;" id="lightboxProgressWarningWarning"></label>
-                            </li>
-						</ul>
-				</div>
-			</div>
-			<div style="padding: 20px;">
-				<div class="pull-left">
-					<div id="extendedChart"></div>
-					<div id="timeline"></div>
-					<div id="slider" style="margin-top: 30px;"></div>
-				</div>
-				<div class="pull-right">
-					<div style="padding-right: 3px; width: 170px;" id="extendedLegend"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-    <div id="hitogramLightbox" class="lightbox hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="extendedGraph" class="lightbox hide fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class='lightbox-header'>
             <button type="button" class="close" data-dismiss="lightbox" aria-hidden="true">&times;</button>
         </div>
         <div class='lightbox-content'>
             <div class="navbar navbar-inverse">
                 <div class="navbar-inner">
-                        <ul class="nav">
-                            <li><label class="navbar-text" id="histogramTitle"></label></li>
-                            <li class="divider-vertical"></li>
-                            <li style="width: 400px;">
-                                <div id="histogramProgress" class="progress progress-striped active" style="margin-top: 10px;">
-                                    <div class="bar" id="histogramProgressText" style="width: 100%;"></div>
+                    <ul class="nav">
+                        <li><label class="navbar-text" id="extendedGraphTitle"></label></li>
+                        <li class="divider-vertical"></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bar-chart"></i> Options<b class="fa fa-lg fa-caret-down"></b></a>
+                            <ul class="dropdown-menu" style="width: 400px;text-align: left;">
+                                <div style="margin-left: 10px;">
+                                    <form id="extendedChartOptionsForm" style="width: 400px;padding-bottom: 0px;">
+                                        <h1>Chart Options</h1>
+                                        <section>
+                                            <div id="renderer_form" class="toggler">
+                                                <input type="radio" name="renderer" id="area" value="area" checked>
+                                                <label for="area">area</label>
+                                                <input type="radio" name="renderer" id="bar" value="bar">
+                                                <label for="bar">bar</label>
+                                                <input type="radio" name="renderer" id="line" value="line">
+                                                <label for="line">line</label>
+                                                <input type="radio" name="renderer" id="scatter" value="scatterplot">
+                                                <label for="scatter">scatter</label>
+                                            </div>
+                                        </section>
+                                        <section>
+                                            <div id="offset_form">
+                                                <label for="stack">
+                                                    <input type="radio" name="offset" id="stack" value="zero" checked>
+                                                    <span>stack</span>
+                                                </label>
+                                                <label for="stream">
+                                                    <input type="radio" name="offset" id="stream" value="wiggle">
+                                                    <span>stream</span>
+                                                </label>
+                                                <label for="pct">
+                                                    <input type="radio" name="offset" id="pct" value="expand">
+                                                    <span>pct</span>
+                                                </label>
+                                                <label for="value">
+                                                    <input type="radio" name="offset" id="value" value="value">
+                                                    <span>value</span>
+                                                </label>
+                                            </div>
+                                            <div id="interpolation_form">
+                                                <label for="cardinal">
+                                                    <input type="radio" name="interpolation" id="cardinal" value="cardinal" checked>
+                                                    <span>cardinal</span>
+                                                </label>
+                                                <label for="linear">
+                                                    <input type="radio" name="interpolation" id="linear" value="linear">
+                                                    <span>linear</span>
+                                                </label>
+                                                <label for="step">
+                                                    <input type="radio" name="interpolation" id="step" value="step-after">
+                                                    <span>step</span>
+                                                </label>
+                                            </div>
+                                        </section>
+                                        <section>
+                                            <h6>Smoothing</h6>
+                                                <div id="smoother" style="width: 80%; padding-left: 5px;"></div>
+                                        </section>
+                                        <section><span class="trademark">powered by <a href="http://code.shutterstock.com/rickshaw/" target="_blank">rickshaw</a></span></section>
+                                    </form>
                                 </div>
-                            </li>
-                            <li>
-                                <label class="hide label label-warning" style="margin-top: 10px;" id="histogramMultipleSeriesWarning">histogram shows average of multiple series</label>
-                            </li>
-                        </ul>
+                            </ul>
+                        </li>
+                        <li style="width: 400px;">
+                            <div id="lightboxProgress" class="progress progress-striped active" style="margin-top: 10px;">
+                                <div class="bar" id="lightboxProgressText" style="width: 100%;"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <label class="hide label label-warning" style="margin-top: 10px;" id="lightboxProgressWarningWarning"></label>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div style="padding: 20px;">
                 <div class="pull-left">
-                    <div id="histogram"></div>
+                    <div id="extendedChart"></div>
+                    <div id="timeline"></div>
+                    <div id="slider" style="margin-top: 30px;"></div>
                 </div>
+                <div class="pull-right">
+                    <div style="padding-right: 3px; width: 170px;" id="extendedLegend"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="graphEvolutionLightbox" class="lightbox hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class='lightbox-header'>
+            <button type="button" class="close" data-dismiss="lightbox" aria-hidden="true">&times;</button>
+        </div>
+        <div class='lightbox-content' style="overflow-y: auto;">
+            <div class="navbar navbar-inverse">
+                <div class="navbar-inner">
+                        <ul class="nav">
+                            <li><label class="navbar-text" id="graphEvolutionTitle"></label></li>
+                            <li class="divider-vertical"></li>
+                            <li style="width: 400px;">
+                                <div id="graphEvolutionProgress" class="progress progress-striped active" style="margin-top: 10px;">
+                                    <div class="bar" id="graphEvolutionProgressText" style="width: 100%;"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <label class="hide label label-warning" style="margin-top: 10px;" id="graphEvolutionWarning">some warning might show up here</label>
+                            </li>
+                        </ul>
+                </div>
+            </div>
+            <div style="padding: 20px; line-height:20px;">
+                <div id="graphEvolution"></div>
             </div>
         </div>
     </div>
