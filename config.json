@@ -1,10 +1,10 @@
 {
     "graphiteUrlProd": "https://srv-monitor.sociomantic.com:8080",
     "graphiteUrlDev": "http://localhost/graphite",
-    "graphiteUrl": "http://localhost/graphite",
+    "graphiteUrl": "https://srv-monitor.sociomantic.com:8080",
     "graphitusUrlProd": "https://srv-monitor.sociomantic.com:8080/graphitus",
     "graphitusUrlDev": "http://localhost/graphitus",
-    "graphitusUrl": "http://localhost/graphitus",
+    "graphitusUrl": "https://srv-monitor.sociomantic.com:8080/graphitus",
     "dashboardListUrl": "dashboard-index.json",
     "dashboardUrlTemplate": "dashboards/${dashboardId}.json",
     "eventsUrl": "events.json?start=<%=start%>&end=<%=end%>",

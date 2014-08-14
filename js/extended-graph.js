@@ -203,8 +203,8 @@ function renderExtendedGraph(target, data) {
 		graph: extendedChart
 	});
 
-	$('#extendedLegend').css({'min-height':$('#extendedChart').height()});
-
+    var extendedLegendHeight = $(window).height() - 250;
+    $('#extendedLegend').css({'min-height':extendedLegendHeight});
 	$('#lightboxProgress').hide();
 }
 
