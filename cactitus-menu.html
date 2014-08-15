@@ -170,7 +170,7 @@ function buildCactitus(json) {
 (function() {
 	$.ajax({
                 type: "get",
-                url: graphitusConfig.graphiteUrl + "/metrics/find?format=completer&query=*&jsonp=buildHosts",
+                url: graphitusConfig.graphiteUrl + "/metrics/find?format=completer&query={eu,us,ap}*&jsonp=buildHosts",
                 dataType: 'jsonp',
                 success: buildHosts
 	});
