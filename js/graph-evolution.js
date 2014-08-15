@@ -34,10 +34,6 @@ function renderGraphEvolution(graphTitle, graphUrl) {
 
     var extraGraphiteParams='&title=&hideLegend=false&fontSize=11&width=' + width + '&height=' + height
 
-    
-	$("#graphEvolutionWarning").text("Testing");
-	$("#graphEvolutionWarning").show();
-
     htmlContent+='<img src="' + graphUrl + extraGraphiteParams + '&from=-6hours&title=Graph for the last 6 hours:"><br/>' + "\n";
     htmlContent+='<img src="' + graphUrl + extraGraphiteParams + '&from=-1days&title=Graph for the last 1 days:"><br/>' + "\n";
     htmlContent+='<img src="' + graphUrl + extraGraphiteParams + '&from=-1week&title=Graph for the last 1 weeks:"><br/>' + "\n";
