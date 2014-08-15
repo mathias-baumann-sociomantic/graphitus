@@ -1,9 +1,5 @@
 {
-    "graphiteUrlProd": "https://srv-monitor.sociomantic.com:8080",
-    "graphiteUrlDev": "http://localhost/graphite",
     "graphiteUrl": "https://srv-monitor.sociomantic.com:8080",
-    "graphitusUrlProd": "https://srv-monitor.sociomantic.com:8080/graphitus",
-    "graphitusUrlDev": "http://localhost/graphitus",
     "graphitusUrl": "https://srv-monitor.sociomantic.com:8080/graphitus",
     "dashboardListUrl": "dashboard-index.json",
     "dashboardUrlTemplate": "dashboards/${dashboardId}.json",
@@ -11,8 +7,6 @@
     "eventsDateFormat": "HH:mm:ss DD/MM/YYYY",
     "eventsTimezone": "Europe/Berlin",
     "minimumRefresh": 30,
-
-
 
     "timezones": ["GMT", "Europe/Berlin"]
 }
