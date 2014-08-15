@@ -92,12 +92,6 @@ function loadDashboard() {
 			console.log("rendered view");
 			loadView();
 			console.log("view loaded");
-        		if (config.columns != null) {
-				var graphsPadding = 20;
-				var dasboardsViewWidth = config.columns * ( config.width + graphsPadding);
-				$('#dashboards-view').css({'width':dasboardsViewWidth});
-				console.log("adjust view to columns setting: " + config.columns + " columns");
-        		}
 			$("#loader").hide();
 
 			if (config.slideshow == "true") {
@@ -591,6 +585,26 @@ function mergeUrlParamsWithConfig(config) {
 	if (queryParam('slideshow') != null) {
 		config.slideshow = queryParam('slideshow');
 	}
+
+    if (config.columns != null) {
+        if (config.width != null) { 
+		    var graphsMargin = 25;
+		    var dasboardsViewWidth = config.columns * ( config.width + graphsMargin);
+		    $('#dashboards-view').css({'width':dasboardsViewWidth});
+		    console.log("adjust view to columns setting to: " + config.columns + " columns");
+        } else {
+		    var graphsMargin = 25;
+            var dasboardsViewWidth = $('#dashboards-view').width();
+            config.width = ( dasboardsViewWidth / config.columns ) - graphsMargin;
+            console.log("adjust graph width setting to: " + config.width + " px");
+            if (config.height == null) {
+                var heightNormal = config.width * 3 / 4;
+                var heightWide = config.width * 9 / 16;
+                config.height = heightWide;
+                console.log("adjust graph height setting to: " + config.height + "px");
+            }
+        }
+    }
 }
 
 function getGraphSource(graph) {

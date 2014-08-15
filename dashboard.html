@@ -45,30 +45,26 @@ $(document).ready(function() {
 
 <script type="text/template" id="tmpl-dashboards-view">
 <% for (idx in config.data) { %>
-    <% for(col=0; col<config.columns; col++) { %>
-        <% if( (idx % config.columns) == col) { %>
-            <div id="item<%=idx%>" class="well span<%=12/config.columns%>" style="width:<%=config.width%>px">
-                <h5 style="margin: 0px;">
-                    <span id="title<%=idx%>"></span>
-                    <% if(config.data[idx].description){ %>
-                        <a href="#" rel="tooltip" data-toggle="tooltip" title="<%=applyParameters(config.data[idx].description)%>"><i class="fa fa-question-circle"/></a>
-                    <% } %>
-                    <span class="pull-right">
-<!--                        <a href="#" onclick="showGraphEvolution(<%=idx%>); return false;" title="Show graph evolution"><img src="images/btn_graphevolution.png" width="20px"/></a> -->
-                        <a href="#" onclick="showExtendedGraph(<%=idx%>); return false;" title="Show extended graph"><img src="images/btn_extendedgraph.png" width="20px"/></a>
-                    </span>
-                </h5>
-                <a href="#" onclick="showGraphEvolution(<%=idx%>); return false;"><img id="img<%=idx%>" class="img-rounded" width="<%=config.width%>" height="<%=config.height%>"/></a>
-<!--                <a href="#" onclick="showExtendedGraph(<%=idx%>); return false;"><img id="img<%=idx%>" class="img-rounded" width="<%=config.width%>" height="<%=config.height%>"/></a> -->
-                <br/>
-                <div id="sourceContainer<%=idx%>"class="hide">
-                    <div><textarea id="source<%=idx%>" style="width:<%=config.width-10%>px" class="source" placeholder="Target Source"></textarea></div>
-                    <div><input type="text" id="graphParams<%=idx%>" style="width:<%=config.width-10%>px" placeholder="Additional URL Parameters" class="source"/></div>
-                    <button class="btn btn-mini" onclick="updateSource(<%=idx%>);">Update</button>
-               </div>
-            </div>
-        <% } %>
-    <% } %>
+    <div id="item<%=idx%>" class="well span" style="width:<%=config.width%>px">
+        <h5 style="margin: 0px;">
+            <span id="title<%=idx%>"></span>
+            <% if(config.data[idx].description){ %>
+                <a href="#" rel="tooltip" data-toggle="tooltip" title="<%=applyParameters(config.data[idx].description)%>"><i class="fa fa-question-circle"/></a>
+            <% } %>
+            <span class="pull-right">
+<!--                <a href="#" onclick="showGraphEvolution(<%=idx%>); return false;" title="Show graph evolution"><img src="images/btn_graphevolution.png" width="20px"/></a> -->
+                <a href="#" onclick="showExtendedGraph(<%=idx%>); return false;" title="Show extended graph"><img src="images/btn_extendedgraph.png" width="20px"/></a>
+            </span>
+        </h5>
+        <a href="#" onclick="showGraphEvolution(<%=idx%>); return false;"><img id="img<%=idx%>" class="img-rounded" width="<%=config.width%>" height="<%=config.height%>"/></a>
+<!--            <a href="#" onclick="showExtendedGraph(<%=idx%>); return false;"><img id="img<%=idx%>" class="img-rounded" width="<%=config.width%>" height="<%=config.height%>"/></a> -->
+        <br/>
+        <div id="sourceContainer<%=idx%>"class="hide">
+            <div><textarea id="source<%=idx%>" style="width:<%=config.width-10%>px" class="source" placeholder="Target Source"></textarea></div>
+            <div><input type="text" id="graphParams<%=idx%>" style="width:<%=config.width-10%>px" placeholder="Additional URL Parameters" class="source"/></div>
+            <button class="btn btn-mini" onclick="updateSource(<%=idx%>);">Update</button>
+       </div>
+    </div>
 <% } %>
 </script>
 <script type="text/template" id="tmpl-dashboards-menu">

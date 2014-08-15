@@ -90,7 +90,7 @@ function loadGraphitusConfig(callback) {
 		dataType: 'json',
 		success: function(json) {
 			graphitusConfig = json;
-			console.log("Loaded configuration: " + JSON.stringify(graphitusConfig));
+			//console.log("Loaded configuration: " + JSON.stringify(graphitusConfig));
 			callback();
 		},
 		error: function(xhr, ajaxOptions, thrownError) {
