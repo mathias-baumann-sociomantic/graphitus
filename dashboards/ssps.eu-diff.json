@@ -5,7 +5,6 @@
         "defaultLineWidth":1,
         "timeBack":"6h",
         "height" : 141,
-        "columns" : 2,
         "refresh" : true,
         "legend" : true,
         "defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=-100",

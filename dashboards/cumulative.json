@@ -4,7 +4,6 @@
 	"defaultLineWidth":1,
 	"timeBack":"1d",
 	"height" : 1000,
-	"columns" : 1,
 	"refresh" : true,
 	"legend" : false,
 	"data":[

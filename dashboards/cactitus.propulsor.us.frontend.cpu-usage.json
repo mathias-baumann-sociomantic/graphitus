@@ -4,7 +4,6 @@
 	"defaultLineWidth":1,
 	"timeBack":"6h",
 	"height" : 141,
-	"columns" : 2,
 	"refresh" : true,
 	"defaultParameters":"fontSize=9&areaMode=all&hideLegend=true&colorList=green,red&yMin=0&yMax=100",
 	"dataTemplates" : [

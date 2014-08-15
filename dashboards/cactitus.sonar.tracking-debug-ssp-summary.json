@@ -4,7 +4,6 @@
 	"defaultLineWidth":1,
 	"timeBack":"6h",
 	"height" : 400,
-	"columns" : 2,
 	"refresh" : true,
 	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1",
 	"dataTemplatesUnused" : [

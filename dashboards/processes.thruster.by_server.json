@@ -2,7 +2,6 @@
 	"title":"Thruster Stats by Server",
 		"defaultLineWidth":1,
 		"timeBack":"6h",
-		"columns" : 2,
 		"refresh" : true,
 		"legend" : true,
 		"width" : 640,

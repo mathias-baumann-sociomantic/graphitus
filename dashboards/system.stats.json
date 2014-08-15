@@ -4,7 +4,6 @@
 		"defaultLineWidth":1,
 		"timeBack":"2h",
 		"height" : 500,
-		"columns" : 2,
 		"refresh" : true,
 		"legend" : true,
 		"data":[

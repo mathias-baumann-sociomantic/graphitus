@@ -5,7 +5,6 @@
 	"timeBack":"6h",
 	"defaultParameters":"fontSize=9",
 	"height" : 141,
-	"columns" : 2,
 	"refresh" : true,
 	"dataTemplates" : [
 	{

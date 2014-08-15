@@ -4,7 +4,6 @@
 	"defaultLineWidth":1,
 	"timeBack":"6h",
         "height" : 220,
-        "columns" : 2,
 	"refresh" : true,
         "legend" : true,
 	"defaultParameters":"yMin=0&fontSize=10&hideLegend=true",
