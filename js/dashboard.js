@@ -203,8 +203,8 @@ function getGraphiteServer() {
 
 function getUserUrlParams(idx) {
 	var userUrlParams = "";
-//	userUrlParams += ($("#yMin" + idx).val() != "") ? "&yMin=" + $("#yMin" + idx).val() : "";
-//	userUrlParams += ($("#yMax" + idx).val() != "") ? "&yMax=" + $("#yMax" + idx).val() : "";
+	userUrlParams += ($("#yMin" + idx).val() != "") ? "&yMin=" + $("#yMin" + idx).val() : "";
+	userUrlParams += ($("#yMax" + idx).val() != "") ? "&yMax=" + $("#yMax" + idx).val() : "";
 	userUrlParams += ($("#otherUrlParamName" + idx).val() != "" && $("#otherUrlParamValue" + idx).val() != "") ? "&" + $("#otherUrlParamName" + idx).val() + "=" + $("#otherUrlParamValue" + idx).val() : "";
 	return userUrlParams;
 }
