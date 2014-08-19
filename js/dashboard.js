@@ -135,12 +135,13 @@ function updateGraphs() {
 
 function updateGraph(idx) {
 	var graph = config.data[idx];
+    var prevent_cache = new Date().getTime() / 1000 / 30 | 0;
 	$('#title' + idx).html(applyParameters(graph.title));
 	$('#sLink' + idx).attr('href', buildUrl(idx, graph, graph.title, config.width / 2, config.height / 2, "render"));
 	$('#mLink' + idx).attr('href', buildUrl(idx, graph, graph.title, config.width, config.height, "render"));
 	$('#lLink' + idx).attr('href', buildUrl(idx, graph, graph.title, config.width * 2, config.height * 2, "render"));
 	$('#gLink' + idx).attr('href', buildUrl(idx, graph, graph.title, 0, 0, "graphlot"));
-	$('#img' + idx).attr('src', buildUrl(idx, graph, "", config.width, config.height, "render")+"&preventCache="+ (new Date().getTime()));
+	$('#img' + idx).attr('src', buildUrl(idx, graph, "", config.width, config.height, "render")+"&preventCache="+prevent_cache);
 	rawTargets[idx] = buildUrl(idx, graph, graph.title, config.width, config.height, "render");
 	$('#source' + idx).val(getGraphSource(graph));
 }
