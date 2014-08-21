@@ -135,7 +135,7 @@ function updateGraphs() {
 
 function updateGraph(idx) {
 	var graph = config.data[idx];
-    var prevent_cache = new Date().getTime() / 1000 / 30 | 0;
+    var prevent_cache = new Date().getTime() / 1000 / 60 | 0;
 	$('#title' + idx).html(applyParameters(graph.title));
 	$('#sLink' + idx).attr('href', buildUrl(idx, graph, graph.title, config.width / 2, config.height / 2, "render"));
 	$('#mLink' + idx).attr('href', buildUrl(idx, graph, graph.title, config.width, config.height, "render"));
@@ -482,6 +482,7 @@ function enableAutoRefresh() {
 function disableAutoRefresh() {
 	window.clearInterval(refreshIntervalRef);
 	window.clearInterval(autoRefershRef);
+    $("#refreshCounter").html('<label class="badge badge-warning">autoupdate frozen<br/></label>');
 }
 
 function updateRefreshCounter() {

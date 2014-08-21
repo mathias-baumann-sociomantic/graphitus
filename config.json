@@ -6,7 +6,7 @@
     "eventsUrl": "events.json?start=<%=start%>&end=<%=end%>",
     "eventsDateFormat": "HH:mm:ss DD/MM/YYYY",
     "eventsTimezone": "Europe/Berlin",
-    "minimumRefresh": 30,
+    "minimumRefresh": 60,
 
     "timezones": ["GMT", "Europe/Berlin"]
 }
