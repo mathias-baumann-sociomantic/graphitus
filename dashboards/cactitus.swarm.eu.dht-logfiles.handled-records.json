@@ -1,0 +1,62 @@
+{
+    "title":"DHT logfiles Records Handled",
+        "width" : 490,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+        "height" : 220,
+	"refresh" : true,
+        "legend" : true,
+	"defaultParameters":"yMin=0&fontSize=10&hideLegend=false",
+        "dataTemplates":[		
+        {
+		"title":"${explode} DHT logfiles Records Handled [Node 1]",
+		"target": "alias(${explode}.cacti_dht_log-1.cacti_dht_log.records_handled, \"Records Handled\")",
+                "query":"${continent}-${server}.cacti_dht_log-1.cacti_dht_log",
+                "regex":"^(.*)",
+                "index":0
+        },
+        {
+		"title":"${explode} DHT logfiles Records Handled [Node 2]",
+		"target": "alias(${explode}.cacti_dht_log-2.cacti_dht_log.records_handled, \"Records Handled\")",
+                "query":"${continent}-${server}.cacti_dht_log-2.cacti_dht_log",
+                "regex":"^(.*)",
+                "index":0
+        },
+        {
+		"title":"${explode} DHT logfiles Records Handled [Node 3]",
+		"target": "alias(${explode}.cacti_dht_log-3.cacti_dht_log.records_handled, \"Records Handled\")",
+                "query":"${continent}-${server}.cacti_dht_log-3.cacti_dht_log",
+                "regex":"^(.*)",
+                "index":0
+        },
+        {
+		"title":"${explode} DHT logfiles Records Handled [Node 4]",
+		"target": "alias(${explode}.cacti_dht_log-4.cacti_dht_log.records_handled, \"Records Handled\")",
+                "query":"${continent}-${server}.cacti_dht_log-4.cacti_dht_log",
+                "regex":"^(.*)",
+                "index":0
+        }
+        ],
+        "data":[
+	],
+        "parameters": {
+                "continent": {
+                        "EU" : {"continent" : "eu",
+                                 "cont-nice" : "EU" },
+                        "All" : {"continent" : "*",
+                                 "cont-nice" : "All" },
+                        "US" : {"continent" : "us",
+                                 "cont-nice" : "US" },
+                        "AP" : {"continent" : "ap",
+                                 "cont-nice" : "AP" }
+                },
+                "server" : {
+                        "type" : "dynamic",
+                        "query" : "${continent}-*.cacti_dht_log-*.cacti_dht_log.*",
+                        "index" : 0,
+                        "regex" : "-(.*)",
+                        "showAll": true,
+                        "defaultValue" : "*"
+                }
+        }                       
+}

@@ -1,0 +1,90 @@
+{
+    "title":"DHT logfiles Total Sizes",
+        "width" : 490,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+        "height" : 220,
+	"refresh" : true,
+        "legend" : true,
+	"defaultParameters":"yMin=0&fontSize=10&hideLegend=false",
+        "dataTemplates":[		
+        {
+		"title":"${explode} DHT logfiles Total Bytes [Node 1]",
+		"target": "alias(${explode}.cacti_dht_log-1.cacti_dht_log.total_bytes, \"bytes\")",
+                "query":"${continent}-${server}.cacti_dht_log-1.cacti_dht_log",
+                "regex":"^(.*)",
+                "index":0
+        },
+        {
+		"title":"${explode} DHT logfiles Total Records [Node 1]",
+		"target": "alias(${explode}.cacti_dht_log-1.cacti_dht_log.total_records, \"records\")",
+                "query":"${continent}-${server}.cacti_dht_log-1.cacti_dht_log",
+                "regex":"^(.*)",
+                "index":0
+        },
+        {
+		"title":"${explode} DHT logfiles Total Bytes [Node 2]",
+		"target": "alias(${explode}.cacti_dht_log-2.cacti_dht_log.total_bytes, \"bytes\")",
+                "query":"${continent}-${server}.cacti_dht_log-2.cacti_dht_log",
+                "regex":"^(.*)",
+                "index":0
+        },
+        {
+		"title":"${explode} DHT logfiles Total Records [Node 2]",
+		"target": "alias(${explode}.cacti_dht_log-2.cacti_dht_log.total_records, \"records\")",
+                "query":"${continent}-${server}.cacti_dht_log-2.cacti_dht_log",
+                "regex":"^(.*)",
+                "index":0
+        },
+        {
+		"title":"${explode} DHT logfiles Total Bytes [Node 3]",
+		"target": "alias(${explode}.cacti_dht_log-3.cacti_dht_log.total_bytes, \"bytes\")",
+                "query":"${continent}-${server}.cacti_dht_log-3.cacti_dht_log",
+                "regex":"^(.*)",
+                "index":0
+        },
+        {
+		"title":"${explode} DHT logfiles Total Records [Node 3]",
+		"target": "alias(${explode}.cacti_dht_log-3.cacti_dht_log.total_records, \"records\")",
+                "query":"${continent}-${server}.cacti_dht_log-3.cacti_dht_log",
+                "regex":"^(.*)",
+                "index":0
+        },
+        {
+		"title":"${explode} DHT logfiles Total Bytes [Node 4]",
+		"target": "alias(${explode}.cacti_dht_log-4.cacti_dht_log.total_bytes, \"bytes\")",
+                "query":"${continent}-${server}.cacti_dht_log-4.cacti_dht_log",
+                "regex":"^(.*)",
+                "index":0
+        },
+        {
+		"title":"${explode} DHT logfiles Total Records [Node 4]",
+		"target": "alias(${explode}.cacti_dht_log-4.cacti_dht_log.total_records, \"records\")",
+                "query":"${continent}-${server}.cacti_dht_log-4.cacti_dht_log",
+                "regex":"^(.*)",
+                "index":0
+        }
+        ],
+        "data":[
+	],
+        "parameters": {
+                "continent": {
+                        "EU" : {"continent" : "eu",
+                                 "cont-nice" : "EU" },
+                        "All" : {"continent" : "*",
+                                 "cont-nice" : "All" },
+                        "US" : {"continent" : "us",
+                                 "cont-nice" : "US" },
+                        "AP" : {"continent" : "ap",
+                                 "cont-nice" : "AP" }
+                },
+                "server" : {
+                        "type" : "dynamic",
+                        "query" : "${continent}-*.cacti_dht_log-*.cacti_dht_log.*",
+                        "index" : 0,
+                        "regex" : "-(.*)",
+                        "showAll": true,
+                        "defaultValue" : "*"
+                }
+        }                       
+}

@@ -1,0 +1,74 @@
+{
+    "title":"DHT logfiles Data sent/received",
+        "width" : 490,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+        "height" : 220,
+	"refresh" : true,
+        "legend" : true,
+	"defaultParameters":"yMin=0&fontSize=11&hideLegend=false",
+        "dataTemplates":[		
+        {
+		"title":"${explode} DHT bytes/s sent/received [Node 1]",
+		"target": [
+			"alias(${explode}.cacti_dht_log-1.cacti_dht_log.bytes_sent, \"bytes sent\")",
+			"alias(${explode}.cacti_dht_log-1.cacti_dht_log.bytes_received, \"bytes received\")"
+		],
+                "query":"${continent}-${server}.cacti_dht_log-1.cacti_dht_log",
+                "regex":"^(.*)",
+                "index":0
+        },
+        {
+		"title":"${explode} DHT bytes/s sent/received [Node 2]",
+		"target": [
+			"alias(${explode}.cacti_dht_log-2.cacti_dht_log.bytes_sent, \"bytes sent\")",
+			"alias(${explode}.cacti_dht_log-2.cacti_dht_log.bytes_received, \"bytes received\")"
+		],
+                "query":"${continent}-${server}.cacti_dht_log-2.cacti_dht_log",
+                "regex":"^(.*)",
+                "index":0
+        },
+        {
+		"title":"${explode} DHT bytes/s sent/received [Node 3]",
+		"target": [
+			"alias(${explode}.cacti_dht_log-3.cacti_dht_log.bytes_sent, \"bytes sent\")",
+			"alias(${explode}.cacti_dht_log-3.cacti_dht_log.bytes_received, \"bytes received\")"
+		],
+                "query":"${continent}-${server}.cacti_dht_log-3.cacti_dht_log",
+                "regex":"^(.*)",
+                "index":0
+        },
+        {
+		"title":"${explode} DHT bytes/s sent/received [Node 4]",
+		"target": [
+			"alias(${explode}.cacti_dht_log-4.cacti_dht_log.bytes_sent, \"bytes sent\")",
+			"alias(${explode}.cacti_dht_log-4.cacti_dht_log.bytes_received, \"bytes received\")"
+		],
+                "query":"${continent}-${server}.cacti_dht_log-4.cacti_dht_log",
+                "regex":"^(.*)",
+                "index":0
+        }
+        ],
+        "data":[
+	],
+        "parameters": {
+                "continent": {
+                        "US" : {"continent" : "us",
+                                 "cont-nice" : "US" },
+                        "All" : {"continent" : "*",
+                                 "cont-nice" : "All" },
+                        "EU" : {"continent" : "eu",
+                                 "cont-nice" : "EU" },
+                        "AP" : {"continent" : "ap",
+                                 "cont-nice" : "AP" }
+                },
+                "server" : {
+                        "type" : "dynamic",
+                        "query" : "${continent}-*.cacti_dht_log-*.cacti_dht_log.*",
+                        "index" : 0,
+                        "regex" : "-(.*)",
+                        "showAll": true,
+                        "defaultValue" : "*"
+                }
+        }                       
+}

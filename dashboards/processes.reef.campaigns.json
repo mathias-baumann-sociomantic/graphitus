@@ -4,7 +4,8 @@
 	"defaultLineWidth":1,
 	"timeBack":"2h",
         "height" : 220,
-	"refresh" : true,
+	"refresh" : false,
+    "refreshIntervalSeconds" : 180,
         "legend" : false,
         "data":[
         {
