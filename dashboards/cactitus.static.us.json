@@ -9,7 +9,7 @@
 	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
 	"dataTemplates" : [
 	{
-		"title":"${explode} - Static (live) - Nginx Requests/sec",
+		"title":"[live] ${explode} - Static - Nginx Requests/sec",
 		"target" : [
 			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_sockets.nginx_accepts), \"Total Accepts\"))",
 			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_sockets.nginx_handled), \"Total Handled\"))",
@@ -20,7 +20,7 @@
 		"index" : 0
 	},
 	{
-		"title":"${explode} - Static (live) - Nginx Clients",
+		"title":"[live] ${explode} - Static - Nginx Clients",
 		"target" : [
 			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_active), \"Total Active\"))",
 			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_reading), \"Total Reading\"))",
@@ -32,25 +32,25 @@
 		"index" : 0
 	},
 	{
-		"title":"${explode} - Static (source) - Nginx Requests/sec",
+		"title":"[source] ${explode} - Static - Nginx Requests/sec",
 		"target" : [
 			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_sockets.nginx_accepts), \"Total Accepts\"))",
 			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_sockets.nginx_handled), \"Total Handled\"))",
 			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_sockets.nginx_requests), \"Total Requests\"))"
 		],
-		"query" : "{us-052,us-053}.cacti_nginx.cacti_nginx_sockets",
+		"query" : "{us-047,us-048,us-052,us-053,us-066,us-067}.cacti_nginx.cacti_nginx_sockets",
 		"regex" : "(.*)",
 		"index" : 0
 	},
 	{
-		"title":"${explode} - Static (source) - Nginx Clients",
+		"title":"[source] ${explode} - Static - Nginx Clients",
 		"target" : [
 			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_active), \"Total Active\"))",
 			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_reading), \"Total Reading\"))",
 			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_waiting), \"Total Waiting\"))",
 			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_writing), \"Total Writing\"))"
 		],
-		"query" : "{us-052,us-053}.cacti_nginx.cacti_nginx_clients",
+		"query" : "{us-047,us-048,us-052,us-053,us-066,us-067}.cacti_nginx.cacti_nginx_clients",
 		"regex" : "(.*)",
 		"index" : 0
 	}
