@@ -5,102 +5,140 @@
 	"timeBack":"6h",
 	"height" : 250,
 	"refresh" : true,
-	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1",
-	"dataTemplatesUnused" : [
-	],
 	"data":[
 	{
-		"title":"AP Debugs By SSP",
-		"target" : "aliasSub(groupByNode(ap-*.cacti_sonar.tracking_debug-ssp_*.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')"
+		"title":"AP Debugs SSP ${ssp_ap}",
+		"target" : "aliasSub(groupByNode(ap-012.cacti_sonar.tracking_debug-ssp_${ssp_ap}.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')"
 	},
 	{
-		"title":"AP Debugs By SSP Daily",
-		"target" : "aliasSub(groupByNode(ap-*.cacti_sonar.tracking_debug-ssp_*.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')",
+		"title":"AP Debugs SSP ${ssp_ap} Daily",
+		"target" : "aliasSub(groupByNode(ap-012.cacti_sonar.tracking_debug-ssp_${ssp_ap}.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')",
 		"params": "from=-24hours"
 	},
 	{
-		"title":"AP Debugs By SSP Weekly",
-		"target" : "aliasSub(groupByNode(ap-*.cacti_sonar.tracking_debug-ssp_*.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')",
+		"title":"AP Debugs SSP ${ssp_ap} Weekly",
+		"target" : "aliasSub(groupByNode(ap-012.cacti_sonar.tracking_debug-ssp_${ssp_ap}.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')",
 		"params": "from=-7days"
 	},
 	{
-		"title":"AP Debug By Errors",
-		"target" : "groupByNode(ap-012.cacti_sonar.tracking_debug-ssp_*.*, 3, 'sumSeries')"
+		"title":"AP Debug Errors ${error_ap}",
+		"target" : "groupByNode(ap-012.cacti_sonar.tracking_debug-ssp_${ssp_ap}.${error_ap}, 3, 'sumSeries')"
 	},
 	{
-		"title":"AP Debug By Errors Daily",
-		"target" : "groupByNode(ap-012.cacti_sonar.tracking_debug-ssp_*.*, 3, 'sumSeries')",
+		"title":"AP Debug Errors ${error_ap} Daily",
+		"target" : "groupByNode(ap-012.cacti_sonar.tracking_debug-ssp_${ssp_ap}.${error_ap}, 3, 'sumSeries')",
 		"params": "from=-24hours"
 	},
 	{
-		"title":"AP Debug By Errors Weekly",
-		"target" : "groupByNode(ap-012.cacti_sonar.tracking_debug-ssp_*.*, 3, 'sumSeries')",
+		"title":"AP Debug Errors ${error_ap} Weekly",
+		"target" : "groupByNode(ap-012.cacti_sonar.tracking_debug-ssp_${ssp_ap}.${error_ap}, 3, 'sumSeries')",
 		"params": "from=-7days"
 	},
 	{
-		"title":"US Debugs By SSP",
-		"target" : "aliasSub(groupByNode(us-*.cacti_sonar.tracking_debug-ssp_*.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')"
+		"title":"US Debugs SSP ${ssp_us}",
+		"target" : "aliasSub(groupByNode(us-*.cacti_sonar.tracking_debug-ssp_${ssp_us}.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')"
 	},
 	{
-		"title":"US Debugs By SSP Daily",
-		"target" : "aliasSub(groupByNode(us-*.cacti_sonar.tracking_debug-ssp_*.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')",
+		"title":"US Debugs SSP ${ssp_us} Daily",
+		"target" : "aliasSub(groupByNode(us-*.cacti_sonar.tracking_debug-ssp_${ssp_us}.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')",
 		"params": "from=-24hours"
 	},
 	{
-		"title":"US Debugs By SSP Weekly",
-		"target" : "aliasSub(groupByNode(us-*.cacti_sonar.tracking_debug-ssp_*.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')",
+		"title":"US Debugs SSP ${ssp_us} Weekly",
+		"target" : "aliasSub(groupByNode(us-*.cacti_sonar.tracking_debug-ssp_${ssp_us}.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')",
 		"params": "from=-7days"
 	},
 	{
-		"title":"US Debugs By Errors",
-		"target" : "groupByNode(us-049.cacti_sonar.tracking_debug-ssp_*.*, 3, 'sumSeries')"
+		"title":"US Debugs Errors ${error_us}",
+		"target" : "groupByNode(us-049.cacti_sonar.tracking_debug-ssp_${ssp_us}.${error_us}, 3, 'sumSeries')"
 	},
 	{
-		"title":"US Debugs By Errors Daily",
-		"target" : "groupByNode(us-049.cacti_sonar.tracking_debug-ssp_*.*, 3, 'sumSeries')",
+		"title":"US Debugs Errors ${error_us} Daily",
+		"target" : "groupByNode(us-049.cacti_sonar.tracking_debug-ssp_${ssp_us}.${error_us}, 3, 'sumSeries')",
 		"params": "from=-24hours"
 	},
 	{
-		"title":"US Debugs By Errors Weekly",
-		"target" : "groupByNode(us-049.cacti_sonar.tracking_debug-ssp_*.*, 3, 'sumSeries')",
+		"title":"US Debugs Errors ${error_us} Weekly",
+		"target" : "groupByNode(us-049.cacti_sonar.tracking_debug-ssp_${ssp_us}.${error_us}, 3, 'sumSeries')",
 		"params": "from=-7days"
 	},
 	{
-		"title":"EU Debugs By SSP",
-		"target" : "aliasSub(groupByNode(eu-*.cacti_sonar.tracking_debug-ssp_*.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')"
+		"title":"EU Debugs SSP ${ssp_eu}",
+		"target" : "aliasSub(groupByNode(eu-023.cacti_sonar.tracking_debug-ssp_${ssp_eu}.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')"
 	},
 	{
-		"title":"EU Debugs By SSP Daily",
-		"target" : "aliasSub(groupByNode(eu-*.cacti_sonar.tracking_debug-ssp_*.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')",
+		"title":"EU Debugs SSP ${ssp_eu} Daily",
+		"target" : "aliasSub(groupByNode(eu-023.cacti_sonar.tracking_debug-ssp_${ssp_eu}.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')",
 		"params": "from=-24hours"
 	},
 	{
-		"title":"EU Debugs By SSP Weekly",
-		"target" : "aliasSub(groupByNode(eu-*.cacti_sonar.tracking_debug-ssp_*.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')",
+		"title":"EU Debugs SSP ${ssp_eu} Weekly",
+		"target" : "aliasSub(groupByNode(eu-023.cacti_sonar.tracking_debug-ssp_${ssp_eu}.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')",
 		"params": "from=-7days"
 	},
 	{
-		"title":"EU Debug By Errors",
-		"target" : "groupByNode(eu-023.cacti_sonar.tracking_debug-ssp_*.*, 3, 'sumSeries')"
+		"title":"EU Debug Errors ${error_eu}",
+		"target" : "groupByNode(eu-023.cacti_sonar.tracking_debug-ssp_${ssp_eu}.${error_eu}, 3, 'sumSeries')"
 	},
 	{
-		"title":"EU Debug By Errors Daily",
-		"target" : "groupByNode(eu-023.cacti_sonar.tracking_debug-ssp_*.*, 3, 'sumSeries')",
+		"title":"EU Debug Errors ${error_eu} Daily",
+		"target" : "groupByNode(eu-023.cacti_sonar.tracking_debug-ssp_${ssp_eu}.${error_eu}, 3, 'sumSeries')",
 		"params": "from=-24hours"
 	},
 	{
-		"title":"EU Debug By Errors Weekly",
-		"target" : "groupByNode(eu-023.cacti_sonar.tracking_debug-ssp_*.*, 3, 'sumSeries')",
+		"title":"EU Debug Errors ${error_eu} Weekly",
+		"target" : "groupByNode(eu-023.cacti_sonar.tracking_debug-ssp_${ssp_eu}.${error_eu}, 3, 'sumSeries')",
 		"params": "from=-7days"
 	}
 	],
-        "parametersUnused": {
-                "continent": {
-                        "All" : {"continent" : "*" },
-                        "EU" : {"continent" : "eu" },
-                        "US" : {"continent" : "us" },
-                        "AP" : {"continent" : "ap" },
-                        "USAP" : {"continent" : "usap" }
+        "parameters": {
+                "ssp_eu" : {
+                    "type" : "dynamic",
+                    "query" : "eu-023.cacti_sonar.tracking_debug-ssp_*.*",
+                    "index" : 2,
+                    "regex" : "ssp_(.+)",
+                    "showAll": true,
+                    "defaultValue" : "*"
+                },
+                "error_eu" : {
+                    "type" : "dynamic",
+                    "query" : "eu-023.cacti_sonar.tracking_debug-ssp_*.*",
+                    "index" : 3,
+                    "regex" : "(.+)",
+                    "showAll": true,
+                    "defaultValue" : "total"
+                },
+                "ssp_us" : {
+                    "type" : "dynamic",
+                    "query" : "us-049.cacti_sonar.tracking_debug-ssp_*.*",
+                    "index" : 2,
+                    "regex" : "ssp_(.+)",
+                    "showAll": true,
+                    "defaultValue" : "*"
+                },
+                "error_us" : {
+                    "type" : "dynamic",
+                    "query" : "us-049.cacti_sonar.tracking_debug-ssp_*.*",
+                    "index" : 3,
+                    "regex" : "(.+)",
+                    "showAll": true,
+                    "defaultValue" : "total"
+                },
+                "ssp_ap" : {
+                    "type" : "dynamic",
+                    "query" : "ap-012.cacti_sonar.tracking_debug-ssp_*.*",
+                    "index" : 2,
+                    "regex" : "ssp_(.+)",
+                    "showAll": true,
+                    "defaultValue" : "*"
+                },
+                "error_ap" : {
+                    "type" : "dynamic",
+                    "query" : "ap-012.cacti_sonar.tracking_debug-ssp_*.*",
+                    "index" : 3,
+                    "regex" : "(.+)",
+                    "showAll": true,
+                    "defaultValue" : "total"
                 }
         }
 }
