@@ -1,0 +1,66 @@
+{
+	"title":"Jet LB Stats [EU]",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"dataTemplates" : [
+	{
+		"title":"${explode} - Jet LB - Network Traffic [eth0]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes, \"Received Bytes\"))",
+			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_txbytes, \"Sent bytes\"))"
+		],
+		"query":"${continent}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"${explode} - Jet LB - Sockets Pipes Files",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.files, \"Files\"))",
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.pipes, \"Pipes\"))",
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.tcp, \"TCP\"))",
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.udp, \"UDP\"))",
+			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.unix, \"Unix\"))"
+		],
+		"query":"${continent}.cacti_sfpstat.cacti_sfpstat.files",
+		"regex":"(.*)",
+		"index":0
+	}
+	],
+	"data":[
+	{
+		"title":"Aggregate: Jet LB - Network Traffic [eth0]",
+		"target": [
+			"cactiStyle(alias(sumSeries(${continent}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes), \"Received Bytes\"))",
+			"cactiStyle(alias(sumSeries(${continent}.cacti_netdev-eth0.cacti_netdev.NETDEV_txbytes), \"Sent bytes\"))"
+		]
+	},
+	{
+		"title":"Aggregate: Jet LB - Sockets Pipes Files",
+		"target": [
+			"cactiStyle(alias(sumSeries(${continent}.cacti_sfpstat.cacti_sfpstat.files), \"Files\"))",
+			"cactiStyle(alias(sumSeries(${continent}.cacti_sfpstat.cacti_sfpstat.pipes), \"Pipes\"))",
+			"cactiStyle(alias(sumSeries(${continent}.cacti_sfpstat.cacti_sfpstat.tcp), \"TCP\"))",
+			"cactiStyle(alias(sumSeries(${continent}.cacti_sfpstat.cacti_sfpstat.udp), \"UDP\"))",
+			"cactiStyle(alias(sumSeries(${continent}.cacti_sfpstat.cacti_sfpstat.unix), \"Unix\"))"
+		]
+	}
+	],
+	"parameters": {
+		"continent": {
+			"EU" : {"continent" : "{eu-012,eu-121}",
+				"continent-nice" : "EU" },
+			"US" : {"continent" : "{us-036,us-044}",
+				"continent-nice" : "US" },
+			"AP" : {"continent" : "{ap-003,ap-040}",
+				"continent-nice" : "AP" }
+		}
+	}
+
+
+}
