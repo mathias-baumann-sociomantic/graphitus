@@ -30,9 +30,9 @@
                 "index":2
         },
 	{
-		"title":"Aqua SSP - ${explode} [Node us-047]",
+		"title":"Aqua SSP - ${explode} [Node us-011]",
 		"target": [
-			"cactiStyle(alias(scale(us-047.cacti_aqua-2.cacti_aqua_ssp-${explode}.total_processed, 0.03333), \"Total Processed\"))"
+			"cactiStyle(alias(scale(us-011.cacti_aqua-2.cacti_aqua_ssp-${explode}.total_processed, 0.03333), \"Total Processed\"))"
 		],
                 "query":"us-*.cacti_aqua-2.cacti_aqua_ssp-*",
                 "regex":"cacti_aqua_ssp-(.*)",
