@@ -23,7 +23,7 @@
 		{
 			"title": "Bid %age (Bids to Bid Requests) (${continent}-${server}/${ssp})",
 			"target" : [
-				"asPercent(groupByNode( scale( timeShift(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.bids, \"45s\"), 0.033333333), 2, \"sumSeries\"), groupByNode( scale( timeShift(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, \"45s\"), 0.033333333), 2, \"sumSeries\"))"
+				"aliasSub(asPercent(groupByNode( scale( timeShift(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.bids, \"45s\"), 0.033333333), 2, \"sumSeries\"), groupByNode( scale( timeShift(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, \"45s\"), 0.033333333), 2, \"sumSeries\")), \"^.*-(.*)\\)\", \"\\1\")"
 			]
 		},
 		{
@@ -35,19 +35,19 @@
 		{
 			"title": "Win %age (Wins to Bids) (${continent}-${server}/${ssp})",
 			"target" : [
-				"asPercent(groupByNode(scale(timeShift(${reef_server}.reef.reef_ssp-${ssp}*.loglines, \"45s\"),0.033333333),2,\"sumSeries\"), groupByNode(scale(timeShift(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.bids, \"45s\"),0.033333333),2,\"sumSeries\"))"
+				"aliasSub(asPercent(groupByNode(scale(timeShift(${reef_server}.reef.reef_ssp-${ssp}*.loglines, \"45s\"),0.033333333),2,\"sumSeries\"), groupByNode(scale(timeShift(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.bids, \"45s\"),0.033333333),2,\"sumSeries\")), \"^.*-(.*)\\)\", \"\\1\")"
 			]
 		},
 		{
 			"title": "Propulsor FE Errors/s (%) (${continent}-${server}/${ssp})",
 			"target" : [
-				"asPercent(timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.errors, 2, \"sumSeries\"), \"45s\"), timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), \"45s\"))"
+				"aliasSub(asPercent(timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.errors, 2, \"sumSeries\"), \"45s\"), timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), \"45s\")), \"^.*stats-(.*)\\..*\", \"\\1\")"
 			]
 		},
 		{
 			"title": "Propulsor FE User Match Errors/s (%) (${continent}-${server}/${ssp})",
 			"target" : [
-				"asPercent(timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.userid_errors, 2, \"sumSeries\"), \"45s\"), timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), \"45s\"))"
+				"aliasSub(asPercent(timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.userid_errors, 2, \"sumSeries\"), \"45s\"), timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), \"45s\")), \"^.*stats-(.*)\\..*\", \"\\1\")"
 			]
 		},
 		{
@@ -85,34 +85,10 @@
 			"target" : [
 				"aliasSub(aliasByNode(groupByNode(scale(timeShift(${continent}-*.cacti_aqua*.cacti_aqua_ssp-${ssp}.total_processed, \"45s\"),0.033333333),2,\"sumSeries\"),0),\"^.*-\", \"\")"
 			]
-		},
-		{
-			"title": "Changes in Campaign Wins/s (${continent})",
-			"target": [
-				"aliasSub(aliasByNode(maximumAbove(stdev(${reef_server}.reef.reef_cid-*.loglines,10), 250),0,2),\".reef_cid-\", \" \")"
-			],
-			"params" : "hideLegend="
-		},
-		{
-			"title": "Reef Logline Errors/s (${continent}/${ssp})",
-			"target" : [
-				"aliasSub(aliasByNode(groupByNode(scale(timeShift(${reef_server}.reef.reef_ssp-${ssp}*.errors, \"45s\"),0.033333333),2,\"sumSeries\"),0),\"^.*-\", \"\")"
-			]
-		},
-		{
-			"title": "CID Fails/s (${continent}/${ssp})",
-			"target" : [
-				"aliasSub(aliasByNode(groupByNode(scale(timeShift(${reef_server}.reef.reef_ssp-${ssp}*.failedcids, \"45s\"),0.033333333),2,\"sumSeries\"),0),\"^.*-\", \"\")"
-			]
 		}
 	],
 	"parameters": {
 		"continent": {
-			"All" : {
-				"continent" : "*",
-				"cont-nice" : "All",
-				"reef_server" : "{eu-137,us-011,ap-010}"
-			},
 			"EU" : {
 				"continent" : "eu",
 				"cont-nice" : "EU",
@@ -132,6 +108,11 @@
 				"continent" : "usap",
 				"cont-nice" : "USAP",
 				"reef_server" : "ap-010"
+			},
+			"All" : {
+				"continent" : "*",
+				"cont-nice" : "All",
+				"reef_server" : "{eu-137,us-011,ap-010}"
 			}
 		},
 		"server" : {

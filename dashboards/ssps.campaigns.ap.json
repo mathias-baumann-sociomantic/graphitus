@@ -1,0 +1,36 @@
+{
+	"title":"Campaign Stats",
+		"width" : 1280,
+		"defaultLineWidth": 1,
+		"timeBack": "6h",
+		"height" : 768,
+		"refresh" : false,
+		"legend" : true,
+		"data":[
+		{
+			"title": "Campaigns With the Biggest Change in Wins (${continent})",
+			"target" : [
+				"aliasSub(mostDeviant(5, ${reef_server}.reef.reef_cid-*.loglines), \"^.*reef_cid-([0-9]+)\\.loglines.*$\", \"\\1\")"
+			]
+		}
+	],
+	"parameters": {
+		"continent": {
+			"AP/USAP" : {
+				"continent" : "ap",
+				"cont-nice" : "AP",
+				"reef_server" : "ap-010"
+			},
+			"EU" : {
+				"continent" : "eu",
+				"cont-nice" : "EU",
+				"reef_server" : "eu-137"
+			},
+			"US" : {
+				"continent" : "us",
+				"cont-nice" : "US",
+				"reef_server" : "us-011"
+			}
+		}
+	}			
+}
