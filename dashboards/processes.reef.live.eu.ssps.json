@@ -1,0 +1,69 @@
+{
+    "title":"Reef Live EU SSP Stats",
+    "width" : 490,
+    "defaultLineWidth":1,
+    "timeBack":"12h",
+    "height" : 270,
+    "refresh" : true,
+    "legend" : true,
+    "data":[
+        {
+            "height" : 500,
+            "title":"SSP Loglines/s",
+            "target": [
+                "alias(scale(${continent}-${version}.reef.reef_ssp-${ssp}.loglines,0.03333333),\"Today\")",
+                "alias(lineWidth(scale(timeShift(${continent}-${version}.reef.reef_ssp-${ssp}.loglines,\"1d\"),0.03333333),3),\"Yesterday\")",
+                "alias(scale(timeShift(${continent}-${version}.reef.reef_ssp-${ssp}.loglines,\"1w\"),0.03333333),\"Last Week\")"
+            ],
+            "params" : "lineWidth=2&colorList=blue,%23B5B5FF,grey"
+        },
+        {
+            "title":"SSP FailedCids/s",
+            "target": [
+                "aliasSub(aliasByNode(scale(${continent}-${version}.reef.reef_ssp-${ssp}.failedcids,0.0333333),2),\"reef_ssp-\",\"\")"
+            ],
+            "params" : "colorList=darkgreen&areaAlpha=0.5&areaMode=all"
+        },
+        {
+            "title":"SSP FailedCids %",
+            "target": [
+                "aliasSub(aliasByNode(asPercent(${continent}-${version}.reef.reef_ssp-${ssp}.failedcids,${continent}-${version}.reef.reef_ssp-${ssp}.loglines),2),\"reef_ssp-\",\"\")"
+            ],
+            "params" : "colorList=green&areaAlpha=0.5&areaMode=all"
+        },
+        {
+            "title":"SSP Errors/s",
+            "target": [
+                "aliasSub(aliasByNode(scale(${continent}-${version}.reef.reef_ssp-${ssp}.errors,0.0333333),2),\"reef_ssp-\",\"\")"
+            ],
+            "params" : "lineWidth=2&areaAlpha=0.5&areaMode=all&colorList=darkred"
+        },
+        {
+            "title":"SSP Errors %",
+            "target": [
+                "aliasSub(aliasByNode(asPercent(${continent}-${version}.reef.reef_ssp-${ssp}.errors,${continent}-${version}.reef.reef_ssp-${ssp}.loglines),2),\"reef_ssp-\",\"\")"
+            ],
+            "params" : "lineWidth=2&areaAlpha=0.5&areaMode=all&colorList=red"
+        }
+    ],
+    "parameters": {
+        "continent": {
+            "EU" : {"continent" : "eu" },
+            "US" : {"continent" : "us" },
+            "AP" : {"continent" : "ap" },
+            "All": {"continent" : "*" }
+            },
+        "version" : {
+            "live" : { "version" : "{137,011,010}" },
+            "test" : { "version" : "{001,022,013}" },
+            "All" : { "version" : "*" }
+        },
+        "ssp" : {
+            "type" : "dynamic",
+            "query" : "${continent}-${version}.reef.reef_ssp-*",
+            "index" : 2,
+            "regex" : "reef_ssp-(.*)",
+            "showAll": false
+        }
+    }            
+}

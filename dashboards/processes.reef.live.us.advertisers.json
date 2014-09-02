@@ -1,0 +1,55 @@
+{
+    "title":"Reef Live US Advertiser Stats",
+    "width" : 490,
+    "defaultLineWidth":1,
+    "timeBack":"12h",
+    "height" : 270,
+    "refresh" : true,
+    "legend" : true,
+    "data":[
+        {
+            "height" : 500,
+            "title":"Advertiser Loglines/s",
+            "target": [
+                "alias(scale(${continent}-${version}.reef.reef_adv-${adv}.loglines,0.03333333),\"Today\")",
+                "alias(lineWidth(scale(timeShift(${continent}-${version}.reef.reef_adv-${adv}.loglines,\"1d\"),0.03333333),3),\"Yesterday\")",
+                "alias(scale(timeShift(${continent}-${version}.reef.reef_adv-${adv}.loglines,\"1w\"),0.03333333),\"Last Week\")"
+            ],
+            "params" : "lineWidth=2&colorList=blue,%23B5B5FF,grey"
+        },
+        {
+            "title":"Advertiser Errors/s",
+            "target": [
+               "aliasSub(aliasByNode(scale(${continent}-${version}.reef.reef_adv-${adv}.errors,0.03333333),2),\"reef_adv-\",\"\")"
+            ],
+            "params" : "lineWidth=2"
+        },
+        {
+            "title":"Advertisers Errors %",
+            "target": [
+               "aliasSub(aliasByNode(asPercent(${continent}-${version}.reef.reef_adv-${adv}.errors,${continent}-${version}.reef.reef_adv-${adv}.loglines),2),\"reef_adv-\",\"\")"
+            ],
+            "params" : "lineWidth=2"
+        }
+    ],
+    "parameters": {
+        "continent": {
+            "US" : {"continent" : "us" },
+            "EU" : {"continent" : "eu" },
+            "AP" : {"continent" : "ap" },
+            "All": {"continent" : "*" }
+            },
+        "version" : {
+            "live" : { "version" : "{137,011,010}" },
+            "test" : { "version" : "{001,022,013}" },
+            "All" : { "version" : "*" }
+        },
+        "adv" : {
+            "type" : "dynamic",
+            "query" : "${continent}-${version}.reef.reef_adv-*",
+            "index" : 2,
+            "regex" : "reef_adv-(.*)",
+            "showAll": false
+        }
+    }            
+}

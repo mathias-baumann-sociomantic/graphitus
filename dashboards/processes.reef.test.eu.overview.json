@@ -1,0 +1,174 @@
+{
+    "title":"Reef Test EU Stats",
+    "width" : 490,
+    "defaultLineWidth":1,
+    "timeBack":"6h",
+    "height" : 220,
+    "refresh" : false,
+    "refreshIntervalSeconds" : 180,
+    "legend" : false,
+    "data":[
+        {
+            "title":"Loglines",
+            "target": [
+                "cactiStyle(aliasByNode(scale(sortByMinima(${continent}-${version}.cacti_reef.cacti_reef_stats.loglines),0.03333),0))"
+            ],
+            "params" : "yMin=0&areaAlpha=0.5&areaMode=all&lineWidth=2&colorList=%23B34BFD,%23C87CFF,%239D63FF,%235E00FF,%238C00FF,%23B969FB,%23F85F00,%23F8002D,%23F82700"
+        },
+        {
+            "title":"Logline Errors",
+            "target": [
+                "aliasSub(aliasSub(scale(${continent}-${version}.cacti_reef.cacti_reef_stats.lgln_processing,0.033333),\"\\..*\\..*$\",\" Processing\"),\"scale\\(\",\"\")",
+                "aliasSub(aliasSub(scale(${continent}-${version}.cacti_reef.cacti_reef_stats.lgln_input,0.033333),\"\\..*\\..*$\",\" Input\"),\"scale\\(\",\"\")"
+            ]
+        },
+        {
+            "title":"Logline Errors %",
+            "target": [
+                "lineWidth(aliasByNode(asPercent(${continent}-${version}.cacti_reef.cacti_reef_stats.lgln_processing,${continent}-${version}.cacti_reef.cacti_reef_stats.loglines),0,3),3)",
+                "lineWidth(aliasByNode(asPercent(${continent}-${version}.cacti_reef.cacti_reef_stats.lgln_input,${continent}-${version}.cacti_reef.cacti_reef_stats.loglines),0,3),2)"
+            ]
+        },
+        {
+            "title" : "Aggregation Maps",
+            "params" : "lineWidth=2",
+            "target" : "aliasByNode(${continent}-${version}.cacti_reef.cacti_reef_stats.*_*_map,0,3)"
+        },
+        {
+            "title" : "SQL Queue",
+            "target" : "aliasByNode(${continent}-${version}.cacti_reef.cacti_reef_stats.sql_queue,0,3)",
+            "params" : "yMin=0&lineWidth=2" 
+        },
+        {
+            "title" : "Action Maps",
+            "target" : [
+                "aliasByNode(${continent}-${version}.cacti_reef.cacti_reef_stats.click_map,0,3)",
+                "aliasByNode(${continent}-${version}.cacti_reef.cacti_reef_stats.view_map,0,3)"],
+            "params" : "areaMode=all&areaAlpha=0.4"
+        },
+        {
+            "title" : "Memory Usage",
+            "params" : "areaAlpha=0.4&areaMode=all&yMin=0",
+            "target" : "aliasByNode(sortByMinima(${continent}-${version}.cacti_reef.cacti_reef_stats.memory),0,3)"
+        },
+        {
+            "title":"Sales & Leads",
+            "target": [
+                "aliasByNode(scale(${continent}-${version}.cacti_reef.cacti_reef_stats.*saleleads,0.033333),0,3)"
+            ],
+            "params" : "lineWidth=2"
+        },
+        {
+            "title":"Sale & Lead Errors",
+            "target": [
+                "aliasByNode(scale(exclude(${continent}-${version}.cacti_reef.cacti_reef_stats.salelead_*,\"salelead_map\"),0.033333),0,3)"
+            ],
+            "params" : "lineWidth=2",
+            "tmp" : {
+                "title":"Sale & Lead Errors %",
+                "target": [
+                    "aliasByNode(asPercent(exclude(${continent}-${version}.cacti_reef.cacti_reef_stats.salelead_*,\"salelead_map\"),${continent}-${version}.cacti_reef.cacti_reef_stats.saleleads),0,3)"
+                ],
+                "params" : "lineWidth=2"
+            }
+        },
+        {
+            "title":"Failed Cids/s",
+            "target": [
+                "aliasByNode(scale(${continent}-${version}.cacti_reef.cacti_reef_stats.lgln_cidsfailed,0.033333),0,3)"
+            ],
+            "params" : "lineWidth=2&areaAlpha=0.4&areaMode=all&colorList=%2303FF28,%2300B01A,%23008714,%2353925D"
+        },
+        {
+            "title":"Failed Cids %",
+            "target": [
+                "aliasByNode(asPercent(${continent}-${version}.cacti_reef.cacti_reef_stats.lgln_cidsfailed,${continent}-${version}.cacti_reef.cacti_reef_stats.loglines),0,3)"
+            ],
+            "params" : "lineWidth=2&areaAlpha=0.4&areaMode=all&colorList=%2303FF28,%2300B01A,%23008714,%2353925D"
+        },
+        {
+            "title":"SQL Queries/s",
+            "target": [
+                "aliasByNode(scale(${continent}-${version}.cacti_reef.cacti_reef_stats.sql_queries,0.033333),0,3)"
+            ],
+            "params" : "lineWidth=2"
+        },
+        {
+            "title":"SQL Updates/s",
+            "target": [
+                "aliasByNode(scale(${continent}-${version}.cacti_reef.cacti_reef_stats.sql_updates,0.033333),0,3)"
+            ],
+            "params" : "lineWidth=2"
+        },
+        {
+            "title":"Logline Delay",
+            "target": [
+                "aliasByNode(${continent}-${version}.cacti_reef.cacti_reef_stats.lgln_traveltime_*,0,3)"
+            ],
+            "params" : "lineWidth=2"
+        },
+        {
+            "title":"Aggr. Delay Avg",
+            "target": [
+                "aliasByNode(${continent}-${version}.cacti_reef.cacti_reef_stats.aggr_delay_*,0,3)"
+            ],
+            "params" : "lineWidth=2"
+        },
+        {
+            "title":"SSP Stats [High Vol]",
+            "target": [
+                "aliasSub(aliasByNode(averageAbove(scale(${continent}-${version}.reef.reef_ssp-*.loglines,0.03333333),30),2),\"reef_ssp-\",\"\")"
+            ],
+            "params" : "lineWidth=2"
+        },
+        {
+            "height" : 500,
+            "title":"SSP Stats [Low Vol]",
+            "target": [
+                "aliasSub(aliasByNode(averageBelow(scale(${continent}-${version}.reef.reef_ssp-*.loglines,0.03333333),30),2),\"reef_ssp-\",\"\")"
+            ],
+            "params" : "lineWidth=2"
+        },
+        {
+            "title":"SSP 4 Highest Avg FailedCids",
+            "target": [
+                "aliasSub(aliasByNode(movingAverage(highestAverage(asPercent(${continent}-${version}.reef.reef_ssp-*.failedcids,offset(${continent}-${version}.reef.reef_ssp-*.loglines,0.0001)),4),40),2),\"reef_ssp-\",\"\")"
+            ],
+            "params" : ""
+        },
+        {
+            "title":"SSP 4 Highest Avg Errors",
+            "target": [
+                "aliasSub(aliasByNode(movingAverage(highestAverage(asPercent(${continent}-${version}.reef.reef_ssp-*.errors,offset(${continent}-${version}.reef.reef_ssp-*.loglines,0.0001)),4),40),2),\"reef_ssp-\",\"\")"
+            ],
+            "params" : "lineWidth=2"
+        },
+        {
+            "title":"CIDs 5 Highest Avg Failedcids",
+            "target": [
+                "aliasSub(aliasByNode(movingAverage(highestAverage(asPercent(${continent}-${version}.reef.reef_cid-*.failedcids,removeBelowValue(${continent}-${version}.reef.reef_cid-*.loglines,5)),5),40),2),\"reef_cid-\",\"\")"
+            ],
+            "params" : "lineWidth=2"
+        },
+        {
+            "title":"Advertisers 5 Highest Avg Errors",
+            "target": [
+                "aliasSub(aliasByNode(movingAverage(highestAverage(asPercent(${continent}-${version}.reef.reef_adv-*.errors,${continent}-${version}.reef.reef_adv-*.loglines),5),40),2),\"reef_adv-\",\"\")"
+            ],
+            "params" : "lineWidth=2"
+        }
+    ],
+    "parameters": {
+        "continent": {
+            "EU" : {"continent" : "eu" },
+            "US" : {"continent" : "us" },
+            "AP" : {"continent" : "ap" },
+            "All": {"continent" : "*" }
+            },
+        "version" : {
+            "test" : { "version" : "{001,022,013}" },
+            "live" : { "version" : "{137,011,010}" },
+            "All" : { "version" : "*" }
+        }
+    }            
+}
