@@ -228,6 +228,7 @@
         {"id": "statics.requests"},
         {"id": "swarm.dht.aggregates"},
         {"id": "swarm.dht.channel-dumps"},
+        {"id": "swarm.dht.channel-dump-ages"},
         {"id": "swarm.dht.channel-size"},
         {"id": "swarm.dht.data-sent-received"},
         {"id": "swarm.dht.handled-connections"},

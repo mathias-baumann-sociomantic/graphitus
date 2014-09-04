@@ -1,0 +1,36 @@
+{
+    "title":"DHT Channel Dumps Age",
+    "width" : 550,
+    "defaultLineWidth":1,
+    "timeBack":"6h",
+    "height" : 320,
+    "refresh" : true,
+    "legend" : true,
+    "defaultParameters":"yMin=0&fontSize=10&hideLegend=false",
+    "data":[    
+    {
+        "title":"DHT Node Dumps older than 6h [EU]",
+        "target":"aliasSub(currentAbove(eu-*.${version}_dht-*.dht_dump_tcm-*.age,6),\"(.*)\\.cacti_(.*)\\..*-(.*)\\..*\",\"\\1.\\2.\\3\")"
+    },
+    {
+        "title":"DHT Node Dumps older than 6h [US]",
+        "target":"aliasSub(currentAbove(us-*.${version}_dht-*.dht_dump_tcm-*.age,6),\"(.*)\\.cacti_(.*)\\..*-(.*)\\..*\",\"\\1.\\2.\\3\")"
+    },
+    {
+        "title":"DHT Node Dumps older than 6h [AP]",
+        "target":"aliasSub(currentAbove(ap-*.${version}_dht-*.dht_dump_tcm-*.age,6),\"(.*)\\.cacti_(.*)\\..*-(.*)\\..*\",\"\\1.\\2.\\3\")"
+    },
+    {
+        "title":"DHT Node Dumps older than 6h [USAP]",
+        "target":"aliasSub(currentAbove(usap-*.${version}_dht-*.dht_dump_tcm-*.age,6),\"(.*)\\.cacti_(.*)\\..*-(.*)\\..*\",\"\\1.\\2.\\3\")"
+    }
+    ],
+    "parameters": {
+        "version": {
+            "Live" : {"version" : "cacti" },
+            "Testing" : {"version" : "testing" },
+            "All" : {"continent" : "*" }
+        }
+    }
+
+}
