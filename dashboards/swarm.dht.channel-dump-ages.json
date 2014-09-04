@@ -29,7 +29,7 @@
         "version": {
             "Live" : {"version" : "cacti" },
             "Testing" : {"version" : "testing" },
-            "All" : {"continent" : "*" }
+            "All" : {"version" : "*" }
         }
     }
 
