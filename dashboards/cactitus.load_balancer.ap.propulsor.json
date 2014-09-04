@@ -9,7 +9,7 @@
 	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
 	"dataTemplates" : [
 	{
-		"title":"${explode} - Propulsor LB- Network Traffic [eth0]",
+		"title":"${explode} - Propulsor LB - Network Traffic [eth0]",
 		"target": [
 			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes, \"Received Bytes\"))",
 			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_txbytes, \"Sent bytes\"))"
