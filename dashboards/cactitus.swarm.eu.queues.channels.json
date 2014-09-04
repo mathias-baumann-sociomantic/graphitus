@@ -28,7 +28,7 @@
 		"index":3
 	},
 	{
-		"title":"eu-061 - Queue Channel Usage [${explode}]",
+		"title":"eu-107 - Queue Channel Usage [${explode}]",
 		"target":[
 			"aliasByMetric(eu-*.cacti_queue.queue_stats-${explode}.usage)"
 		],
@@ -41,7 +41,7 @@
 	"dataTemplatesUnused" : [
 	{
 		"comment":"This is deprecated and should disappear. Kept for backwards reference. Remove if you don't know what all this is about",
-		"title":"eu-061 - (OLD RANGES) Queue Channel Usage [${explode}]",
+		"title":"eu-107 - (OLD RANGES) Queue Channel Usage [${explode}]",
 		"target":[
 			"aliasByMetric(eu-*.cacti_queue.cacti_admedia_queue_stats_eu.${explode})"
 		],
