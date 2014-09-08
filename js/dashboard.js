@@ -135,13 +135,12 @@ function updateGraphs() {
 
 function updateGraph(idx) {
 	var graph = config.data[idx];
-    var prevent_cache = new Date().getTime() / 1000 / 60 | 0;
 	$('#title' + idx).html(applyParameters(graph.title));
 	$('#sLink' + idx).attr('href', buildUrl(idx, graph, graph.title, config.width / 2, config.height / 2, "render"));
 	$('#mLink' + idx).attr('href', buildUrl(idx, graph, graph.title, config.width, config.height, "render"));
 	$('#lLink' + idx).attr('href', buildUrl(idx, graph, graph.title, config.width * 2, config.height * 2, "render"));
 	$('#gLink' + idx).attr('href', buildUrl(idx, graph, graph.title, 0, 0, "graphlot"));
-	$('#img' + idx).attr('src', buildUrl(idx, graph, "", config.width, config.height, "render")+"&preventCache="+prevent_cache);
+	$('#img' + idx).attr('src', buildUrl(idx, graph, "", config.width, config.height, "render"));
 	rawTargets[idx] = buildUrl(idx, graph, graph.title, config.width, config.height, "render");
 	$('#source' + idx).val(getGraphSource(graph));
 }
@@ -172,6 +171,9 @@ function buildUrl(idx, graph, chartTitle, width, height, graphiteOperation) {
 	var legend = "&hideLegend=" + !($("#legend").prop('checked'));
 	var size = "&width=" + width + "&height=" + height;
 
+	var refreshStep = (config.refreshIntervalSeconds > graphitusConfig.minimumRefresh) ? config.refreshIntervalSeconds : graphitusConfig.minimumRefresh;
+	var prevent_cache = "&preventCache=" + (new Date().getTime() / 1000 / refreshStep | 0);
+
 	targetUri = "";
 	var targets = (typeof graph.target == 'string') ? new Array(graph.target) : graph.target;
 	for (i = 0; i < targets.length; i++) {
@@ -195,7 +197,7 @@ function buildUrl(idx, graph, chartTitle, width, height, graphiteOperation) {
 	}
 	var userParams = getUserUrlParams(idx);
 
-	return getGraphiteServer() + "/" + graphiteOperation + "/?" + targetUri + range + legend + params + userParams + size;
+	return getGraphiteServer() + "/" + graphiteOperation + "/?" + targetUri + range + legend + params + userParams + size + prevent_cache;
 }
 
 function getGraphiteServer() {
