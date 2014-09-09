@@ -484,7 +484,7 @@ function enableAutoRefresh() {
 function disableAutoRefresh() {
 	window.clearInterval(refreshIntervalRef);
 	window.clearInterval(autoRefershRef);
-    $("#refreshCounter").html('<label class="badge badge-warning">autoupdate frozen<br/></label>');
+    $("#refreshCounter").html('<label class="badge badge-warning">Auto Refresh Disabled<br/></label>');
 }
 
 function updateRefreshCounter() {

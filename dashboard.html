@@ -42,13 +42,6 @@
 $(document).ready(function() {
     loadGraphitusConfig(renderGraphitus);
 });
-$(window).blur(function(){
-    disableAutoRefresh();
-});
-$(window).focus(function(){
-    lastUpdate=new Date();
-    enableAutoRefresh();
-});
 </script>
 
 <script type="text/template" id="tmpl-dashboards-view">
