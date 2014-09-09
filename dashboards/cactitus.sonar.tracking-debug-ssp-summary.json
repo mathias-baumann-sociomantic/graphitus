@@ -11,27 +11,27 @@
 	"data":[
 	{
 		"title":"AP Debugs By SSP",
-		"target" : "aliasSub(groupByNode(ap-*.cacti_sonar.tracking_debug-ssp_*.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')"
+		"target" : "aliasSub(groupByNode(ap-*.tracking-ssp.tracking_debug-ssp_*.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')"
 	},
 	{
 		"title":"US Debugs By SSP",
-		"target" : "aliasSub(groupByNode(us-*.cacti_sonar.tracking_debug-ssp_*.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')"
+		"target" : "aliasSub(groupByNode(us-*.tracking-ssp.tracking_debug-ssp_*.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')"
 	},
 	{
 		"title":"EU Debugs By SSP",
-		"target" : "aliasSub(groupByNode(eu-*.cacti_sonar.tracking_debug-ssp_*.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')"
+		"target" : "aliasSub(groupByNode(eu-*.tracking-ssp.tracking_debug-ssp_*.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')"
 	},
 	{
 		"title":"AP Debug By Errors",
-		"target" : "groupByNode(ap-012.cacti_sonar.tracking_debug-ssp_*.*, 3, 'sumSeries')"
+		"target" : "groupByNode(ap-012.tracking-ssp.tracking_debug-ssp_*.*, 3, 'sumSeries')"
 	},
 	{
 		"title":"US Debugs By Errors",
-		"target" : "groupByNode(us-049.cacti_sonar.tracking_debug-ssp_*.*, 3, 'sumSeries')"
+		"target" : "groupByNode(us-049.tracking-ssp.tracking_debug-ssp_*.*, 3, 'sumSeries')"
 	},
 	{
 		"title":"EU Debug By Errors",
-		"target" : "groupByNode(eu-023.cacti_sonar.tracking_debug-ssp_*.*, 3, 'sumSeries')"
+		"target" : "groupByNode(eu-023.tracking-ssp.tracking_debug-ssp_*.*, 3, 'sumSeries')"
 	}
 	],
         "parametersUnused": {
