@@ -1,58 +1,58 @@
 {
-	"title":"Frontend Connections",
-		"width" : 500,
-		"defaultLineWidth":1,
-		"timeBack":"6h",
-		"height" : 300,
-		"refresh" : true,
-		"dataTemplates" : [
+	"title": "Frontend Connections",
+	"width": 500,
+	"defaultLineWidth": 1,
+	"timeBack": "6h",
+	"height": 300,
+	"refresh": true,
+	"dataTemplates": [
 		{
-			"title":"${explode} Connections [01]",
-			"target" : "cactiStyle(aliasByNode(${explode}.cacti_propulsor.cacti_propulsor_stats-01.connections_*,3))",
-			"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_stats-01",
-			"regex" : "(.*)",
-			"index" : 0,
-			"params" : "hideLegend=false&colorList=blue,red"
+			"title": "${explode} Connections [01]",
+			"target": "aliasSub(cactiStyle(aliasByNode(${explode}.cacti_propulsor.cacti_propulsor_stats-01.connections_*,3)), \"^connections_\", \"Connection Objects \")",
+			"query": "${continent}-*.cacti_propulsor.cacti_propulsor_stats-01",
+			"regex": "(.*)",
+			"index": 0,
+			"params": "hideLegend=false&colorList=blue,red"
 		},
 		{
-			"title":"${explode} Connections [02]",
-			"target" : "cactiStyle(aliasByNode(${explode}.cacti_propulsor.cacti_propulsor_stats-02.connections_*,3))",
-			"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_stats-02",
-			"regex" : "(.*)",
-			"index" : 0,
-			"params" : "hideLegend=false&colorList=blue,red"
+			"title": "${explode} Connections [02]",
+			"target": "aliasSub(cactiStyle(aliasByNode(${explode}.cacti_propulsor.cacti_propulsor_stats-02.connections_*,3)), \"^connections_\", \"Connection Objects \")",
+			"query": "${continent}-*.cacti_propulsor.cacti_propulsor_stats-02",
+			"regex": "(.*)",
+			"index": 0,
+			"params": "hideLegend=false&colorList=blue,red"
 		},
 		{
-			"title":"${explode} Connections [03]",
-			"target" : "cactiStyle(aliasByNode(${explode}.cacti_propulsor.cacti_propulsor_stats-03.connections_*,3))",
-			"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_stats-03",
-			"regex" : "(.*)",
-			"index" : 0,
-			"params" : "hideLegend=false&colorList=blue,red"
-		}
-		],
-		"data":[
-		{
-			"title":"${continent} Most Deviant Connections [Total]",
-			"target" : [
-					"cactiStyle(aliasByNode(mostDeviant(6, ${continent}-*.cacti_propulsor.cacti_propulsor_stats-*.connections_total),0,3))"
-				],
-			"params" : "yMin=0&hideLegend=false"
-		},
-		{
-			"title":"${continent} Most Deviant Connections [Busy]",
-			"target" : [
-					"cactiStyle(aliasByNode(mostDeviant(6, ${continent}-*.cacti_propulsor.cacti_propulsor_stats-*.connections_busy),0,3))"
-				],
-			"params" : "yMin=0&hideLegend=false"
+			"title": "${explode} Connections [03]",
+			"target": "aliasSub(cactiStyle(aliasByNode(${explode}.cacti_propulsor.cacti_propulsor_stats-03.connections_*,3)), \"^connections_\", \"Connection Objects \")",
+			"query": "${continent}-*.cacti_propulsor.cacti_propulsor_stats-03",
+			"regex": "(.*)",
+			"index": 0,
+			"params": "hideLegend=false&colorList=blue,red"
 		}
 	],
-		"parameters": {
-			"continent": {
-				"EU" : {"continent" : "eu" },
-				"US" : {"continent" : "us" },
-				"AP" : {"continent" : "ap" },
-				"USAP" : {"continent" : "usap" }
-			}
-		}			
+	"data": [
+		{
+			"title": "${continent} Most Deviant Connections [Total]",
+			"target": [
+				"cactiStyle(aliasByNode(mostDeviant(6, ${continent}-*.cacti_propulsor.cacti_propulsor_stats-*.connections_total),0,3))"
+			],
+			"params": "yMin=0&hideLegend=false"
+		},
+		{
+			"title": "${continent} Most Deviant Connections [Busy]",
+			"target": [
+				"cactiStyle(aliasByNode(mostDeviant(6, ${continent}-*.cacti_propulsor.cacti_propulsor_stats-*.connections_busy),0,3))"
+			],
+			"params": "yMin=0&hideLegend=false"
+		}
+	],
+	"parameters": {
+		"continent": {
+			"EU": {"continent": "eu" },
+			"US": {"continent": "us" },
+			"AP": {"continent": "ap" },
+			"USAP": {"continent": "usap" }
+		}
+	}
 }
