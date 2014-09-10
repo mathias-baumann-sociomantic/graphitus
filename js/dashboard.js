@@ -86,6 +86,17 @@ function loadDashboard() {
 				config.timeBack = config.hoursBack + 'h';
 			}
 			// end
+			if ($.cookie('remember_timeBack')) {
+				config.timeBack = $.cookie('remember_timeBack');
+				config.from = null;
+				config.until = null;
+			}
+			if ($.cookie('remember_start') && $.cookie('remember_end')) {
+				config.from = $.cookie('remember_start');
+				config.until = $.cookie('remember_end');
+				config.hoursBack = null;
+				config.timeBack = null;
+			}
 			mergeUrlParamsWithConfig(config);
 			//console.log("effective config: " + JSON.stringify(config));
 			renderView();
@@ -504,14 +515,20 @@ function hideProgress() {
 
 function useHours() {
 	$("#start,#end").val("");
+	$.removeCookie('remember_start');
+	$.removeCookie('remember_end');
 	if ($("#timeBack").val() != "") {
+		$.cookie('remember_timeBack', ($("#timeBack").val()));
 		updateGraphs();
 	}
 }
 
 function useDateRange() {
 	$("#timeBack").val("");
+	$.removeCookie('remember_timeBack');
 	if ($("#start").val() != "" && $("#end").val() != "") {
+		$.cookie('remember_start', ($("#start").val()));
+		$.cookie('remember_end', ($("#end").val()));
 		updateGraphs();
 	}
 }

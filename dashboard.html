@@ -149,7 +149,7 @@ $(document).ready(function() {
         <li><input type="text" class="input-small" placeholder="end date" id="end" name="end" value="<%=(config.until) ? config.until : ""%>" onchange="useDateRange()" /></li>
         <li class="divider-vertical"></li>
         <li class="dropdown hidden-zoom4">
-           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-cog"></i> Options<b class="fa fa-lg fa-caret-down"></b></a>
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-cog"></i> <b class="fa fa-lg fa-caret-down"></b></a>
            <ul id="options" class="dropdown-menu" style="width: 200px;">
                     <li>
                     <label class="checkbox" style="margin: 10px">
@@ -256,7 +256,6 @@ $(document).ready(function() {
                     <ul class="nav" id="parametersToolbarContent" ></ul>
                 </span>
                 <span class="pull-right" style="margin-top: 3px">
-                    <a href='#' onclick="$('.graph_buttons').toggle()"><span class="label label-warning" style="margin-top: 10px;">Toggle buttons</span></a>
                     <a href='#' class="btn btn-mini btn-inverse" id="parametersToolbarPin" onclick="togglePinnedParametersToolbar();"><i class="fa fa-lg fa-lock"></i></a>
                 </span>
             </form>
