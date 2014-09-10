@@ -1,120 +1,46 @@
 {
 	"title":"Sonar Tracking Debug",
-	"width" : 400,
+	"width" : 600,
 	"defaultLineWidth":1,
-	"timeBack":"6h",
-	"height" : 141,
+	"timeBack":"6d",
+	"height" : 400,
 	"refresh" : true,
 	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1",
-	"dataTemplates" : [
-	{
-		"title":"${explode} - Sonar Debug Logs [Logarithmic view]",
-		"target" : [
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.URI_Error,0.1),\"URI Error\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Undefined,0.1),\"Undefined\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Security,0.1),\"Security\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.ReferenceError,0.1),\"ReferenceError\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Not_Available,0.1),\"Not Available\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Failure,0.1),\"Failure\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Error,0.1),\"Error\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.DOM_Index_Size,0.1),\"DOM Index Size\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.TypeError,0.1),\"TypeError\")"
-		],
-		"query" : "eu-*.cacti_sonar.cacti_sonar_debug_log-adv",
-		"regex" : "(.*)",
-		"index" : 0,
-		"params" : "hideLegend=true&colorList=black,red,green&logBase=10&yMin=1&minorY=10"
-	},
-	{
-		"title":"${explode} - Sonar Debug Logs [Linear view]",
-		"target" : [
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.URI_Error,0.1),\"URI Error\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Undefined,0.1),\"Undefined\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Security,0.1),\"Security\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.ReferenceError,0.1),\"ReferenceError\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Not_Available,0.1),\"Not Available\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Failure,0.1),\"Failure\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Error,0.1),\"Error\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.DOM_Index_Size,0.1),\"DOM Index Size\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.TypeError,0.1),\"TypeError\")"
-		],
-		"query" : "eu-*.cacti_sonar.cacti_sonar_debug_log-adv",
-		"regex" : "(.*)",
-		"index" : 0
-	},
-	{
-		"title":"${explode} - Sonar Debug Logs [Logarithmic view]",
-		"target" : [
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.URI_Error,0.1),\"URI Error\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Undefined,0.1),\"Undefined\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Security,0.1),\"Security\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.ReferenceError,0.1),\"ReferenceError\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Not_Available,0.1),\"Not Available\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Failure,0.1),\"Failure\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Error,0.1),\"Error\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.DOM_Index_Size,0.1),\"DOM Index Size\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.TypeError,0.1),\"TypeError\")"
-		],
-		"query" : "us-*.cacti_sonar.cacti_sonar_debug_log-adv",
-		"regex" : "(.*)",
-		"index" : 0,
-		"params" : "hideLegend=true&colorList=black,red,green&logBase=10&yMin=1&minorY=10"
-	},
-	{
-		"title":"${explode} - Sonar Debug Logs [Linear view]",
-		"target" : [
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.URI_Error,0.1),\"URI Error\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Undefined,0.1),\"Undefined\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Security,0.1),\"Security\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.ReferenceError,0.1),\"ReferenceError\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Not_Available,0.1),\"Not Available\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Failure,0.1),\"Failure\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Error,0.1),\"Error\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.DOM_Index_Size,0.1),\"DOM Index Size\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.TypeError,0.1),\"TypeError\")"
-		],
-		"query" : "us-*.cacti_sonar.cacti_sonar_debug_log-adv",
-		"regex" : "(.*)",
-		"index" : 0
-	},
-	{
-		"title":"${explode} - Sonar Debug Logs [Logarithmic view]",
-		"target" : [
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.URI_Error,0.1),\"URI Error\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Undefined,0.1),\"Undefined\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Security,0.1),\"Security\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.ReferenceError,0.1),\"ReferenceError\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Not_Available,0.1),\"Not Available\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Failure,0.1),\"Failure\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Error,0.1),\"Error\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.DOM_Index_Size,0.1),\"DOM Index Size\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.TypeError,0.1),\"TypeError\")"
-		],
-		"query" : "ap-*.cacti_sonar.cacti_sonar_debug_log-adv",
-		"regex" : "(.*)",
-		"index" : 0,
-		"params" : "hideLegend=true&colorList=black,red,green&logBase=10&yMin=1&minorY=10"
-	},
-	{
-		"title":"${explode} - Sonar Debug Logs [Linear view]",
-		"target" : [
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.URI_Error,0.1),\"URI Error\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Undefined,0.1),\"Undefined\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Security,0.1),\"Security\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.ReferenceError,0.1),\"ReferenceError\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Not_Available,0.1),\"Not Available\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Failure,0.1),\"Failure\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.Error,0.1),\"Error\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.DOM_Index_Size,0.1),\"DOM Index Size\")",
-			"alias(offset(${explode}.cacti_sonar.cacti_sonar_debug_log-adv.TypeError,0.1),\"TypeError\")"
-		],
-		"query" : "ap-*.cacti_sonar.cacti_sonar_debug_log-adv",
-		"regex" : "(.*)",
-		"index" : 0
-	}
+	"dataTemplatesUnused" : [
 	],
 	"data":[
-	]
-
+	{
+		"title":"AP Debugs By ADV",
+		"target" : "highestMax(aliasSub(groupByNode(ap-*.tracking-adv.tracking_debug-adv_*.*, 2, 'sumSeries'), 'tracking_debug-adv_', ''), 50)"
+	},
+	{
+		"title":"US Debugs By ADV",
+		"target" : "highestMax(aliasSub(groupByNode(us-*.tracking-adv.tracking_debug-adv_*.*, 2, 'sumSeries'), 'tracking_debug-adv_', ''), 50)"
+	},
+	{
+		"title":"EU Debugs By ADV",
+		"target" : "highestMax(aliasSub(groupByNode(eu-*.tracking-adv.tracking_debug-adv_*.*, 2, 'sumSeries'), 'tracking_debug-adv_', ''), 50)"
+	},
+	{
+		"title":"AP Debug By Errors",
+		"target" : "groupByNode(ap-012.tracking-adv.tracking_debug-adv_*.*, 3, 'sumSeries')"
+	},
+	{
+		"title":"US Debugs By Errors",
+		"target" : "groupByNode(us-049.tracking-adv.tracking_debug-adv_*.*, 3, 'sumSeries')"
+	},
+	{
+		"title":"EU Debug By Errors",
+		"target" : "groupByNode(eu-023.tracking-adv.tracking_debug-adv_*.*, 3, 'sumSeries')"
+	}
+	],
+		"parametersUnused": {
+				"continent": {
+						"All" : {"continent" : "*" },
+						"EU" : {"continent" : "eu" },
+						"US" : {"continent" : "us" },
+						"AP" : {"continent" : "ap" },
+						"USAP" : {"continent" : "usap" }
+				}
+		}
 }
-
