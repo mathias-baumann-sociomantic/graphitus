@@ -782,6 +782,7 @@ function showExtendedGraph(idx) {
 	$('#extendedGraph').lightbox({
 		resizeToFit: false
 	});
+	setRickshawPalette(getColorList(rawTargets[idx]));
 	loadExtendedGraph(rawTargets[idx], config.title, applyParameters(config.data[idx].title));
 	$(".rickshaw_legend").css("height", $(window).height() - 220);
 }
@@ -815,4 +816,11 @@ function togglePinnedParametersToolbar() {
 		$("#parameters-toolbar").css("position", "relative");
 		$("#parameters-toolbar").css("opacity", "1");
 	}
+}
+
+function getColorList(targetUri) {
+	var uriColors = new RegExp('[\\?&]colorList=([^&#]*)').exec(targetUri);
+	var defaultColors = graphitusConfig.defaultColorList;
+	var effectiveColorList = uriColors !== null ? uriColors[1] : defaultColors;
+	return effectiveColorList.split(',').map(graphiteToRickshawColor);
 }
