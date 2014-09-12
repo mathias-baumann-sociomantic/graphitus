@@ -1,0 +1,46 @@
+{
+	"title":"Sonar Tracking Debug Advertiser",
+	"width" : 600,
+	"defaultLineWidth":1,
+	"timeBack":"6d",
+	"height" : 400,
+	"refresh" : true,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1",
+	"dataTemplatesUnused" : [
+	],
+	"data":[
+		{
+			"title":"AP Debugs By Advertiser",
+			"target" : "highestMax(aliasSub(groupByNode(ap-*.tracking-adv.tracking_debug-adv_*.*, 2, 'sumSeries'), 'tracking_debug-adv_', ''), 50)"
+		},
+		{
+			"title":"US Debugs By Advertiser",
+			"target" : "highestMax(aliasSub(groupByNode(us-*.tracking-adv.tracking_debug-adv_*.*, 2, 'sumSeries'), 'tracking_debug-adv_', ''), 50)"
+		},
+		{
+			"title":"EU Debugs By Advertiser",
+			"target" : "highestMax(aliasSub(groupByNode(eu-*.tracking-adv.tracking_debug-adv_*.*, 2, 'sumSeries'), 'tracking_debug-adv_', ''), 50)"
+		},
+		{
+			"title":"AP Debug By Errors",
+			"target" : "groupByNode(ap-012.tracking-adv.tracking_debug-adv_*.*, 3, 'sumSeries')"
+		},
+		{
+			"title":"US Debugs By Errors",
+			"target" : "groupByNode(us-049.tracking-adv.tracking_debug-adv_*.*, 3, 'sumSeries')"
+		},
+		{
+			"title":"EU Debug By Errors",
+			"target" : "groupByNode(eu-023.tracking-adv.tracking_debug-adv_*.*, 3, 'sumSeries')"
+		}
+	],
+	"parametersUnused": {
+			"continent": {
+					"All" : {"continent" : "*" },
+					"EU" : {"continent" : "eu" },
+					"US" : {"continent" : "us" },
+					"AP" : {"continent" : "ap" },
+					"USAP" : {"continent" : "usap" }
+			}
+	}
+}
