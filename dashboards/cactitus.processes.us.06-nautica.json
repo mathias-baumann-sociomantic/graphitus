@@ -1,6 +1,7 @@
 {
 	"title":"Nautica Stats [US]",
 	"width" : 400,
+	"columns": 2,
 	"defaultLineWidth":1,
 	"timeBack":"6h",
 	"height" : 141,
