@@ -664,6 +664,17 @@ function updateSource(idx) {
 function initializeSearch() {
 	$('#search').typeahead({
 		source: searchIndex,
+		matcher: function(item) {
+			var searchingWords=this.query.replace(/ /g, ".*");
+			return item.match(searchingWords);
+		},
+		highlighter: function(item) {
+			var matchingWords=this.query.split(" ");
+			for (word = 0; word < matchingWords.length; ++word) {
+				item = item.replace(matchingWords[word], "<strong>" + matchingWords[word] + "</strong>");
+			}
+			return item;
+		},
 		updater: function(selection) {
 			document.location.href = "dashboard.html?id=" + selection;
 		}
