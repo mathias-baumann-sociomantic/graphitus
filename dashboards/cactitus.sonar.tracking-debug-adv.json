@@ -1,5 +1,5 @@
 {
-	"title":"Sonar Tracking Debug",
+	"title":"Sonar Tracking Debug Advertiser",
 	"width" : 600,
 	"defaultLineWidth":1,
 	"timeBack":"6d",
@@ -9,38 +9,38 @@
 	"dataTemplatesUnused" : [
 	],
 	"data":[
-	{
-		"title":"AP Debugs By ADV",
-		"target" : "highestMax(aliasSub(groupByNode(ap-*.tracking-adv.tracking_debug-adv_*.*, 2, 'sumSeries'), 'tracking_debug-adv_', ''), 50)"
-	},
-	{
-		"title":"US Debugs By ADV",
-		"target" : "highestMax(aliasSub(groupByNode(us-*.tracking-adv.tracking_debug-adv_*.*, 2, 'sumSeries'), 'tracking_debug-adv_', ''), 50)"
-	},
-	{
-		"title":"EU Debugs By ADV",
-		"target" : "highestMax(aliasSub(groupByNode(eu-*.tracking-adv.tracking_debug-adv_*.*, 2, 'sumSeries'), 'tracking_debug-adv_', ''), 50)"
-	},
-	{
-		"title":"AP Debug By Errors",
-		"target" : "groupByNode(ap-012.tracking-adv.tracking_debug-adv_*.*, 3, 'sumSeries')"
-	},
-	{
-		"title":"US Debugs By Errors",
-		"target" : "groupByNode(us-049.tracking-adv.tracking_debug-adv_*.*, 3, 'sumSeries')"
-	},
-	{
-		"title":"EU Debug By Errors",
-		"target" : "groupByNode(eu-023.tracking-adv.tracking_debug-adv_*.*, 3, 'sumSeries')"
-	}
-	],
-		"parametersUnused": {
-				"continent": {
-						"All" : {"continent" : "*" },
-						"EU" : {"continent" : "eu" },
-						"US" : {"continent" : "us" },
-						"AP" : {"continent" : "ap" },
-						"USAP" : {"continent" : "usap" }
-				}
+		{
+			"title":"AP Debugs By Advertiser",
+			"target" : "highestMax(aliasSub(groupByNode(ap-*.tracking-adv.tracking_debug-adv_*.*, 2, 'sumSeries'), 'tracking_debug-adv_', ''), 50)"
+		},
+		{
+			"title":"US Debugs By Advertiser",
+			"target" : "highestMax(aliasSub(groupByNode(us-*.tracking-adv.tracking_debug-adv_*.*, 2, 'sumSeries'), 'tracking_debug-adv_', ''), 50)"
+		},
+		{
+			"title":"EU Debugs By Advertiser",
+			"target" : "highestMax(aliasSub(groupByNode(eu-*.tracking-adv.tracking_debug-adv_*.*, 2, 'sumSeries'), 'tracking_debug-adv_', ''), 50)"
+		},
+		{
+			"title":"AP Debug By Errors",
+			"target" : "groupByNode(ap-012.tracking-adv.tracking_debug-adv_*.*, 3, 'sumSeries')"
+		},
+		{
+			"title":"US Debugs By Errors",
+			"target" : "groupByNode(us-049.tracking-adv.tracking_debug-adv_*.*, 3, 'sumSeries')"
+		},
+		{
+			"title":"EU Debug By Errors",
+			"target" : "groupByNode(eu-023.tracking-adv.tracking_debug-adv_*.*, 3, 'sumSeries')"
 		}
+	],
+	"parametersUnused": {
+			"continent": {
+					"All" : {"continent" : "*" },
+					"EU" : {"continent" : "eu" },
+					"US" : {"continent" : "us" },
+					"AP" : {"continent" : "ap" },
+					"USAP" : {"continent" : "usap" }
+			}
+	}
 }
