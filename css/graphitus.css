@@ -98,6 +98,8 @@ body {
 
 .typeahead.dropdown-menu{
     min-width: 400px;
+    max-height: 630px;
+    overflow: auto;
 }
 
 /* slidesjs */

@@ -671,13 +671,15 @@ function initializeSearch() {
 		highlighter: function(item) {
 			var matchingWords=this.query.split(" ");
 			for (word = 0; word < matchingWords.length; ++word) {
-				item = item.replace(matchingWords[word], "<strong>" + matchingWords[word] + "</strong>");
+				item = item.replace(matchingWords[word], "<b>" + matchingWords[word] + "</b>");
 			}
 			return item;
 		},
 		updater: function(selection) {
 			document.location.href = "dashboard.html?id=" + selection;
-		}
+		},
+		items: 9999,
+		minLength: 2
 	});
 }
 
