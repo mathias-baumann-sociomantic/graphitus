@@ -30,6 +30,7 @@ function renderView() {
 	console.log("rendered toolbar");
 
 	generateDynamicGraphs();
+	generateConditionalGraphs();
 
 	$("#dashboards-view").append(_.template(tmplDashboardViewMarkup, {
 		config: config
@@ -294,6 +295,7 @@ function renderValueParamGroup(paramGroupName, paramGroup) {
 		config.data = jQuery.grep(config.data, function (n, i) { hasDynamicGraphs = n.dynamic || hasDynamicGraphs;
 		                                                         return n.dynamic != true; });
 		generateDynamicGraphs();
+		generateConditionalGraphs();
 
 		if ( hasDynamicGraphs == true )
 		{
@@ -836,4 +838,70 @@ function getColorList(targetUri) {
 	var defaultColors = graphitusConfig.defaultColorList;
 	var effectiveColorList = uriColors !== null ? uriColors[1] : defaultColors;
 	return effectiveColorList.split(',').map(graphiteToRickshawColor);
+}
+
+function generateConditionalGraphs(){
+	if ( config.dataConditional == undefined ) return;
+	var fixed_graphs = config.data.length;
+
+	for (var i = 0; i < config.dataConditional.length; i++)
+	{
+		var tmpl = config.dataConditional[i];
+		var url = getGraphiteServer() + "/metrics/find?format=completer&query=";
+		var query = generateDynamicQuery(tmpl.query);
+		var queryUrl = url + query;
+		var parameters = new Array();
+
+		$.ajax({
+			type: 'GET',
+			url: queryUrl,
+			dataType: 'json',
+			success: function(data) {
+				$.each(data.metrics, function(index, metric) {
+					var paramValue = getParamValueFromPath(tmpl, metric);
+					if ( jQuery.inArray(paramValue, parameters) == -1 ) { parameters.push(paramValue); }
+				});
+				if ( parameters.length > 0 ) {
+					var g = new Object();
+					var expandedValues = '{' + parameters.join(',') + '}';
+
+					if ( (typeof tmpl.target) === 'string' ) {
+						g.target = applyParameter(tmpl.target, "explode", expandedValues);
+					} else {
+						tmpl.target.forEach(function(t)	{
+							if (typeof g.target === 'undefined') { g.target=new Array(); }
+							g.target.push(applyParameter(t, "explode", expandedValues));
+						});
+					}
+
+					g.title = applyParameter(tmpl.title, "explode", expandedValues);
+					g.dynamic = true;
+					g.params = tmpl.params;
+
+					var was_added = false;
+
+					$.each(config.data, function(index, d ) {
+						if ( index < fixed_graphs ) return true;
+						if ( d.title > g.title ) {
+							config.data.splice(index, 0, g);
+							was_added = true;
+							return false;
+						}
+					});
+
+					if ( was_added == false ) { config.data.push(g); }
+				}
+			},
+			error: function(xhr, ajaxOptions, thrownError) {
+				console.log("error [" + xhr + "]");
+				var tmplError = $('#tmpl-warning-parameters').html();
+				$('#message').html(_.template(tmplError, {
+					message: "Could not load graphite parameters from url [" + queryUrl + "]: " + JSON.stringify(xhr.statusText) + "<br/>"
+				}));
+				$('#message').show();
+				$("#loader").hide();
+			},
+			async: false
+		});
+	}
 }
