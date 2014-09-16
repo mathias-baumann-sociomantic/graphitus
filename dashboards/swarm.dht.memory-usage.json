@@ -1,11 +1,12 @@
 {
-    "title":"DHT Memory Usage",
-        "width" : 490,
+	"title":"DHT Memory Usage",
+	"width" : 490,
 	"defaultLineWidth":1,
 	"timeBack":"6h",
-        "height" : 220,
+	"height" : 220,
+	"columns" : 3,
 	"refresh" : true,
-        "legend" : true,
+	"legend" : true,
 	"dataTemplates" : [
 	{
 		"title":"DHT Memory Usage on ${explode} [Node 1]",
@@ -30,7 +31,9 @@
 		"regex":"^(.*)",
 		"index":0,
 		"params":"yMin=0&areaMode=none"
-	},
+	}
+	],
+	"dataTemplatesUnused" : [
 	{
 		"title":"DHT Memory Usage on ${explode} [Node 4]",
 		"target":"aliasByNode(${explode}.cacti_dht.cacti_dht_mem_*.bytes_*_4, 0, 3)",
@@ -41,35 +44,22 @@
 	}
 	],
 	"data":[
-        ],
+	],
 	"parameters": {
-                "continent": {
-                        "All" : {"continent" : "*" },
-                        "EU" : {"continent" : "eu" },
-                        "US" : {"continent" : "us" },
-                        "AP" : {"continent" : "ap" },
-                        "USAP" : {"continent" : "usap" }
+		"continent": {
+			"All" : {"continent" : "*" },
+			"EU" : {"continent" : "eu" },
+			"US" : {"continent" : "us" },
+			"AP" : {"continent" : "ap" },
+			"USAP" : {"continent" : "usap" }
 		},
-                "server" : {
-                        "type" : "dynamic",
-                        "query" : "${continent}-*.cacti_dht.cacti_dht_mem*",
-                        "index" : 0,
-                        "regex" : "-(.*)",
-                        "showAll": true,
-                        "defaultValue" : "*"
-                }
+		"server" : {
+			"type" : "dynamic",
+			"query" : "${continent}-*.cacti_dht.cacti_dht_mem*",
+			"index" : 0,
+			"regex" : "-(.*)",
+			"showAll": true,
+			"defaultValue" : "*"
+		}
 	}			
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
