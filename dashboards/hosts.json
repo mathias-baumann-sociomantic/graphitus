@@ -221,8 +221,9 @@
 		"title":"12. Swap Operations [${explode}]",
 		"target": [
 			"cactiStyle(alias(${explode}.cacti_swap.cacti_swap.VMSTAT_pswpout, \"Swap OUT operations\"))",
-			"cactiStyle(alias(scale(${explode}.cacti_swap.cacti_swap.VMSTAT_pswpin, -1, \"Swap IN operations\"))"
+			"cactiStyle(alias(scale(${explode}.cacti_swap.cacti_swap.VMSTAT_pswpin, -1), \"Swap IN operations\"))"
 		],
+        "params":"yMin=",
 		"query":"${server}.cacti_swap.cacti_swap",
 		"regex":"(.*)",
 		"index":0
