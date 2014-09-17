@@ -218,7 +218,17 @@
 		"index":0
 	},
 	{
-		"title":"12. Network Traffic bytes [${explode}] [eth0]",
+		"title":"12. Swap Operations [${explode}]",
+		"target": [
+			"cactiStyle(alias(${explode}.cacti_swap.cacti_swap.VMSTAT_pswpout, \"Swap OUT operations\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_swap.cacti_swap.VMSTAT_pswpin, -1, \"Swap IN operations\"))"
+		],
+		"query":"${server}.cacti_swap.cacti_swap",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"13. Network Traffic bytes [${explode}] [eth0]",
 		"target": [
 			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes, \"Received Bytes\"))",
 			"cactiStyle(alias(scale(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_txbytes, 1), \"Sent bytes\"))"
@@ -228,7 +238,7 @@
 		"index":0
 	},
 	{
-		"title":"13. Number of Users [${explode}]",
+		"title":"14. Number of Users [${explode}]",
 		"target": [
 			"cactiStyle(alias(${explode}.cacti_users.cacti_users.STAT_numusers, \"Numusers\"))"
 		],
@@ -238,7 +248,7 @@
 		"index":0
 	},
 	{
-		"title":"14. Sockets Pipes Files [${explode}]",
+		"title":"15. Sockets Pipes Files [${explode}]",
 		"target": [
 			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.files, \"Files\"))",
 			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.pipes, \"Pipes\"))",
