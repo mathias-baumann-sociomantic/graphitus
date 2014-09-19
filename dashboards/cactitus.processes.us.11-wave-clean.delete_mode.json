@@ -12,8 +12,8 @@
 		"title":"${explode} - Wave-Clean-Delete Totals",
 		"target": [
 			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_del.TotalAdmediaProcsd, 0.03333), \"Total DHT Admedia Processed\"))",
-			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_del.TotalImagesDeleted, 0.03333), \"Total Dht Deleted\"))",
-			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_orphans.TotalImagesDeleted, 0.03333), \"Total Images Deleted\"))"
+			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_del.TotalDhtDeleted, 0.03333), \"Total Dht Deleted\"))",
+			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_del.TotalImagesDeleted, 0.03333), \"Total Images Deleted\"))"
 		],
 		"query":"us-*.cacti_wave.cacti_wave_clean_del.*",
 		"regex":"(.*)",	
