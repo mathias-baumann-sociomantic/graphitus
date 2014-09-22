@@ -1,26 +1,35 @@
 {
 	"title":"Swarm Queues [EU]",
-	"width" : 400,
+	"width":400,
 	"defaultLineWidth":1,
 	"timeBack":"6h",
-	"height" : 141,
-	"refresh" : true,
-	"legend" : false,
-	"defaultParameters":"fontSize=9&&lineWidth=1&yMin=0&areaMode=all&areaAlpha=0.4&colorList=red,green",
+	"height":141,
+	"columns":2,
+	"refresh":true,
+	"legend":false,
+	"defaultParameters":"fontSize=9&&areaMode=all&areaAlpha=0.4&colorList=red,green",
 	"data":[
+	],
+	"dataTemplates":[
 	{
-		"title":"Queue Kb/s sent/received [Tracking]",
+		"title":"EU - Queue [${explode}] Kb/s sent/received",
 		"target": [
-			"cactiStyle(alias(eu-*.cacti_queue.cacti_queue_node_stats.received_data, \"Received Data\"))",
-			"cactiStyle(alias(eu-*.cacti_queue.cacti_queue_node_stats.send_data, \"Sent Data\"))"
-		]
+			"cactiStyle(alias(eu-*.queue-${explode}.queue_node_stats.data_received, \"Received Data\"))",
+			"cactiStyle(alias(eu-*.queue-${explode}.queue_node_stats.data_sent, \"Sent Data\"))"
+		],
+		"query":"eu-*.queue-*",
+		"regex":"queue-(.*)",
+		"index":1
 	},
 	{
-		"title":"Queue Kb/s sent/received [Admedia]",
+		"title":"EU - Queue [${explode}] Connections / Records",
 		"target": [
-			"cactiStyle(alias(eu-*.cacti_queue.cacti_admedia_queue_stats_eu.received_data, \"Received Data\"))",
-			"cactiStyle(alias(eu-*.cacti_queue.cacti_admedia_queue_stats_eu.send_data, \"Sent Data\"))"
-		]
+			"cactiStyle(alias(eu-*.queue-${explode}.queue_node_stats.handled_connections, \"Handled Connections\"))",
+			"cactiStyle(alias(eu-*.queue-${explode}.queue_node_stats.records_per_sec, \"Records per second\"))"
+		],
+		"query":"eu-*.queue-*",
+		"regex":"queue-(.*)",
+		"index":1
 	}
 	]
 }

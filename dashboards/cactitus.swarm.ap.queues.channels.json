@@ -1,32 +1,30 @@
 {
-    "title":"Queue Channel Usage [AP]",
-        "width" : 400,
+	"title":"Queue Channel Usage",
+	"width":400,
 	"defaultLineWidth":1,
 	"timeBack":"6h",
-        "height":141,
+	"height":141,
 	"refresh":true,
-        "legend":false,
-	"defaultParameters":"yMin=0&fontSize=9&areaMode=all&areaAlpha=0.4&colorList=orange,red",
-	"dataTemplates" : [
+	"legend":false,
+	"defaultParameters":"yMin=0&yMax=100&fontSize=9&areaMode=all&areaAlpha=0.4&colorList=orange,red",
+	"dataTemplates":[
 	{
-		"title":"ap-001 - Queue Channel Usage [${explode}]",
+		"title":"${cont-nice} - Queue Channel Usage [${explode}]",
 		"target":[
-			"aliasByMetric(ap-*.cacti_queue.cacti_queue_node_stats.${explode})"
+			"aliasSub(aliasByNode(${continent}-*.queue-*.queue_stats-${explode}.usage,0,2),\"(.*)\\.queue_stats-(.*)\",\"\\1.\\2\")"
 		],
-		"query":"ap-*.cacti_queue.cacti_queue_node_stats.*",
-		"regex":"^(.*)",
-		"index":3
-	},
-	{
-		"title":"ap-013 - Queue Channel Usage [${explode}]",
-		"target":[
-			"aliasByMetric(ap-*.cacti_queue.cacti_admedia_queue_stats_ap.${explode})"
-		],
-		"query":"ap-*.cacti_queue.cacti_admedia_queue_stats_ap.adme*",
-		"regex":"^(.*)",
-		"index":3
+		"query":"${continent}-*.queue-*.queue_stats-*",
+		"regex":"queue_stats-(.*)",
+		"index":2
 	}
 	],
 	"data":[
-        ]
+	],
+	"parameters": {
+		"continent": {
+			"AP" : {"continent" : "ap", "cont-nice":"AP" },
+			"EU" : {"continent" : "eu", "cont-nice":"EU" },
+			"US" : {"continent" : "us", "cont-nice":"US" }
+		}
+	}
 }
