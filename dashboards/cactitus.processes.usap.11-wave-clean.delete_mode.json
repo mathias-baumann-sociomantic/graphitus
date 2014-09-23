@@ -1,5 +1,5 @@
 {
-	"title":"Wave-Clean-Delete [AP]",
+	"title":"Wave-Clean-Delete [AP / US]",
 	"width" : 400,
 	"defaultLineWidth":1,
 	"timeBack":"6h",
@@ -16,7 +16,7 @@
 			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_del.TotalImagesDeleted, 0.03333), \"Total Images Deleted\"))"
 		],
 		"query":"${continent}-*.cacti_wave.cacti_wave_clean_del",
-		"regex":"(.*)",	
+		"regex":"(.*)",
 		"index":0
         },
 
@@ -27,7 +27,7 @@
 			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_del.RtioDhtDelete2Total, 0.03333), \"Ratio of Total Deleted/Total Processed\"))"
 		],
 		"query":"${continent}-*.cacti_wave.cacti_wave_clean_del",
-		"regex":"(.*)",	
+		"regex":"(.*)",
 		"index":0
         },
 	{
@@ -37,7 +37,7 @@
 			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_del.MemoryFree, 0.03333), \"Memory Free\"))"
 		],
 		"query":"${continent}-*.cacti_wave.cacti_wave_clean_del",
-		"regex":"(.*)",	
+		"regex":"(.*)",
 		"index":0
         }
 	],
@@ -45,10 +45,10 @@
 	],
 	"parameters": {
 		"continent": {
-			"AP" : {"continent" : "ap", "continent-nice" : "AP" },
+			"USAP" : {"continent" : "usap", "continent-nice" : "US / AP" },
 			"EU" : {"continent" : "eu", "continent-nice" : "EU" },
 			"US" : {"continent" : "us", "continent-nice" : "US" },
-			"USAP" : {"continent" : "usap", "continent-nice" : "US / AP" },
+			"AP" : {"continent" : "ap", "continent-nice" : "AP" },
 			"All" : {"continent" : "*", "continent-nice" : "ALL" }
 		}
 	}
