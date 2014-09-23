@@ -1,0 +1,53 @@
+{
+	"title":"Wave-Clean Related-Products [US / AP]",
+	"width" : 400,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"dataTemplates":[
+	{
+		"title":"${explode} - Wave-Clean-Related-Products Totals",
+		"target": [
+			"cactiStyle(alias(scale(${explode}.wave.wave_clean_related.total_rp_processed, 0.03333), \"Total Related-Products Processed\"))",
+			"cactiStyle(alias(scale(${explode}.wave.wave_clean_related.total_dht_deleted, 0.03333), \"Total Related-Products Deleted\"))"
+		],
+		"query":"${continent}-*.wave.wave_clean_related",
+		"regex":"(.*)",
+		"index":0
+        },
+
+	{
+		"title":"${explode} - Wave-Clean-Related-Products Ratios",
+		"target": [
+			"cactiStyle(alias(scale(${explode}.wave.wave_clean_related.ratio_del_to_total, 0.03333), \"Ratio Deleted / Total Related-Products Profiles\"))"
+		],
+		"query":"${continent}-*.wave.wave_clean_related",
+		"regex":"(.*)",
+		"index":0
+        },
+	{
+		"title":"${explode} - Wave-Clean-Related-Products Mem",
+		"target": [
+			"cactiStyle(alias(scale(${explode}.wave.wave_clean_related.memory_allocated, 0.03333), \"Memory Allocated\"))",
+			"cactiStyle(alias(scale(${explode}.wave.wave_clean_related.memory_free, 0.03333), \"Memory Free\"))"
+		],
+		"query":"${continent}-*.wave.wave_clean_related",
+		"regex":"(.*)",
+		"index":0
+        }
+	],
+	"data":[
+	],
+	"parameters": {
+                "continent": {
+                        "USAP" : {"continent" : "usap", "continent-nice" : "US / AP" },
+                        "AP" : {"continent" : "ap", "continent-nice" : "AP" },
+                        "EU" : {"continent" : "eu", "continent-nice" : "EU" },
+                        "US" : {"continent" : "us", "continent-nice" : "US" },
+                        "All" : {"continent" : "*", "continent-nice" : "ALL" }
+                }
+        }
+}
