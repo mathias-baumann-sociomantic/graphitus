@@ -13,7 +13,7 @@
 		"target": [
 			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_orphans.TotalImagesPrcssd, 0.03333), \"Total Images Processed\"))"
 		],
-		"query":"ap-*.cacti_wave.cacti_wave_clean_orphans",
+		"query":"${continent}-*.cacti_wave.cacti_wave_clean_orphans",
 		"regex":"(.*)",	
 		"index":0
         },
@@ -23,7 +23,7 @@
 		"target": [
 			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_orphans.RatioDeleted2Total, 0.03333), \"Ratio Total Processed / Total Deleted\"))"
 		],
-		"query":"ap-*.cacti_wave.cacti_wave_clean_orphans",
+		"query":"${continent}-*.cacti_wave.cacti_wave_clean_orphans",
 		"regex":"(.*)",	
 		"index":0
         },
@@ -33,11 +33,20 @@
 			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_orphans.MemoryAllocated, 0.03333), \"Memory Allocated\"))",
 			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_orphans.MemoryFree, 0.03333), \"Memory Free\"))"
 		],
-		"query":"ap-*.cacti_wave.cacti_wave_clean_orphans",
+		"query":"${continent}-*.cacti_wave.cacti_wave_clean_orphans",
 		"regex":"(.*)",	
 		"index":0
         }
 	],
 	"data":[
-	]
+	],
+	"parameters": {
+		"continent": {
+			"AP" : {"continent" : "ap", "continent-nice" : "AP" },
+			"EU" : {"continent" : "eu", "continent-nice" : "EU" },
+			"US" : {"continent" : "us", "continent-nice" : "US" },
+			"USAP" : {"continent" : "usap", "continent-nice" : "US / AP" },
+			"All" : {"continent" : "*", "continent-nice" : "ALL" }
+		}
+	}
 }
