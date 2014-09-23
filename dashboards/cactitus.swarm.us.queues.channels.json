@@ -11,7 +11,7 @@
 	{
 		"title":"${cont-nice} - Queue Channel Usage [${explode}]",
 		"target":[
-			"aliasSub(aliasByNode(${continent}-*.queue-*.queue_stats-${explode}.usage,0,2),\"(.*)\\.queue_stats-(.*)\",\"\\1.\\2\")"
+			"aliasSub(aliasByNode(${continent}-*.queue-*.queue_channel_stats-${explode}.usage,0,2),\"(.*)\\.queue_stats-(.*)\",\"\\1.\\2\")"
 		],
 		"query":"${continent}-*.queue-*.queue_stats-*",
 		"regex":"queue_stats-(.*)",
