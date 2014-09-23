@@ -15,7 +15,7 @@
 			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_del.TotalDhtDeleted, 0.03333), \"Total Dht Deleted\"))",
 			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_del.TotalImagesDeleted, 0.03333), \"Total Images Deleted\"))"
 		],
-		"query":"us-*.cacti_wave.cacti_wave_clean_del.*",
+		"query":"us-*.cacti_wave.cacti_wave_clean_del",
 		"regex":"(.*)",	
 		"index":0
         },
@@ -36,7 +36,7 @@
 			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_del.MemoryAllocated, 0.03333), \"Memory Allocated\"))",
 			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_del.MemoryFree, 0.03333), \"Memory Free\"))"
 		],
-		"query":"us-*.cacti_wave.cacti_wave_clean_del.*",
+		"query":"us-*.cacti_wave.cacti_wave_clean_del",
 		"regex":"(.*)",	
 		"index":0
         }

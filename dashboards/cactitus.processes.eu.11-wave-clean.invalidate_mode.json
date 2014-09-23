@@ -14,7 +14,7 @@
 			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_inv.TotalAdmediaProcess, 0.03333), \"Total Admedia Processed\"))",
 			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_inv.TotalInvalidated, 0.03333), \"Total Admedia Invalidated\"))"
 		],
-		"query":"eu-*.cacti_wave.cacti_wave_clean_inv.*",
+		"query":"eu-*.cacti_wave.cacti_wave_clean_inv",
 		"regex":"(.*)",	
 		"index":0
         },
@@ -24,7 +24,7 @@
 		"target": [
 			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_inv.RatioInvaldat2Total, 0.03333), \"Ratio Invalidated / Total Admedia\"))"
 		],
-		"query":"eu-*.cacti_wave.cacti_wave_clean_inv.*",
+		"query":"eu-*.cacti_wave.cacti_wave_clean_inv",
 		"regex":"(.*)",	
 		"index":0
         },
@@ -34,7 +34,7 @@
 			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_inv.MemoryAllocated, 0.03333), \"Memory Allocated\"))",
 			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_inv.MemoryFree, 0.03333), \"Memory Free\"))"
 		],
-		"query":"eu-*.cacti_wave.cacti_wave_clean_inv.*",
+		"query":"eu-*.cacti_wave.cacti_wave_clean_inv",
 		"regex":"(.*)",	
 		"index":0
         }
