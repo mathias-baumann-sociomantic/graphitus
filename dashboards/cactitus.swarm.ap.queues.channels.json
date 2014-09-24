@@ -13,8 +13,8 @@
 		"target":[
 			"aliasSub(aliasByNode(${continent}-*.queue-*.queue_channel_stats-${explode}.usage,0,2),\"(.*)\\.queue_stats-(.*)\",\"\\1.\\2\")"
 		],
-		"query":"${continent}-*.queue-*.queue_stats-*",
-		"regex":"queue_stats-(.*)",
+		"query":"${continent}-*.queue-*.queue_channel_stats-*",
+		"regex":"queue_channel_stats-(.*)",
 		"index":2
 	}
 	],
