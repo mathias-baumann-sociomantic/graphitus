@@ -38,7 +38,7 @@
 			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_sockets.nginx_handled), \"Total Handled\"))",
 			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_sockets.nginx_requests), \"Total Requests\"))"
 		],
-		"query" : "{ap-028,ap-029,ap-030,ap-031,ap-032,ap-033}.cacti_nginx.cacti_nginx_sockets",
+		"query" : "{ap-028,ap-029,ap-030,ap-031,ap-032,ap-033,ap-054,ap-055,ap-056,ap-057}.cacti_nginx.cacti_nginx_sockets",
 		"regex" : "(.*)",
 		"index" : 0
 	},
@@ -50,7 +50,7 @@
 			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_waiting), \"Total Waiting\"))",
 			"cactiStyle(alias(sum(${explode}.cacti_nginx.cacti_nginx_clients.nginx_writing), \"Total Writing\"))"
 		],
-		"query" : "{ap-028,ap-029,ap-030,ap-031,ap-032,ap-033}.cacti_nginx.cacti_nginx_clients",
+		"query" : "{ap-028,ap-029,ap-030,ap-031,ap-032,ap-033,ap-054,ap-055,ap-056,ap-057}.cacti_nginx.cacti_nginx_clients",
 		"regex" : "(.*)",
 		"index" : 0
 	}
