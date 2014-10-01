@@ -393,12 +393,12 @@ $(document).ready(function() {
         </div>
     </div>
 
-    <div id="graphEvolutionLightbox" class="lightbox hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="graphEvolutionLightbox" class="lightbox hide fade" tabindex="-1" role="dialog" aria-hidden="true" style="position: relative;">
         <div class='lightbox-header'>
             <button type="button" class="close" data-dismiss="lightbox" aria-hidden="true">&times;</button>
         </div>
         <div class='lightbox-content' style="overflow-y: auto;">
-            <div class="navbar navbar-inverse">
+            <div class="navbar navbar-inverse" style="margin-right: 200px;">
                 <div class="navbar-inner">
                         <ul class="nav">
                             <li><label class="navbar-text" id="graphEvolutionTitle"></label></li>
@@ -415,7 +415,8 @@ $(document).ready(function() {
                 </div>
             </div>
             <div style="padding: 20px; line-height:20px;">
-                <div id="graphEvolution"></div>
+                    <div id="graphEvolution"></div>
+                    <div style="padding-right: 3px; width: 180px; position: absolute; top: 15px; right: 30px;" id="graphEvolutionLegend" class="rickshaw_legend"></div>
             </div>
         </div>
     </div>

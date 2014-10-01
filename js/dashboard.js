@@ -833,13 +833,6 @@ function togglePinnedParametersToolbar() {
 	}
 }
 
-function getColorList(targetUri) {
-	var uriColors = new RegExp('[\\?&]colorList=([^&#]*)').exec(targetUri);
-	var defaultColors = graphitusConfig.defaultColorList;
-	var effectiveColorList = uriColors !== null ? uriColors[1] : defaultColors;
-	return effectiveColorList.split(',').map(graphiteToRickshawColor);
-}
-
 function generateConditionalGraphs(){
 	if ( config.dataConditional == undefined ) return;
 	var fixed_graphs = config.data.length;

@@ -150,3 +150,60 @@ function loadGraphiteData(target, callback){
 		}
 	});
 }
+
+function getColorList(targetUri) {
+	var uriColors = new RegExp('[\\?&]colorList=([^&#]*)').exec(targetUri);
+	var defaultColors = graphitusConfig.defaultColorList;
+	var effectiveColorList = uriColors !== null ? uriColors[1] : defaultColors;
+	return effectiveColorList.split(',').map(graphiteToRickshawColor);
+}
+
+function graphiteToRickshawColor(graphiteColor) {
+	colorReplacements={
+		"black":"#000000",
+		"white":"#FFFFFF",
+		"blue":"#6464FF",
+		"green":"#00C800",
+		"red":"#C80032",
+		"yellow":"#FFFF00",
+		"orange":"#FFA500",
+		"purple":"#C864FF",
+		"brown":"#966432",
+		"aqua":"#969600",
+		"gray":"#AFAFAF",
+		"grey":"#AFAFAF",
+		"magenta":"#FF00FF",
+		"pink":"#FF6464",
+		"gold":"#C8C800",
+		"rose":"#C896C8",
+		"darkblue":"#0000FF",
+		"darkgreen":"#00FF00",
+		"darkred":"#FF0000",
+		"darkgray":"#6F6F6F",
+		"darkgrey":"#6F6F6F",
+	}
+	graphiteColor = graphiteColor.replace("%23","#");
+	rickshawColor = colorReplacements[graphiteColor] !== undefined ? colorReplacements[graphiteColor] : graphiteColor;
+	return rickshawColor;
+}
+
+function getMetricsListFromTargetUri(targetUri) {
+	var metricsList = new Array();
+
+	$.ajax({
+		type: "get",
+		url: targetUri + "&format=json&jsonp=?",
+		dataType:'json',
+		async: false,
+		success: function(data) {
+			$.each(data, function(index, metricId) {
+				metricsList.push(metricId.target);
+			});
+		},
+		error:function (xhr, ajaxOptions, thrownError){
+			console.log(thrownError);
+		}
+	});
+
+	return (metricsList);
+}
