@@ -1,31 +1,23 @@
 function loadGraphEvolution(target, dashboardTitle, graphTitle) {
 
-console.log("target received is :");
-console.log(target);
-console.log("graphTitle: " + graphTitle);
-console.log("dashboardTitle: " + dashboardTitle);
-
 	$("#graphEvolution").html("");
 	$("#graphEvolutionWarning").hide();
 	$("#graphEvolutionTitle").text("Evolution of graph " + graphTitle); // + " on dashboard " + dashboardTitle);
 	$("#graphEvolutionProgress").show();
-	//$("#graphEvolutionProgressText").text("Accessing Graphite metrics API");
-	//loadGraphiteData(target, function(json) {
-		$("#graphEvolutionProgressText").text("Rendering graph evolution");
-		renderGraphEvolution(graphTitle, target);
-		$("#graphEvolutionProgress").hide();
-	//});
+	$("#graphEvolutionProgressText").text("Rendering graph evolution");
+	renderGraphEvolution(graphTitle, target);
+	$("#graphEvolutionProgress").hide();
 }
 
 function renderGraphEvolution(graphTitle, graphUrl) {
 	var htmlContent="";
 	var colorList=getColorList(graphUrl);
 	var metricsList = getMetricsListFromTargetUri(graphUrl);
-	var w = parseInt($(".lightbox-content").css("width")) - 30;
-	var h = parseInt($(".lightbox-content").css("height")) - 150;
+	var w = parseInt($(".lightbox-content").css("width"));
+	var h = parseInt($(".lightbox-content").css("height"));
 	var margin = {
-		right: 300,
-		left: 300
+		right: w * 0.15,
+		left: w * 0.15
 	},
 		width = w - margin.left - margin.right,
 		heightStd = width * 3 / 4;
@@ -47,7 +39,6 @@ function renderGraphEvolution(graphTitle, graphUrl) {
 	htmlContent+='<ul class="ui-sortable">';
 	$.each(metricsList, function(metricIndex, metricName) {
  		var moduledIndex = metricIndex % colorList.length;
-		console.log("metric name " + metricName + " will be painted in color " + colorList[moduledIndex]);
 		htmlContent+='<li class="line"><div class="swatch" style="line-height: 200%; background-color: ' + colorList[moduledIndex] + ';"></div><span class="label">' + metricName + '</span></li>';
 	});
 	htmlContent+='</ul>';
