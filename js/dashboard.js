@@ -685,11 +685,13 @@ function initializeSearch() {
 	});
 }
 
-function generateDynamicGraphs ( )
-{
+function generateDynamicGraphs() {
 	if ( config.dataTemplates == undefined ) return;
 
 	var fixed_graphs = config.data.length;
+
+	var queryCache = new Array();
+	var queryCacheContents = new Array();
 
 	for (var i = 0; i < config.dataTemplates.length; i++)
 	{
@@ -699,68 +701,74 @@ function generateDynamicGraphs ( )
 		var queryUrl = url + query;
 		var parameters = new Array();
 
-		$.ajax({
-			type: 'GET',
-			url: queryUrl,
-			dataType: 'json',
-			success: function(data) {
-				$.each(data.metrics, function(index, metric) {
-					var paramValue = getParamValueFromPath(tmpl, metric);
-
-					if ( jQuery.inArray(paramValue, parameters) == -1 )
-					{
-						parameters.push(paramValue);
-						var g = new Object();
-
-						if ( (typeof tmpl.target) === 'string' )
-						{
-							g.target = applyParameter(tmpl.target, "explode", paramValue);
+		// resolve the template dynamic query. and cache
+		if ( queryCache.indexOf(query) == -1 ) { 
+			queryCache.push(query);
+			queryCacheContents[query] = new Array();
+			$.ajax({
+				type: 'GET',
+				url: queryUrl,
+				dataType: 'json',
+				success: function(data) {
+					$.each(data.metrics, function(index, metric) {
+						var value = getParamValueFromPath(tmpl, metric);
+						if ( queryCacheContents[query].indexOf(value) == -1 ) {
+							queryCacheContents[query].push(value)
 						}
-						else
-						{
-							tmpl.target.forEach(function(t)
-							{
-								if (typeof g.target === 'undefined') {
-									g.target=new Array();
-								}
-								g.target.push(applyParameter(t, "explode", paramValue));
-							});
+		 			});
+		 		},
+		 		error: function(xhr, ajaxOptions, thrownError) {
+		 			console.log("error [" + xhr + "]");
+		 			var tmplError = $('#tmpl-warning-parameters').html();
+		 			$('#message').html(_.template(tmplError, {
+		 				message: "Could not load graphite parameters from url [" + queryUrl + "]: " + JSON.stringify(xhr.statusText) + "<br/>"
+		 			}));
+		 			$('#message').show();
+		 			$("#loader").hide();
+		 		},
+		 		async: false
+		 	});
+		};
+
+		// add graphs for each matching exploded value
+		$.each(queryCacheContents[query], function(index, paramValue) {
+			if ( parameters.indexOf(paramValue) == -1 )	{
+				parameters.push(paramValue);
+				var g = new Object();
+
+				// apply parameter
+				if ( (typeof tmpl.target) === 'string' ) {
+					g.target = applyParameter(tmpl.target, "explode", paramValue);
+				} else {
+					tmpl.target.forEach(function(t) {
+						if (typeof g.target === 'undefined') {
+							g.target=new Array();
 						}
+						g.target.push(applyParameter(t, "explode", paramValue));
+					});
+				}
 
-						g.title = applyParameter(tmpl.title, "explode", paramValue);
-						g.dynamic = true;
-						g.params = tmpl.params;
+				g.title = applyParameter(tmpl.title, "explode", paramValue);
+				g.dynamic = true;
+				g.params = tmpl.params;
 
-						var was_added = false;
+				// sort the new metric in the right position, alphabetically
+				var was_added = false;
+				$.each(config.data, function(index, d ) {
+					if ( index < fixed_graphs ) return true;
 
-						$.each(config.data, function(index, d ) {
-							if ( index < fixed_graphs ) return true;
-
-							if ( d.title > g.title )
-							{
-								config.data.splice(index, 0, g);
-								was_added = true;
-								return false;
-							}
-						});
-
-						if ( was_added == false )
-							config.data.push(g);
+					if ( d.title > g.title ) {
+						config.data.splice(index, 0, g);
+						was_added = true;
+						return false;
 					}
-	 			});
-	 		},
-	 		error: function(xhr, ajaxOptions, thrownError) {
-	 			console.log("error [" + xhr + "]");
-	 			var tmplError = $('#tmpl-warning-parameters').html();
-	 			$('#message').html(_.template(tmplError, {
-	 				message: "Could not load graphite parameters from url [" + queryUrl + "]: " + JSON.stringify(xhr.statusText) + "<br/>"
-	 			}));
-	 			$('#message').show();
-	 			$("#loader").hide();
-	 		},
-	 		async: false
-	 	});
-	}
+				});
+				if ( was_added == false ) { config.data.push(g); };
+			}
+		});
+
+	} // end of loop for each dataTemplates
+
 }
 
 function initializeGraphParams() {
