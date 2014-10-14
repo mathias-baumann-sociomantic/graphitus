@@ -10,76 +10,558 @@
 	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
 	"dataTemplates":[
 	{
-		"title":"Nautica Tracking-Records Totals Stats [Node ${explode}]",
+		"title":"Nautica Tracking-Records Totals Stats [${explode} - Node 1]",
 		"target": [
-			"cactiStyle(alias(scale(ap-*.nautica-${explode}.nautica_stats.Trcking_Rcrds_Rtrvd, 0.03333), \"Total Tracking Records Received\"))",
-			"cactiStyle(alias(scale(ap-*.nautica-${explode}.nautica_stats.Trcking_Parse_Errs, 0.03333), \"Tracking Records Parse Errors\"))",
-			"cactiStyle(alias(scale(ap-*.nautica-${explode}.nautica_stats.JSON_Parse_Errors, 0.03333), \"Traking Records JSON Errors\"))",
-			"cactiStyle(alias(scale(ap-*.nautica-${explode}.nautica_stats.Unknwn_Trckng_Rcrds, 0.03333), \"Unknown Tracking Records\"))"
+			"alias(scale(${explode}.nautica-1.nautica_stats.Trcking_Rcrds_Rtrvd, 0.03333), \"Total Tracking Records Received\")",
+			"alias(scale(${explode}.nautica-1.nautica_stats.Trcking_Parse_Errs, 0.03333), \"Tracking Records Parse Errors\")",
+			"alias(scale(${explode}.nautica-1.nautica_stats.JSON_Parse_Errors, 0.03333), \"Traking Records JSON Errors\")",
+			"alias(scale(${explode}.nautica-1.nautica_stats.Unknwn_Trckng_Rcrds, 0.03333), \"Unknown Tracking Records\")"
 		],
-		"query":"ap-*.nautica-*.nautica_stats",
-		"regex":"nautica-(.*)",
-		"index":1
+		"query":"ap-*.nautica-1.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
 	},
 	{
-		"title":"Nautica Tracking-Records Ratios Stats [Node ${explode}]",
+		"title":"Nautica Tracking-Records Ratios Stats [${explode} - Node 1]",
 		"target": [
-			"alias(scale(ap-*.nautica-${explode}.nautica_stats.RtioRcrds1Ad2TtlAds, 0.03333), \"Ratio Of Tracking Records With 1 Admeduim To Total Records\")",
-			"alias(scale(ap-*.nautica-${explode}.nautica_stats.RtioRcrdsNoAd2TtlAd, 0.03333), \"Ratio Of Tracking Records With No Admedia To Total Records\")"
+			"alias(scale(${explode}.nautica-1.nautica_stats.RtioRcrds1Ad2TtlAds, 0.03333), \"Ratio Of Tracking Records With 1 Admeduim To Total Records\")",
+			"alias(scale(${explode}.nautica-1.nautica_stats.RtioRcrdsNoAd2TtlAd, 0.03333), \"Ratio Of Tracking Records With No Admedia To Total Records\")"
 		],
-		"query":"ap-*.nautica-*.nautica_stats",
-		"regex":"nautica-(.*)",
-		"index":1
+		"query":"ap-*.nautica-1.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
 	},
 	{
-		"title":"Nautica DHT Totals Stats [Node ${explode}]",
+		"title":"Nautica DHT Totals Stats [${explode} - Node 1]",
 		"target": [
-			"cactiStyle(alias(scale(ap-*.nautica-${explode}.nautica_stats.WrtnRltdPrdctsTotal, 0.003333), \"Total Profiles Written\"))",
-			"cactiStyle(alias(scale(ap-*.nautica-${explode}.nautica_stats.WrtnRltdPrdctsPrfls, 0.003333), \"Total Related-Products Profiles Written\"))",
-			"cactiStyle(alias(scale(ap-*.nautica-${explode}.nautica_stats.WrtnRltdPrdcts_C_BS, 0.003333), \"Total Category-BS Written\"))",
-			"cactiStyle(alias(scale(ap-*.nautica-${explode}.nautica_stats.WrtnRltdPrdcts_M_BS, 0.003333), \"Total Manufacturer-BS Written\"))",
-			"cactiStyle(alias(scale(ap-*.nautica-${explode}.nautica_stats.WrtnRltdPrdcts_S_BS, 0.003333), \"Total Shop-BS Written\"))",
-			"cactiStyle(alias(scale(ap-*.nautica-${explode}.nautica_stats.Admedia_Removed, 0.003333), \"Total Admedia Removed\"))",
-			"cactiStyle(alias(scale(ap-*.nautica-${explode}.nautica_stats.FinalRltdsPrdctsFew, 0.003333), \"Profiles With Few Related-Profiles\"))",
-			"cactiStyle(alias(scale(ap-*.nautica-${explode}.nautica_stats.FinalRltdPrdctsZero, 0.003333), \"Profiles With Zero Related-Products\"))"
+			"alias(scale(${explode}.nautica-1.nautica_stats.WrtnRltdPrdctsTotal, 0.003333), \"Total Profiles Written\")",
+			"alias(scale(${explode}.nautica-1.nautica_stats.WrtnRltdPrdctsPrfls, 0.003333), \"Total Related-Products Profiles Written\")",
+			"alias(scale(${explode}.nautica-1.nautica_stats.WrtnRltdPrdcts_C_BS, 0.003333), \"Total Category-BS Written\")",
+			"alias(scale(${explode}.nautica-1.nautica_stats.WrtnRltdPrdcts_M_BS, 0.003333), \"Total Manufacturer-BS Written\")",
+			"alias(scale(${explode}.nautica-1.nautica_stats.WrtnRltdPrdcts_S_BS, 0.003333), \"Total Shop-BS Written\")",
+			"alias(scale(${explode}.nautica-1.nautica_stats.Admedia_Removed, 0.003333), \"Total Admedia Removed\")",
+			"alias(scale(${explode}.nautica-1.nautica_stats.FinalRltdsPrdctsFew, 0.003333), \"Profiles With Few Related-Profiles\")",
+			"alias(scale(${explode}.nautica-1.nautica_stats.FinalRltdPrdctsZero, 0.003333), \"Profiles With Zero Related-Products\")"
 		],
-		"query":"ap-*.nautica-*.nautica_stats",
-		"regex":"nautica-(.*)",
-		"index":1
+		"query":"ap-*.nautica-1.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
 	},
 	{
-		"title":"Nautica DHT Ratios Stats [Node ${explode}]",
+		"title":"Nautica DHT Ratios Stats [${explode} - Node 1]",
 		"target": [
-			"alias(scale(ap-*.nautica-${explode}.nautica_stats.RatioFew2TotalWrtn, 0.003333), \"Ratio of Profile with Few Records / Total Written\")",
-			"alias(scale(ap-*.nautica-${explode}.nautica_stats.RatioZero2TotalWrtn, 0.003333), \"Ratio of Profile with Zero Records / Total Written\")"
+			"alias(scale(${explode}.nautica-1.nautica_stats.RatioFew2TotalWrtn, 0.003333), \"Ratio of Profile with Few Records / Total Written\")",
+			"alias(scale(${explode}.nautica-1.nautica_stats.RatioZero2TotalWrtn, 0.003333), \"Ratio of Profile with Zero Records / Total Written\")"
 		],
-		"query":"ap-*.nautica-*.nautica_stats",
-		"regex":"nautica-(.*)",
-		"index":1
+		"query":"ap-*.nautica-1.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
 	},
 	{
-		"title":"Nautica Processing Stats [Node ${explode}]",
+		"title":"Nautica Processing Stats [${explode} - Node 1]",
 		"target": [
-			"cactiStyle(alias(scale(ap-*.nautica-${explode}.nautica_stats.BS_Created_Ctgry, 0.003333), \"Num. Of Created Bestsellers Categories\"))",
-			"cactiStyle(alias(scale(ap-*.nautica-${explode}.nautica_stats.BS_Created_Mnfctr, 0.003333), \"Num. Of Created Bestsellers Manufacturers\"))",
-			"cactiStyle(alias(scale(ap-*.nautica-${explode}.nautica_stats.MD_Frm_Other_Adpans, 0.003333), \"Metadata From Other Adpans (Hash Collision)\"))",
-			"cactiStyle(alias(scale(ap-*.nautica-${explode}.nautica_stats.Duplct_Items_Rmvd, 0.003333), \"Duplicate Items Removed\"))"
+			"alias(scale(${explode}.nautica-1.nautica_stats.BS_Created_Ctgry, 0.003333), \"Num. Of Created Bestsellers Categories\")",
+			"alias(scale(${explode}.nautica-1.nautica_stats.BS_Created_Mnfctr, 0.003333), \"Num. Of Created Bestsellers Manufacturers\")",
+			"alias(scale(${explode}.nautica-1.nautica_stats.MD_Frm_Other_Adpans, 0.003333), \"Metadata From Other Adpans (Hash Collision)\")",
+			"alias(scale(${explode}.nautica-1.nautica_stats.Duplct_Items_Rmvd, 0.003333), \"Duplicate Items Removed\")"
 		],
-		"query":"ap-*.nautica-*.nautica_stats",
-		"regex":"nautica-(.*)",
-		"index":1
+		"query":"ap-*.nautica-1.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
 	},
 	{
-		"title":"Nautica Processing Stats (Total) [Node ${explode}]",
+		"title":"Nautica Processing Stats (Total) [${explode} - Node 1]",
 		"target": [
-			"cactiStyle(alias(scale(ap-*.nautica-${explode}.nautica_stats.Ttl_Prfls_Cnt_Rcrds, 0.003333), \"Total Products in Log Lines\"))"
+			"alias(scale(${explode}.nautica-1.nautica_stats.Ttl_Prfls_Cnt_Rcrds, 0.003333), \"Total Products in Log Lines\")"
 		],
-		"query":"ap-*.nautica-*.nautica_stats",
-		"regex":"nautica-(.*)",
-		"index":1
+		"query":"ap-*.nautica-1.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Tracking-Records Totals Stats [${explode} - Node 2]",
+		"target": [
+			"alias(scale(${explode}.nautica-2.nautica_stats.Trcking_Rcrds_Rtrvd, 0.03333), \"Total Tracking Records Received\")",
+			"alias(scale(${explode}.nautica-2.nautica_stats.Trcking_Parse_Errs, 0.03333), \"Tracking Records Parse Errors\")",
+			"alias(scale(${explode}.nautica-2.nautica_stats.JSON_Parse_Errors, 0.03333), \"Traking Records JSON Errors\")",
+			"alias(scale(${explode}.nautica-2.nautica_stats.Unknwn_Trckng_Rcrds, 0.03333), \"Unknown Tracking Records\")"
+		],
+		"query":"ap-*.nautica-2.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Tracking-Records Ratios Stats [${explode} - Node 2]",
+		"target": [
+			"alias(scale(${explode}.nautica-2.nautica_stats.RtioRcrds1Ad2TtlAds, 0.03333), \"Ratio Of Tracking Records With 1 Admeduim To Total Records\")",
+			"alias(scale(${explode}.nautica-2.nautica_stats.RtioRcrdsNoAd2TtlAd, 0.03333), \"Ratio Of Tracking Records With No Admedia To Total Records\")"
+		],
+		"query":"ap-*.nautica-2.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica DHT Totals Stats [${explode} - Node 2]",
+		"target": [
+			"alias(scale(${explode}.nautica-2.nautica_stats.WrtnRltdPrdctsTotal, 0.003333), \"Total Profiles Written\")",
+			"alias(scale(${explode}.nautica-2.nautica_stats.WrtnRltdPrdctsPrfls, 0.003333), \"Total Related-Products Profiles Written\")",
+			"alias(scale(${explode}.nautica-2.nautica_stats.WrtnRltdPrdcts_C_BS, 0.003333), \"Total Category-BS Written\")",
+			"alias(scale(${explode}.nautica-2.nautica_stats.WrtnRltdPrdcts_M_BS, 0.003333), \"Total Manufacturer-BS Written\")",
+			"alias(scale(${explode}.nautica-2.nautica_stats.WrtnRltdPrdcts_S_BS, 0.003333), \"Total Shop-BS Written\")",
+			"alias(scale(${explode}.nautica-2.nautica_stats.Admedia_Removed, 0.003333), \"Total Admedia Removed\")",
+			"alias(scale(${explode}.nautica-2.nautica_stats.FinalRltdsPrdctsFew, 0.003333), \"Profiles With Few Related-Profiles\")",
+			"alias(scale(${explode}.nautica-2.nautica_stats.FinalRltdPrdctsZero, 0.003333), \"Profiles With Zero Related-Products\")"
+		],
+		"query":"ap-*.nautica-2.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica DHT Ratios Stats [${explode} - Node 2]",
+		"target": [
+			"alias(scale(${explode}.nautica-2.nautica_stats.RatioFew2TotalWrtn, 0.003333), \"Ratio of Profile with Few Records / Total Written\")",
+			"alias(scale(${explode}.nautica-2.nautica_stats.RatioZero2TotalWrtn, 0.003333), \"Ratio of Profile with Zero Records / Total Written\")"
+		],
+		"query":"ap-*.nautica-2.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Processing Stats [${explode} - Node 2]",
+		"target": [
+			"alias(scale(${explode}.nautica-2.nautica_stats.BS_Created_Ctgry, 0.003333), \"Num. Of Created Bestsellers Categories\")",
+			"alias(scale(${explode}.nautica-2.nautica_stats.BS_Created_Mnfctr, 0.003333), \"Num. Of Created Bestsellers Manufacturers\")",
+			"alias(scale(${explode}.nautica-2.nautica_stats.MD_Frm_Other_Adpans, 0.003333), \"Metadata From Other Adpans (Hash Collision)\")",
+			"alias(scale(${explode}.nautica-2.nautica_stats.Duplct_Items_Rmvd, 0.003333), \"Duplicate Items Removed\")"
+		],
+		"query":"ap-*.nautica-2.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Processing Stats (Total) [${explode} - Node 2]",
+		"target": [
+			"alias(scale(${explode}.nautica-2.nautica_stats.Ttl_Prfls_Cnt_Rcrds, 0.003333), \"Total Products in Log Lines\")"
+		],
+		"query":"ap-*.nautica-2.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Tracking-Records Totals Stats [${explode} - Node 3]",
+		"target": [
+			"alias(scale(${explode}.nautica-3.nautica_stats.Trcking_Rcrds_Rtrvd, 0.03333), \"Total Tracking Records Received\")",
+			"alias(scale(${explode}.nautica-3.nautica_stats.Trcking_Parse_Errs, 0.03333), \"Tracking Records Parse Errors\")",
+			"alias(scale(${explode}.nautica-3.nautica_stats.JSON_Parse_Errors, 0.03333), \"Traking Records JSON Errors\")",
+			"alias(scale(${explode}.nautica-3.nautica_stats.Unknwn_Trckng_Rcrds, 0.03333), \"Unknown Tracking Records\")"
+		],
+		"query":"ap-*.nautica-3.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Tracking-Records Ratios Stats [${explode} - Node 3]",
+		"target": [
+			"alias(scale(${explode}.nautica-3.nautica_stats.RtioRcrds1Ad2TtlAds, 0.03333), \"Ratio Of Tracking Records With 1 Admeduim To Total Records\")",
+			"alias(scale(${explode}.nautica-3.nautica_stats.RtioRcrdsNoAd2TtlAd, 0.03333), \"Ratio Of Tracking Records With No Admedia To Total Records\")"
+		],
+		"query":"ap-*.nautica-3.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica DHT Totals Stats [${explode} - Node 3]",
+		"target": [
+			"alias(scale(${explode}.nautica-3.nautica_stats.WrtnRltdPrdctsTotal, 0.003333), \"Total Profiles Written\")",
+			"alias(scale(${explode}.nautica-3.nautica_stats.WrtnRltdPrdctsPrfls, 0.003333), \"Total Related-Products Profiles Written\")",
+			"alias(scale(${explode}.nautica-3.nautica_stats.WrtnRltdPrdcts_C_BS, 0.003333), \"Total Category-BS Written\")",
+			"alias(scale(${explode}.nautica-3.nautica_stats.WrtnRltdPrdcts_M_BS, 0.003333), \"Total Manufacturer-BS Written\")",
+			"alias(scale(${explode}.nautica-3.nautica_stats.WrtnRltdPrdcts_S_BS, 0.003333), \"Total Shop-BS Written\")",
+			"alias(scale(${explode}.nautica-3.nautica_stats.Admedia_Removed, 0.003333), \"Total Admedia Removed\")",
+			"alias(scale(${explode}.nautica-3.nautica_stats.FinalRltdsPrdctsFew, 0.003333), \"Profiles With Few Related-Profiles\")",
+			"alias(scale(${explode}.nautica-3.nautica_stats.FinalRltdPrdctsZero, 0.003333), \"Profiles With Zero Related-Products\")"
+		],
+		"query":"ap-*.nautica-3.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica DHT Ratios Stats [${explode} - Node 3]",
+		"target": [
+			"alias(scale(${explode}.nautica-3.nautica_stats.RatioFew2TotalWrtn, 0.003333), \"Ratio of Profile with Few Records / Total Written\")",
+			"alias(scale(${explode}.nautica-3.nautica_stats.RatioZero2TotalWrtn, 0.003333), \"Ratio of Profile with Zero Records / Total Written\")"
+		],
+		"query":"ap-*.nautica-3.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Processing Stats [${explode} - Node 3]",
+		"target": [
+			"alias(scale(${explode}.nautica-3.nautica_stats.BS_Created_Ctgry, 0.003333), \"Num. Of Created Bestsellers Categories\")",
+			"alias(scale(${explode}.nautica-3.nautica_stats.BS_Created_Mnfctr, 0.003333), \"Num. Of Created Bestsellers Manufacturers\")",
+			"alias(scale(${explode}.nautica-3.nautica_stats.MD_Frm_Other_Adpans, 0.003333), \"Metadata From Other Adpans (Hash Collision)\")",
+			"alias(scale(${explode}.nautica-3.nautica_stats.Duplct_Items_Rmvd, 0.003333), \"Duplicate Items Removed\")"
+		],
+		"query":"ap-*.nautica-3.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Processing Stats (Total) [${explode} - Node 3]",
+		"target": [
+			"alias(scale(${explode}.nautica-3.nautica_stats.Ttl_Prfls_Cnt_Rcrds, 0.003333), \"Total Products in Log Lines\")"
+		],
+		"query":"ap-*.nautica-3.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Tracking-Records Totals Stats [${explode} - Node 4]",
+		"target": [
+			"alias(scale(${explode}.nautica-4.nautica_stats.Trcking_Rcrds_Rtrvd, 0.03333), \"Total Tracking Records Received\")",
+			"alias(scale(${explode}.nautica-4.nautica_stats.Trcking_Parse_Errs, 0.03333), \"Tracking Records Parse Errors\")",
+			"alias(scale(${explode}.nautica-4.nautica_stats.JSON_Parse_Errors, 0.03333), \"Traking Records JSON Errors\")",
+			"alias(scale(${explode}.nautica-4.nautica_stats.Unknwn_Trckng_Rcrds, 0.03333), \"Unknown Tracking Records\")"
+		],
+		"query":"ap-*.nautica-4.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Tracking-Records Ratios Stats [${explode} - Node 4]",
+		"target": [
+			"alias(scale(${explode}.nautica-4.nautica_stats.RtioRcrds1Ad2TtlAds, 0.03333), \"Ratio Of Tracking Records With 1 Admeduim To Total Records\")",
+			"alias(scale(${explode}.nautica-4.nautica_stats.RtioRcrdsNoAd2TtlAd, 0.03333), \"Ratio Of Tracking Records With No Admedia To Total Records\")"
+		],
+		"query":"ap-*.nautica-4.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica DHT Totals Stats [${explode} - Node 4]",
+		"target": [
+			"alias(scale(${explode}.nautica-4.nautica_stats.WrtnRltdPrdctsTotal, 0.003333), \"Total Profiles Written\")",
+			"alias(scale(${explode}.nautica-4.nautica_stats.WrtnRltdPrdctsPrfls, 0.003333), \"Total Related-Products Profiles Written\")",
+			"alias(scale(${explode}.nautica-4.nautica_stats.WrtnRltdPrdcts_C_BS, 0.003333), \"Total Category-BS Written\")",
+			"alias(scale(${explode}.nautica-4.nautica_stats.WrtnRltdPrdcts_M_BS, 0.003333), \"Total Manufacturer-BS Written\")",
+			"alias(scale(${explode}.nautica-4.nautica_stats.WrtnRltdPrdcts_S_BS, 0.003333), \"Total Shop-BS Written\")",
+			"alias(scale(${explode}.nautica-4.nautica_stats.Admedia_Removed, 0.003333), \"Total Admedia Removed\")",
+			"alias(scale(${explode}.nautica-4.nautica_stats.FinalRltdsPrdctsFew, 0.003333), \"Profiles With Few Related-Profiles\")",
+			"alias(scale(${explode}.nautica-4.nautica_stats.FinalRltdPrdctsZero, 0.003333), \"Profiles With Zero Related-Products\")"
+		],
+		"query":"ap-*.nautica-4.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica DHT Ratios Stats [${explode} - Node 4]",
+		"target": [
+			"alias(scale(${explode}.nautica-4.nautica_stats.RatioFew2TotalWrtn, 0.003333), \"Ratio of Profile with Few Records / Total Written\")",
+			"alias(scale(${explode}.nautica-4.nautica_stats.RatioZero2TotalWrtn, 0.003333), \"Ratio of Profile with Zero Records / Total Written\")"
+		],
+		"query":"ap-*.nautica-4.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Processing Stats [${explode} - Node 4]",
+		"target": [
+			"alias(scale(${explode}.nautica-4.nautica_stats.BS_Created_Ctgry, 0.003333), \"Num. Of Created Bestsellers Categories\")",
+			"alias(scale(${explode}.nautica-4.nautica_stats.BS_Created_Mnfctr, 0.003333), \"Num. Of Created Bestsellers Manufacturers\")",
+			"alias(scale(${explode}.nautica-4.nautica_stats.MD_Frm_Other_Adpans, 0.003333), \"Metadata From Other Adpans (Hash Collision)\")",
+			"alias(scale(${explode}.nautica-4.nautica_stats.Duplct_Items_Rmvd, 0.003333), \"Duplicate Items Removed\")"
+		],
+		"query":"ap-*.nautica-4.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Processing Stats (Total) [${explode} - Node 4]",
+		"target": [
+			"alias(scale(${explode}.nautica-4.nautica_stats.Ttl_Prfls_Cnt_Rcrds, 0.003333), \"Total Products in Log Lines\")"
+		],
+		"query":"ap-*.nautica-4.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Tracking-Records Totals Stats [${explode} - Node 5]",
+		"target": [
+			"alias(scale(${explode}.nautica-5.nautica_stats.Trcking_Rcrds_Rtrvd, 0.03333), \"Total Tracking Records Received\")",
+			"alias(scale(${explode}.nautica-5.nautica_stats.Trcking_Parse_Errs, 0.03333), \"Tracking Records Parse Errors\")",
+			"alias(scale(${explode}.nautica-5.nautica_stats.JSON_Parse_Errors, 0.03333), \"Traking Records JSON Errors\")",
+			"alias(scale(${explode}.nautica-5.nautica_stats.Unknwn_Trckng_Rcrds, 0.03333), \"Unknown Tracking Records\")"
+		],
+		"query":"ap-*.nautica-5.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Tracking-Records Ratios Stats [${explode} - Node 5]",
+		"target": [
+			"alias(scale(${explode}.nautica-5.nautica_stats.RtioRcrds1Ad2TtlAds, 0.03333), \"Ratio Of Tracking Records With 1 Admeduim To Total Records\")",
+			"alias(scale(${explode}.nautica-5.nautica_stats.RtioRcrdsNoAd2TtlAd, 0.03333), \"Ratio Of Tracking Records With No Admedia To Total Records\")"
+		],
+		"query":"ap-*.nautica-5.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica DHT Totals Stats [${explode} - Node 5]",
+		"target": [
+			"alias(scale(${explode}.nautica-5.nautica_stats.WrtnRltdPrdctsTotal, 0.003333), \"Total Profiles Written\")",
+			"alias(scale(${explode}.nautica-5.nautica_stats.WrtnRltdPrdctsPrfls, 0.003333), \"Total Related-Products Profiles Written\")",
+			"alias(scale(${explode}.nautica-5.nautica_stats.WrtnRltdPrdcts_C_BS, 0.003333), \"Total Category-BS Written\")",
+			"alias(scale(${explode}.nautica-5.nautica_stats.WrtnRltdPrdcts_M_BS, 0.003333), \"Total Manufacturer-BS Written\")",
+			"alias(scale(${explode}.nautica-5.nautica_stats.WrtnRltdPrdcts_S_BS, 0.003333), \"Total Shop-BS Written\")",
+			"alias(scale(${explode}.nautica-5.nautica_stats.Admedia_Removed, 0.003333), \"Total Admedia Removed\")",
+			"alias(scale(${explode}.nautica-5.nautica_stats.FinalRltdsPrdctsFew, 0.003333), \"Profiles With Few Related-Profiles\")",
+			"alias(scale(${explode}.nautica-5.nautica_stats.FinalRltdPrdctsZero, 0.003333), \"Profiles With Zero Related-Products\")"
+		],
+		"query":"ap-*.nautica-5.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica DHT Ratios Stats [${explode} - Node 5]",
+		"target": [
+			"alias(scale(${explode}.nautica-5.nautica_stats.RatioFew2TotalWrtn, 0.003333), \"Ratio of Profile with Few Records / Total Written\")",
+			"alias(scale(${explode}.nautica-5.nautica_stats.RatioZero2TotalWrtn, 0.003333), \"Ratio of Profile with Zero Records / Total Written\")"
+		],
+		"query":"ap-*.nautica-5.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Processing Stats [${explode} - Node 5]",
+		"target": [
+			"alias(scale(${explode}.nautica-5.nautica_stats.BS_Created_Ctgry, 0.003333), \"Num. Of Created Bestsellers Categories\")",
+			"alias(scale(${explode}.nautica-5.nautica_stats.BS_Created_Mnfctr, 0.003333), \"Num. Of Created Bestsellers Manufacturers\")",
+			"alias(scale(${explode}.nautica-5.nautica_stats.MD_Frm_Other_Adpans, 0.003333), \"Metadata From Other Adpans (Hash Collision)\")",
+			"alias(scale(${explode}.nautica-5.nautica_stats.Duplct_Items_Rmvd, 0.003333), \"Duplicate Items Removed\")"
+		],
+		"query":"ap-*.nautica-5.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Processing Stats (Total) [${explode} - Node 5]",
+		"target": [
+			"alias(scale(${explode}.nautica-5.nautica_stats.Ttl_Prfls_Cnt_Rcrds, 0.003333), \"Total Products in Log Lines\")"
+		],
+		"query":"ap-*.nautica-5.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Tracking-Records Totals Stats [${explode} - Node 6]",
+		"target": [
+			"alias(scale(${explode}.nautica-6.nautica_stats.Trcking_Rcrds_Rtrvd, 0.03333), \"Total Tracking Records Received\")",
+			"alias(scale(${explode}.nautica-6.nautica_stats.Trcking_Parse_Errs, 0.03333), \"Tracking Records Parse Errors\")",
+			"alias(scale(${explode}.nautica-6.nautica_stats.JSON_Parse_Errors, 0.03333), \"Traking Records JSON Errors\")",
+			"alias(scale(${explode}.nautica-6.nautica_stats.Unknwn_Trckng_Rcrds, 0.03333), \"Unknown Tracking Records\")"
+		],
+		"query":"ap-*.nautica-6.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Tracking-Records Ratios Stats [${explode} - Node 6]",
+		"target": [
+			"alias(scale(${explode}.nautica-6.nautica_stats.RtioRcrds1Ad2TtlAds, 0.03333), \"Ratio Of Tracking Records With 1 Admeduim To Total Records\")",
+			"alias(scale(${explode}.nautica-6.nautica_stats.RtioRcrdsNoAd2TtlAd, 0.03333), \"Ratio Of Tracking Records With No Admedia To Total Records\")"
+		],
+		"query":"ap-*.nautica-6.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica DHT Totals Stats [${explode} - Node 6]",
+		"target": [
+			"alias(scale(${explode}.nautica-6.nautica_stats.WrtnRltdPrdctsTotal, 0.003333), \"Total Profiles Written\")",
+			"alias(scale(${explode}.nautica-6.nautica_stats.WrtnRltdPrdctsPrfls, 0.003333), \"Total Related-Products Profiles Written\")",
+			"alias(scale(${explode}.nautica-6.nautica_stats.WrtnRltdPrdcts_C_BS, 0.003333), \"Total Category-BS Written\")",
+			"alias(scale(${explode}.nautica-6.nautica_stats.WrtnRltdPrdcts_M_BS, 0.003333), \"Total Manufacturer-BS Written\")",
+			"alias(scale(${explode}.nautica-6.nautica_stats.WrtnRltdPrdcts_S_BS, 0.003333), \"Total Shop-BS Written\")",
+			"alias(scale(${explode}.nautica-6.nautica_stats.Admedia_Removed, 0.003333), \"Total Admedia Removed\")",
+			"alias(scale(${explode}.nautica-6.nautica_stats.FinalRltdsPrdctsFew, 0.003333), \"Profiles With Few Related-Profiles\")",
+			"alias(scale(${explode}.nautica-6.nautica_stats.FinalRltdPrdctsZero, 0.003333), \"Profiles With Zero Related-Products\")"
+		],
+		"query":"ap-*.nautica-6.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica DHT Ratios Stats [${explode} - Node 6]",
+		"target": [
+			"alias(scale(${explode}.nautica-6.nautica_stats.RatioFew2TotalWrtn, 0.003333), \"Ratio of Profile with Few Records / Total Written\")",
+			"alias(scale(${explode}.nautica-6.nautica_stats.RatioZero2TotalWrtn, 0.003333), \"Ratio of Profile with Zero Records / Total Written\")"
+		],
+		"query":"ap-*.nautica-6.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Processing Stats [${explode} - Node 6]",
+		"target": [
+			"alias(scale(${explode}.nautica-6.nautica_stats.BS_Created_Ctgry, 0.003333), \"Num. Of Created Bestsellers Categories\")",
+			"alias(scale(${explode}.nautica-6.nautica_stats.BS_Created_Mnfctr, 0.003333), \"Num. Of Created Bestsellers Manufacturers\")",
+			"alias(scale(${explode}.nautica-6.nautica_stats.MD_Frm_Other_Adpans, 0.003333), \"Metadata From Other Adpans (Hash Collision)\")",
+			"alias(scale(${explode}.nautica-6.nautica_stats.Duplct_Items_Rmvd, 0.003333), \"Duplicate Items Removed\")"
+		],
+		"query":"ap-*.nautica-6.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Processing Stats (Total) [${explode} - Node 6]",
+		"target": [
+			"alias(scale(${explode}.nautica-6.nautica_stats.Ttl_Prfls_Cnt_Rcrds, 0.003333), \"Total Products in Log Lines\")"
+		],
+		"query":"ap-*.nautica-6.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Tracking-Records Totals Stats [${explode} - Node 7]",
+		"target": [
+			"alias(scale(${explode}.nautica-7.nautica_stats.Trcking_Rcrds_Rtrvd, 0.03333), \"Total Tracking Records Received\")",
+			"alias(scale(${explode}.nautica-7.nautica_stats.Trcking_Parse_Errs, 0.03333), \"Tracking Records Parse Errors\")",
+			"alias(scale(${explode}.nautica-7.nautica_stats.JSON_Parse_Errors, 0.03333), \"Traking Records JSON Errors\")",
+			"alias(scale(${explode}.nautica-7.nautica_stats.Unknwn_Trckng_Rcrds, 0.03333), \"Unknown Tracking Records\")"
+		],
+		"query":"ap-*.nautica-7.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Tracking-Records Ratios Stats [${explode} - Node 7]",
+		"target": [
+			"alias(scale(${explode}.nautica-7.nautica_stats.RtioRcrds1Ad2TtlAds, 0.03333), \"Ratio Of Tracking Records With 1 Admeduim To Total Records\")",
+			"alias(scale(${explode}.nautica-7.nautica_stats.RtioRcrdsNoAd2TtlAd, 0.03333), \"Ratio Of Tracking Records With No Admedia To Total Records\")"
+		],
+		"query":"ap-*.nautica-7.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica DHT Totals Stats [${explode} - Node 7]",
+		"target": [
+			"alias(scale(${explode}.nautica-7.nautica_stats.WrtnRltdPrdctsTotal, 0.003333), \"Total Profiles Written\")",
+			"alias(scale(${explode}.nautica-7.nautica_stats.WrtnRltdPrdctsPrfls, 0.003333), \"Total Related-Products Profiles Written\")",
+			"alias(scale(${explode}.nautica-7.nautica_stats.WrtnRltdPrdcts_C_BS, 0.003333), \"Total Category-BS Written\")",
+			"alias(scale(${explode}.nautica-7.nautica_stats.WrtnRltdPrdcts_M_BS, 0.003333), \"Total Manufacturer-BS Written\")",
+			"alias(scale(${explode}.nautica-7.nautica_stats.WrtnRltdPrdcts_S_BS, 0.003333), \"Total Shop-BS Written\")",
+			"alias(scale(${explode}.nautica-7.nautica_stats.Admedia_Removed, 0.003333), \"Total Admedia Removed\")",
+			"alias(scale(${explode}.nautica-7.nautica_stats.FinalRltdsPrdctsFew, 0.003333), \"Profiles With Few Related-Profiles\")",
+			"alias(scale(${explode}.nautica-7.nautica_stats.FinalRltdPrdctsZero, 0.003333), \"Profiles With Zero Related-Products\")"
+		],
+		"query":"ap-*.nautica-7.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica DHT Ratios Stats [${explode} - Node 7]",
+		"target": [
+			"alias(scale(${explode}.nautica-7.nautica_stats.RatioFew2TotalWrtn, 0.003333), \"Ratio of Profile with Few Records / Total Written\")",
+			"alias(scale(${explode}.nautica-7.nautica_stats.RatioZero2TotalWrtn, 0.003333), \"Ratio of Profile with Zero Records / Total Written\")"
+		],
+		"query":"ap-*.nautica-7.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Processing Stats [${explode} - Node 7]",
+		"target": [
+			"alias(scale(${explode}.nautica-7.nautica_stats.BS_Created_Ctgry, 0.003333), \"Num. Of Created Bestsellers Categories\")",
+			"alias(scale(${explode}.nautica-7.nautica_stats.BS_Created_Mnfctr, 0.003333), \"Num. Of Created Bestsellers Manufacturers\")",
+			"alias(scale(${explode}.nautica-7.nautica_stats.MD_Frm_Other_Adpans, 0.003333), \"Metadata From Other Adpans (Hash Collision)\")",
+			"alias(scale(${explode}.nautica-7.nautica_stats.Duplct_Items_Rmvd, 0.003333), \"Duplicate Items Removed\")"
+		],
+		"query":"ap-*.nautica-7.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Processing Stats (Total) [${explode} - Node 7]",
+		"target": [
+			"alias(scale(${explode}.nautica-7.nautica_stats.Ttl_Prfls_Cnt_Rcrds, 0.003333), \"Total Products in Log Lines\")"
+		],
+		"query":"ap-*.nautica-7.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Tracking-Records Totals Stats [${explode} - Node 8]",
+		"target": [
+			"alias(scale(${explode}.nautica-8.nautica_stats.Trcking_Rcrds_Rtrvd, 0.03333), \"Total Tracking Records Received\")",
+			"alias(scale(${explode}.nautica-8.nautica_stats.Trcking_Parse_Errs, 0.03333), \"Tracking Records Parse Errors\")",
+			"alias(scale(${explode}.nautica-8.nautica_stats.JSON_Parse_Errors, 0.03333), \"Traking Records JSON Errors\")",
+			"alias(scale(${explode}.nautica-8.nautica_stats.Unknwn_Trckng_Rcrds, 0.03333), \"Unknown Tracking Records\")"
+		],
+		"query":"ap-*.nautica-8.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Tracking-Records Ratios Stats [${explode} - Node 8]",
+		"target": [
+			"alias(scale(${explode}.nautica-8.nautica_stats.RtioRcrds1Ad2TtlAds, 0.03333), \"Ratio Of Tracking Records With 1 Admeduim To Total Records\")",
+			"alias(scale(${explode}.nautica-8.nautica_stats.RtioRcrdsNoAd2TtlAd, 0.03333), \"Ratio Of Tracking Records With No Admedia To Total Records\")"
+		],
+		"query":"ap-*.nautica-8.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica DHT Totals Stats [${explode} - Node 8]",
+		"target": [
+			"alias(scale(${explode}.nautica-8.nautica_stats.WrtnRltdPrdctsTotal, 0.003333), \"Total Profiles Written\")",
+			"alias(scale(${explode}.nautica-8.nautica_stats.WrtnRltdPrdctsPrfls, 0.003333), \"Total Related-Products Profiles Written\")",
+			"alias(scale(${explode}.nautica-8.nautica_stats.WrtnRltdPrdcts_C_BS, 0.003333), \"Total Category-BS Written\")",
+			"alias(scale(${explode}.nautica-8.nautica_stats.WrtnRltdPrdcts_M_BS, 0.003333), \"Total Manufacturer-BS Written\")",
+			"alias(scale(${explode}.nautica-8.nautica_stats.WrtnRltdPrdcts_S_BS, 0.003333), \"Total Shop-BS Written\")",
+			"alias(scale(${explode}.nautica-8.nautica_stats.Admedia_Removed, 0.003333), \"Total Admedia Removed\")",
+			"alias(scale(${explode}.nautica-8.nautica_stats.FinalRltdsPrdctsFew, 0.003333), \"Profiles With Few Related-Profiles\")",
+			"alias(scale(${explode}.nautica-8.nautica_stats.FinalRltdPrdctsZero, 0.003333), \"Profiles With Zero Related-Products\")"
+		],
+		"query":"ap-*.nautica-8.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica DHT Ratios Stats [${explode} - Node 8]",
+		"target": [
+			"alias(scale(${explode}.nautica-8.nautica_stats.RatioFew2TotalWrtn, 0.003333), \"Ratio of Profile with Few Records / Total Written\")",
+			"alias(scale(${explode}.nautica-8.nautica_stats.RatioZero2TotalWrtn, 0.003333), \"Ratio of Profile with Zero Records / Total Written\")"
+		],
+		"query":"ap-*.nautica-8.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Processing Stats [${explode} - Node 8]",
+		"target": [
+			"alias(scale(${explode}.nautica-8.nautica_stats.BS_Created_Ctgry, 0.003333), \"Num. Of Created Bestsellers Categories\")",
+			"alias(scale(${explode}.nautica-8.nautica_stats.BS_Created_Mnfctr, 0.003333), \"Num. Of Created Bestsellers Manufacturers\")",
+			"alias(scale(${explode}.nautica-8.nautica_stats.MD_Frm_Other_Adpans, 0.003333), \"Metadata From Other Adpans (Hash Collision)\")",
+			"alias(scale(${explode}.nautica-8.nautica_stats.Duplct_Items_Rmvd, 0.003333), \"Duplicate Items Removed\")"
+		],
+		"query":"ap-*.nautica-8.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"Nautica Processing Stats (Total) [${explode} - Node 8]",
+		"target": [
+			"alias(scale(${explode}.nautica-8.nautica_stats.Ttl_Prfls_Cnt_Rcrds, 0.003333), \"Total Products in Log Lines\")"
+		],
+		"query":"ap-*.nautica-8.nautica_stats",
+		"regex":"^(.*)",
+		"index":0
 	}
 	],
 	"data":[
 	]
 }
-
