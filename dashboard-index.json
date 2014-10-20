@@ -194,6 +194,7 @@
         {"id": "processes.propulsor.bids"},
         {"id": "processes.propulsor.connections"},
         {"id": "processes.propulsor.dht-requests"},
+        {"id": "processes.propulsor.dht-timeouts"},
         {"id": "processes.propulsor"},
         {"id": "processes.reef.live.ap.advertisers"},
         {"id": "processes.reef.live.eu.advertisers"},

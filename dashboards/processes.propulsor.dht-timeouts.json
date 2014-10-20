@@ -1,0 +1,33 @@
+{
+	"title": "Propulsor DHT Request Timeouts",
+	"width": 1024,
+	"defaultLineWidth": 1,
+	"timeBack": "12h",
+	"height": 768,
+	"refresh": true,
+	"data": [
+		{
+			"title":"${continent}/${server} DHT Timeouts (%ge)",
+			"target": [
+				"aliasSub(asPercent(groupByNode(scale(${continent}-${server}.cacti_propulsor.cacti_propulsor_stats-*.dht_timeouts, 0.03333333), 0, \"sumSeries\"), groupByNode(scale(${continent}-${server}.cacti_propulsor.cacti_propulsor_stats-*.dht_total, 0.03333333), 0, \"sumSeries\")), \"^asPercent.*scale\\(([^,]+),.*$\", \"\\1\")"
+			],
+			"params": "yMin=0&hideLegend=true"
+		}
+	],
+	"parameters": {
+		"continent": {
+			"EU" : {"continent" : "eu" },
+			"US" : {"continent" : "us" },
+			"AP" : {"continent" : "ap" },
+			"USAP" : {"continent" : "usap" }
+		},
+		"server" : {
+			"type" : "dynamic",
+			"query" : "${continent}-*.cacti_propulsor-*",
+			"index" : 0,
+			"regex" : "-(.*)",
+			"showAll": true,
+			"defaultValue" : "*"
+		}
+	}			
+}
