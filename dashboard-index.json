@@ -188,6 +188,7 @@
         {"id": "processes.cliff"},
         {"id": "processes.coral"},
         {"id": "processes.jet"},
+        {"id": "processes.madtom"},
         {"id": "processes.propulsor.aggregates"},
         {"id": "processes.propulsor.backend-requests"},
         {"id": "processes.propulsor.bidding-requests"},
