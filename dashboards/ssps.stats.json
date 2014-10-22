@@ -35,7 +35,7 @@
 		{
 			"title": "Win %age (Wins to Bids) (${continent}-${server}/${ssp})",
 			"target" : [
-				"aliasSub(asPercent(groupByNode(scale(timeShift(${reef_server}.reef.reef_ssp-${ssp}*.loglines, \"45s\"),0.033333333),2,\"sumSeries\"), groupByNode(scale(timeShift(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.bids, \"45s\"),0.033333333),2,\"sumSeries\")), \"^.*-(.*)\\)\", \"\\1\")"
+				"aliasSub(asPercent(groupByNode(${reef_server}.reef.reef_ssp-${ssp}*.loglines,2,\"sumSeries\"),groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.bids,2,\"sumSeries\")),\"^.*-(.*)\\)\",\"\\1\")"
 			]
 		},
 		{
