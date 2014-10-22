@@ -1,0 +1,44 @@
+{
+	"title":"Madtom",
+	"width":450,
+	"height":200,
+    "columns":2,
+	"defaultLineWidth":1,
+	"timeBack":"1d",
+	"refresh":true, 
+	"legend":false, 
+	"dataTemplates":[
+	{
+		"title":"[${explode}] 01. CPU Usage",
+		"target":[
+			"cactiStyle(alias(${explode}.madtom.process_cpu_stats.total, \"% total\"))",
+			"cactiStyle(alias(${explode}.madtom.process_cpu_stats.user, \"% user\"))",
+			"cactiStyle(alias(${explode}.madtom.process_cpu_stats.system, \"% system\"))"
+		],
+		"params":"yMin=0&yMax=100",
+		"query":"${server}.madtom.process_cpu_stats.total",
+		"regex":"(.*)",
+		"index":0
+	},
+	{
+		"title":"[${explode}] 02. Memory Usage",
+		"target":[
+			"cactiStyle(alias(${explode}.madtom.process_mem_stats.percentage, \"% total\"))"
+		],
+		"params":"yMin=0&yMax=100",
+		"query":"${server}.madtom.process_mem_stats.percentage",
+		"regex":"(.*)",
+		"index":0
+	}
+	],
+	"data":[
+	],		
+	"parameters":{
+		"server":{
+			"All":{"server":"{eu-058,us-021,ap-053}", "server-nice":"ALL"},
+			"EU":{"server":"eu-058", "server-nice":"EU"},
+			"US":{"server":"us-021", "server-nice":"US"},
+			"AP":{"server":"ap-053", "server-nice":"AP"}
+		}
+	}
+}
