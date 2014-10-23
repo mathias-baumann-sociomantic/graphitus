@@ -135,11 +135,12 @@ function renderExtendedGraph(target, data) {
 	var hoverDetail = new Rickshaw.Graph.HoverDetail({
 		graph: extendedChart,
 		formatter: function(series, x, y, formattedX, formattedY, d) {
-			return "<span class='y-hover-label-name'>" + series.name + "</span> - &nbsp;<span class='y-hover-label-value'>" + Rickshaw.Fixtures.Number.formatBase1024KMGTPShort(y) + "</span>";
+			var xOffset = moment().zone() * 60;
+			var dotDate=moment(((x + xOffset) * 1000), "").format("YYYY-MM-DD HH:mm");
+			return "<span style='line-height:18px;'><span class='y-hover-label-name'>" + dotDate + "</span> <br> <span class='y-hover-label-name'>" + series.name + "</span> - &nbsp;<span class='y-hover-label-value'>" + Rickshaw.Fixtures.Number.formatBase1024KMGTPShort(y) + "</span></span>";
 		},
 		xFormatter: function(x) {
-			var xOffset = moment().zone() * 60;
-			return moment(((x + xOffset) * 1000), "").format("YYYY-MM-DD HH:mm")
+			return ""
 		}
 	} );
 
