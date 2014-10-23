@@ -46,6 +46,13 @@ function renderView() {
 	console.log("rendered dashboard view");
 }
 
+function updateDashboardTitle() {
+	var updatedTitle=applyParameters(config.title) + ' ';
+	var shortUpdatedTitle = (config.title.length < 15) ? config.title : config.title.substring(0, 15) + "...";
+	document.title = updatedTitle + "Dashboard";
+	$("#dashboard_title").html(shortUpdatedTitle);
+}
+
 function loadView() {
 	updateGraphs();
 	toggleAutoRefresh();
@@ -125,6 +132,7 @@ function loadDashboard() {
 }
 
 function updateGraphs() {
+	updateDashboardTitle();
 	console.log("Updating graphs, start time: " + lastUpdate);
 	showProgress();
 
@@ -132,12 +140,6 @@ function updateGraphs() {
 	for (var i = 0; i < config.data.length; i++) {
 		updateGraph(i);
 	}
-
-	/*$('#dashboards-view').waitForImages(function() {
-		lastExecution = Math.floor((new Date() - lastUpdate) / 1000);
-		lastUpdate = new Date();
-		hideProgress();
-	});*/
 
 	lastExecution = Math.floor((new Date() - lastUpdate) / 1000);
 	lastUpdate = new Date();
@@ -806,7 +808,7 @@ function showExtendedGraph(idx) {
 		resizeToFit: false
 	});
 	setRickshawPalette(getColorList(rawTargets[idx]));
-	loadExtendedGraph(rawTargets[idx], config.title, applyParameters(config.data[idx].title));
+	loadExtendedGraph(rawTargets[idx], applyParameters(config.title), applyParameters(config.data[idx].title));
 	$(".rickshaw_legend").css("height", $(window).height() - 220);
 }
 
@@ -816,7 +818,7 @@ function showHistogram(idx) {
 	$('#hitogramLightbox').lightbox({
 		resizeToFit: false
 	});
-	loadHistogram(rawTargets[idx], config.title, applyParameters(config.data[idx].title));
+	loadHistogram(rawTargets[idx], applyParameters(config.title), applyParameters(config.data[idx].title));
 }
 
 function showGraphEvolution(idx) {
@@ -825,7 +827,7 @@ function showGraphEvolution(idx) {
 	$('#graphEvolutionLightbox').lightbox({
 		resizeToFit: false
 	});
-	loadGraphEvolution(rawTargets[idx], config.title, applyParameters(config.data[idx].title));
+	loadGraphEvolution(rawTargets[idx], applyParameters(config.title), applyParameters(config.data[idx].title));
 }
 
 function togglePinnedParametersToolbar() {
@@ -843,7 +845,11 @@ function togglePinnedParametersToolbar() {
 
 function generateConditionalGraphs(){
 	if ( config.dataConditional == undefined ) return;
+
 	var fixed_graphs = config.data.length;
+
+	var queryCache = new Array();
+	var queryCacheContents = new Array();
 
 	for (var i = 0; i < config.dataConditional.length; i++)
 	{
@@ -853,56 +859,69 @@ function generateConditionalGraphs(){
 		var queryUrl = url + query;
 		var parameters = new Array();
 
-		$.ajax({
-			type: 'GET',
-			url: queryUrl,
-			dataType: 'json',
-			success: function(data) {
-				$.each(data.metrics, function(index, metric) {
-					var paramValue = getParamValueFromPath(tmpl, metric);
-					if ( jQuery.inArray(paramValue, parameters) == -1 ) { parameters.push(paramValue); }
-				});
-				if ( parameters.length > 0 ) {
-					var g = new Object();
-					var expandedValues = '{' + parameters.join(',') + '}';
+		// resolve the template dynamic query. and cache
+		if ( queryCache.indexOf(query) == -1 ) {
+			queryCache.push(query);
+			queryCacheContents[query] = new Array();
 
-					if ( (typeof tmpl.target) === 'string' ) {
-						g.target = applyParameter(tmpl.target, "explode", expandedValues);
-					} else {
-						tmpl.target.forEach(function(t)	{
-							if (typeof g.target === 'undefined') { g.target=new Array(); }
-							g.target.push(applyParameter(t, "explode", expandedValues));
-						});
-					}
-
-					g.title = applyParameter(tmpl.title, "explode", expandedValues);
-					g.dynamic = true;
-					g.params = tmpl.params;
-
-					var was_added = false;
-
-					$.each(config.data, function(index, d ) {
-						if ( index < fixed_graphs ) return true;
-						if ( d.title > g.title ) {
-							config.data.splice(index, 0, g);
-							was_added = true;
-							return false;
+			$.ajax({
+				type: 'GET',
+				url: queryUrl,
+				dataType: 'json',
+				success: function(data) {
+					$.each(data.metrics, function(index, metric) {
+						var value = getParamValueFromPath(tmpl, metric);
+						if ( queryCacheContents[query].indexOf(value) == -1 ) {
+							queryCacheContents[query].push(value)
 						}
 					});
+				},
+				error: function(xhr, ajaxOptions, thrownError) {
+					console.log("error [" + xhr + "]");
+					var tmplError = $('#tmpl-warning-parameters').html();
+					$('#message').html(_.template(tmplError, {
+						message: "Could not load graphite parameters from url [" + queryUrl + "]: " + JSON.stringify(xhr.statusText) + "<br/>"
+					}));
+					$('#message').show();
+					$("#loader").hide();
+				},
+				async: false
+			});
+		};
 
-					if ( was_added == false ) { config.data.push(g); }
-				}
-			},
-			error: function(xhr, ajaxOptions, thrownError) {
-				console.log("error [" + xhr + "]");
-				var tmplError = $('#tmpl-warning-parameters').html();
-				$('#message').html(_.template(tmplError, {
-					message: "Could not load graphite parameters from url [" + queryUrl + "]: " + JSON.stringify(xhr.statusText) + "<br/>"
-				}));
-				$('#message').show();
-				$("#loader").hide();
-			},
-			async: false
+		// use cache to avoid extra ajax calls
+		$.each(queryCacheContents[query], function(index, paramValue) {
+			if ( parameters.indexOf(paramValue) == -1 )	{ parameters.push(paramValue); }
 		});
+		var g = new Object();
+
+		// compose parameter and apply it to the new graph
+		var expandedValues = '{' + parameters.join(',') + '}';
+		if ( (typeof tmpl.target) === 'string' ) {
+			g.target = applyParameter(tmpl.target, "explode", expandedValues);
+		} else {
+			tmpl.target.forEach(function(t)	{
+				if (typeof g.target === 'undefined') { g.target=new Array(); }
+				g.target.push(applyParameter(t, "explode", expandedValues));
+			});
+		}
+
+		g.title = applyParameter(tmpl.title, "explode", expandedValues);
+		g.dynamic = true;
+		g.params = tmpl.params;
+
+		// sort the new metric in the right position, alphabetically
+		var was_added = false;
+		$.each(config.data, function(index, d ) {
+			if ( index < fixed_graphs ) return true;
+
+			if ( d.title > g.title ) {
+				config.data.splice(index, 0, g);
+				was_added = true;
+				return false;
+			}
+		});
+
+		if ( was_added == false ) { config.data.push(g); }
 	}
 }
