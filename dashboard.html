@@ -3,12 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/bootstrap-combined.min.css" rel="stylesheet">
-<link href="css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="libs/jqueryui/1.10.3/css/base/jquery.ui.all.min.css" type="text/css" />
-<link href="libs/select2/3.4.1/select2.css" rel="stylesheet">
-<link href="libs/bootstrap-lightbox/0.5/bootstrap-lightbox.min.css" rel="stylesheet">
-<link href="libs/rickshaw/1.3.0/rickshaw.min.css" rel="stylesheet">
+
+<link type="text/css" rel="stylesheet" href="css/bootstrap-combined.min.css">
+<link type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
+<link type="text/css" rel="stylesheet" href="libs/jqueryui/1.10.3/css/base/jquery.ui.all.min.css">
+<link type="text/css" rel="stylesheet" href="libs/select2/3.4.1/select2.css">
+<link type="text/css" rel="stylesheet" href="libs/bootstrap-lightbox/0.5/bootstrap-lightbox.min.css">
+<link type="text/css" rel="stylesheet" href="libs/rickshaw/1.3.0/rickshaw.min.css">
 <link type="text/css" rel="stylesheet" href="css/graphitus.css">
 <link type="text/css" rel="stylesheet" href="css/graph.css">
 <link type="text/css" rel="stylesheet" href="css/detail.css">
@@ -22,11 +23,11 @@
 <script type="text/javascript" src="libs/jquery-cookie/1.3.1/jquery.cookie.min.js"></script>
 <script type="text/javascript" src="libs/d3/3.3.9/d3.min.js"></script>
 <script type="text/javascript" src="libs/rickshaw/1.3.0/rickshaw.min.js"></script>
-<script src="libs/slidesjs/3.0/jquery.slides.min.js"></script>
-<script src="libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script src="libs/bootstrap-lightbox/0.5/bootstrap-lightbox.min.js"></script>
-<script src="libs/moment.js/2.8.1/moment.min.js"></script>
-<script src="libs/moment.js/timezone/0.2.1/moment-timezone-with-data-2010-2020.min.js"></script>
+<script type="text/javascript" src="libs/slidesjs/3.0/jquery.slides.min.js"></script>
+<script type="text/javascript" src="libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="libs/bootstrap-lightbox/0.5/bootstrap-lightbox.min.js"></script>
+<script type="text/javascript" src="libs/moment.js/2.8.1/moment.min.js"></script>
+<script type="text/javascript" src="libs/moment.js/timezone/0.2.1/moment-timezone-with-data-2010-2020.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui-timepicker-addon.min.js"></script>
 <script type="text/javascript" src="js/jquery.waitforimages.min.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
@@ -300,7 +301,7 @@ $(document).ready(function() {
                                         <section>
                                             <div id="offset_form">
                                                 <label for="stack">
-                                                    <input type="radio" name="offset" id="stack" value="zero" checked>
+                                                    <input type="radio" name="offset" id="stack" value="zero">
                                                     <span>stack</span>
                                                 </label>
                                                 <label for="stream">
@@ -312,17 +313,17 @@ $(document).ready(function() {
                                                     <span>pct</span>
                                                 </label>
                                                 <label for="value">
-                                                    <input type="radio" name="offset" id="value" value="value">
+                                                    <input type="radio" name="offset" id="value" value="value" checked>
                                                     <span>value</span>
                                                 </label>
                                             </div>
                                             <div id="interpolation_form">
                                                 <label for="cardinal">
-                                                    <input type="radio" name="interpolation" id="cardinal" value="cardinal" checked>
+                                                    <input type="radio" name="interpolation" id="cardinal" value="cardinal">
                                                     <span>cardinal</span>
                                                 </label>
                                                 <label for="linear">
-                                                    <input type="radio" name="interpolation" id="linear" value="linear">
+                                                    <input type="radio" name="interpolation" id="linear" value="linear" checked>
                                                     <span>linear</span>
                                                 </label>
                                                 <label for="step">

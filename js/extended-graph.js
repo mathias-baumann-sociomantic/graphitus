@@ -121,7 +121,7 @@ function renderExtendedGraph(target, data) {
 		renderer: renderer,
 		stroke: true,
 		min: "auto",
-		interpolation: 'cardinal',
+		interpolation: 'linear',
 		series: data
 	});
 
