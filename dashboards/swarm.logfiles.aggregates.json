@@ -1,54 +1,53 @@
 {
     "title":"DHT Logfiles",
-        "width" : 490,
+	"width" : 490,
 	"defaultLineWidth":1,
 	"timeBack":"6h",
-        "height" : 220,
+	"height" : 220,
 	"refresh" : true,
-        "legend" : true,
-	"defaultParameters":"areaMode=none&lineWidth=2&yMin=0&fontSize=11",
-	"defaultParametersDiscarded":"&colorList=%23B34BFD,%23C87CFF,%239D63FF,%235E00FF,%238C00FF,%23B969FB,%23F85F00,%23F8002D,%23F82700",
-        "data":[
+	"legend" : true,
+	"defaultParameters":"areaMode=none&lineWidth=2&yMin=0&fontSize=11&until=-90seconds",
+	"data":[
 	{
-            "title":"Aggregate - Logfiles Total Bytes",
-            "target": "alias(sum(${continent}-*.cacti_dht_log-*.cacti_dht_log.total_bytes), \"total bytes\")"
-        },
+	    "title":"Aggregate - Logfiles Total Bytes",
+	    "target": "alias(sum(${continent}-*.cacti_dht_log-*.cacti_dht_log.total_bytes), \"total bytes\")"
+	},
 	{
-            "title":"Aggregate - Logfiles Total Records",
-            "target": "alias(sum(${continent}-*.cacti_dht_log-*.cacti_dht_log.total_records), \"total records\")"
-        },
+	    "title":"Aggregate - Logfiles Total Records",
+	    "target": "alias(sum(${continent}-*.cacti_dht_log-*.cacti_dht_log.total_records), \"total records\")"
+	},
 	{
-            "title":"Aggregate - Logfiles bytes/s sent/received",
-            "target": [
+	    "title":"Aggregate - Logfiles bytes/s sent/received",
+	    "target": [
 		"alias(sum(${continent}-*.cacti_dht_log-*.cacti_dht_log.bytes_sent), \"bytes sent\")",
 		"alias(sum(${continent}-*.cacti_dht_log-*.cacti_dht_log.bytes_received), \"bytes received\")"
 		]
-        },
-        {
-            "title":"Aggregate - Logfiles Handled Records",
-            "target": [
+	},
+	{
+	    "title":"Aggregate - Logfiles Handled Records",
+	    "target": [
 		"alias(sum(${continent}-*.cacti_dht_log-*.cacti_dht_log.records_handled), \"records handled\")"
 		]
-        },
-        {
-            "title":"Aggregate - Logfiles Handled Connections",
-            "target": [
+	},
+	{
+	    "title":"Aggregate - Logfiles Handled Connections",
+	    "target": [
 		"alias(sum(${continent}-*.cacti_dht_log-*.cacti_dht_log.handling_conns), \"connections handled\")"
 		]
-        }
-        ],
+	}
+	],
 	"parameters": {
-                "continent": {
-                        "All" : {"continent" : "*",
-                                 "cont-nice" : "All" },
-                        "EU" : {"continent" : "eu",
-                                 "cont-nice" : "EU" },
-                        "US" : {"continent" : "us",
-                                 "cont-nice" : "US" },
-                        "AP" : {"continent" : "ap",
-                                 "cont-nice" : "AP" },
-                        "USAP" : {"continent" : "usap",
-                                 "cont-nice" : "USAP" }
+		"continent": {
+			"All" : {"continent" : "*",
+				 "cont-nice" : "All" },
+			"EU" : {"continent" : "eu",
+				 "cont-nice" : "EU" },
+			"US" : {"continent" : "us",
+				 "cont-nice" : "US" },
+			"AP" : {"continent" : "ap",
+				 "cont-nice" : "AP" },
+			"USAP" : {"continent" : "usap",
+				 "cont-nice" : "USAP" }
 		}
 	}			
 }

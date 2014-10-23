@@ -6,7 +6,7 @@
 		"height" : 220,
 		"refresh" : true,
 		"legend" : true,
-		"defaultParameters":"areaMode=none&lineWidth=1&yMin=0&fontSize=11",
+		"defaultParameters":"areaMode=none&lineWidth=1&yMin=0&fontSize=11&until=-90seconds",
 		"data":[
 		{
 			"title":"Aggregate - Propulsor Backend Stats [Bidding Requests/s] [${continent}]",

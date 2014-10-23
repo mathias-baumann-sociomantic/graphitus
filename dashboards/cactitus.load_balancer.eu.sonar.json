@@ -6,7 +6,7 @@
 	"height" : 141,
 	"refresh" : true,
 	"legend" : false,
-	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0&until=-90seconds",
 	"dataTemplates" : [
 	{
 		"title":"${explode} - Sonar LB - Network Traffic [eth0]",
