@@ -12,7 +12,7 @@
 			"query" : "*-*.cacti_nginx.cacti_nginx_sockets.nginx_requests",
 			"regex" : "(.*)-",
 			"index" : 0,
-			"params" : "yMin=0&hideLegend=false"
+			"params" : "yMin=0&hideLegend=false&until=-90seconds"
 		}
 		],
 		"data":[

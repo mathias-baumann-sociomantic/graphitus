@@ -6,9 +6,7 @@
 	"height" : 220,
 	"refresh" : true,
 	"legend" : true,
-	"defaultParameters":"areaMode=none&lineWidth=2&yMin=0&fontSize=11",
-	"defaultParametersDiscarded":"&colorList=%23B34BFD,%23C87CFF,%239D63FF,%235E00FF,%238C00FF,%23B969FB,%23F85F00,%23F8002D,%23F82700",
-
+	"defaultParameters":"areaMode=none&lineWidth=2&yMin=0&fontSize=11&until=-90sec",
 	"dataConditional" : [
 	{
 		"title":"DHT Memory Usage % on all nodes from ${continent}",
@@ -19,7 +17,6 @@
 		"params":"yMin=0&areaMode=none&yMax=100"
 	}
 	],
-
 	"data":[
 	{
 		"title":"Aggregate - DHT Handled Connections",
