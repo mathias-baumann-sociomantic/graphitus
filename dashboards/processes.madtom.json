@@ -2,30 +2,30 @@
 	"title":"Madtom",
 	"width":450,
 	"height":200,
-    "columns":2,
+    "columns":3,
 	"defaultLineWidth":1,
 	"timeBack":"1d",
 	"refresh":true, 
 	"legend":false, 
 	"dataTemplates":[
 	{
-		"title":"[${explode}] 01. CPU Usage",
+		"title":"01. CPU Usage [${explode}]",
 		"target":[
 			"cactiStyle(alias(${explode}.madtom.process_cpu_stats.total, \"% total\"))",
 			"cactiStyle(alias(${explode}.madtom.process_cpu_stats.user, \"% user\"))",
 			"cactiStyle(alias(${explode}.madtom.process_cpu_stats.system, \"% system\"))"
 		],
-		"params":"yMin=0&yMax=100",
+		"params":"yMin=0",
 		"query":"${server}.madtom.process_cpu_stats.total",
 		"regex":"(.*)",
 		"index":0
 	},
 	{
-		"title":"[${explode}] 02. Memory Usage",
+		"title":"02. Memory Usage [${explode}]",
 		"target":[
 			"cactiStyle(alias(${explode}.madtom.process_mem_stats.percentage, \"% total\"))"
 		],
-		"params":"yMin=0&yMax=100",
+		"params":"yMin=0",
 		"query":"${server}.madtom.process_mem_stats.percentage",
 		"regex":"(.*)",
 		"index":0
