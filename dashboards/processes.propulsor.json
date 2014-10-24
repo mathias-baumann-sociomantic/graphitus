@@ -10,13 +10,13 @@
 		{
 			"title":"All SSP Requests",
 			"target" : "aliasSub(groupByNode(scale(offset(${continent}-*.cacti_propulsor-*.cacti_propulsor_fe_stats-${ssp}.requests,0.0001),0.03333333),2,\"sumSeries\"),\".*-\",\"\")",
-			"params" : "logBase=10&yMin=5&yMax=10000"
+			"params" : "logBase=10&yMin=5&yMax=1000000"
 
 		},
 		{
 			"title":"All SSP Bids",
 			"target" : "aliasSub(groupByNode(scale(offset(${continent}-*.cacti_propulsor-*.cacti_propulsor_fe_stats-${ssp}.bids,0.0001),0.03333333),2,\"sumSeries\"),\".*-\",\"\")",
-			"params" : "logBase=10&yMin=1&yMax=1000"
+			"params" : "logBase=10&yMin=1&yMax=100000"
 
 		}
 	],

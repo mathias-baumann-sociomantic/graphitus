@@ -10,7 +10,7 @@
 		"data":[
 		{
 			"title":"Summed Bidding Requests/s [${continent}-${server}/${instance}]",
-			"params":"logBase=10&yMin=1001&yMax=100000&minorY=10",
+			"params":"logBase=10&yMin=1001&yMax=10000000&minorY=10",
 			"target": [
 				"alias(sum(${continent}-${server}.cacti_propulsor.cacti_propulsor_be_stats-${instance}.requests_total), \"Total\")",
 			"alias(sum(${continent}-${server}.cacti_propulsor.cacti_propulsor_be_stats-${instance}.requests_above_1ms), \"> 1 ms\")", 
@@ -20,7 +20,7 @@
 		},
 		{
 			"title":"Summed DHT Requests/s] [${continent}-${server}/${instance}]",
-			"params":"logBase=10&yMin=1&yMax=1000000&minorY=10",
+			"params":"logBase=10&yMin=1&yMax=100000000&minorY=10",
 			"target": [
 				"alias(offset(sum(${continent}-${server}.cacti_propulsor.cacti_propulsor_be_stats-${instance}.dht_total), 0.1), \"Total\")",
 			"alias(offset(sum(${continent}-${server}.cacti_propulsor.cacti_propulsor_be_stats-${instance}.dht_timeout), 0.1), \"Timeout\")", 

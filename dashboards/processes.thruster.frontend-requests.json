@@ -5,7 +5,7 @@
 		"timeBack":"6h",
 		"height" : 300,
 		"refresh" : true,
-		"_defaultParameters":"yUnitSystem=si&areaMode=none&lineWidth=1&hideLegend=false&colorList=black,green,red&logBase=10&yMin=0.1&yMax=100&minorY=1",
+		"_defaultParameters":"yUnitSystem=si&areaMode=none&lineWidth=1&hideLegend=false&colorList=black,green,red&logBase=10&yMin=0.1&yMax=10000&minorY=1",
 		"defaultParameters":"hideLegend=false&colorList=black,green,red",
 		"dataTemplates" : [
 		{
