@@ -10,7 +10,7 @@
 		"data":[
 		{
 			"title":"Aggregate - Propulsor Backend Stats [Bidding Requests/s] [${continent}]",
-			"params":"logBase=10&yMin=1001&yMax=100000&minorY=10",
+			"params":"logBase=10&yMin=1001&yMax=10000000&minorY=10",
 			"target": [
 				"alias(sum(${continent}-*.cacti_propulsor.cacti_propulsor_be_stats-*.requests_total), \"Total\")",
 			"alias(sum(${continent}-*.cacti_propulsor.cacti_propulsor_be_stats-*.requests_above_1ms), \"> 1 ms\")", 
@@ -19,7 +19,7 @@
 		},
 		{
 			"title":"Aggregate - Propulsor Backend Stats [DHT Requests/s] [${continent}]",
-			"params":"logBase=10&yMin=1&yMax=1000000&minorY=10",
+			"params":"logBase=10&yMin=1&yMax=100000000&minorY=10",
 			"target": [
 				"alias(offset(sum(${continent}-*.cacti_propulsor.cacti_propulsor_be_stats-*.dht_total), 0.1), \"Total\")",
 			"alias(offset(sum(${continent}-*.cacti_propulsor.cacti_propulsor_be_stats-*.dht_timeout), 0.1), \"Timeout\")", 

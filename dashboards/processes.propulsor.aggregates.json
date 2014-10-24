@@ -11,7 +11,7 @@
 		{
 			"title": "Frontend Stats [Backend Requests/s] [${cont-nice}]",
 			"target" : "cactiStyle(sortByMinima(aliasByNode(groupByNode(offset(scale(${continent}-${server}.cacti_propulsor-${instance}.cacti_propulsor_fe.*,0.033333333),0.0001),3,\"sumSeries\"),0)))",
-			"params" : "logBase=10&yMin=1&yMax=10000&colorList=red,blue&areaMode=all" 
+			"params" : "logBase=10&yMin=1&yMax=1000000&colorList=red,blue&areaMode=all" 
 		},
 		{
 			"title": "Frontend Stats [Connections] [${cont-nice}]",
@@ -20,17 +20,17 @@
 		{
 			"title": "Frontend Stats [DHT Requests/s] [${cont-nice}]",
 			"target" : "cactiStyle(aliasByNode(groupByNode(offset(scale(${continent}-${server}.cacti_propulsor.cacti_propulsor_stats-${instance}.dht*,0.033333333),0.0001),3,\"sumSeries\"),0))",
-			"params" : "logBase=10&yMax=10000&colorList=blue,red"
+			"params" : "logBase=10&yMax=1000000&colorList=blue,red"
 		},
 		{
 			"title": "Frontend Stats [Bidding Requests/s] [${cont-nice}]",
 			"target" : "aliasSub(aliasByNode(groupByNode(offset(scale(${continent}-${server}.cacti_propulsor-${instance}.cacti_propulsor_fe_stats-${ssp}.requests,0.033333333),0.0001),2,\"sumSeries\"),0),\"^.*-\", \"\")",
-			"params" : "logBase=10&yMax=10000&hideLegend=true"
+			"params" : "logBase=10&yMax=1000000&hideLegend=true"
 		},
 		{
 			"title": "Frontend Stats [Bids/s] [${cont-nice}]",
 			"target" : "aliasSub(aliasByNode(groupByNode(offset(scale(${continent}-${server}.cacti_propulsor-${instance}.cacti_propulsor_fe_stats-${ssp}.bids,0.033333333),0.0001),2,\"sumSeries\"),0),\"^.*-\", \"\")",
-			"params" : "logBase=10&yMax=10000&hideLegend=true"
+			"params" : "logBase=10&yMax=1000000&hideLegend=true"
 		}
 	],
 		"parameters": {

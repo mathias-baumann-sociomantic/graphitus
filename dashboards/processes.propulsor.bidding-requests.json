@@ -13,7 +13,7 @@
 			"query" : "${continent}-*.cacti_propulsor-01.cacti_propulsor_fe_*",
 			"regex" : "(.*)",
 			"index" : 0,
-			"params" : "hideLegend=true&logBase=10&yMin=1&yMax=100"
+			"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10000"
 		},
 		{
 			"title":"${explode} Bidding Requests/sec [02]",
@@ -22,7 +22,7 @@
 			"query" : "${continent}-*.cacti_propulsor-02.cacti_propulsor_fe_*",
 			"regex" : "(.*)",
 			"index" : 0,
-			"params" : "hideLegend=true&logBase=10&yMin=1&yMax=100"
+			"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10000"
 		},
 		{
 			"title":"${explode} Bidding Requests/sec [03]",
@@ -31,7 +31,7 @@
 			"query" : "${continent}-*.cacti_propulsor-03.cacti_propulsor_fe_*",
 			"regex" : "(.*)",
 			"index" : 0,
-			"params" : "hideLegend=true&logBase=10&yMin=1&yMax=100"
+			"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10000"
 		}
 		],
 		"data":[

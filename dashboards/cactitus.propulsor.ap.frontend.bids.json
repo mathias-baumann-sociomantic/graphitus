@@ -14,7 +14,7 @@
 		"query" : "${continent}-*.cacti_propulsor-01.cacti_propulsor_fe_*",
 		"regex" : "(.*)",
 		"index" : 0,
-		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10"
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=1000"
 	},
 	{
 		"title":"${explode} Propulsor Stats [Bids/sec] [02]",
@@ -22,7 +22,7 @@
 		"query" : "${continent}-*.cacti_propulsor-02.cacti_propulsor_fe_*",
 		"regex" : "(.*)",
 		"index" : 0,
-		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10"
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=1000"
 	},
 	{
 		"title":"${explode} Propulsor Stats [Bids/sec] [03]",
@@ -30,7 +30,7 @@
 		"query" : "${continent}-*.cacti_propulsor-03.cacti_propulsor_fe_*",
 		"regex" : "(.*)",
 		"index" : 0,
-		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10"
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=1000"
 	},
 	{
 		"title":"${explode} Propulsor Stats [Bids/sec] [04]",
@@ -39,7 +39,7 @@
 		"query" : "${continent}-*.cacti_propulsor-04.cacti_propulsor_fe_*",
 		"regex" : "(.*)",
 		"index" : 0,
-		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10"
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=1000"
 	},
 	{
 		"title":"${explode} Propulsor Stats [Bids/sec] [05]",
@@ -47,7 +47,7 @@
 		"query" : "${continent}-*.cacti_propulsor-05.cacti_propulsor_fe_*",
 		"regex" : "(.*)",
 		"index" : 0,
-		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10"
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=1000"
 	},
 	{
 		"title":"${explode} Propulsor Stats [Bids/sec] [06]",
@@ -55,7 +55,7 @@
 		"query" : "${continent}-*.cacti_propulsor-06.cacti_propulsor_fe_*",
 		"regex" : "(.*)",
 		"index" : 0,
-		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10"
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=1000"
 	},
 	{
 		"title":"${explode} Propulsor Stats [Bids/sec] [07]",
@@ -63,7 +63,7 @@
 		"query" : "${continent}-*.cacti_propulsor-07.cacti_propulsor_fe_*",
 		"regex" : "(.*)",
 		"index" : 0,
-		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10"
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=1000"
 	},
 	{
 		"title":"${explode} Propulsor Stats [Bids/sec] [08]",
@@ -71,7 +71,7 @@
 		"query" : "${continent}-*.cacti_propulsor-08.cacti_propulsor_fe_*",
 		"regex" : "(.*)",
 		"index" : 0,
-		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=10"
+		"params" : "hideLegend=true&logBase=10&yMin=1&yMax=1000"
 	}
 	],
 	"data":[
