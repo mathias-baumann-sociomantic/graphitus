@@ -221,6 +221,22 @@ You can then use a target like ```services.prod.${service}.${host}_${datacenter}
 
 Graphitus will also consider generating the list of values from a partial path, the index and regex determine which portion and substring (regex) of the resulting path will be used to generate the values for selection. The ```showAll``` property is used to determine if graphitus will prepend a default All (translated to ```*``` in the graphite query) option to the selection. The ```showAllValue``` parameter can be added to override the default ```*``` selection for complex name filtering schemes (you can have token in this value to express dependencies on other parameters).
 
+Text Parameters
+---------------
+
+Text parameters allow you to create custom text box. It is useful when there is too much dynamic data for dynamic parameter.
+
+Consider the following configuration for the ```parameters``` section of the configuration
+
+```javascript
+"campaign" : {
+	"type" : "text",
+	"default" : "114"
+}
+```
+
+This will add parameter named ```campaign``` with default value "114".
+
 Naming and grouping techniques
 ------------------------------
 
