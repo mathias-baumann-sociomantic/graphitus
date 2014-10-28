@@ -53,7 +53,7 @@
 	],
 	"parameters": {
 		"continent": {
-			"EU" : {"continent" : "{eu-012,eu-014,eu-031,eu-121}",
+			"EU" : {"continent" : "{eu-012,eu-121}",
 				"continent-nice" : "EU" },
 			"US" : {"continent" : "{us-036,us-044}",
 				"continent-nice" : "US" },
