@@ -67,7 +67,8 @@
         },
         "campaign" : {
             "type" : "text",
-            "default" : "1"
+            "default" : "1",
+            "regexp" : "^[0-9]+$"
         }
     }            
 }

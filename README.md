@@ -231,11 +231,12 @@ Consider the following configuration for the ```parameters``` section of the con
 ```javascript
 "campaign" : {
 	"type" : "text",
-	"default" : "114"
+	"default" : "114",
+	"regexp" : "^[0-9]+$"
 }
 ```
 
-This will add parameter named ```campaign``` with default value "114".
+This will add parameter named ```campaign``` with default value "114". Input will be checked agains regular expression, defined in "regexp". All fields are mandatory.
 
 Naming and grouping techniques
 ------------------------------

@@ -7,6 +7,7 @@ var autoRefreshEnabled = false;
 var parameterDependencies = new Array();
 var dynamicParams = new Array();
 var rawTargets = new Array();
+var textValuesCurrent = new Array();
 
 function renderGraphitus() {
 	$('#dashboards-view').hide();
@@ -228,6 +229,17 @@ function getUserUrlParams(idx) {
 
 function calculateEffectiveTarget(target) {
 	return applyParameters(target);
+}
+
+function renderTextValidate(paramGroupName, regexp) {
+	var re = new RegExp(regexp);
+        if (!re.test($('#' + paramGroupName).val())) {
+		document.getElementById(paramGroupName).style.backgroundColor = "#FFAAAA";
+		return false;
+	} else {
+		document.getElementById(paramGroupName).style.backgroundColor = "white";
+		return true;
+	}
 }
 
 function renderParamToolbar() {
@@ -457,16 +469,21 @@ function applyRegexToName(paramGroup, metric) {
 function applyParameters(target) {
 	if (config.parameters) {
 		$.each(config.parameters, function(paramGroupName, paramGroup) {
-
-			for (tokenKey in paramGroup[paramGroupName]) {
-				var tokenValue = paramGroup[paramGroupName][tokenKey];
-				target = applyParameter(target, tokenKey, tokenValue);
-			}
 			var selectedParamText = "";
 			if (paramGroup.type && paramGroup.type == "text" ) {
-				selectedParamText = $('#' + paramGroupName).val();
+				if (renderTextValidate(paramGroupName, paramGroup.regexp)) {
+					selectedParamText = $('#' + paramGroupName).val();
+					textValuesCurrent[paramGroupName] = selectedParamText;
+				} else {
+					selectedParamText = textValuesCurrent[paramGroupName];
+				}
+
 				target = applyParameter(target, paramGroupName, selectedParamText);
 			} else {
+				for (tokenKey in paramGroup[paramGroupName]) {
+					var tokenValue = paramGroup[paramGroupName][tokenKey];
+					target = applyParameter(target, tokenKey, tokenValue);
+				}
 				selectedParamText = $('#' + paramGroupName + " option:selected").text();
 				for (tokenKey in paramGroup[selectedParamText]) {
 					var tokenValue = paramGroup[selectedParamText][tokenKey];
