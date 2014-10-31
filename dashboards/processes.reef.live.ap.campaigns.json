@@ -66,11 +66,9 @@
             "All" : { "version" : "*" }
         },
         "campaign" : {
-            "type" : "dynamic",
-            "query" : "${continent}-${version}.reef.reef_cid-*",
-            "index" : 2,
-            "regex" : "reef_cid-(.*)",
-            "showAll": false
+            "type" : "text",
+            "default" : "1685",
+            "regexp" : "^[0-9]+$"
         }
     }            
 }

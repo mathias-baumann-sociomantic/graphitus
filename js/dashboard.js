@@ -7,6 +7,7 @@ var autoRefreshEnabled = false;
 var parameterDependencies = new Array();
 var dynamicParams = new Array();
 var rawTargets = new Array();
+var textValuesCurrent = new Array();
 
 function renderGraphitus() {
 	$('#dashboards-view').hide();
@@ -230,22 +231,37 @@ function calculateEffectiveTarget(target) {
 	return applyParameters(target);
 }
 
+function renderTextValidate(paramGroupName, regexp) {
+	var re = new RegExp(regexp);
+        if (!re.test($('#' + paramGroupName).val())) {
+		document.getElementById(paramGroupName).style.backgroundColor = "#FFAAAA";
+		return false;
+	} else {
+		document.getElementById(paramGroupName).style.backgroundColor = "white";
+		return true;
+	}
+}
+
 function renderParamToolbar() {
 	if (config.parameters) {
 		$.each(config.parameters, function(paramGroupName, paramGroup) {
-			var tmplParamSel = $('#tmpl-parameter-sel').html();
-			$("#parametersToolbarContent").append(_.template(tmplParamSel, {
-				group: paramGroupName
-			}));
-			$("#" + paramGroupName).select2({
-				placeholder: "Loading " + paramGroupName
-			});
-			if (paramGroup.type && paramGroup.type == "dynamic") {
-				dynamicParams[paramGroupName] = paramGroup;
-				loadParameterDependencies(paramGroupName, paramGroup.query);
-				renderDynamicParamGroup(paramGroupName, paramGroup);
+			if (paramGroup.type && paramGroup.type == "text") {
+				$("#parametersToolbarContent").append('<input type="text" class="input-small" placeholder="' + paramGroup.default + '" id="' + paramGroupName + '" name="' + paramGroupName + '" value="' + paramGroup.default + '" onchange="updateGraphs()" />');
 			} else {
-				renderValueParamGroup(paramGroupName, paramGroup);
+				var tmplParamSel = $('#tmpl-parameter-sel').html();
+				$("#parametersToolbarContent").append(_.template(tmplParamSel, {
+					group: paramGroupName
+				}));
+				$("#" + paramGroupName).select2({
+					placeholder: "Loading " + paramGroupName
+				});
+				if (paramGroup.type && paramGroup.type == "dynamic") {
+					dynamicParams[paramGroupName] = paramGroup;
+					loadParameterDependencies(paramGroupName, paramGroup.query);
+					renderDynamicParamGroup(paramGroupName, paramGroup);
+				} else {
+					renderValueParamGroup(paramGroupName, paramGroup);
+				}
 			}
 		});
 		$('#parameters-toolbar').show();
@@ -423,7 +439,6 @@ function renderDynamicParamGroup(paramGroupName, paramGroup) {
 	});
 }
 
-
 function endsWith(str, suffix) {
 	return str.indexOf(suffix, str.length - suffix.length) !== -1;
 }
@@ -454,15 +469,26 @@ function applyRegexToName(paramGroup, metric) {
 function applyParameters(target) {
 	if (config.parameters) {
 		$.each(config.parameters, function(paramGroupName, paramGroup) {
+			var selectedParamText = "";
+			if (paramGroup.type && paramGroup.type == "text" ) {
+				if (renderTextValidate(paramGroupName, paramGroup.regexp)) {
+					selectedParamText = $('#' + paramGroupName).val();
+					textValuesCurrent[paramGroupName] = selectedParamText;
+				} else {
+					selectedParamText = textValuesCurrent[paramGroupName];
+				}
 
-			for (tokenKey in paramGroup[paramGroupName]) {
-				var tokenValue = paramGroup[paramGroupName][tokenKey];
-				target = applyParameter(target, tokenKey, tokenValue);
-			}
-			var selectedParamText = $('#' + paramGroupName + " option:selected").text();
-			for (tokenKey in paramGroup[selectedParamText]) {
-				var tokenValue = paramGroup[selectedParamText][tokenKey];
-				target = applyParameter(target, tokenKey, tokenValue);
+				target = applyParameter(target, paramGroupName, selectedParamText);
+			} else {
+				for (tokenKey in paramGroup[paramGroupName]) {
+					var tokenValue = paramGroup[paramGroupName][tokenKey];
+					target = applyParameter(target, tokenKey, tokenValue);
+				}
+				selectedParamText = $('#' + paramGroupName + " option:selected").text();
+				for (tokenKey in paramGroup[selectedParamText]) {
+					var tokenValue = paramGroup[selectedParamText][tokenKey];
+					target = applyParameter(target, tokenKey, tokenValue);
+				}
 			}
 		});
 	}
