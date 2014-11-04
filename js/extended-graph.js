@@ -61,8 +61,8 @@ function loadExtendedEvents(annotator) {
 		end = moment();
 		start = end.clone().subtract(tsFrame, tsValue);
 	} else {
-		var start = $('#start').val();
-		var end = $('#end').val();
+		start = moment($('#start').val());
+		end = moment($('#end').val());
 	}
 	var eventsUrl = _.template(graphitusConfig.eventsUrl, {
 		start: start.format("YYYY-MM-DD HH:mm:ss"),
