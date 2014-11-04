@@ -231,7 +231,7 @@ Consider the following configuration for the ```parameters``` section of the con
 ```javascript
 "campaign" : {
 	"type" : "text",
-	"default" : "114",
+	"defaultValue" : "114",
 	"regexp" : "^[0-9]+$"
 }
 ```

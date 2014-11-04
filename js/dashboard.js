@@ -246,7 +246,7 @@ function renderParamToolbar() {
 	if (config.parameters) {
 		$.each(config.parameters, function(paramGroupName, paramGroup) {
 			if (paramGroup.type && paramGroup.type == "text") {
-				$("#parametersToolbarContent").append('<input type="text" class="input-small" placeholder="' + paramGroup.default + '" id="' + paramGroupName + '" name="' + paramGroupName + '" value="' + getDefaultValue(paramGroupName, paramGroup) + '" onchange="updateGraphs()" />');
+				$("#parametersToolbarContent").append('<input type="text" class="input-small" placeholder="' + paramGroup.defaultValue + '" id="' + paramGroupName + '" name="' + paramGroupName + '" value="' + getDefaultValue(paramGroupName, paramGroup) + '" onchange="updateGraphs()" />');
 			} else {
 				var tmplParamSel = $('#tmpl-parameter-sel').html();
 				$("#parametersToolbarContent").append(_.template(tmplParamSel, {
