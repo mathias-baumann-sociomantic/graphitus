@@ -246,7 +246,7 @@ function renderParamToolbar() {
 	if (config.parameters) {
 		$.each(config.parameters, function(paramGroupName, paramGroup) {
 			if (paramGroup.type && paramGroup.type == "text") {
-				$("#parametersToolbarContent").append('<input type="text" class="input-small" placeholder="' + paramGroup.default + '" id="' + paramGroupName + '" name="' + paramGroupName + '" value="' + paramGroup.default + '" onchange="updateGraphs()" />');
+				$("#parametersToolbarContent").append('<input type="text" class="input-small" placeholder="' + paramGroup.default + '" id="' + paramGroupName + '" name="' + paramGroupName + '" value="' + getDefaultValue(paramGroupName, paramGroup) + '" onchange="updateGraphs()" />');
 			} else {
 				var tmplParamSel = $('#tmpl-parameter-sel').html();
 				$("#parametersToolbarContent").append(_.template(tmplParamSel, {
@@ -286,8 +286,13 @@ function generatePermalink() {
 	if (config.parameters) {
 		$.each(config.parameters, function(paramGroupName, paramGroup) {
 			if ($('#' + paramGroupName)) {
-				var selectedParamText = $('#' + paramGroupName + " option:selected").text();
-				href = href + "&" + paramGroupName + "=" + encodeURIComponent(selectedParamText);
+				var paramText;
+				if ($('#' + paramGroupName).is('select')) {
+					paramText = $('#' + paramGroupName + " option:selected").text();
+				} else {
+					paramText = $('#' + paramGroupName).val();
+				}
+				href = href + "&" + paramGroupName + "=" + encodeURIComponent(paramText);
 			}
 		});
 	}
