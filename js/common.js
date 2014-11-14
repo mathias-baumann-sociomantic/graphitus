@@ -121,11 +121,12 @@ function generateDashboardsMenus() {
 
 function formatBase1024KMGTPShort(y){
 	abs_y = Math.abs(y);
-    if (abs_y >= 1125899906842624)  { return parseFloat(y / 1125899906842624).toFixed(2) + "P" }
-    else if (abs_y >= 1099511627776){ return parseFloat(y / 1099511627776).toFixed(2) + "T" }
-    else if (abs_y >= 1073741824)   { return parseFloat(y / 1073741824).toFixed(2) + "G" }
-    else if (abs_y >= 1048576)      { return parseFloat(y / 1048576).toFixed(2) + "M" }
-    else if (abs_y >= 1024)         { return parseFloat(y / 1024).toFixed(2) + "K" }
+	explicitText = " (" + (Math.round(y * 100) / 100) + ")";
+    if (abs_y >= 1125899906842624)  { return parseFloat(y / 1125899906842624).toFixed(2) + "P" + explicitText }
+    else if (abs_y >= 1099511627776){ return parseFloat(y / 1099511627776).toFixed(2) + "T" + explicitText }
+    else if (abs_y >= 1073741824)   { return parseFloat(y / 1073741824).toFixed(2) + "G" + explicitText }
+    else if (abs_y >= 1048576)      { return parseFloat(y / 1048576).toFixed(2) + "M" + explicitText }
+    else if (abs_y >= 1024)         { return parseFloat(y / 1024).toFixed(2) + "K" + explicitText }
     else if (abs_y < 1 && y > 0)    { return parseFloat(y).toFixed(2) }
     else if (abs_y === 0)           { return '' }
     else                        	{ return y.toFixed(2) }
