@@ -10,72 +10,72 @@
 	{
 		"title":"${explode} - Propulsor Frontend Stats [CPU] [01]",
 		"target" : [
-			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_fe_cpu-01.cpu_usage,\"CPU\"))"
+			"cactiStyle(alias(${explode}.propulsor-01.process_cpu_stats.total,\"CPU\"))"
 		],
-		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_fe_cpu-01",
+		"query" : "${continent}-*.propulsor-01.process_cpu_stats.total",
 		"regex" : "(.*)",
 		"index" : 0
 	},
 	{
 		"title":"${explode} - Propulsor Frontend Stats [CPU] [02]",
 		"target" : [
-			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_fe_cpu-02.cpu_usage,\"CPU\"))"
+			"cactiStyle(alias(${explode}.propulsor-02.process_cpu_stats.total,\"CPU\"))"
 		],
-		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_fe_cpu-02",
+		"query" : "${continent}-*.propulsor-02.process_cpu_stats.total",
 		"regex" : "(.*)",
 		"index" : 0
 	},
 	{
 		"title":"${explode} - Propulsor Frontend Stats [CPU] [03]",
 		"target" : [
-			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_fe_cpu-03.cpu_usage,\"CPU\"))"
+			"cactiStyle(alias(${explode}.propulsor-03.process_cpu_stats.total,\"CPU\"))"
 		],
-		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_fe_cpu-03",
+		"query" : "${continent}-*.propulsor-03.process_cpu_stats.total",
 		"regex" : "(.*)",
 		"index" : 0
 	},
 	{
 		"title":"${explode} - Propulsor Frontend Stats [CPU] [04]",
 		"target" : [
-			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_fe_cpu-04.cpu_usage,\"CPU\"))"
+			"cactiStyle(alias(${explode}.propulsor-04.process_cpu_stats.total,\"CPU\"))"
 		],
-		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_fe_cpu-04",
+		"query" : "${continent}-*.propulsor-04.process_cpu_stats.total",
 		"regex" : "(.*)",
 		"index" : 0
 	},
 	{
 		"title":"${explode} - Propulsor Frontend Stats [CPU] [05]",
 		"target" : [
-			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_fe_cpu-05.cpu_usage,\"CPU\"))"
+			"cactiStyle(alias(${explode}.propulsor-05.process_cpu_stats.total,\"CPU\"))"
 		],
-		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_fe_cpu-05",
+		"query" : "${continent}-*.propulsor-05.process_cpu_stats.total",
 		"regex" : "(.*)",
 		"index" : 0
 	},
 	{
 		"title":"${explode} - Propulsor Frontend Stats [CPU] [06]",
 		"target" : [
-			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_fe_cpu-06.cpu_usage,\"CPU\"))"
+			"cactiStyle(alias(${explode}.propulsor-06.process_cpu_stats.total,\"CPU\"))"
 		],
-		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_fe_cpu-06",
+		"query" : "${continent}-*.propulsor-06.process_cpu_stats.total",
 		"regex" : "(.*)",
 		"index" : 0
 	},
 	{
 		"title":"${explode} - Propulsor Frontend Stats [CPU] [07]",
 		"target" : [
-			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_fe_cpu-07.cpu_usage,\"CPU\"))"
+			"cactiStyle(alias(${explode}.propulsor-07.process_cpu_stats.total,\"CPU\"))"
 		],
-		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_fe_cpu-07",
+		"query" : "${continent}-*.propulsor-07.process_cpu_stats.total",
 		"regex" : "(.*)",
 		"index" : 0
 	},
 	{
 		"title":"${explode} - Propulsor Frontend Stats [CPU] [08]",
 		"target" : [
-			"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_fe_cpu-08.cpu_usage,\"CPU\"))"
+			"cactiStyle(alias(${explode}.propulsor-08.process_cpu_stats.total,\"CPU\"))"
 		],
-		"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_fe_cpu-08",
+		"query" : "${continent}-*.propulsor-08.process_cpu_stats.total",
 		"regex" : "(.*)",
 		"index" : 0
 	}
