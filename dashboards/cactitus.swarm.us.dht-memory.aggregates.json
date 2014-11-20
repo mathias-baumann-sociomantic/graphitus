@@ -11,22 +11,22 @@
 	{
 	    "title":"Aggregate - DHT Handled Connections [US]",
 	    "target": [
-		"alias(sum(us-*.cacti_dht*.cacti_dht_stats.DHT_handle_connects), \"connections\")"
+		"alias(sumSeries(us-*.dht-*.dht_stats.handled_connections), \"connections\")"
 		]
 
 	},
 	{
 	    "title":"Aggregate - DHT bytes/s sent/received [US]",
 	    "target": [
-		"alias(sum(us-*.cacti_dht*.cacti_dht_stats.DHT_sent_bytes), \"bytes sent\")",
-		"alias(sum(us-*.cacti_dht*.cacti_dht_stats.DHT_received_bytes), \"bytes received\")"
+		"alias(sumSeries(us-*.dht-*.dht_stats.bytes_sent), \"bytes sent\")",
+		"alias(sumSeries(us-*.dht-*.dht_stats.bytes_received), \"bytes received\")"
 		]
 	},
 	{
 	    "title":"Aggregate - DHT Memory Usage [US]",
 	    "target": [
-		"alias(sum(us-*.cacti_dht-*.cacti_dht_mem.bytes_ps,us-*.cacti_dht.cacti_dht_mem_ps.bytes_ps_*), \"bytes ps\")",
-		"alias(sum(us-*.cacti_dht-*.cacti_dht_mem.bytes_dht,us-*.cacti_dht.cacti_dht_mem_dht.bytes_dht_*), \"bytes dht\")"
+		"alias(sumSeries(us-*.dht-*.process_mem_stats.rss), \"bytes ps\")",
+		"alias(sumSeries(us-*.dht-*.dht_stats.total_bytes), \"bytes dht\")"
 		]
 	}
 	]

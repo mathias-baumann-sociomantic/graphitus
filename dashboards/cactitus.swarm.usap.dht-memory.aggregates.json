@@ -1,5 +1,5 @@
 {
-    "title":"Swarm DHT-Memory Aggregates [AP / US]",
+    "title":"Swarm DHT-Memory Aggregates [USAP]",
 	"width" : 400,
 	"defaultLineWidth":1,
 	"timeBack":"6h",
@@ -9,24 +9,24 @@
 	"defaultParameters":"areaMode=none&lineWidth=1&yMin=0&fontSize=9&until=-90seconds",
 	"data":[
 	{
-	    "title":"Aggregate - DHT Handled Connections [AP / US]",
+	    "title":"Aggregate - DHT Handled Connections [USAP]",
 	    "target": [
-		"alias(sum(usap-*.cacti_dht*.cacti_dht_stats.DHT_handle_connects), \"connections\")"
+		"alias(sumSeries(usap-*.dht-*.dht_stats.handled_connections), \"connections\")"
 		]
 
 	},
 	{
-	    "title":"Aggregate - DHT bytes/s sent/received [AP / US]",
+	    "title":"Aggregate - DHT bytes/s sent/received [USAP]",
 	    "target": [
-		"alias(sum(usap-*.cacti_dht*.cacti_dht_stats.DHT_sent_bytes), \"bytes sent\")",
-		"alias(sum(usap-*.cacti_dht*.cacti_dht_stats.DHT_received_bytes), \"bytes received\")"
+		"alias(sumSeries(usap-*.dht-*.dht_stats.bytes_sent), \"bytes sent\")",
+		"alias(sumSeries(usap-*.dht-*.dht_stats.bytes_received), \"bytes received\")"
 		]
 	},
 	{
-	    "title":"Aggregate - DHT Memory Usage [AP / US]",
+	    "title":"Aggregate - DHT Memory Usage [USAP]",
 	    "target": [
-		"alias(sum(usap-*.cacti_dht-*.cacti_dht_mem.bytes_ps,usap-*.cacti_dht.cacti_dht_mem_ps.bytes_ps_*), \"bytes ps\")",
-		"alias(sum(usap-*.cacti_dht-*.cacti_dht_mem.bytes_dht,usap-*.cacti_dht.cacti_dht_mem_dht.bytes_dht_*), \"bytes dht\")"
+		"alias(sumSeries(usap-*.dht-*.process_mem_stats.rss), \"bytes ps\")",
+		"alias(sumSeries(usap-*.dht-*.dht_stats.total_bytes), \"bytes dht\")"
 		]
 	}
 	]

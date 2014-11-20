@@ -1,71 +1,71 @@
 {
-    "title":"DHT Data sent/received",
-        "width" : 490,
+	"title":"DHT Data sent/received",
+	"width":490,
 	"defaultLineWidth":1,
 	"timeBack":"6h",
-        "height" : 220,
-	"refresh" : true,
-        "legend" : true,
-	"defaultParameters":"yMin=0&fontSize=10&hideLegend=false",
-        "dataTemplates":[		
-        {
+	"height":220,
+	"refresh":true,
+	"legend":true,
+	"defaultParameters":"yMin=0&fontSize=9&areaMode=All&areaAlpha=0.4&colorList=green,red",
+	"dataTemplates":[
+	{
 		"title":"${explode} DHT bytes/s sent/received [Node 1]",
 		"target": [
-			"alias(${explode}.cacti_dht-1.cacti_dht_stats.DHT_sent_bytes, \"bytes sent\")",
-			"alias(${explode}.cacti_dht-1.cacti_dht_stats.DHT_received_bytes, \"bytes received\")"
+			"alias(${explode}.dht-1.dht_stats.bytes_sent, \"bytes sent\")",
+			"alias(${explode}.dht-1.dht_stats.bytes_received, \"bytes received\")"
 		],
-                "query":"${continent}-${server}.cacti_dht-1.cacti_dht_stats",
-                "regex":"^(.*)",
-                "index":0
-        },
-        {
+		"query":"${server}.dht-1.dht_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
 		"title":"${explode} DHT bytes/s sent/received [Node 2]",
 		"target": [
-			"alias(${explode}.cacti_dht-2.cacti_dht_stats.DHT_sent_bytes, \"bytes sent\")",
-			"alias(${explode}.cacti_dht-2.cacti_dht_stats.DHT_received_bytes, \"bytes received\")"
+			"alias(${explode}.dht-2.dht_stats.bytes_sent, \"bytes sent\")",
+			"alias(${explode}.dht-2.dht_stats.bytes_received, \"bytes received\")"
 		],
-                "query":"${continent}-${server}.cacti_dht-2.cacti_dht_stats",
-                "regex":"^(.*)",
-                "index":0
-        },
-        {
+		"query":"${server}.dht-2.dht_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
 		"title":"${explode} DHT bytes/s sent/received [Node 3]",
 		"target": [
-			"alias(${explode}.cacti_dht-3.cacti_dht_stats.DHT_sent_bytes, \"bytes sent\")",
-			"alias(${explode}.cacti_dht-3.cacti_dht_stats.DHT_received_bytes, \"bytes received\")"
+			"alias(${explode}.dht-3.dht_stats.bytes_sent, \"bytes sent\")",
+			"alias(${explode}.dht-3.dht_stats.bytes_received, \"bytes received\")"
 		],
-                "query":"${continent}-${server}.cacti_dht-3.cacti_dht_stats",
-                "regex":"^(.*)",
-                "index":0
-        },
-        {
+		"query":"${server}.dht-3.dht_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
 		"title":"${explode} DHT bytes/s sent/received [Node 4]",
 		"target": [
-			"alias(${explode}.cacti_dht-4.cacti_dht_stats.DHT_sent_bytes, \"bytes sent\")",
-			"alias(${explode}.cacti_dht-4.cacti_dht_stats.DHT_received_bytes, \"bytes received\")"
+			"alias(${explode}.dht-4.dht_stats.bytes_sent, \"bytes sent\")",
+			"alias(${explode}.dht-4.dht_stats.bytes_received, \"bytes received\")"
 		],
-                "query":"${continent}-${server}.cacti_dht-4.cacti_dht_stats",
-                "regex":"^(.*)",
-                "index":0
-        }
-        ],
-        "data":[
+		"query":"${server}.dht-4.dht_stats",
+		"regex":"^(.*)",
+		"index":0
+	}
 	],
-        "parameters": {
-                "continent": {
-                        "All" : {"continent" : "*" },
-                        "EU" : {"continent" : "eu" },
-                        "US" : {"continent" : "us" },
-                        "AP" : {"continent" : "ap" },
-                        "USAP" : {"continent" : "usap" }
-                },
-                "server" : {
-                        "type" : "dynamic",
-                        "query" : "${continent}-*.cacti_dht-*.cacti_dht_dumps",
-                        "index" : 0,
-                        "regex" : "-(.*)",
-                        "showAll": true,
-                        "defaultValue" : "*"
-                }
-        }                       
+	"data":[
+	],
+	"parameters": {
+		"continent": {
+			"All":{"continent":"*"},
+			"EU":{"continent":"eu"},
+			"US":{"continent":"us"},
+			"AP":{"continent":"ap"},
+			"USAP":{"continent":"usap"}
+		},
+		"server":{
+			"type":"dynamic",
+			"query":"${continent}-*.dht-*.dht_stats",
+			"index":0,
+			"regex":"(.*)",
+			"showAll": true,
+			"showAllValue":"${continent}-*"
+		}
+	}
 }
