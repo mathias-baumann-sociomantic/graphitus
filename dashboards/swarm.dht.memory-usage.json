@@ -1,65 +1,75 @@
 {
 	"title":"DHT Memory Usage",
-	"width" : 490,
+	"width":490,
 	"defaultLineWidth":1,
 	"timeBack":"6h",
-	"height" : 220,
-	"columns" : 3,
-	"refresh" : true,
-	"legend" : true,
-	"dataTemplates" : [
+	"height":220,
+	"refresh":true,
+	"legend":true,
+	"dataTemplates":[
 	{
 		"title":"DHT Memory Usage on ${explode} [Node 1]",
-		"target":"aliasByNode(${explode}.cacti_dht.cacti_dht_mem_*.bytes_*_1, 0, 3)",
-		"query":"${continent}-${server}.cacti_dht.cacti_dht_mem_*.bytes_*",
+		"target":[
+			"alias(${explode}.dht-1.dht_stats.total_bytes, \"bytes dht\")",
+			"alias(${explode}.dht-1.process_mem_stats.rss, \"bytes ps\")"
+		],
+		"query":"${server}.dht-1.process_mem_stats.rss",
 		"regex":"^(.*)",
 		"index":0,
-		"params":"yMin=0&areaMode=none"
+		"params":"yMin=0&areaMode=All&areaAlpha=0.4"
 	},
+
 	{
 		"title":"DHT Memory Usage on ${explode} [Node 2]",
-		"target":"aliasByNode(${explode}.cacti_dht.cacti_dht_mem_*.bytes_*_2, 0, 3)",
-		"query":"${continent}-${server}.cacti_dht.cacti_dht_mem_*.bytes_*",
+		"target":[
+			"alias(${explode}.dht-2.dht_stats.total_bytes, \"bytes dht\")",
+			"alias(${explode}.dht-2.process_mem_stats.rss, \"bytes ps\")"
+		],
+		"query":"${server}.dht-2.process_mem_stats.rss",
 		"regex":"^(.*)",
 		"index":0,
-		"params":"yMin=0&areaMode=none"
+		"params":"yMin=0&areaMode=All&areaAlpha=0.4"
 	},
 	{
 		"title":"DHT Memory Usage on ${explode} [Node 3]",
-		"target":"aliasByNode(${explode}.cacti_dht.cacti_dht_mem_*.bytes_*_3, 0, 3)",
-		"query":"${continent}-${server}.cacti_dht.cacti_dht_mem_*.bytes_*",
+		"target":[
+			"alias(${explode}.dht-3.dht_stats.total_bytes, \"bytes dht\")",
+			"alias(${explode}.dht-3.process_mem_stats.rss, \"bytes ps\")"
+		],
+		"query":"${server}.dht-3.process_mem_stats.rss",
 		"regex":"^(.*)",
 		"index":0,
-		"params":"yMin=0&areaMode=none"
-	}
-	],
-	"dataTemplatesUnused" : [
+		"params":"yMin=0&areaMode=All&areaAlpha=0.4"
+	},
 	{
 		"title":"DHT Memory Usage on ${explode} [Node 4]",
-		"target":"aliasByNode(${explode}.cacti_dht.cacti_dht_mem_*.bytes_*_4, 0, 3)",
-		"query":"${continent}-${server}.cacti_dht.cacti_dht_mem_*.bytes_*",
+		"target":[
+			"alias(${explode}.dht-4.dht_stats.total_bytes, \"bytes dht\")",
+			"alias(${explode}.dht-4.process_mem_stats.rss, \"bytes ps\")"
+		],
+		"query":"${server}.dht-4.process_mem_stats.rss",
 		"regex":"^(.*)",
 		"index":0,
-		"params":"yMin=0&areaMode=none"
+		"params":"yMin=0&areaMode=All&areaAlpha=0.4"
 	}
 	],
 	"data":[
 	],
 	"parameters": {
 		"continent": {
-			"All" : {"continent" : "*" },
-			"EU" : {"continent" : "eu" },
-			"US" : {"continent" : "us" },
-			"AP" : {"continent" : "ap" },
-			"USAP" : {"continent" : "usap" }
+			"All":{"continent":"*" },
+			"EU":{"continent":"eu" },
+			"US":{"continent":"us" },
+			"AP":{"continent":"ap" },
+			"USAP":{"continent":"usap" }
 		},
-		"server" : {
-			"type" : "dynamic",
-			"query" : "${continent}-*.cacti_dht.cacti_dht_mem*",
-			"index" : 0,
-			"regex" : "-(.*)",
+		"server":{
+			"type":"dynamic",
+			"query":"${continent}-*.dht-*.process_mem_stats.rss",
+			"index":0,
+			"regex":"(.*)",
 			"showAll": true,
-			"defaultValue" : "*"
+			"showAllValue":"${continent}-*"
 		}
 	}			
 }

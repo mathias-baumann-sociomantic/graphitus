@@ -10,8 +10,8 @@
 	"dataConditional" : [
 	{
 		"title":"DHT Memory Usage % on all nodes from ${continent}",
-		"target":"alias(scale(divideSeries(sumSeries(${explode}.cacti_dht.cacti_dht_mem_ps.bytes_ps_*), sumSeries(${explode}.cacti_memory.cacti_memory.STAT_memtotal)), 100), \"% mem usage\")",
-		"query":"${continent}-*.cacti_dht.cacti_dht_mem_ps",
+		"target":"alias(scale(divideSeries(sumSeries(${explode}.dht-*.process_mem_stats.rss), sumSeries(${explode}.cacti_memory.cacti_memory.STAT_memtotal)), 100), \"% mem usage\")",
+		"query":"${continent}-*.dht-*.process_mem_stats.rss",
 		"regex":"(.*)",
 		"index":0,
 		"params":"yMin=0&areaMode=none&yMax=100"
@@ -21,21 +21,21 @@
 	{
 		"title":"Aggregate - DHT Handled Connections",
 		"target": [
-			"alias(sum(${continent}-*.cacti_dht*.cacti_dht_stats.DHT_handle_connects), \"connections\")"
+			"alias(sum(${continent}-*.dht-*.dht_stats.handled_connections), \"connections\")"
 		]
 	},
 	{
 		"title":"Aggregate - DHT bytes/s sent/received",
 		"target": [
-			"alias(sum(${continent}-*.cacti_dht*.cacti_dht_stats.DHT_sent_bytes), \"bytes sent\")",
-			"alias(sum(${continent}-*.cacti_dht*.cacti_dht_stats.DHT_received_bytes), \"bytes received\")"
+			"alias(sum(${continent}-*.dht-*.dht_stats.bytes_sent), \"bytes sent\")",
+			"alias(sum(${continent}-*.dht-*.dht_stats.bytes_received), \"bytes received\")"
 		]
 	},
 	{
 		"title":"Aggregate - DHT Memory Usage",
 		"target": [
-			"alias(sum(${continent}-*.cacti_dht-*.cacti_dht_mem.bytes_ps,${continent}-*.cacti_dht.cacti_dht_mem_ps.bytes_ps_*), \"bytes ps\")",
-			"alias(sum(${continent}-*.cacti_dht-*.cacti_dht_mem.bytes_dht,${continent}-*.cacti_dht.cacti_dht_mem_dht.bytes_dht_*), \"bytes dht\")"
+			"alias(sum(${continent}-*.dht-*.process_mem_stats.rss), \"bytes ps\")",
+			"alias(sum(${continent}-*.dht-*.dht_stats.total_bytes), \"bytes dht\")"
 		]
 
 	}

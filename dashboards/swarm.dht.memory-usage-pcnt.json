@@ -1,51 +1,38 @@
 {
-    "title":"DHT Memory Usage %",
-        "width" : 490,
+	"title":"DHT Memory Usage %",
+	"width" : 490,
 	"defaultLineWidth":1,
 	"timeBack":"6h",
-        "height" : 220,
+	"height" : 220,
 	"refresh" : true,
-        "legend" : true,
+	"legend" : true,
 	"dataTemplates" : [
 	{
 		"title":"DHT Memory Usage % on ${explode}",
-		"target":"alias(scale(divideSeries(sumSeries(${explode}.cacti_dht.cacti_dht_mem_ps.bytes_ps_*), ${explode}.cacti_memory.cacti_memory.STAT_memtotal), 100), \"% mem usage\")",
-		"query":"${continent}-${server}.cacti_dht.cacti_dht_mem_ps.bytes_ps_*",
+		"target":"alias(scale(divideSeries(sumSeries(${explode}.dht-*.process_mem_stats.rss), ${explode}.cacti_memory.cacti_memory.STAT_memtotal), 100), \"% mem usage\")",
+		"query":"${server}.dht-*.process_mem_stats.rss",
 		"regex":"^(.*)",
 		"index":0,
-		"params":"yMin=0&areaMode=none&yMax=100"
+		"params":"yMin=0&areaMode=all&areaAlpha=0.5&yMax=100"
 	}
 	],
 	"data":[
-        ],
+	],
 	"parameters": {
-                "continent": {
-                        "All" : {"continent" : "*" },
-                        "EU" : {"continent" : "eu" },
-                        "US" : {"continent" : "us" },
-                        "AP" : {"continent" : "ap" },
-                        "USAP" : {"continent" : "usap" }
+		"continent": {
+			"All" : {"continent" : "*" },
+			"EU" : {"continent" : "eu" },
+			"US" : {"continent" : "us" },
+			"AP" : {"continent" : "ap" },
+			"USAP" : {"continent" : "usap" }
 		},
-                "server" : {
-                        "type" : "dynamic",
-                        "query" : "${continent}-*.cacti_dht.cacti_dht_mem*",
-                        "index" : 0,
-                        "regex" : "-(.*)",
-                        "showAll": true,
-                        "defaultValue" : "*"
-                }
-	}			
+		"server" : {
+			"type" : "dynamic",
+			"query" : "${continent}-*.cacti_dht.cacti_dht_mem*",
+			"index" : 0,
+			"regex" : "(.*)",
+			"showAll": true,
+			"showAllValue" : "${continent}-*"
+		}
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
