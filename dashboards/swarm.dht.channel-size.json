@@ -1,85 +1,54 @@
 {
-    "title":"DHT Channels size",
-        "width" : 490,
+	"title":"DHT Channels size",
+	"width":490,
 	"defaultLineWidth":1,
 	"timeBack":"6h",
-        "height" : 220,
-	"refresh" : true,
-        "legend" : true,
+	"height":220,
+    "columns":2,
+	"refresh":true,
+	"legend":true,
 	"defaultParameters":"yMin=0&fontSize=10&hideLegend=true",
-        "dataTemplates":[		
-        {
-		"title":"${explode} DHT channel bytes",
-		"target": [
-			"alias(${explode}.cacti_dht.cacti_dht_channels-user_retargeting.dht_channel_bytes, \"user retargeting\")",
-			"alias(${explode}.cacti_dht.cacti_dht_channels-admedia_categories.dht_channel_bytes, \"admedia categories\")",
-			"alias(${explode}.cacti_dht.cacti_dht_channels-admedia_metadata.dht_channel_bytes, \"admedia metadata\")",
-			"alias(${explode}.cacti_dht.cacti_dht_channels-admedia_related.dht_channel_bytes, \"admedia related\")",
-			"alias(${explode}.cacti_dht.cacti_dht_channels-adpan_metadata.dht_channel_bytes, \"adpan metadata\")",
-			"alias(${explode}.cacti_dht.cacti_dht_channels-adpan_metadata.dht_channel_bytes, \"adpan metadata\")",
-			"alias(${explode}.cacti_dht.cacti_dht_channels-admedia_related.dht_channel_bytes, \"admedia related\")"
-		],
-                "query":"${continent}-${server}.cacti_dht.cacti_dht_channels-*",
-                "regex":"^(.*)",
-                "index":0,
-		"params":"hideLegend=false"
-        },
-        {
-		"title":"${explode} DHT channel records",
-		"target": [
-			"alias(${explode}.cacti_dht.cacti_dht_channels-user_retargeting.dht_channel_records, \"user retargeting\")",
-			"alias(${explode}.cacti_dht.cacti_dht_channels-admedia_categories.dht_channel_records, \"admedia categories\")",
-			"alias(${explode}.cacti_dht.cacti_dht_channels-admedia_metadata.dht_channel_records, \"admedia metadata\")",
-			"alias(${explode}.cacti_dht.cacti_dht_channels-admedia_related.dht_channel_records, \"admedia related\")",
-			"alias(${explode}.cacti_dht.cacti_dht_channels-adpan_metadata.dht_channel_records, \"adpan metadata\")",
-			"alias(${explode}.cacti_dht.cacti_dht_channels-adpan_metadata.dht_channel_records, \"adpan metadata\")",
-			"alias(${explode}.cacti_dht.cacti_dht_channels-admedia_related.dht_channel_records, \"admedia related\")"
-		],
-                "query":"${continent}-${server}.cacti_dht.cacti_dht_channels-*",
-                "regex":"^(.*)",
-                "index":0,
-		"params":"hideLegend=false"
-        },
-        {
-		"title":"${explode} DHT channel bytes [per usermap]",
-		"target": "aliasSub(aliasByNode(${explode}.cacti_dht.cacti_dht_channels-usermap_${usermap}.dht_channel_bytes, 2), \"cacti_dht_channels-usermap_\", \"\")",
-                "query":"${continent}-${server}.cacti_dht.cacti_dht_channels-usermap_*",
-                "regex":"^(.*)",
-                "index":0
-        },
-        {
-		"title":"${explode} DHT channel records [per usermap]",
-		"target": "aliasSub(aliasByNode(${explode}.cacti_dht.cacti_dht_channels-usermap_${usermap}.dht_channel_records, 2), \"cacti_dht_channels-usermap_\", \"\")",
-                "query":"${continent}-${server}.cacti_dht.cacti_dht_channels-usermap_*",
-                "regex":"^(.*)",
-                "index":0
-        }
+	"dataTemplates":[
+	{
+		"title":"[${explode} - ${channel}] DHT channel bytes",
+		"target":"aliasSub(aliasByNode(${explode}.dht-*.dht_channel-${channel}.bytes, 1, 2), \"dht_channel-\", \"\")",
+		"query":"${server}.dht-*.dht_channel-${channel}",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"[${explode} - ${channel}] DHT channel records",
+		"target":"aliasSub(aliasByNode(${explode}.dht-*.dht_channel-${channel}.records, 1, 2), \"dht_channel-\", \"\")",
+        "query":"${server}.dht-*.dht_channel-${channel}",
+		"regex":"^(.*)",
+		"index":0
+	}
 	],
-        "data":[
+	"data":[
 	],
-        "parameters": {
-                "continent": {
-                        "All" : {"continent" : "*" },
-                        "EU" : {"continent" : "eu" },
-                        "US" : {"continent" : "us" },
-                        "AP" : {"continent" : "ap" },
-                        "USAP" : {"continent" : "usap" }
-                },
-                "server" : {
-                        "type" : "dynamic",
-                        "query" : "${continent}-*.cacti_dht.cacti_dht_channels*",
-                        "index" : 0,
-                        "regex" : "-(.*)",
-                        "showAll": true,
-                        "defaultValue" : "*"
-                },
-                "usermap" : {
-                        "type" : "dynamic",
-                        "query" : "${continent}-${server}.cacti_dht.cacti_dht_channels-usermap_*",
-                        "index" : 2,
-                        "regex" : "cacti_dht_channels-usermap_(.*)",
-                        "showAll": true,
-                        "defaultValue" : "*"
-                }
-        }                       
+	"parameters": {
+		"continent": {
+			"All":{"continent":"*"},
+			"EU":{"continent":"eu"},
+			"US":{"continent":"us"},
+			"AP":{"continent":"ap"},
+			"USAP":{"continent":"usap"}
+		},
+		"server":{
+			"type":"dynamic",
+			"query":"${continent}-*.dht-1.dht_stats",
+			"index":0,
+			"regex":"(.*)",
+			"showAll": true,
+			"showAllValue":"${continent}-*"
+		},
+		"channel":{
+			"type":"dynamic",
+			"query":"${server}.dht-*.dht_channel-*",
+			"index":2,
+			"regex":"dht_channel-(.*)",
+			"showAll": true,
+			"showAllValue":"*"
+		}
+	}
 }
