@@ -10,36 +10,36 @@
 		{
 			"title":"${explode} - Propulsor Backend Stats [CPU] [01]",
 			"target" : [
-				"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_cpu-01.cpu_usage,\"CPU\"))"
+				"cactiStyle(alias(${explode}.thruster-01.process_cpu_stats.total,\"CPU\"))"
 			],
-			"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_cpu-01",
+			"query" : "${continent}-*.thruster-01.process_cpu_stats",
 			"regex" : "(.*)",
 			"index" : 0
 		},
 		{
 			"title":"${explode} - Propulsor Backend Stats [CPU] [02]",
 			"target" : [
-				"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_cpu-02.cpu_usage,\"CPU\"))"
+				"cactiStyle(alias(${explode}.thruster-02.process_cpu_stats.total,\"CPU\"))"
 			],
-			"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_cpu-02",
+			"query" : "${continent}-*.thruster-02.process_cpu_stats",
 			"regex" : "(.*)",
 			"index" : 0
 		},
 		{
 			"title":"${explode} - Propulsor Backend Stats [CPU] [03]",
 			"target" : [
-				"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_cpu-03.cpu_usage,\"CPU\"))"
+				"cactiStyle(alias(${explode}.thruster-03.process_cpu_stats.total,\"CPU\"))"
 			],
-			"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_cpu-03",
+			"query" : "${continent}-*.thruster-03.process_cpu_stats",
 			"regex" : "(.*)",
 			"index" : 0
 		},
 		{
 			"title":"${explode} - Propulsor Backend Stats [CPU] [04]",
 			"target" : [
-				"cactiStyle(alias(${explode}.cacti_propulsor.cacti_propulsor_cpu-04.cpu_usage,\"CPU\"))"
+				"cactiStyle(alias(${explode}.thruster-04.process_cpu_stats.total,\"CPU\"))"
 			],
-			"query" : "${continent}-*.cacti_propulsor.cacti_propulsor_cpu-04",
+			"query" : "${continent}-*.thruster-04.process_cpu_stats",
 			"regex" : "(.*)",
 			"index" : 0
 		}
