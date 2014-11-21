@@ -1,0 +1,28 @@
+{
+	"title":"DHT Channel Dumps Age",
+	"width" : 550,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 320,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"yMin=0&fontSize=10&hideLegend=false",
+	"data":[
+	{
+		"title":"DHT Node Dumps older than 6h [EU]",
+		"target":"aliasSub(currentAbove(eu-*.dht-*.dht_dump_tcm-*.age,6), \"dht_dump_tcm-\", \"\")"
+	},
+	{
+		"title":"DHT Node Dumps older than 6h [US]",
+		"target":"aliasSub(currentAbove(us-*.dht-*.dht_dump_tcm-*.age,6), \"dht_dump_tcm-\", \"\")"
+	},
+	{
+		"title":"DHT Node Dumps older than 6h [AP]",
+		"target":"aliasSub(currentAbove(ap-*.dht-*.dht_dump_tcm-*.age,6), \"dht_dump_tcm-\", \"\")"
+	},
+	{
+		"title":"DHT Node Dumps older than 6h [USAP]",
+		"target":"aliasSub(currentAbove(usap-*.dht-*.dht_dump_tcm-*.age,6), \"dht_dump_tcm-\", \"\")"
+	}
+	]
+}
