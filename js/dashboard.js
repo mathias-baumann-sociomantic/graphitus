@@ -212,7 +212,7 @@ function buildUrl(idx, graph, chartTitle, width, height, graphiteOperation) {
 	}
 	var userParams = getUserUrlParams(idx);
 
-	return getGraphiteServer() + "/" + graphiteOperation + "/?" + targetUri + range + legend + params + userParams + size + prevent_cache;
+	return getGraphiteServer() + "/" + graphiteOperation + "/?" + targetUri + legend + params + userParams + range + size + prevent_cache;
 }
 
 function getGraphiteServer() {
