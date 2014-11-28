@@ -57,7 +57,7 @@
 				"continent-nice" : "US / AP" },
 			"EU" : {"continent" : "{eu-007,eu-008,eu-010,eu-019,eu-020,eu-042,eu-043,eu-044,eu-045,eu-046,eu-047,eu-048,eu-049,eu-050,eu-051,eu-105,eu-106,eu-108}",
 				"continent-nice" : "EU" },
-			"US" : {"continent" : "{us-031,us-032,us-033,us-034,us-035,us-040,us-041,us-042,us-043,us-046}",
+			"US" : {"continent" : "{us-026,us-030,us-031,us-032,us-033,us-034,us-035,us-040,us-041,us-042,us-043,us-046}",
 				"continent-nice" : "US" },
 			"AP" : {"continent" : "{ap-002,ap-035}",
 				"continent-nice" : "AP" },
