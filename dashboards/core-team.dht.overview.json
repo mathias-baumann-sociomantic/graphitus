@@ -1,0 +1,54 @@
+{
+	"title":"DHT overview for ${server}",
+	"width":490,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height":220,
+	"columns":2,
+	"refresh":true,
+	"legend":false,
+	"data":[
+	{
+		"title":"1. DHT Memory Usage % on ${server}",
+		"target":"aliasByNode(${server}.dht-*.process_mem_stats.percentage, 0, 1)",
+		"params":"yMin=0&yMax=100"
+	},
+	{
+		"title":"2. DHT Non-Data Memory Usage on ${server}",
+		"target":"groupByNode(aliasSub(keepLastValue(${server}.dht-*.{process_mem_stats,dht_stats}.{total_bytes,rss}),\"^keepLastValue\\((.*)\\.(.*)\\.(.*)\\.(.*)\",\"\\1-\\2.\\4\"),0,\"diffSeries\")"
+	},
+	{
+		"title":"3. DHT bytes/s sent on ${server}",
+		"target":"aliasByNode(${server}.dht-*.dht_stats.bytes_sent, 0, 1)"
+	},
+	{
+		"title":"4. DHT bytes/s received on ${server}",
+		"target":"aliasByNode(${server}.dht-*.dht_stats.bytes_received, 0, 1)"
+	},
+	{
+		"title":"5. DHT handled records on ${server}",
+		"target":"aliasByNode(${server}.dht-*.dht_stats.handled_records, 0, 1)"
+	},
+	{
+		"title":"6. DHT handled connections on ${server}",
+		"target":"aliasByNode(${server}.dht-*.dht_stats.handled_connections, 0, 1)"
+	}
+	],
+	"parameters": {
+		"continent": {
+			"All":{"continent":"*"},
+			"EU":{"continent":"eu"},
+			"US":{"continent":"us"},
+			"AP":{"continent":"ap"},
+			"USAP":{"continent":"usap"}
+		},
+		"server": {
+			"type":"dynamic",
+			"query":"${continent}-*.dht-1",
+			"index":0,
+			"regex":"(.*)",
+			"showAll": true,
+			"showAllValue":"${continent}-*"
+		}
+	}
+}
