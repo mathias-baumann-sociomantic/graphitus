@@ -241,6 +241,7 @@
         {"id": "core-team.dht.memory-usage"},
         {"id": "core-team.dhtdump.channel-dumps"},
         {"id": "core-team.dhtdump.dumps-ages"},
+        {"id": "core-team.logfiles.overview"},
         {"id": "core-team.logfiles.aggregates"},
         {"id": "core-team.logfiles.data-sent-received"},
         {"id": "core-team.logfiles.handled-connections"},
