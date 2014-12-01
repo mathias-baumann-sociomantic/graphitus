@@ -238,6 +238,7 @@
         {"id": "core-team.dht.channel-size-aggregates"},
         {"id": "core-team.dht.data-sent-received"},
         {"id": "core-team.dht.handled-connections"},
+        {"id": "core-team.dht.handled-records"},
         {"id": "core-team.dht.memory-usage-pcnt"},
         {"id": "core-team.dht.memory-usage"},
         {"id": "core-team.dhtdump.channel-dumps"},
