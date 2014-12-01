@@ -1,0 +1,87 @@
+{
+	"title":"Core-Team overview for ${continent}",
+	"width":490,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height":220,
+	"columns":2,
+	"refresh":true,
+	"legend":false,
+	"data":[
+	{
+		"title":"DHT - 1. Memory Usage % on ${DHT-server}",
+		"target":"aliasByNode(${DHT-server}.dht-*.process_mem_stats.percentage, 0, 1)",
+		"params":"yMin=0&yMax=100"
+	},
+	{
+		"title":"DHT - 2. Non-Data Memory Usage on ${DHT-server}",
+		"target":"groupByNode(aliasSub(keepLastValue(${DHT-server}.dht-*.{process_mem_stats,dht_stats}.{total_bytes,rss}),\"^keepLastValue\\((.*)\\.(.*)\\.(.*)\\.(.*)\",\"\\1-\\2.\\4\"),0,\"diffSeries\")"
+	},
+	{
+		"title":"DHT - 3. bytes/s sent on ${DHT-server}",
+		"target":"aliasByNode(${DHT-server}.dht-*.dht_stats.bytes_sent, 0, 1)"
+	},
+	{
+		"title":"DHT - 4. bytes/s received on ${DHT-server}",
+		"target":"aliasByNode(${DHT-server}.dht-*.dht_stats.bytes_received, 0, 1)"
+	},
+	{
+		"title":"DHT - 5. handled records on ${DHT-server}",
+		"target":"aliasByNode(${DHT-server}.dht-*.dht_stats.handled_records, 0, 1)"
+	},
+	{
+		"title":"DHT - 6. handled connections on ${DHT-server}",
+		"target":"aliasByNode(${DHT-server}.dht-*.dht_stats.handled_connections, 0, 1)"
+	},
+	{
+		"title":"LogFiles - 1. bytes/s sent on ${LOGFILES-server}",
+		"target":"aliasByNode(${LOGFILES-server}.cacti_dht_log-*.cacti_dht_log.bytes_sent, 0, 1)"
+		},
+	{
+		"title":"LogFiles - 2. bytes/s received on ${LOGFILES-server}",
+		"target":"aliasByNode(${LOGFILES-server}.cacti_dht_log-*.cacti_dht_log.bytes_received, 0, 1)"
+	},
+	{
+		"title":"LogFiles - 3. handled records on ${LOGFILES-server}",
+		"target":"aliasByNode(${LOGFILES-server}.cacti_dht_log-*.cacti_dht_log.records_handled, 0, 1)"
+	},
+	{
+		"title":"LogFiles - 4. handled connections on ${LOGFILES-server}",
+		"target":"aliasByNode(${LOGFILES-server}.cacti_dht_log-*.cacti_dht_log.handling_conns, 0, 1)"
+	}
+	],
+	"dataConditional":[
+	{
+		"title":"LogFiles - 5. disk usage % on ${LOGFILES-server}",
+		"target":"aliasByNode(asPercent(${explode}.cacti_df-srv.cacti_df.DISKFREE_used,sumSeriesWithWildcards(${explode}.cacti_df-srv.cacti_df.*,3)), 0)",
+		"params":"yMin=0&yMax=100",
+		"query":"${LOGFILES-server}.cacti_dht_log-*",
+		"index":0
+	}
+	],
+	"parameters": {
+		"continent": {
+			"All":{"continent":"*"},
+			"EU":{"continent":"eu"},
+			"US":{"continent":"us"},
+			"AP":{"continent":"ap"},
+			"USAP":{"continent":"usap"}
+		},
+		"DHT-server": {
+			"type":"dynamic",
+			"query":"${continent}-*.dht-1",
+			"index":0,
+			"regex":"(.*)",
+			"showAll": true,
+			"showAllValue":"${continent}-*"
+		},
+		"LOGFILES-server": {
+			"type":"dynamic",
+			"query":"${continent}-*.cacti_dht_log*",
+			"index":0,
+			"regex":"(.*)",
+			"showAll": true,
+			"showAllValue":"${continent}-*"
+		}
+	}
+}

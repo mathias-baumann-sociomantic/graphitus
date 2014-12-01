@@ -231,6 +231,7 @@
         {"id": "ssps.usermatch"},
         {"id": "statics.aggregates"},
         {"id": "statics.requests"},
+        {"id": "core-team.overview"},
         {"id": "core-team.dht.overview"},
         {"id": "core-team.dht.aggregates"},
         {"id": "core-team.dht.channel-size"},
