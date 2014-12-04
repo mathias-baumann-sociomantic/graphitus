@@ -1,5 +1,48 @@
 [Graphitus Homepage](http://ezbz.github.io/graphitus)
 
+Testing using fig
+=================
+
+Installing fig + docker
+-----------------------
+
+[fig](http://www.fig.sh/) uses [docker](https://docker.com/) to easily setup
+a testing environment. Fig installation is super easy:
+
+```sh
+sudo apt-get update
+sudo apt-get install python-pip
+sudo pip install -U fig
+```
+
+Docker might be a bit more complicated, specially for old Ubuntu versions like
+precise (12.04). But here is a short summary:
+
+```sh
+echo 'echo deb https://get.docker.com/ubuntu docker main' |
+	sudo tee /etc/apt/sources.list.d/docker.list
+sudo apt-get update
+sudo apt-get install python-pip lxc-docker linux-image-generic-lts-trusty \
+		linux-headers-generic-lts-trusty
+# If you have an old kernel, you'll need to restart for docker to work properly
+sudo reboot
+```
+
+If you want to install for another system or you get into any problems, please
+consult the [Docker Ubuntu Install
+Guide](https://docs.docker.com/installation/ubuntulinux/).
+
+Running the test using fig
+--------------------------
+
+You first need to create an appropriate `config.json` file. The easiest way is
+to use: `sh test/create-config.sh`. This is only needed once.
+
+Then, to start a webserver, just run: `fig up`.
+
+Now you can access the test graphitus in http://127.0.0.1:8080/.
+
+
 Introduction
 ============
 A simple, client-side, JSON-based [Graphite](http://graphite.wikidot.com/) logical-dashboard UI built with [bootstrap](http://twitter.github.com/bootstrap/) and [underscore.js](http://underscorejs.org/)
