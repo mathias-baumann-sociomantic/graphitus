@@ -246,6 +246,7 @@
         {"id": "swarm.logfiles.handled-records"},
         {"id": "swarm.logfiles.total-size"},
         {"id": "swarm.queues"},
-        {"id": "system.stats"}
+        {"id": "system.stats"},
+        {"id": "ad-serving.overview"}
     ]
 }

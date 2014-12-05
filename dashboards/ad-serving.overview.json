@@ -1,0 +1,83 @@
+{
+    "title":"Ad-Serving",
+	"width" : 560,
+	"height" : 220,
+	"defaultLineWidth" : 1,
+	"timeBack":"2h",
+	"refresh" : true,
+	"legend" : false,
+	"data":[
+        {
+                "title":"${continent} Aggregate - Statics (live) - Nginx Requests/sec",
+                "target": [
+                        "alias(sum(${static-servers}.cacti_nginx.cacti_nginx_sockets.nginx_accepts), \"Total Accepts\")",
+                        "alias(sum(${static-servers}.cacti_nginx.cacti_nginx_sockets.nginx_handled), \"Total Handled\")",
+                        "alias(sum(${static-servers}.cacti_nginx.cacti_nginx_sockets.nginx_requests), \"Total Requests\")"
+                ]
+        },
+	{
+	    "title":"${continent} Jet Requests",
+	    "target": "aliasByNode(scale(${continent}-*.cacti_jet.cacti_jet_stats*.number_of_requests,0.033333333),0,2)"
+	},
+	{
+	    "title":"${continent} Jet Errors",
+	    "target": "aliasSub(aliasByNode(scale(exclude(${continent}-*.cacti_jet.cacti_jet_stats*.*,\"number_of_requests\"),0.033333333),0,2,3),\"cacti_jet_stats-\",\"\")"
+	
+	},
+        {
+            "title":"${continent} Nautica Total Loglines Read",
+            "target":"aliasByNode(scale(${continent}-*.*.nautica_stats.Trcking_Rcrds_Rtrvd,0.033333333),0,2)"
+        },
+        {
+            "title":"${continent} Wave Admedia Written",
+            "target":"aliasByNode(scale(${continent}-*.cacti_wave.cacti_wave_stats.admedia_written,0.033333333),0,2)"
+        },
+        {
+            "title":"${continent} Wave Images Generated",
+            "target":"aliasByNode(scale(${continent}-*.cacti_wave.cacti_wave_stats.images_generated,0.033333333),0,2)"
+        },
+        {
+            "title":"${continent} Admedia Queue Usage",
+            "target": "aliasByNode(${continent}-*.queue-admedia.*.usage,0,2)",
+            "params": "yMin=0&yMax=100"
+        },
+        {
+            "title":"${continent} Shore/Shore API Tracking Queue Usage",
+            "target": [
+                    "aliasByNode(${continent}-*.queue-tracking.queue_channel_stats-shore.usage,0,2)",
+                    "aliasByNode(${continent}-*.queue-tracking.queue_channel_stats-shore_api.usage,0,2)"
+            ],
+            "params": "yMin=0&yMax=100"
+        },
+        {
+            "title":"${continent} Shore Stream Stats",
+            "target":"aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_stream_stats.admedium,0.033333333),0,2)"
+        },
+        {
+	    "title":"${continent} Shore API Stats",
+            "target":"aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_api_stats.admedium,0.033333333),0,2)"
+        },
+        {
+            "title":"${continent} Shore Feed Stats",
+            "target": "aliasByNode(scale(${continent}-*.cacti_shore.*.feed_record,0.033333333),0,2)"
+        }
+	],
+        "dataConditional":[
+	{
+		"title":"Wave server disk usage % on ${continent}",
+		"target":"aliasByNode(asPercent(${explode}.cacti_df-mnt-static.cacti_df.DISKFREE_used,sumSeriesWithWildcards(${explode}.cacti_df-mnt-static.cacti_df.*,3)), 0)",
+		"params":"yMin=0&yMax=100",
+		"query":"${continent}-*.cacti_wave.*",
+		"index":0
+	}
+	],
+	"parameters": {
+		"continent": {
+			"All": {"continent" : "*", "static-servers" : "{ap-011,ap-012,ap-014,ap-015,eu-003,eu-004,eu-011,eu-022,eu-023,eu-024,eu-025,eu-040,eu-096,us-049,us-050,us-051}" },
+			"EU" : {"continent" : "eu", "static-servers" : "{eu-003,eu-004,eu-011,eu-022,eu-023,eu-024,eu-025,eu-040,eu-096}" },
+			"US" : {"continent" : "us", "static-servers" : "{us-049,us-050,us-051}" },
+			"AP" : {"continent" : "ap", "static-servers" : "{ap-011,ap-012,ap-014,ap-015}" }
+			
+		}
+	}
+}
