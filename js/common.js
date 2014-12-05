@@ -1,4 +1,5 @@
 var dashboards = new Array();
+var dashboardsPathInfo = new Array();
 var searchIndex = new Array();
 var graphiteData = {};
 
@@ -37,12 +38,14 @@ Graphitus.namespace('Graphitus.Tree');
 Graphitus.Tree = function(args) {
 	var self = this;
 	this.root = {};
+	this.pathInfo = [];
 
 	this.add = function(item) {
 		this._addRecursive(this.root, item);
+		this._addPathInfo(item);
 	},
 	this._addRecursive = function(parent, item) {
-		var parts = item.split('.');
+		var parts = item.split(/[\.\/]/);
 		var first = parts.shift();
 		parent[first] = parent[first] || {};
 		if (parts.length) {
@@ -50,6 +53,20 @@ Graphitus.Tree = function(args) {
 		}
 		return parent[first];
 	};
+
+	this._addPathInfo = function(item) {
+		var parts = item.split(/[\.\/]/);
+		var pathIndex = parts.join('.');
+		this.pathInfo[pathIndex] = item;
+	}
+
+	this.getPathInfoForItem = function(item) {
+		return this.pathInfo[item];
+	}
+
+	this.getPathInfo = function() {
+		return this.pathInfo;
+	}
 
 	this.getRoot = function() {
 		return this.root;
@@ -72,6 +89,7 @@ function loadDashboards() {
 				tree.add(data[i].id);
 			}
 			dashboards = tree.getRoot();
+			dashboardsPathInfo = tree.getPathInfo();
 			for (i in json.rows) {
 				searchIndex.push(json.rows[i].id);
 			}
@@ -101,10 +119,12 @@ function loadGraphitusConfig(callback) {
 
 function generateDashboardsMenu(name, path, dashboardsRoot, depth) {
 	var tmplDashboardsMenu = $('#tmpl-dashboards-menu').html();
+	var realpath = dashboardsPathInfo[path];
 	return _.template(tmplDashboardsMenu, {
 		dashboardsRoot: dashboardsRoot,
 		name: name,
 		path: path,
+		realpath: realpath,
 		depth: depth,
 		isLeaf: _.isEmpty(dashboardsRoot)
 	});

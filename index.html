@@ -19,7 +19,7 @@ $(document).ready(function() {
 </script>
 <script type="text/template" id="tmpl-dashboards-menu">
 <% if(isLeaf){ %>
-    <li><a href="dashboard.html?id=<%= path %>"><%= name %></a></li>
+    <li><a href="dashboard.html?id=<%= realpath %>"><%= name %></a></li>
 <% }else{ %>
     <% var isRoot = (depth === 0); %>
     <% if(isRoot){ %><div class="box"><% }; %>
