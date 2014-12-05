@@ -1,5 +1,5 @@
 {
-	"title":"DHT Channels size aggregated",
+	"title":"Aggregated DHT Channels Size",
 	"width":490,
 	"defaultLineWidth":1,
 	"timeBack":"6h",
@@ -10,14 +10,14 @@
 	"defaultParameters":"yMin=0&fontSize=10&hideLegend=true&until=-2min",
 	"dataTemplates":[
 	{
-		"title":"[${continent-nice} - ${explode}] DHT channel bytes",
+		"title":"DHT Channel Bytes for ${explode} in ${continent-nice}",
 		"target":"aliasSub(aliasByNode(sumSeries(${continent}-*.dht-*.dht_channel-${explode}.bytes), 2), \"dht_channel-\", \"\")",
 		"query":"${continent}-*.dht-*.dht_channel-${channel}",
 		"regex":"^dht_channel-(.*)",
 		"index":2
 	},
 	{
-		"title":"[${continent-nice} - ${explode}] DHT channel records",
+		"title":"DHT Channel Records for ${explode} in ${continent-nice}",
 		"target":"aliasSub(aliasByNode(sumSeries(${continent}-*.dht-*.dht_channel-${explode}.records), 1, 2), \"dht_channel-\", \"\")",
 		"query":"${continent}-*.dht-*.dht_channel-${channel}",
 		"regex":"^dht_channel-(.*)",

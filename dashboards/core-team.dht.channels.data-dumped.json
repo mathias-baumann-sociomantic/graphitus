@@ -1,5 +1,5 @@
 {
-	"title" : "Dhtdump",
+	"title" : "DHT Data Dumped",
 	"width" : 550,
 	"defaultLineWidth" : 1,
 	"timeBack" : "6h",
@@ -37,14 +37,14 @@
 		"index" : 0
 	},
 	{
-		"title" : "[${cont-nice} | ${server}] Total Bytes Written Per Second",
+		"title" : "[${cont-nice} | ${server}] Total Bytes/s Written",
 		"target" : "aliasByNode(scale(${server}.dht-*.dht_dump-total.bytes_written, 0.033333333),1)",
 		"query" : "${server}.dht-1.dht_dump-total",
 		"regex" : "^(.*)",
 		"index" : 0
 	},
 	{
-		"title" : "[${cont-nice} | ${server}] Total Records Written Per Second",
+		"title" : "[${cont-nice} | ${server}] Total Records/s Written",
 		"target" : "aliasByNode(scale(${server}.dht-*.dht_dump-total.records_written, 0.033333333),1)",
 		"query" : "${server}.dht-1.dht_dump-total",
 		"regex" : "^(.*)",
