@@ -1,0 +1,54 @@
+{
+	"title":"LogFiles Channels Size",
+	"width":490,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height":220,
+	"columns":2,
+	"refresh":true,
+	"legend":true,
+	"defaultParameters":"yMin=0&fontSize=10&hideLegend=true",
+	"dataTemplates":[
+	{
+		"title":"[${explode} - ${channel}] DHT channel bytes",
+		"target":"aliasSub(aliasByNode(${explode}.cacti_dht_log-*.cacti_dht_log_stats-${channel}.bytes, 1, 2), \"cacti_dht_log_stats-\", \"\")",
+		"query":"${server}.cacti_dht_log-*.cacti_dht_log_stats-${channel}",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"[${explode} - ${channel}] DHT channel records",
+		"target":"aliasSub(aliasByNode(${explode}.cacti_dht_log-*.cacti_dht_log_stats-${channel}.records, 1, 2), \"cacti_dht_log_stats-\", \"\")",
+		"query":"${server}.cacti_dht_log-*.cacti_dht_log_stats-${channel}",
+		"regex":"^(.*)",
+		"index":0
+	}
+	],
+	"data":[
+	],
+	"parameters": {
+		"continent": {
+			"All":{"continent":"*"},
+			"EU":{"continent":"eu"},
+			"US":{"continent":"us"},
+			"AP":{"continent":"ap"},
+			"USAP":{"continent":"usap"}
+		},
+		"server":{
+			"type":"dynamic",
+                        "query" : "${continent}-*.cacti_dht_log-1.cacti_dht_log.total_bytes",
+			"index":0,
+			"regex":"(.*)",
+			"showAll": true,
+			"showAllValue":"${continent}-*"
+		},
+		"channel":{
+			"type":"dynamic",
+			"query":"${server}.cacti_dht_log-*.cacti_dht_log_stats-*",
+			"index":2,
+			"regex":"cacti_dht_log_stats-(.*)",
+			"showAll": false,
+			"showAllValue":"*"
+		}
+	}
+}
