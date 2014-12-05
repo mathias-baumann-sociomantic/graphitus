@@ -788,7 +788,7 @@ function generateDynamicGraphs() {
 				// sort the new metric in the right position, alphabetically
 				var was_added = false;
 				$.each(config.data, function(index, d ) {
-					if ( index < fixed_graphs ) return true;
+					if ( index > fixed_graphs ) return true;
 
 					if ( d.title > g.title ) {
 						config.data.splice(index, 0, g);
@@ -944,7 +944,7 @@ function generateConditionalGraphs(){
 		// sort the new metric in the right position, alphabetically
 		var was_added = false;
 		$.each(config.data, function(index, d ) {
-			if ( index < fixed_graphs ) return true;
+			if ( index > fixed_graphs ) return true;
 
 			if ( d.title > g.title ) {
 				config.data.splice(index, 0, g);
