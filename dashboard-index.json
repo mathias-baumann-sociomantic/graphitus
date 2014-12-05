@@ -245,10 +245,11 @@
         {"id": "core-team.dhtdump.dumps-ages"},
         {"id": "core-team.logfiles.overview"},
         {"id": "core-team.logfiles.aggregates"},
+        {"id": "core-team.logfiles.disk-usage-pcnt"},
+        {"id": "core-team.logfiles.disk-usage"},
         {"id": "core-team.logfiles.data-sent-received"},
         {"id": "core-team.logfiles.handled-connections"},
         {"id": "core-team.logfiles.handled-records"},
-        {"id": "core-team.logfiles.total-size"},
         {"id": "core-team.queues"},
         {"id": "system.stats"},
         {"id": "ad-serving.overview"}

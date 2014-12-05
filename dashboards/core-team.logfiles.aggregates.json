@@ -9,12 +9,8 @@
 	"defaultParameters":"areaMode=none&lineWidth=2&yMin=0&fontSize=11&until=-90seconds",
 	"data":[
 	{
-	    "title":"Aggregate - Logfiles Total Bytes",
-	    "target": "alias(sum(${continent}-*.cacti_dht_log-*.cacti_dht_log.total_bytes), \"total bytes\")"
-	},
-	{
-	    "title":"Aggregate - Logfiles Total Records",
-	    "target": "alias(sum(${continent}-*.cacti_dht_log-*.cacti_dht_log.total_records), \"total records\")"
+	    "title":"Aggregate - Logfiles Handled Records",
+	    "target": "alias(sum(${continent}-*.cacti_dht_log-*.cacti_dht_log.records_handled), \"records handled\")"
 	},
 	{
 	    "title":"Aggregate - Logfiles bytes/s sent/received",
@@ -24,16 +20,17 @@
 		]
 	},
 	{
-	    "title":"Aggregate - Logfiles Handled Records",
-	    "target": [
-		"alias(sum(${continent}-*.cacti_dht_log-*.cacti_dht_log.records_handled), \"records handled\")"
-		]
-	},
-	{
 	    "title":"Aggregate - Logfiles Handled Connections",
-	    "target": [
-		"alias(sum(${continent}-*.cacti_dht_log-*.cacti_dht_log.handling_conns), \"connections handled\")"
-		]
+	    "target": "alias(sum(${continent}-*.cacti_dht_log-*.cacti_dht_log.handling_conns), \"connections handled\")"
+	}
+	],
+	"dataConditional":[
+	{
+		"title":"LogFiles Total Disk Usage",
+		"target":"alias(sum(${explode}.cacti_df-srv.cacti_df.DISKFREE_used), \"total disk space used\")",
+		"params":"yMin=0",
+		"query":"${server}.cacti_dht_log-*",
+		"index":0
 	}
 	],
 	"parameters": {

@@ -32,6 +32,13 @@
 		"params":"yMin=0&yMax=100",
 		"query":"${server}.cacti_dht_log-*",
 		"index":0
+	},
+	{
+		"title":"LogFiles disk usage on ${server}",
+		"target":"aliasByNode(${explode}.cacti_df-srv.cacti_df.DISKFREE_used, 0)",
+		"params":"yMin=0",
+		"query":"${server}.cacti_dht_log-*",
+		"index":0
 	}
 	],
 	"parameters": {
