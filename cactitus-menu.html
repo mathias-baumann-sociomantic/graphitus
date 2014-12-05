@@ -136,7 +136,8 @@ function buildCactitus(json) {
 		var link = graphitusConfig.graphitusUrl + "/dashboard.html?id=";
 		if (_.size(localTree) == 0) {
 			// is leaf
-			link += (localPath + localBranch);
+			leafPath = tree.getPathInfoForItem(localPath + localBranch);
+			link += (leafPath);
 			menulist += ('<li class="liBullet"><a href="' + link + '" target="cactitus_dashboards">' + localBranch + '</a></li>\n\r');
 		} else {
 			menulist += ('<li class="liOpen"<span class="bullet">&nbsp;' + localBranch + '</span><ul>\n\r');
