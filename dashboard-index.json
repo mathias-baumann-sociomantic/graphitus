@@ -60,9 +60,6 @@
         {"id": "cactitus.sonar.ap"},
         {"id": "cactitus.sonar.eu"},
         {"id": "cactitus.sonar.stats"},
-        {"id": "cactitus.sonar.tracking-debug-advertisers"},
-        {"id": "cactitus.sonar.tracking-debug-ssps-summary"},
-        {"id": "cactitus.sonar.tracking-debug-ssps-detailed"},
         {"id": "cactitus.sonar.us"},
         {"id": "cactitus.static.ap"},
         {"id": "cactitus.static.eu"},
@@ -254,6 +251,10 @@
         {"id": "core-team.logfiles.channels.size"},
         {"id": "core-team.queues"},
         {"id": "system.stats"},
+        {"id": "tracking.debug-advertisers"},
+        {"id": "tracking.debug-ssps-summary"},
+        {"id": "tracking.debug-ssps-detailed"},
+        {"id": "tracking.eel"},
         {"id": "ad-serving.overview"}
     ]
 }
