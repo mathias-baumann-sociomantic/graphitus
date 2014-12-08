@@ -721,8 +721,6 @@ function initializeSearch() {
 function generateDynamicGraphs() {
 	if ( config.dataTemplates == undefined ) return;
 
-	var fixed_graphs = config.data.length;
-
 	var queryCache = new Array();
 	var queryCacheContents = new Array();
 
@@ -788,8 +786,6 @@ function generateDynamicGraphs() {
 				// sort the new metric in the right position, alphabetically
 				var was_added = false;
 				$.each(config.data, function(index, d ) {
-					if ( index > fixed_graphs ) return true;
-
 					if ( d.title > g.title ) {
 						config.data.splice(index, 0, g);
 						was_added = true;
@@ -877,8 +873,6 @@ function togglePinnedParametersToolbar() {
 function generateConditionalGraphs(){
 	if ( config.dataConditional == undefined ) return;
 
-	var fixed_graphs = config.data.length;
-
 	var queryCache = new Array();
 	var queryCacheContents = new Array();
 
@@ -944,8 +938,6 @@ function generateConditionalGraphs(){
 		// sort the new metric in the right position, alphabetically
 		var was_added = false;
 		$.each(config.data, function(index, d ) {
-			if ( index > fixed_graphs ) return true;
-
 			if ( d.title > g.title ) {
 				config.data.splice(index, 0, g);
 				was_added = true;
