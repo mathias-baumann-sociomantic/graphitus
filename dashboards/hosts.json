@@ -13,7 +13,7 @@
 		"target": [
 			"cactiStyle(alias(${explode}.cacti_contextswitch.cacti_contextswitch.STAT_context_swtchs, \"Context Switches\"))"
 		],
-		"query":"${server}.cacti_contextswitch.cacti_contextswitch.STAT_context_swtchs",
+		"query":"${server}.${metric_filter}.cacti_contextswitch.STAT_context_swtchs",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -31,7 +31,7 @@
 			"cactiStyle(alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_guest, \"CPU Guest\"))"
 		],
 		"params":"areaMode=stacked",
-		"query":"${server}.cacti_cpu.cacti_cpu.STAT_CPU_guest",
+		"query":"${server}.${metric_filter}.cacti_cpu.STAT_CPU_guest",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -41,7 +41,7 @@
 			"cactiStyle(alias(${explode}.cacti_disk-sda.cacti_disk_io_time.DISK_io_time, \"Io Time\"))",
 			"cactiStyle(alias(${explode}.cacti_disk-sda.cacti_disk_io_time.DISK_io_time_weghtd, \"Io Time Weighted\"))"
 		],
-		"query":"${server}.cacti_disk-sda.cacti_disk_io_time.DISK_io_time_weghtd",
+		"query":"${server}.${metric_filter}-sda.cacti_disk_io_time.DISK_io_time_weghtd",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -51,7 +51,7 @@
 			"cactiStyle(alias(${explode}.cacti_disk-sdb.cacti_disk_io_time.DISK_io_time, \"Io Time\"))",
 			"cactiStyle(alias(${explode}.cacti_disk-sdb.cacti_disk_io_time.DISK_io_time_weghtd, \"Io Time Weighted\"))"
 		],
-		"query":"${server}.cacti_disk-sdb.cacti_disk_io_time.DISK_io_time_weghtd",
+		"query":"${server}.${metric_filter}-sdb.cacti_disk_io_time.DISK_io_time_weghtd",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -61,7 +61,7 @@
 			"cactiStyle(alias(${explode}.cacti_disk-sdc.cacti_disk_io_time.DISK_io_time, \"Io Time\"))",
 			"cactiStyle(alias(${explode}.cacti_disk-sdc.cacti_disk_io_time.DISK_io_time_weghtd, \"Io Time Weighted\"))"
 		],
-		"query":"${server}.cacti_disk-sdc.cacti_disk_io_time.DISK_io_time_weghtd",
+		"query":"${server}.${metric_filter}-sdc.cacti_disk_io_time.DISK_io_time_weghtd",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -71,7 +71,7 @@
 			"cactiStyle(alias(${explode}.cacti_disk-sdd.cacti_disk_io_time.DISK_io_time, \"Io Time\"))",
 			"cactiStyle(alias(${explode}.cacti_disk-sdd.cacti_disk_io_time.DISK_io_time_weghtd, \"Io Time Weighted\"))"
 		],
-		"query":"${server}.cacti_disk-sdd.cacti_disk_io_time.DISK_io_time_weghtd",
+		"query":"${server}.${metric_filter}-sdd.cacti_disk_io_time.DISK_io_time_weghtd",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -84,7 +84,7 @@
 			"cactiStyle(alias(scale(${explode}.cacti_disk-md3.cacti_disk_ops.DISK_writes_merged, -1), \"Writes Merged\"))"
 		],
 		"params":"yMin=",
-		"query":"${server}.cacti_disk-md3.cacti_disk_ops.DISK_reads",
+		"query":"${server}.${metric_filter}-md3.cacti_disk_ops.DISK_reads",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -95,7 +95,7 @@
 			"cactiStyle(alias(scale(${explode}.cacti_disk-sda.cacti_disk_rw_time.DISK_tme_spnt_wrtng, -1), \"Time Spent Writing\"))"
 		],
 		"params":"yMin=",
-		"query":"${server}.cacti_disk-sda.cacti_disk_rw_time.DISK_time_spnt_rdng",
+		"query":"${server}.${metric_filter}-sda.cacti_disk_rw_time.DISK_time_spnt_rdng",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -106,7 +106,7 @@
 			"cactiStyle(alias(scale(${explode}.cacti_disk-sdb.cacti_disk_rw_time.DISK_tme_spnt_wrtng, -1), \"Time Spent Writing\"))"
 		],
 		"params":"yMin=",
-		"query":"${server}.cacti_disk-sdb.cacti_disk_rw_time.DISK_time_spnt_rdng",
+		"query":"${server}.${metric_filter}-sdb.cacti_disk_rw_time.DISK_time_spnt_rdng",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -117,7 +117,7 @@
 			"cactiStyle(alias(scale(${explode}.cacti_disk-sdc.cacti_disk_rw_time.DISK_tme_spnt_wrtng, -1), \"Time Spent Writing\"))"
 		],
 		"params":"yMin=",
-		"query":"${server}.cacti_disk-sdc.cacti_disk_rw_time.DISK_time_spnt_rdng",
+		"query":"${server}.${metric_filter}-sdc.cacti_disk_rw_time.DISK_time_spnt_rdng",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -128,7 +128,7 @@
 			"cactiStyle(alias(scale(${explode}.cacti_disk-sdd.cacti_disk_rw_time.DISK_tme_spnt_wrtng, -1), \"Time Spent Writing\"))"
 		],
 		"params":"yMin=",
-		"query":"${server}.cacti_disk-sdd.cacti_disk_rw_time.DISK_time_spnt_rdng",
+		"query":"${server}.${metric_filter}-sdd.cacti_disk_rw_time.DISK_time_spnt_rdng",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -139,7 +139,7 @@
 			"cactiStyle(aliasSub(scale(${explode}.cacti_disk-md*.cacti_disk_sec_rdwt.DISK_sectors_writtn, -1), \"^.*-md(\\d+).*\",  \"md-\\1 Sectors Written\"))"
 		],
 		"params":"yMin=",
-		"query":"${server}.cacti_disk-md3.cacti_disk_sec_rdwt.DISK_sectors_read",
+		"query":"${server}.${metric_filter}-md3.cacti_disk_sec_rdwt.DISK_sectors_read",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -150,7 +150,7 @@
 			"cactiStyle(alias(${explode}.cacti_df-root.cacti_df.DISKFREE_available, \"Free\"))"
 		],
 		"params":"areaMode=stacked",
-		"query":"${server}.cacti_df-root.cacti_df.DISKFREE_used",
+		"query":"${server}.${metric_filter}-root.cacti_df.DISKFREE_used",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -161,7 +161,7 @@
 			"cactiStyle(alias(${explode}.cacti_df-srv.cacti_df.DISKFREE_available, \"Free\"))"
 		],
 		"params":"areaMode=stacked",
-		"query":"${server}.cacti_df-srv.cacti_df.DISKFREE_used",
+		"query":"${server}.${metric_filter}-srv.cacti_df.DISKFREE_used",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -172,7 +172,7 @@
 			"cactiStyle(alias(${explode}.cacti_df-mnt-static.cacti_df.DISKFREE_available, \"Free\"))"
 		],
 		"params":"areaMode=stacked",
-		"query":"${server}.cacti_df-mnt-static.cacti_df.DISKFREE_used",
+		"query":"${server}.${metric_filter}-mnt-static.cacti_df.DISKFREE_used",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -181,7 +181,7 @@
 		"target": [
 			"cactiStyle(alias(${explode}.cacti_forks.cacti_forks.STAT_forks, \"Forks\"))"
 		],
-		"query":"${server}.cacti_forks.cacti_forks.STAT_forks",
+		"query":"${server}.${metric_filter}.cacti_forks.STAT_forks",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -190,7 +190,7 @@
 		"target": [
 			"cactiStyle(alias(${explode}.cacti_interrupts.cacti_interrupts.STAT_interrupts, \"Interrupts\"))"
 		],
-		"query":"${server}.cacti_interrupts.cacti_interrupts.STAT_interrupts",
+		"query":"${server}.${metric_filter}.cacti_interrupts.STAT_interrupts",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -199,7 +199,7 @@
 		"target": [
 			"cactiStyle(alias(${explode}.cacti_load.cacti_load.STAT_loadavg, \"Loadavg\"))"
 		],
-		"query":"${server}.cacti_load.cacti_load.STAT_loadavg",
+		"query":"${server}.${metric_filter}.cacti_load.STAT_loadavg",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -213,7 +213,7 @@
 			"cactiStyle(alias(${explode}.cacti_memory.cacti_memory.STAT_memfree, \"Memfree\"))"
 		],
 		"params":"areaMode=stacked",
-		"query":"${server}.cacti_memory.cacti_memory.STAT_memfree",
+		"query":"${server}.${metric_filter}.cacti_memory.STAT_memfree",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -224,7 +224,7 @@
 			"cactiStyle(alias(scale(${explode}.cacti_swap.cacti_swap.VMSTAT_pswpin, -1), \"Swap IN operations\"))"
 		],
 	        "params":"yMin=",
-		"query":"${server}.cacti_swap.cacti_swap",
+		"query":"${server}.${metric_filter}.cacti_swap",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -234,7 +234,7 @@
 			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes, \"Received Bytes\"))",
 			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_txbytes, \"Sent bytes\"))"
 		],
-		"query":"${server}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes",
+		"query":"${server}.${metric_filter}-eth0.cacti_netdev.NETDEV_rxbytes",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -244,7 +244,7 @@
 			"cactiStyle(alias(${explode}.cacti_netdev-eth1.cacti_netdev.NETDEV_rxbytes, \"Received Bytes\"))",
 			"cactiStyle(alias(${explode}.cacti_netdev-eth1.cacti_netdev.NETDEV_txbytes, \"Sent bytes\"))"
 		],
-		"query":"${server}.cacti_netdev-eth1.cacti_netdev.NETDEV_rxbytes",
+		"query":"${server}.${metric_filter}-eth1.cacti_netdev.NETDEV_rxbytes",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -254,7 +254,7 @@
 			"cactiStyle(alias(${explode}.cacti_users.cacti_users.STAT_numusers, \"Numusers\"))"
 		],
 		"params":"",
-		"query":"${server}.cacti_users.cacti_users.STAT_numusers",
+		"query":"${server}.${metric_filter}.cacti_users.STAT_numusers",
 		"regex":"(.*)",
 		"index":0
 	},
@@ -267,7 +267,7 @@
 			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.udp, \"UDP\"))",
 			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.unix, \"Unix\"))"
 		],
-		"query":"${server}.",
+		"query":"${server}.${metric_filter}",
 		"regex":"(.*)",
 		"index":0
 	}
@@ -293,8 +293,22 @@
 			"index" : 0,
 			"regex" : "(.*)",
 			"showAll": true,
-			"showAllValue" : "${continent}-*",
-			"defaultValue" : "${continent}-*"
+			"showAllValue" : "${continent}-*"
+		},
+		"metric_filter" : {
+			"All" : {"metric_filter" : "*"},
+			"cacti_contextswitch" : {"metric_filter" : "cacti_contextswitch"},
+			"cacti_cpu" : {"metric_filter" : "cacti_cpu"},
+			"cacti_disk" : {"metric_filter" : "cacti_disk"},
+			"cacti_df" : {"metric_filter" : "cacti_df"},
+			"cacti_forks" : {"metric_filter" : "cacti_forks"},
+			"cacti_interrupts" : {"metric_filter" : "cacti_interrupts"},
+			"cacti_load" : {"metric_filter" : "cacti_load"},
+			"cacti_memory" : {"metric_filter" : "cacti_memory"},
+			"cacti_swap" : {"metric_filter" : "cacti_swap"},
+			"cacti_netdev" : {"metric_filter" : "cacti_netdev"},
+			"cacti_users" : {"metric_filter" : "cacti_users"},
+			"cacti_sfpstat" : {"metric_filter" : "cacti_sfpstat"}
 		}
 	}
 }
