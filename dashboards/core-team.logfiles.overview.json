@@ -1,0 +1,61 @@
+{
+	"title":"LogFiles overview for ${server}",
+	"width":490,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height":220,
+	"columns":2,
+	"refresh":true,
+	"legend":false,
+	"data":[
+	{
+		"title":"1. LogFiles bytes/s sent on ${server}",
+		"target":"aliasByNode(${server}.cacti_dht_log-*.cacti_dht_log.bytes_sent, 0, 1)"
+		},
+	{
+		"title":"2. LogFiles bytes/s received on ${server}",
+		"target":"aliasByNode(${server}.cacti_dht_log-*.cacti_dht_log.bytes_received, 0, 1)"
+	},
+	{
+		"title":"3. LogFiles handled records on ${server}",
+		"target":"aliasByNode(${server}.cacti_dht_log-*.cacti_dht_log.records_handled, 0, 1)"
+	},
+	{
+		"title":"4. LogFiles handled connections on ${server}",
+		"target":"aliasByNode(${server}.cacti_dht_log-*.cacti_dht_log.handling_conns, 0, 1)"
+	}
+	],
+	"dataConditional":[
+	{
+		"title":"5. LogFiles disk usage % on ${server}",
+		"target":"aliasByNode(asPercent(${explode}.cacti_df-srv.cacti_df.DISKFREE_used,sumSeriesWithWildcards(${explode}.cacti_df-srv.cacti_df.*,3)), 0)",
+		"params":"yMin=0&yMax=100",
+		"query":"${server}.cacti_dht_log-*",
+		"index":0
+	},
+	{
+		"title":"LogFiles disk usage on ${server}",
+		"target":"aliasByNode(${explode}.cacti_df-srv.cacti_df.DISKFREE_used, 0)",
+		"params":"yMin=0",
+		"query":"${server}.cacti_dht_log-*",
+		"index":0
+	}
+	],
+	"parameters": {
+		"continent": {
+			"All":{"continent":"*"},
+			"EU":{"continent":"eu"},
+			"US":{"continent":"us"},
+			"AP":{"continent":"ap"},
+			"USAP":{"continent":"usap"}
+		},
+		"server": {
+			"type":"dynamic",
+			"query":"${continent}-*.cacti_dht_log*",
+			"index":0,
+			"regex":"(.*)",
+			"showAll": true,
+			"showAllValue":"${continent}-*"
+		}
+	}
+}

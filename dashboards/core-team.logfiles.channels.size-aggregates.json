@@ -1,0 +1,61 @@
+{
+	"title":"LogFiles Channels size aggregated",
+	"width":490,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height":220,
+	"columns":2,
+	"refresh":true,
+	"legend":true,
+	"defaultParameters":"yMin=0&fontSize=10&hideLegend=true&until=-2min",
+	"dataTemplates":[
+	{
+		"title":"[${continent-nice} - ${explode}] DHT channel bytes",
+		"target":"aliasSub(aliasByNode(sumSeries(${continent}-*.cacti_dht_log-*.cacti_dht_log_stats-${explode}.bytes), 2), \"cacti_dht_log_stats-\", \"\")",
+		"query":"${continent}-*.cacti_dht_log-*.dht_channel-${channel}",
+		"regex":"^cacti_dht_log_stats-(.*)",
+		"index":2
+	},
+	{
+		"title":"[${continent-nice} - ${explode}] DHT channel records",
+		"target":"aliasSub(aliasByNode(sumSeries(${continent}-*.cacti_dht_log-*.cacti_dht_log_stats-${explode}.records), 1, 2), \"cacti_dht_log_stats-\", \"\")",
+		"query":"${continent}-*.cacti_dht_log-*.cacti_dht_log_stats-${channel}",
+		"regex":"^cacti_dht_log_stats-(.*)",
+		"index":2
+	}
+	],
+	"data":[
+	],
+	"parameters": {
+		"continent": {
+			"All":{
+				"continent":"*",
+				"continent-nice":"ALL"
+			},
+			"EU":{
+				"continent":"eu",
+				"continent-nice":"EU"
+			},
+			"US":{
+				"continent":"us",
+				"continent-nice":"US"
+			},
+			"AP":{
+				"continent":"ap",
+				"continent-nice":"AP"
+			},
+			"USAP":{
+				"continent":"usap",
+				"continent-nice":"US/AP"
+			}
+		},
+		"channel":{
+			"type":"dynamic",
+			"query":"${continent}-*.cacti_dht_log-*.cacti_dht_log_stats-*",
+			"index":2,
+			"regex":"cacti_dht_log_stats-(.*)",
+			"showAll": false,
+			"showAllValue":"*"
+		}
+	}
+}

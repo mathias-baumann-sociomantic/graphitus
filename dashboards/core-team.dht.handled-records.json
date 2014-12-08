@@ -1,0 +1,59 @@
+{
+	"title":"DHT Handled Records",
+	"width":490,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height":220,
+	"refresh":true,
+	"legend":true,
+    "defaultParameters":"yMin=0&fontSize=9&areaMode=All&areaAlpha=0.4&colorList=blue,green,red",
+	"dataTemplates":[		
+	{
+		"title":"${explode} DHT Handled Records [Node 1]",
+    	"target": "alias(${explode}.dht-1.dht_stats.handled_records, \"Handled Records\")",
+		"query":"${server}.dht-1.dht_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"${explode} DHT Handled Records [Node 2]",
+		"target": "alias(${explode}.dht-2.dht_stats.handled_records, \"Handled Records\")",
+		"query":"${server}.dht-2.dht_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"${explode} DHT Handled Records [Node 3]",
+		"target": "alias(${explode}.dht-3.dht_stats.handled_records, \"Handled Records\")",
+		"query":"${server}.dht-3.dht_stats",
+		"regex":"^(.*)",
+		"index":0
+	},
+	{
+		"title":"${explode} DHT Handled Records [Node 4]",
+		"target": "alias(${explode}.dht-4.dht_stats.handled_records, \"Handled Records\")",
+		"query":"${server}.dht-4.dht_stats",
+		"regex":"^(.*)",
+		"index":0
+	}
+	],
+	"data":[
+	],
+	"parameters": {
+		"continent": {
+			"All":{"continent":"*" },
+			"EU":{"continent":"eu" },
+			"US":{"continent":"us" },
+			"AP":{"continent":"ap" },
+			"USAP":{"continent":"usap" }
+		},
+		"server":{
+			"type":"dynamic",
+			"query":"${continent}-*.dht-1.dht_stats",
+			"index":0,
+			"regex":"(.*)",
+			"showAll": true,
+			"showAllValue":"${continent}-*"
+		}
+	}
+}
