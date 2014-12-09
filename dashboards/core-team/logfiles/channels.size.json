@@ -11,15 +11,15 @@
 	"dataTemplates":[
 	{
 		"title":"[${explode} - ${channel}] DHT channel bytes",
-		"target":"aliasSub(aliasByNode(${explode}.cacti_dht_log-*.cacti_dht_log_stats-${channel}.bytes, 1, 2), \"cacti_dht_log_stats-\", \"\")",
-		"query":"${server}.cacti_dht_log-*.cacti_dht_log_stats-${channel}",
+		"target":"aliasSub(aliasByNode(${explode}.logfiles-*.logfiles_channel-${channel}.bytes, 1, 2), \"logfiles_channel-.\", \"\")",
+		"query":"${server}.logfiles-*.logfiles_channel-${channel}",
 		"regex":"^(.*)",
 		"index":0
 	},
 	{
 		"title":"[${explode} - ${channel}] DHT channel records",
-		"target":"aliasSub(aliasByNode(${explode}.cacti_dht_log-*.cacti_dht_log_stats-${channel}.records, 1, 2), \"cacti_dht_log_stats-\", \"\")",
-		"query":"${server}.cacti_dht_log-*.cacti_dht_log_stats-${channel}",
+		"target":"aliasSub(aliasByNode(${explode}.logfiles-*.logfiles_channel-${channel}.records, 1, 2), \"logfiles_channel-.\", \"\")",
+		"query":"${server}.logfiles-*.logfiles_channel-${channel}",
 		"regex":"^(.*)",
 		"index":0
 	}
@@ -36,7 +36,7 @@
 		},
 		"server":{
 			"type":"dynamic",
-                        "query" : "${continent}-*.cacti_dht_log-1.cacti_dht_log.total_bytes",
+			"query" : "${continent}-*.logfiles-*.logfiles_stats.total_bytes",
 			"index":0,
 			"regex":"(.*)",
 			"showAll": true,
@@ -44,11 +44,10 @@
 		},
 		"channel":{
 			"type":"dynamic",
-			"query":"${server}.cacti_dht_log-*.cacti_dht_log_stats-*",
+			"query":"${server}.logfiles-*.logfiles_channel-*",
 			"index":2,
-			"regex":"cacti_dht_log_stats-(.*)",
-			"showAll": false,
-			"showAllValue":"*"
+			"regex":"logfiles_channel-(.*)",
+			"showAll": false
 		}
 	}
 }

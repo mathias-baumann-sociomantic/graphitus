@@ -8,10 +8,10 @@
 	"legend" : true,
 	"dataTemplates" : [
 	{
-		"title":"5. LogFiles disk usage % on ${explode}",
+		"title":"LogFiles disk usage % on ${explode}",
 		"target":"aliasByNode(asPercent(${explode}.cacti_df-srv.cacti_df.DISKFREE_used,sumSeriesWithWildcards(${explode}.cacti_df-srv.cacti_df.*,3)), 0)",
 		"params":"yMin=0&yMax=100",
-		"query":"${server}.cacti_dht_log-*",
+		"query":"${server}.logfiles-*",
 		"index":0
 	}
 	],
@@ -27,7 +27,7 @@
 		},
 		"server" : {
 			"type" : "dynamic",
-			"query" : "${continent}-*.cacti_dht.cacti_dht_mem*",
+			"query" : "${continent}-*.logfiles-*",
 			"index" : 0,
 			"regex" : "(.*)",
 			"showAll": true,
