@@ -1,5 +1,5 @@
 {
-    "title":"DHT Logfiles",
+	"title":"DHT Logfiles",
 	"width" : 490,
 	"defaultLineWidth":1,
 	"timeBack":"6h",
@@ -9,19 +9,19 @@
 	"defaultParameters":"areaMode=none&lineWidth=2&yMin=0&fontSize=11&until=-90seconds",
 	"data":[
 	{
-	    "title":"Aggregate - Logfiles Handled Records",
-	    "target": "alias(sum(${continent}-*.cacti_dht_log-*.cacti_dht_log.records_handled), \"records handled\")"
+		"title":"Aggregate - Logfiles Handled Records",
+		"target": "alias(sum(${continent}-*.logfiles-*.logfiles_stats.records_handled), \"records handled\")"
 	},
 	{
-	    "title":"Aggregate - Logfiles bytes/s sent/received",
-	    "target": [
-		"alias(sum(${continent}-*.cacti_dht_log-*.cacti_dht_log.bytes_sent), \"bytes sent\")",
-		"alias(sum(${continent}-*.cacti_dht_log-*.cacti_dht_log.bytes_received), \"bytes received\")"
+		"title":"Aggregate - Logfiles bytes/s sent/received",
+		"target": [
+			"alias(sum(${continent}-*.logfiles-*.logfiles_stats.bytes_sent), \"bytes sent\")",
+			"alias(sum(${continent}-*.logfiles-*.logfiles_stats.bytes_received), \"bytes received\")"
 		]
 	},
 	{
-	    "title":"Aggregate - Logfiles Handled Connections",
-	    "target": "alias(sum(${continent}-*.cacti_dht_log-*.cacti_dht_log.handling_conns), \"connections handled\")"
+		"title":"Aggregate - Logfiles Handled Connections",
+		"target": "alias(sum(${continent}-*.logfiles-*.logfiles_stats.connections_handled), \"connections handled\")"
 	}
 	],
 	"dataConditional":[
@@ -29,22 +29,17 @@
 		"title":"LogFiles Total Disk Usage",
 		"target":"alias(sum(${explode}.cacti_df-srv.cacti_df.DISKFREE_used), \"total disk space used\")",
 		"params":"yMin=0",
-		"query":"${server}.cacti_dht_log-*",
+		"query":"${server}.logfiles-*",
 		"index":0
 	}
 	],
 	"parameters": {
 		"continent": {
-			"All" : {"continent" : "*",
-				 "cont-nice" : "All" },
-			"EU" : {"continent" : "eu",
-				 "cont-nice" : "EU" },
-			"US" : {"continent" : "us",
-				 "cont-nice" : "US" },
-			"AP" : {"continent" : "ap",
-				 "cont-nice" : "AP" },
-			"USAP" : {"continent" : "usap",
-				 "cont-nice" : "USAP" }
+			"All" : {"continent" : "*", "cont-nice" : "All" },
+			"EU" : {"continent" : "eu", "cont-nice" : "EU" },
+			"US" : {"continent" : "us", "cont-nice" : "US" },
+			"AP" : {"continent" : "ap", "cont-nice" : "AP" },
+			"USAP" : {"continent" : "usap", "cont-nice" : "USAP" }
 		}
-	}			
+	}
 }
