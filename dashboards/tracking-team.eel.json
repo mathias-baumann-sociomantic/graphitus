@@ -1,0 +1,30 @@
+{
+	"title":"Eel Pixel Tracking Stats",
+	"width" : 600,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 400,
+	"refresh" : true,
+	"defaultParameters":"",
+	"dataTemplatesUnused" : [
+	],
+	"data":[
+	{
+		"title":"Pixel Response Times HTTP",
+		"target" : "aliasSub(aliasSub(maximumAbove(eu-023.eel.eel_stats-*_https.elapsedtime,0.5), 'tracking_debug-ssp_', ''), '_http.elapsedtime', '')"
+	},
+	{
+		"title":"Pixel Response Times HTTPS",
+		"target" : "aliasSub(aliasSub(maximumAbove(eu-023.eel.eel_stats-*_https.elapsedtime,0.5), 'eu-023.eel.eel_stats-', ''), '_https.elapsedtime', '')"
+	},
+	{
+		"title":"Pixel Status HTTP",
+		"target" : "aliasSub(aliasSub(eu-023.eel.eel_stats-*_http.status, 'eu-023.eel.eel_stats-', ''), '_http.elapsedtime', '')"
+	},
+	{
+		"title":"Pixel Status HTTPS",
+		"target" : "aliasSub(aliasSub(maximumAbove(eu-023.eel.eel_stats-*_https.status,0.5), 'eu-023.eel.eel_stats-', ''), '_https.elapsedtime', '')"
+	}
+	]
+}
+
