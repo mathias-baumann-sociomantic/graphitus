@@ -104,7 +104,7 @@ $(document).ready(function() {
 <script type="text/template" id="tmpl-dashboards-menu">
 <% if(isLeaf){ %>
   <li>
-    <a href="dashboard.html?id=<%= path %>"><%= name %></a>
+    <a href="dashboard.html?id=<%= realpath %>"><%= name %></a>
   </li>
 <% }else{ %>
   <li class="dropdown-submenu">
