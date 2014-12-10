@@ -51,7 +51,6 @@
 			"type":"dynamic",
 			"query":"${continent}-*.dht-1",
 			"index":0,
-			"regex":"(.*)",
 			"showAll": true,
 			"showAllValue":"${continent}-*"
 		},
@@ -59,7 +58,6 @@
 			"type":"dynamic",
 			"query":"${continent}-*.logfiles-*",
 			"index":0,
-			"regex":"(.*)",
 			"showAll": true,
 			"showAllValue":"${continent}-*"
 		}
