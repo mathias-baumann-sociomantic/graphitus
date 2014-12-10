@@ -3,6 +3,8 @@
 
         {"id": "adserving-team/overview"},
 
+        {"id": "reporting-team"},
+
         {"id": "core-team/overview"},
         {"id": "core-team/dht/overview"},
         {"id": "core-team/dht/aggregates"},
