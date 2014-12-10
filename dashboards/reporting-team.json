@@ -1,0 +1,123 @@
+{  
+	"title":"Reporting-Team",
+	"width":560,
+	"height":320,
+	"defaultLineWidth":3,
+	"timeBack":"5h",
+	"refresh":true,
+	"legend":true,
+	"data":[  
+		{  
+			"title":"${continent} - Tracking Queue Channel Usage",
+			"target":[  
+				"aliasSub(aliasSub(aliasByNode(movingAverage(${continent}-*.queue-*.queue_channel_stats-{reef,coral,cliff,tracking}.usage, 10),0,2),'queue_channel_stats-(.*)','\\1'),'tracking','hydro')"
+			]
+		},
+		{  
+			"title":"${continent} Reef Loglines/s",
+			"target":[  
+				"cactiStyle(aliasByNode(scale(sortByMaxima(${continent}-{137,011,010}.cacti_reef.cacti_reef_stats.loglines),0.03333),0))"
+			],
+			"params":"yMin=0&areaAlpha=0.5&areaMode=all&lineWidth=2&colorList=%23B34B00,%23C87C00,%239D6300,%235E0000,%238C0000,%23B96900,%23F85F00,%23F80000,%23F82700"
+		},
+		{  
+			"title":"${continent} Reef Logline Errors %",
+			"target":[  
+				"lineWidth(aliasByNode(asPercent(${continent}-{137,011,010}.cacti_reef.cacti_reef_stats.lgln_processing,${continent}-{137,011,010}.cacti_reef.cacti_reef_stats.loglines),0,3),3)",
+				"lineWidth(aliasByNode(asPercent(${continent}-{137,011,010}.cacti_reef.cacti_reef_stats.lgln_input,${continent}-{137,011,010}.cacti_reef.cacti_reef_stats.loglines),0,3),2)"
+			]
+		},
+		{  
+			"title":"${continent} Reef Failed Cids %",
+			"target":[  
+				"aliasByNode(sortByTotal(asPercent(${continent}-{137,011,010}.cacti_reef.cacti_reef_stats.lgln_cidsfailed,${continent}-{137,011,010}.cacti_reef.cacti_reef_stats.loglines)),0,3)"
+			],
+			"params":"lineWidth=2&areaAlpha=0.4&areaMode=all&colorList=%2303FF28,%2300B01A,%23008714,%2353925D"
+		},
+		{  
+			"title":"${continent} Reef SQL Queries/s",
+			"target":[  
+				"aliasByNode(scale(${continent}-{137,011,010}.cacti_reef.cacti_reef_stats.sql_queries,0.033333),0,3)"
+			],
+			"params":"lineWidth=2"
+		},
+		{  
+			"title":"${continent} Hydrosphere Loglines In /s",
+			"target":[  
+				"aliasSub(aliasSub(cactiStyle(aliasByNode(scale(stacked(${us}-*.cacti_hydrosphere.cacti_hydrosphere_stats-*.logline_in, '${us}'),0.033333), 0,2)), '.*_stats-[^2].*',''),'${us}-[^ ]*(.*Current.*)', '${us} in/s\\1')",
+				"aliasSub(aliasSub(cactiStyle(aliasByNode(scale(stacked(${ap}-*.cacti_hydrosphere.cacti_hydrosphere_stats-*.logline_in, '${ap}'),0.033333), 0,2)), '.*_stats-([^2]).*',''),'${ap}-[^ ]*(.*Current.*)', '${ap} in/s\\1')",
+				"aliasSub(aliasSub(cactiStyle(aliasByNode(scale(stacked(${eu}-*.cacti_hydrosphere.cacti_hydrosphere_stats-*.logline_in, '${eu}'),0.033333), 0,2)), '.*_stats-([^2]).*',''),'${eu}-[^ ]*(.*Current.*)', '${eu} in/s\\1')"
+			],
+			"params":"yMin=0&areaAlpha=0.5&areaMode=all&lineWidth=2&colorList=%23CF716D,%23FF3229,%23A1A9F1,%235A6BFF,%23DBFF67,%235BCA31"
+		},
+		{  
+			"title":"${continent} Hydrosphere Overflow",
+			"target":[  
+				"cactiStyle(aliasSub(sortByMaxima(aliasByNode(movingAverage(${continent}-*.cacti_hydrosphere.cacti_hydrosphere_stats-*.overflow, 30),0,2 )), 'cacti.*-([0-9]+)', '\\1'))"
+			],
+			"params":"yMin=0&areaAlpha=0.5&areaMode=stacked&lineWidth=2&colorList=%23CF716D,%23FF3229,%23A1A9F1,%235A6BFF,%23DBFF67,%235BCA31"
+		},
+		{  
+			"title":"${continent} Coral Loglines/s",
+			"target":[  
+				"cactiStyle(aliasByNode(scale(sortByMaxima(${continent}-{137,022,010}.cacti_coral.cacti_coral_stats.loglines),0.03333),0))"
+			],
+			"params":"yMin=0&areaAlpha=0.5&areaMode=all&lineWidth=2&colorList=%2300476B,%230076B3,%2300A8FF"
+		},
+		{  
+			"title":"${continent} Cliff Bids",
+			"target":[  
+				"cactiStyle(aliasByNode(scale(sortByMaxima(${continent}-*.cacti_cliff.cacti_cliff_stats.bids),0.03333),0))"
+			],
+			"params":"yMin=0&areaAlpha=0.5&areaMode=all&lineWidth=2&colorList=%23B34BFD,%23C87CFF,%239D63FF,%235E00FF,%238C00FF,%23B969FB,%23F85F00,%23F8002D,%23F82700"
+		},
+		{  
+			"title":"${continent} Cliff BidRequests",
+			"target":[  
+				"cactiStyle(aliasByNode(scale(sortByMaxima(${continent}-*.cacti_cliff.cacti_cliff_stats.bid_requests),0.03333),0))"
+			],
+			"params":"yMin=0&areaAlpha=0.5&areaMode=all&lineWidth=2&colorList=%23FFAA7F,%23FFD832,%23D9BD45,%23F7E48E"
+		},
+		{  
+			"title":"${continent} Cliff SQL Queries/s",
+			"target":[  
+				"aliasByNode(scale(${continent}-*.cacti_cliff.cacti_cliff_stats.sql_queries,0.033333),0,3)"
+			],
+			"params":"lineWidth=2"
+		}
+	],
+	"parameters":{  
+		"continent":{  
+			"All":{  
+				"continent":"*",
+				"ap":"ap",
+				"eu":"eu",
+				"us":"us"
+			},
+			"EU":{  
+				"continent":"eu",
+				"ap":"",
+				"eu":"eu",
+				"us":""
+			},
+			"US":{  
+				"continent":"us",
+				"ap":"",
+				"eu":"",
+				"us":"us"
+			},
+			"AP":{  
+				"continent":"ap",
+				"ap":"ap",
+				"eu":"",
+				"us":""
+			},
+			"USAP":{  
+				"continent":"usap",
+				"ap":"",
+				"eu":"",
+				"us":""
+			}
+		}
+	}
+}
