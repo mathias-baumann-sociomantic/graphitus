@@ -173,7 +173,7 @@ function loadGraphiteData(target, callback){
 }
 
 function getColorList(targetUri) {
-	var uriColors = new RegExp('[\\?&]colorList=([^&#]*)').exec(targetUri);
+	var uriColors = new RegExp('[\\?&]colorList=([^&]*)').exec(targetUri);
 	var defaultColors = graphitusConfig.defaultColorList;
 	var effectiveColorList = uriColors !== null ? uriColors[1] : defaultColors;
 	return effectiveColorList.split(',').map(graphiteToRickshawColor);

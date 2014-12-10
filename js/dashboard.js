@@ -166,7 +166,7 @@ function buildUrl(idx, graph, chartTitle, width, height, graphiteOperation) {
 		params = params + "&" + config.defaultParameters;
 	}
 	if ($('#graphParams' + idx).val()) {
-		params += "&" + $('#graphParams' + idx).val();
+		params += "&" + $('#graphParams' + idx).val().replace(/#/g,'%23');
 	}
 	if (config.defaultColorList) {
 		params += "&colorList=" + config.defaultColorList;
