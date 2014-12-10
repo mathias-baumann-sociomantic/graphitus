@@ -418,7 +418,7 @@ function renderDynamicParamGroup(paramGroupName, paramGroup) {
 
 			$.each(data.metrics, function(i, metric) {
 				var paramValue = getParamValueFromPath(paramGroup, metric);
-				parametersSorted.push(paramValue);
+				if ( parametersSorted.indexOf(paramValue) == -1 ) { parametersSorted.push(paramValue); }
 			});
 			parametersSorted.sort();
 
@@ -458,13 +458,13 @@ function getParamValueFromPath(paramGroup, metric) {
 		result = metric.name;
 	}
 
-	return applyRegexToName(paramGroup, result);
+	return applyRegexToName(paramGroup, result, true);
 }
 
-function applyRegexToName(paramGroup, metric) {
+function applyRegexToName(paramGroup, metric, skipApplyParameters) {
 	var result = metric;
 	if (paramGroup.regex) {
-		var regEx = applyParameters(paramGroup.regex);
+		var regEx = (skipApplyParameters) ? paramGroup.regex : applyParameters(paramGroup.regex);
 		var regexResult = result.match(new RegExp(regEx));
 		result = (regexResult) ? regexResult[1] : "";
 	}
