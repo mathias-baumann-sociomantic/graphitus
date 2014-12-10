@@ -13,6 +13,7 @@
 		"title":"[${explode} - ${channel}] DHT channel bytes",
 		"target":"aliasSub(aliasByNode(${explode}.logfiles-*.logfiles_channel-${channel}.bytes, 1, 2), \"logfiles_channel-.\", \"\")",
 		"query":"${server}.logfiles-*.logfiles_channel-${channel}",
+		"params": "yMin=0",
 		"regex":"^(.*)",
 		"index":0
 	},
@@ -20,6 +21,7 @@
 		"title":"[${explode} - ${channel}] DHT channel records",
 		"target":"aliasSub(aliasByNode(${explode}.logfiles-*.logfiles_channel-${channel}.records, 1, 2), \"logfiles_channel-.\", \"\")",
 		"query":"${server}.logfiles-*.logfiles_channel-${channel}",
+		"params": "yMin=0",
 		"regex":"^(.*)",
 		"index":0
 	}
