@@ -3,8 +3,6 @@
 
         {"id": "adserving-team/overview"},
 
-        {"id": "reporting-team"},
-
         {"id": "core-team/overview"},
         {"id": "core-team/dht/overview"},
         {"id": "core-team/dht/aggregates"},
@@ -28,6 +26,8 @@
         {"id": "core-team/logfiles/channels.size-aggregates"},
         {"id": "core-team/logfiles/channels.size"},
         {"id": "core-team/queues"},
+
+        {"id": "reporting-team"},
 
         {"id": "tracking-team.debug-advertisers"},
         {"id": "tracking-team.debug-ssps-summary"},
