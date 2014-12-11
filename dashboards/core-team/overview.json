@@ -9,60 +9,60 @@
 	"legend":false,
 	"data":[
 	{
-		"title":"1. DHT Memory Usage % on ${DHT-server}",
-		"target":"aliasByNode(${DHT-server}.dht-*.process_mem_stats.percentage, 0, 1)",
+		"title":"1. DHT Memory Usage % on ${dht}",
+		"target":"aliasByNode(${dht}.dht-*.process_mem_stats.percentage, 0, 1)",
 		"params":"yMin=0&yMax=100"
 	},
 	{
-		"title":"2. DHT Handled Records on ${DHT-server}",
-		"target":"aliasByNode(${DHT-server}.dht-*.dht_stats.handled_records, 0, 1)"
+		"title":"2. DHT Handled Records on ${dht}",
+		"target":"aliasByNode(${dht}.dht-*.dht_stats.handled_records, 0, 1)"
 	},
 	{
-		"title":"3. DHT Handled Connections on ${DHT-server}",
-		"target":"aliasByNode(${DHT-server}.dht-*.dht_stats.handled_connections, 0, 1)"
+		"title":"3. DHT Handled Connections on ${dht}",
+		"target":"aliasByNode(${dht}.dht-*.dht_stats.handled_connections, 0, 1)"
 	},
 	{
-		"title":"5. LogFiles Handled Records on ${LOGFILES-server}",
-		"target":"aliasByNode(${LOGFILES-server}.logfiles-*.logfiles_stats.records_handled, 0, 1)"
+		"title":"5. LogFiles Handled Records on ${logfiles}",
+		"target":"aliasByNode(${logfiles}.logfiles-*.logfiles_stats.records_handled, 0, 1)"
 	},
 	{
-		"title":"6. LogFiles Handled Connections on ${LOGFILES-server}",
-		"target":"aliasByNode(${LOGFILES-server}.logfiles-*.logfiles_stats.connections_handled, 0, 1)"
+		"title":"6. LogFiles Handled Connections on ${logfiles}",
+		"target":"aliasByNode(${logfiles}.logfiles-*.logfiles_stats.connections_handled, 0, 1)"
 	},
 	{
-		"title":"7. Queue Channels Usage % on ${QUEUE-server}",
-		"target":"aliasByNode(${QUEUE-server}.queue-*.queue_channel_stats-*.usage, 0, 1)",
+		"title":"7. Queue Channels Usage % on ${queue}",
+		"target":"aliasByNode(${queue}.queue-*.queue_channel_stats-*.usage, 0, 1)",
 		"query":"${continent}-*.queue-*.queue_channel_stats-*",
 		"regex":"queue_channel_stats-(.*)",
 		"index":2
 	},
 	{
-		"title":"8. Queue Handled Records on ${QUEUE-server}",
-		"target":"aliasByNode(${QUEUE-server}.queue-*.queue_node_stats.records_per_sec, 0, 1)"
+		"title":"8. Queue Handled Records on ${queue}",
+		"target":"aliasByNode(${queue}.queue-*.queue_node_stats.records_per_sec, 0, 1)"
 	},
 	{
-		"title":"9. Queue Handled Connections on ${QUEUE-server}",
-		"target":"aliasByNode(${QUEUE-server}.queue-*.queue_node_stats.handled_connections, 0, 1)"
+		"title":"9. Queue Handled Connections on ${queue}",
+		"target":"aliasByNode(${queue}.queue-*.queue_node_stats.handled_connections, 0, 1)"
 	},
 	{
-		"title":"10. DHTSync Queue High-Prio Channel Usage on ${DHTSYNC-server}",
-		"target":"aliasByNode(${DHTSYNC-server}.cacti_dht.cacti_dht_sync_stats.user_yield_records, 0, 1)"
+		"title":"10. DHTSync Queue High-Prio Channel Usage on ${dhtsync}",
+		"target":"aliasByNode(${dhtsync}.cacti_dht.cacti_dht_sync_stats.user_yield_records, 0, 1)"
 	},
 	{
-		"title":"11. DHTSync Queue Records/s on ${DHTSYNC-server}",
-		"target":"aliasByNode(${DHTSYNC-server}.cacti_dht.cacti_dht_sync_stats.records_handled, 0, 1)"
+		"title":"11. DHTSync Queue Records/s on ${dhtsync}",
+		"target":"aliasByNode(${dhtsync}.cacti_dht.cacti_dht_sync_stats.records_handled, 0, 1)"
 	},
 	{
-		"title":"12. DHTSync Queue Connections on ${DHTSYNC-server}",
-		"target":"aliasByNode(${DHTSYNC-server}.cacti_dht.cacti_dht_sync_stats.connections_handled, 0, 1)"
+		"title":"12. DHTSync Queue Connections on ${dhtsync}",
+		"target":"aliasByNode(${dhtsync}.cacti_dht.cacti_dht_sync_stats.connections_handled, 0, 1)"
 	}
 	],
 	"dataConditional":[
 	{
-		"title":"4. LogFiles Disk Usage % on ${LOGFILES-server}",
+		"title":"4. LogFiles Disk Usage % on ${logfiles}",
 		"target":"aliasByNode(asPercent(${explode}.cacti_df-srv.cacti_df.DISKFREE_used,sumSeriesWithWildcards(${explode}.cacti_df-srv.cacti_df.*,3)), 0)",
 		"params":"yMin=0&yMax=100",
-		"query":"${LOGFILES-server}.logfiles-*",
+		"query":"${logfiles}.logfiles-*",
 		"index":0
 	}
 	],
@@ -74,28 +74,28 @@
 			"AP":{"continent":"ap"},
 			"USAP":{"continent":"usap"}
 		},
-		"DHT-server": {
+		"dht": {
 			"type":"dynamic",
-			"query":"${continent}-*.dht-1",
+			"query":"${continent}-*.dht-*",
 			"index":0,
 			"showAll": true,
 			"showAllValue":"${continent}-*"
 		},
-		"LOGFILES-server": {
+		"logfiles": {
 			"type":"dynamic",
 			"query":"${continent}-*.logfiles-*",
 			"index":0,
 			"showAll": true,
 			"showAllValue":"${continent}-*"
 		},
-		"QUEUE-server": {
+		"queue": {
 			"type":"dynamic",
 			"query":"${continent}-*.queue-*",
 			"index":0,
 			"showAll": true,
 			"showAllValue":"${continent}-*"
 		},
-		"DHTSYNC-server": {
+		"dhtsync": {
 			"type":"dynamic",
 			"query":"${continent}-*.cacti_dht.cacti_dht_sync_stats",
 			"index":0,
