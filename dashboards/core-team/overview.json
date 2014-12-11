@@ -30,7 +30,21 @@
 		"target":"aliasByNode(${LOGFILES-server}.logfiles-*.logfiles_stats.connections_handled, 0, 1)"
 	},
 	{
-		"title":"7. DHTSync High-Prio Queue Channel records/s on ${DHTSYNC-server}",
+		"title":"7. Queue Channels Usage % on ${QUEUE-server}",
+		"target":"aliasByNode(${QUEUE-server}.queue-*.queue_channel_stats-*.usage, 0, 1)",
+		"query":"${continent}-*.queue-*.queue_channel_stats-*",
+		"regex":"queue_channel_stats-(.*)",
+		"index":2
+	},
+	{
+		"title":"8. Queue Handled Records on ${QUEUE-server}",
+		"target":"aliasByNode(${QUEUE-server}.queue-*.queue_node_stats.records_per_sec, 0, 1)"
+	},
+	{
+		"title":"9. Queue Handled Connections on ${QUEUE-server}",
+		"target":"aliasByNode(${QUEUE-server}.queue-*.queue_node_stats.handled_connections, 0, 1)"
+	},
+	{
 		"title":"10. DHTSync Queue High-Prio Channel Usage on ${DHTSYNC-server}",
 		"target":"aliasByNode(${DHTSYNC-server}.cacti_dht.cacti_dht_sync_stats.user_yield_records, 0, 1)"
 	},
@@ -70,6 +84,13 @@
 		"LOGFILES-server": {
 			"type":"dynamic",
 			"query":"${continent}-*.logfiles-*",
+			"index":0,
+			"showAll": true,
+			"showAllValue":"${continent}-*"
+		},
+		"QUEUE-server": {
+			"type":"dynamic",
+			"query":"${continent}-*.queue-*",
 			"index":0,
 			"showAll": true,
 			"showAllValue":"${continent}-*"

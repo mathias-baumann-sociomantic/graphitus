@@ -1,0 +1,49 @@
+{
+	"title": "Queue Channels Usage %",
+	"width": 1024,
+	"defaultLineWidth": 1,
+	"timeBack": "6h",
+	"height": 400,
+	"columns": 2,
+	"refresh": true,
+	"legend": false,
+	"defaultParameters": "yMin=0&yMax=100",
+	"data": [
+	{
+		"title": "Queue Channel ${channel} Usage % for Queue ${queue} on ${server}",
+		"target": "aliasSub(aliasByNode(${server}.queue-${queue}.queue_channel_stats-${channel}.usage,0,1,2), \"(.*)\\.queue-(.*)\\.queue_stats-(.*)\", \"\\1.\\2.\\3\")"
+	}
+	],
+	"parameters": {
+		"continent": {
+			"All" : {"continent" : "*" },
+			"EU" : {"continent" : "eu" },
+			"US" : {"continent" : "us" },
+			"AP" : {"continent" : "ap" },
+			"USAP" : {"continent" : "usap" }
+		},
+		"server": {
+			"type": "dynamic",
+			"query": "${continent}-*.queue-*",
+			"index": 0,
+			"showAll": true,
+			"showAllValue": "${continent}-*"
+		},
+		"queue": {
+			"type": "dynamic",
+			"query": "${server}.queue-*",
+			"index": 1,
+			"regex": "queue-(.*)",
+			"showAll": true,
+			"showAllValue": "*"
+		},
+		"channel": {
+			"type": "dynamic",
+			"query": "${server}.queue-${queue}.queue_channel_stats-*",
+			"index": 2,
+			"regex": "queue_channel_stats-(.*)",
+			"showAll": true,
+			"showAllValue": "*"
+		}
+	}
+}

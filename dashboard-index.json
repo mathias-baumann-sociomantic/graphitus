@@ -25,7 +25,9 @@
         {"id": "core-team/logfiles/data-sent-received"},
         {"id": "core-team/logfiles/channels.size-aggregates"},
         {"id": "core-team/logfiles/channels.size"},
-        {"id": "core-team/queues"},
+        {"id": "core-team/queues/overview"},
+        {"id": "core-team/queues/aggregates"},
+        {"id": "core-team/queues/channels-usage"},
 
         {"id": "reporting-team"},
 
