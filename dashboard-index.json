@@ -17,6 +17,7 @@
         {"id": "core-team/dht/channels.size"},
         {"id": "core-team/dht/channels.data-dumped"},
         {"id": "core-team/dht/channels.dump-ages"},
+        {"id": "core-team/dhtsync/overview"},
         {"id": "core-team/logfiles/overview"},
         {"id": "core-team/logfiles/aggregates"},
         {"id": "core-team/logfiles/disk-usage-pcnt"},
