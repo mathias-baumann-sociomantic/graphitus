@@ -1,0 +1,64 @@
+{
+	"title": "DHTSync overview for ${server}",
+	"width": 490,
+	"defaultLineWidth": 1,
+	"timeBack": "6h",
+	"height": 220,
+	"columns": 2,
+	"refresh": true,
+	"legend": true,
+	"data": [
+	{
+		"title": "Queue Records/s on ${server}",
+		"target": "aliasByNode(${server}.cacti_dht.cacti_dht_sync_stats.records_handled, 0)"
+	},
+	{
+		"title": "Queue Connections on ${server}",
+		"target": "aliasByNode(${server}.cacti_dht.cacti_dht_sync_stats.connections_handled, 0)"
+	},
+	{
+		"title": "Queue Bytes/s Sent on ${server}",
+		"target": "aliasByNode(${server}.cacti_dht.cacti_dht_sync_stats.bytes_sent, 0)",
+		"params": "yMin=0"
+	},
+	{
+		"title": "Queue Bytes/s Received on ${server}",
+		"target": "aliasByNode(${server}.cacti_dht.cacti_dht_sync_stats.bytes_received, 0)",
+		"params": "yMin=0"
+	},
+	{
+		"title": "Queue Channel Usage (Records)",
+		"target": [
+			"alias(${server}.cacti_dht.cacti_dht_sync_stats.user_yield_records, \"high-prio (user_yield)\")",
+			"alias(${server}.cacti_dht.cacti_dht_sync_stats.test_records, \"low-prio (other channels)\")"
+		],
+		"params": "yMin=0&areaAlpha=0.3&areaMode=all"
+
+	},
+	{
+		"title": "Queue Channel Usage (Bytes)",
+		"target": [
+			"alias(${server}.cacti_dht.cacti_dht_sync_stats.user_yield_bytes, \"high-prio (user_yield)\")",
+			"alias(${server}.cacti_dht.cacti_dht_sync_stats.test_bytes, \"low-prio (other cannels)\")"
+		],
+		"params": "yMin=0&areaAlpha=0.3&areaMode=all"
+
+	}
+	],
+	"parameters": {
+		"continent": {
+			"All": {"continent":"*"},
+			"EU": {"continent":"eu"},
+			"US": {"continent":"us"},
+			"AP": {"continent":"ap"},
+			"USAP": {"continent":"usap"}
+		},
+		"server": {
+			"type": "dynamic",
+			"query": "${continent}-*.cacti_dht",
+			"index": 0,
+			"showAll": true,
+			"showAllValue": "${continent}-*"
+		}
+	}
+}
