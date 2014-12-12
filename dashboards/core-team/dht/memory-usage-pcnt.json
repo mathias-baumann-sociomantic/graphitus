@@ -28,9 +28,8 @@
 		},
 		"server" : {
 			"type" : "dynamic",
-			"query" : "${continent}-*.cacti_dht.cacti_dht_mem*",
+			"query" : "${continent}-*.dht-*",
 			"index" : 0,
-			"regex" : "(.*)",
 			"showAll": true,
 			"showAllValue" : "${continent}-*"
 		}
