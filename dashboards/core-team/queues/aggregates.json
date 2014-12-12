@@ -1,0 +1,46 @@
+{
+	"title": "Queues Aggregates",
+	"width": 540,
+	"defaultLineWidth": 1,
+	"timeBack": "6h",
+	"height": 280,
+	"columns": 2,
+	"refresh": true,
+	"legend": false,
+	"defaultParameters": "yMin=0",
+	"data": [
+	{
+		"title": "Aggregated Connections for ${queue} Queue on ${continent}",
+		"target": "alias(sum(${continent}-*.queue-${queue}.queue_node_stats.handled_connections), \"connections\")"
+	},
+	{
+		"title": "Aggregated Processed Records/s for ${queue} Queue on ${continent}",
+		"target": "alias(sum(${continent}-*.queue-${queue}.queue_node_stats.records_per_sec), \"records/s\")"
+	},
+	{
+		"title": "Aggregated Kb/s Sent for ${queue} Queue on ${continent}",
+		"target": "alias(sum(${continent}-*.queue-${queue}.queue_node_stats.data_sent), \"kb/s sent\")"
+	},
+	{
+		"title": "Aggregated Kb/s Received for ${queue} Queue on ${continent}",
+		"target": "alias(sum(${continent}-*.queue-${queue}.queue_node_stats.data_received), \"kb/s recv\")"
+	}
+	],
+	"parameters": {
+		"continent": {
+			"All" : {"continent" : "*" },
+			"EU" : {"continent" : "eu" },
+			"US" : {"continent" : "us" },
+			"AP" : {"continent" : "ap" },
+			"USAP" : {"continent" : "usap" }
+		},
+		"queue": {
+			"type": "dynamic",
+			"query": "${continent}-*.queue-*",
+			"index": 1,
+			"regex": "queue-(.*)",
+			"showAll": true,
+			"showAllValue": "*"
+		}
+	}
+}

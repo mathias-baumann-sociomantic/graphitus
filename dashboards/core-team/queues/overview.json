@@ -1,0 +1,53 @@
+{
+	"title": "Queues Overview",
+	"width": 540,
+	"defaultLineWidth": 1,
+	"timeBack": "6h",
+	"height": 280,
+	"columns": 2,
+	"refresh": true,
+	"legend": false,
+	"defaultParameters": "yMin=0",
+	"data": [
+	{
+		"title": "Connections for ${queue} Queue on ${server}",
+		"target": "aliasByNode(${server}.queue-${queue}.queue_node_stats.handled_connections, 0, 1)"
+	},
+	{
+		"title": "Processed Records/s for ${queue} Queue on ${server}",
+		"target": "aliasByNode(${server}.queue-${queue}.queue_node_stats.records_per_sec, 0, 1)"
+	},
+	{
+		"title": "Kb/s Sent for ${queue} Queue on ${server}",
+		"target": "aliasByNode(${server}.queue-${queue}.queue_node_stats.data_sent, 0, 1)"
+	},
+	{
+		"title": "Kb/s Received for ${queue} Queue on ${server}",
+		"target": "aliasByNode(${server}.queue-${queue}.queue_node_stats.data_received, 0, 1)"
+	}
+	],
+	"parameters": {
+		"continent": {
+			"All" : {"continent" : "*" },
+			"EU" : {"continent" : "eu" },
+			"US" : {"continent" : "us" },
+			"AP" : {"continent" : "ap" },
+			"USAP" : {"continent" : "usap" }
+		},
+		"server": {
+			"type": "dynamic",
+			"query": "${continent}-*.queue-*",
+			"index": 0,
+			"showAll": true,
+			"showAllValue": "${continent}-*"
+		},
+		"queue": {
+			"type": "dynamic",
+			"query": "${server}.queue-*",
+			"index": 1,
+			"regex": "queue-(.*)",
+			"showAll": true,
+			"showAllValue": "*"
+		}
+	}
+}

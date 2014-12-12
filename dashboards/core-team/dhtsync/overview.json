@@ -6,7 +6,6 @@
 	"height": 220,
 	"columns": 2,
 	"refresh": true,
-	"legend": true,
 	"data": [
 	{
 		"title": "Queue Records/s on ${server}",
@@ -32,7 +31,7 @@
 			"alias(${server}.cacti_dht.cacti_dht_sync_stats.user_yield_records, \"high-prio (user_yield)\")",
 			"alias(${server}.cacti_dht.cacti_dht_sync_stats.test_records, \"low-prio (other channels)\")"
 		],
-		"params": "yMin=0&areaAlpha=0.3&areaMode=all"
+		"params": "yMin=0&areaAlpha=0.3&areaMode=all&hideLegend=false"
 
 	},
 	{
@@ -41,7 +40,7 @@
 			"alias(${server}.cacti_dht.cacti_dht_sync_stats.user_yield_bytes, \"high-prio (user_yield)\")",
 			"alias(${server}.cacti_dht.cacti_dht_sync_stats.test_bytes, \"low-prio (other cannels)\")"
 		],
-		"params": "yMin=0&areaAlpha=0.3&areaMode=all"
+		"params": "yMin=0&areaAlpha=0.3&areaMode=all&hideLegend=false"
 
 	}
 	],
