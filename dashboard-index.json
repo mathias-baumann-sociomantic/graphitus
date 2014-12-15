@@ -29,7 +29,7 @@
         {"id": "core-team/queues/aggregates"},
         {"id": "core-team/queues/channels-usage"},
 
-        {"id": "reporting-team"},
+        {"id": "reporting-team.overview"},
         {"id": "reporting-team.cliff"},
         {"id": "reporting-team.coral"},
         {"id": "reporting-team.hydrosphere.eu"},
