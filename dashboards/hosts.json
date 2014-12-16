@@ -19,17 +19,17 @@
 	{
 		"title":"02. CPU Usage [${explode}]",
 		"target": [
-			"cactiStyle(alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_idle, \"CPU Idle\"))",
-			"cactiStyle(alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_user, \"CPU User\"))",
-			"cactiStyle(alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_nice, \"CPU Nice\"))",
-			"cactiStyle(alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_system, \"CPU System\"))",
-			"cactiStyle(alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_iowait, \"CPU Iowait\"))",
-			"cactiStyle(alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_irq, \"CPU Irq\"))",
-			"cactiStyle(alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_softirq, \"CPU Softirq\"))",
-			"cactiStyle(alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_steal, \"CPU Steal\"))",
-			"cactiStyle(alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_guest, \"CPU Guest\"))"
+			"alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_guest, \"CPU Guest\")",
+			"alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_steal, \"CPU Steal\")",
+			"alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_softirq, \"CPU Softirq\")",
+			"alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_irq, \"CPU Irq\")",
+			"alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_nice, \"CPU Nice\")",
+			"alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_iowait, \"CPU Iowait\")",
+			"alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_system, \"CPU System\")",
+			"alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_user, \"CPU User\")",
+			"alias(${explode}.cacti_cpu.cacti_cpu.STAT_CPU_idle, \"CPU Idle\")"
 		],
-		"params":"areaMode=stacked",
+		"params":"areaMode=stacked&colorList=pink,magenta,grey,aqua,purple,red,brown,orange,green",
 		"query":"${server}.${metric_filter}.cacti_cpu.STAT_CPU_guest",
 		"index":0
 	},
