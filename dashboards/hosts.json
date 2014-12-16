@@ -200,28 +200,30 @@
 	{
 		"title":"12. Swap Operations [${explode}]",
 		"target": [
-			"cactiStyle(alias(${explode}.cacti_swap.cacti_swap.VMSTAT_pswpout, \"Swap OUT operations\"))",
-			"cactiStyle(alias(scale(${explode}.cacti_swap.cacti_swap.VMSTAT_pswpin, -1), \"Swap IN operations\"))"
+			"alias(scale(${explode}.cacti_swap.cacti_swap.VMSTAT_pswpin, -1), \"Swap IN operations\")",
+			"alias(${explode}.cacti_swap.cacti_swap.VMSTAT_pswpout, \"Swap OUT operations\")"
 		],
-	        "params":"yMin=",
+		"params":"yMin=",
 		"query":"${server}.${metric_filter}.cacti_swap",
 		"index":0
 	},
 	{
 		"title":"13. Network Traffic bytes [${explode}] [eth0]",
 		"target": [
-			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes, \"Received Bytes\"))",
-			"cactiStyle(alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_txbytes, \"Sent bytes\"))"
+			"alias(scale(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes,-1), \"Received Bytes\")",
+			"alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_txbytes, \"Sent bytes\")"
 		],
+		"params":"areaMode=stacked&yMin=",
 		"query":"${server}.${metric_filter}-eth0.cacti_netdev.NETDEV_rxbytes",
 		"index":0
 	},
 	{
 		"title":"13. Network Traffic bytes [${explode}] [eth1]",
 		"target": [
-			"cactiStyle(alias(${explode}.cacti_netdev-eth1.cacti_netdev.NETDEV_rxbytes, \"Received Bytes\"))",
-			"cactiStyle(alias(${explode}.cacti_netdev-eth1.cacti_netdev.NETDEV_txbytes, \"Sent bytes\"))"
+			"alias(scale(${explode}.cacti_netdev-eth1.cacti_netdev.NETDEV_rxbytes,-1), \"Received Bytes\")",
+			"alias(${explode}.cacti_netdev-eth1.cacti_netdev.NETDEV_txbytes, \"Sent bytes\")"
 		],
+		"params":"areaMode=stacked&yMin=",
 		"query":"${server}.${metric_filter}-eth1.cacti_netdev.NETDEV_rxbytes",
 		"index":0
 	},
