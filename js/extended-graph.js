@@ -153,7 +153,8 @@ function renderExtendedGraph(target, data) {
 
 	extendedChartLegend = new Rickshaw.Graph.Legend({
 		graph: extendedChart,
-		element: document.getElementById('extendedLegend')
+		element: document.getElementById('extendedLegend'),
+		naturalOrder: true
 	});
 	var shelving = new Rickshaw.Graph.Behavior.Series.Toggle({
 		graph: extendedChart,
