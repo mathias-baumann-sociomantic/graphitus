@@ -190,7 +190,7 @@ function graphiteToRickshawColor(graphiteColor) {
 		"orange":"#FFA500",
 		"purple":"#C864FF",
 		"brown":"#966432",
-		"aqua":"#969600",
+		"aqua":"#028482",
 		"gray":"#AFAFAF",
 		"grey":"#AFAFAF",
 		"magenta":"#FF00FF",
