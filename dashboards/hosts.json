@@ -34,108 +34,51 @@
 		"index":0
 	},
 	{
-		"title":"03. Disk Elapsed IO Time (ms) [${explode}] [sda]",
+		"title":"03. Disk Elapsed IO Time (ms) [${explode}] [per-sdX]",
 		"target": [
-			"cactiStyle(alias(${explode}.cacti_disk-sda.cacti_disk_io_time.DISK_io_time, \"Io Time\"))",
-			"cactiStyle(alias(${explode}.cacti_disk-sda.cacti_disk_io_time.DISK_io_time_weghtd, \"Io Time Weighted\"))"
+			"aliasSub(${explode}.cacti_disk-sd[abcd].cacti_disk_io_time.DISK_io_time, \"^.*cacti_disk-sd(.?)\\..*\", \"sd\\1 Io Time\")",
+			"aliasSub(${explode}.cacti_disk-sd[abcd].cacti_disk_io_time.DISK_io_time_weghtd, \"^.*cacti_disk-sd(.?)\\..*\", \"sd\\1 Io Time Weighted\")"
 		],
-		"query":"${server}.${metric_filter}-sda.cacti_disk_io_time.DISK_io_time_weghtd",
+		"query":"${server}.${metric_filter}-sd[abcd].cacti_disk_io_time.DISK_io_time_weghtd",
 		"index":0
 	},
 	{
-		"title":"03. Disk Elapsed IO Time (ms) [${explode}] [sdb]",
+		"title":"04. Disk Read/Write Time (ms) [${explode}] [per-sdX]",
 		"target": [
-			"cactiStyle(alias(${explode}.cacti_disk-sdb.cacti_disk_io_time.DISK_io_time, \"Io Time\"))",
-			"cactiStyle(alias(${explode}.cacti_disk-sdb.cacti_disk_io_time.DISK_io_time_weghtd, \"Io Time Weighted\"))"
-		],
-		"query":"${server}.${metric_filter}-sdb.cacti_disk_io_time.DISK_io_time_weghtd",
-		"index":0
-	},
-	{
-		"title":"03. Disk Elapsed IO Time (ms) [${explode}] [sdc]",
-		"target": [
-			"cactiStyle(alias(${explode}.cacti_disk-sdc.cacti_disk_io_time.DISK_io_time, \"Io Time\"))",
-			"cactiStyle(alias(${explode}.cacti_disk-sdc.cacti_disk_io_time.DISK_io_time_weghtd, \"Io Time Weighted\"))"
-		],
-		"query":"${server}.${metric_filter}-sdc.cacti_disk_io_time.DISK_io_time_weghtd",
-		"index":0
-	},
-	{
-		"title":"03. Disk Elapsed IO Time (ms) [${explode}] [sdd]",
-		"target": [
-			"cactiStyle(alias(${explode}.cacti_disk-sdd.cacti_disk_io_time.DISK_io_time, \"Io Time\"))",
-			"cactiStyle(alias(${explode}.cacti_disk-sdd.cacti_disk_io_time.DISK_io_time_weghtd, \"Io Time Weighted\"))"
-		],
-		"query":"${server}.${metric_filter}-sdd.cacti_disk_io_time.DISK_io_time_weghtd",
-		"index":0
-	},
-	{
-		"title":"04. Disk Operations [${explode}] [md3]",
-		"target": [
-			"cactiStyle(alias(${explode}.cacti_disk-md3.cacti_disk_ops.DISK_reads, \"Reads\"))",
-			"cactiStyle(alias(${explode}.cacti_disk-md3.cacti_disk_ops.DISK_reads_merged, \"Reads Merged\"))",
-			"cactiStyle(alias(scale(${explode}.cacti_disk-md3.cacti_disk_ops.DISK_writes, -1), \"Writes\"))",
-			"cactiStyle(alias(scale(${explode}.cacti_disk-md3.cacti_disk_ops.DISK_writes_merged, -1), \"Writes Merged\"))"
+			"aliasSub(${explode}.cacti_disk-sd[abcd].cacti_disk_rw_time.DISK_time_spnt_rdng, \"^.*cacti_disk-sd(.?)\\..*\", \"sd\\1 Time Spent Reading\")",
+			"aliasSub(scale(${explode}.cacti_disk-sd[abcd].cacti_disk_rw_time.DISK_tme_spnt_wrtng, -1), \"^.*cacti_disk-sd(.?)\\..*\", \"sd\\1 Time Spent Writing\")"
 		],
 		"params":"yMin=",
-		"query":"${server}.${metric_filter}-md3.cacti_disk_ops.DISK_reads",
+		"query":"${server}.${metric_filter}-sd[abcd].cacti_disk_rw_time.DISK_time_spnt_rdng",
 		"index":0
 	},
 	{
-		"title":"05. Disk Read/Write Time (ms) [${explode}] [sda]",
+		"title":"05. Disk Sectors Read/Written [${explode}] [per-mdX]",
 		"target": [
-			"cactiStyle(alias(${explode}.cacti_disk-sda.cacti_disk_rw_time.DISK_time_spnt_rdng, \"Time Spent Reading\"))",
-			"cactiStyle(alias(scale(${explode}.cacti_disk-sda.cacti_disk_rw_time.DISK_tme_spnt_wrtng, -1), \"Time Spent Writing\"))"
-		],
-		"params":"yMin=",
-		"query":"${server}.${metric_filter}-sda.cacti_disk_rw_time.DISK_time_spnt_rdng",
-		"index":0
-	},
-	{
-		"title":"05. Disk Read/Write Time (ms) [${explode}] [sdb]",
-		"target": [
-			"cactiStyle(alias(${explode}.cacti_disk-sdb.cacti_disk_rw_time.DISK_time_spnt_rdng, \"Time Spent Reading\"))",
-			"cactiStyle(alias(scale(${explode}.cacti_disk-sdb.cacti_disk_rw_time.DISK_tme_spnt_wrtng, -1), \"Time Spent Writing\"))"
-		],
-		"params":"yMin=",
-		"query":"${server}.${metric_filter}-sdb.cacti_disk_rw_time.DISK_time_spnt_rdng",
-		"index":0
-	},
-	{
-		"title":"05. Disk Read/Write Time (ms) [${explode}] [sdc]",
-		"target": [
-			"cactiStyle(alias(${explode}.cacti_disk-sdc.cacti_disk_rw_time.DISK_time_spnt_rdng, \"Time Spent Reading\"))",
-			"cactiStyle(alias(scale(${explode}.cacti_disk-sdc.cacti_disk_rw_time.DISK_tme_spnt_wrtng, -1), \"Time Spent Writing\"))"
-		],
-		"params":"yMin=",
-		"query":"${server}.${metric_filter}-sdc.cacti_disk_rw_time.DISK_time_spnt_rdng",
-		"index":0
-	},
-	{
-		"title":"05. Disk Read/Write Time (ms) [${explode}] [sdd]",
-		"target": [
-			"cactiStyle(alias(${explode}.cacti_disk-sdd.cacti_disk_rw_time.DISK_time_spnt_rdng, \"Time Spent Reading\"))",
-			"cactiStyle(alias(scale(${explode}.cacti_disk-sdd.cacti_disk_rw_time.DISK_tme_spnt_wrtng, -1), \"Time Spent Writing\"))"
-		],
-		"params":"yMin=",
-		"query":"${server}.${metric_filter}-sdd.cacti_disk_rw_time.DISK_time_spnt_rdng",
-		"index":0
-	},
-	{
-		"title":"06. Disk Sectors Read/Written [${explode}] [md3]",
-		"target": [
-			"cactiStyle(aliasSub(${explode}.cacti_disk-md*.cacti_disk_sec_rdwt.DISK_sectors_read, \"^.*-md(\\d+).*\", \"md-\\1 Sectors Read\"))",
-			"cactiStyle(aliasSub(scale(${explode}.cacti_disk-md*.cacti_disk_sec_rdwt.DISK_sectors_writtn, -1), \"^.*-md(\\d+).*\",  \"md-\\1 Sectors Written\"))"
+			"aliasSub(${explode}.cacti_disk-md*.cacti_disk_sec_rdwt.DISK_sectors_read, \"^.*-md(\\d+).*\", \"md-\\1 Sectors Read\")",
+			"aliasSub(scale(${explode}.cacti_disk-md*.cacti_disk_sec_rdwt.DISK_sectors_writtn, -1), \"^.*-md(\\d+).*\",  \"md-\\1 Sectors Written\")"
 		],
 		"params":"yMin=",
 		"query":"${server}.${metric_filter}-md3.cacti_disk_sec_rdwt.DISK_sectors_read",
 		"index":0
 	},
 	{
+		"title":"06. Disk Operations [${explode}] [md3]",
+		"target": [
+			"alias(${explode}.cacti_disk-md3.cacti_disk_ops.DISK_reads, \"Reads\")",
+			"alias(${explode}.cacti_disk-md3.cacti_disk_ops.DISK_reads_merged, \"Reads Merged\")",
+			"alias(scale(${explode}.cacti_disk-md3.cacti_disk_ops.DISK_writes, -1), \"Writes\")",
+			"alias(scale(${explode}.cacti_disk-md3.cacti_disk_ops.DISK_writes_merged, -1), \"Writes Merged\")"
+		],
+		"params":"areaMode=all&yMin=",
+		"query":"${server}.${metric_filter}-md3.cacti_disk_ops.DISK_reads",
+		"index":0
+	},
+	{
 		"title":"07. Disk Usage [${explode}] [/]",
 		"target": [
-			"cactiStyle(alias(${explode}.cacti_df-root.cacti_df.DISKFREE_used, \"Used\"))",
-			"cactiStyle(alias(${explode}.cacti_df-root.cacti_df.DISKFREE_available, \"Free\"))"
+			"alias(${explode}.cacti_df-root.cacti_df.DISKFREE_used, \"Used\")",
+			"alias(${explode}.cacti_df-root.cacti_df.DISKFREE_available, \"Free\")"
 		],
 		"params":"areaMode=stacked",
 		"query":"${server}.${metric_filter}-root.cacti_df.DISKFREE_used",
@@ -144,8 +87,8 @@
 	{
 		"title":"07. Disk Usage [${explode}] [/srv]",
 		"target": [
-			"cactiStyle(alias(${explode}.cacti_df-srv.cacti_df.DISKFREE_used, \"Used\"))",
-			"cactiStyle(alias(${explode}.cacti_df-srv.cacti_df.DISKFREE_available, \"Free\"))"
+			"alias(${explode}.cacti_df-srv.cacti_df.DISKFREE_used, \"Used\")",
+			"alias(${explode}.cacti_df-srv.cacti_df.DISKFREE_available, \"Free\")"
 		],
 		"params":"areaMode=stacked",
 		"query":"${server}.${metric_filter}-srv.cacti_df.DISKFREE_used",
@@ -154,8 +97,8 @@
 	{
 		"title":"07. Disk Usage [${explode}] [/mnt-static]",
 		"target": [
-			"cactiStyle(alias(${explode}.cacti_df-mnt-static.cacti_df.DISKFREE_used, \"Used\"))",
-			"cactiStyle(alias(${explode}.cacti_df-mnt-static.cacti_df.DISKFREE_available, \"Free\"))"
+			"alias(${explode}.cacti_df-mnt-static.cacti_df.DISKFREE_used, \"Used\")",
+			"alias(${explode}.cacti_df-mnt-static.cacti_df.DISKFREE_available, \"Free\")"
 		],
 		"params":"areaMode=stacked",
 		"query":"${server}.${metric_filter}-mnt-static.cacti_df.DISKFREE_used",
@@ -164,7 +107,7 @@
 	{
 		"title":"08. Forks [${explode}]",
 		"target": [
-			"cactiStyle(alias(${explode}.cacti_forks.cacti_forks.STAT_forks, \"Forks\"))"
+			"alias(${explode}.cacti_forks.cacti_forks.STAT_forks, \"Forks\")"
 		],
 		"query":"${server}.${metric_filter}.cacti_forks.STAT_forks",
 		"index":0
@@ -172,7 +115,7 @@
 	{
 		"title":"09. Interrupts [${explode}]",
 		"target": [
-			"cactiStyle(alias(${explode}.cacti_interrupts.cacti_interrupts.STAT_interrupts, \"Interrupts\"))"
+			"alias(${explode}.cacti_interrupts.cacti_interrupts.STAT_interrupts, \"Interrupts\")"
 		],
 		"query":"${server}.${metric_filter}.cacti_interrupts.STAT_interrupts",
 		"index":0
@@ -180,7 +123,7 @@
 	{
 		"title":"10. Load Average [${explode}]",
 		"target": [
-			"cactiStyle(alias(${explode}.cacti_load.cacti_load.STAT_loadavg, \"Loadavg\"))"
+			"alias(${explode}.cacti_load.cacti_load.STAT_loadavg, \"Loadavg\")"
 		],
 		"query":"${server}.${metric_filter}.cacti_load.STAT_loadavg",
 		"index":0
@@ -200,10 +143,9 @@
 	{
 		"title":"12. Swap Operations [${explode}]",
 		"target": [
-			"alias(scale(${explode}.cacti_swap.cacti_swap.VMSTAT_pswpin, -1), \"Swap IN operations\")",
+			"alias(${explode}.cacti_swap.cacti_swap.VMSTAT_pswpin, \"Swap IN operations\")",
 			"alias(${explode}.cacti_swap.cacti_swap.VMSTAT_pswpout, \"Swap OUT operations\")"
 		],
-		"params":"yMin=",
 		"query":"${server}.${metric_filter}.cacti_swap",
 		"index":0
 	},
@@ -213,7 +155,7 @@
 			"alias(scale(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_rxbytes,-1), \"Received Bytes\")",
 			"alias(${explode}.cacti_netdev-eth0.cacti_netdev.NETDEV_txbytes, \"Sent bytes\")"
 		],
-		"params":"areaMode=stacked&yMin=",
+		"params":"areaMode=all&yMin=",
 		"query":"${server}.${metric_filter}-eth0.cacti_netdev.NETDEV_rxbytes",
 		"index":0
 	},
@@ -223,14 +165,14 @@
 			"alias(scale(${explode}.cacti_netdev-eth1.cacti_netdev.NETDEV_rxbytes,-1), \"Received Bytes\")",
 			"alias(${explode}.cacti_netdev-eth1.cacti_netdev.NETDEV_txbytes, \"Sent bytes\")"
 		],
-		"params":"areaMode=stacked&yMin=",
+		"params":"areaMode=all&yMin=",
 		"query":"${server}.${metric_filter}-eth1.cacti_netdev.NETDEV_rxbytes",
 		"index":0
 	},
 	{
 		"title":"14. Number of Users [${explode}]",
 		"target": [
-			"cactiStyle(alias(${explode}.cacti_users.cacti_users.STAT_numusers, \"Numusers\"))"
+			"alias(${explode}.cacti_users.cacti_users.STAT_numusers, \"Numusers\")"
 		],
 		"params":"",
 		"query":"${server}.${metric_filter}.cacti_users.STAT_numusers",
@@ -239,11 +181,11 @@
 	{
 		"title":"15. Sockets Pipes Files [${explode}]",
 		"target": [
-			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.files, \"Files\"))",
-			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.pipes, \"Pipes\"))",
-			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.tcp, \"TCP\"))",
-			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.udp, \"UDP\"))",
-			"cactiStyle(alias(${explode}.cacti_sfpstat.cacti_sfpstat.unix, \"Unix\"))"
+			"alias(${explode}.cacti_sfpstat.cacti_sfpstat.files, \"Files\")",
+			"alias(${explode}.cacti_sfpstat.cacti_sfpstat.pipes, \"Pipes\")",
+			"alias(${explode}.cacti_sfpstat.cacti_sfpstat.tcp, \"TCP\")",
+			"alias(${explode}.cacti_sfpstat.cacti_sfpstat.udp, \"UDP\")",
+			"alias(${explode}.cacti_sfpstat.cacti_sfpstat.unix, \"Unix\")"
 		],
 		"query":"${server}.${metric_filter}.cacti_sfpstat",
 		"index":0
