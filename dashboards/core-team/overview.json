@@ -15,46 +15,56 @@
 	},
 	{
 		"title":"2. DHT Handled Records on ${dht}",
-		"target":"aliasByNode(${dht}.dht-*.dht_stats.handled_records, 0, 1)"
+		"target":"aliasByNode(${dht}.dht-*.dht_stats.handled_records, 0, 1)",
+		"params":"yMin=0"
 	},
 	{
 		"title":"3. DHT Handled Connections on ${dht}",
-		"target":"aliasByNode(${dht}.dht-*.dht_stats.handled_connections, 0, 1)"
+		"target":"aliasByNode(${dht}.dht-*.dht_stats.handled_connections, 0, 1)",
+		"params":"yMin=0"
 	},
 	{
 		"title":"5. LogFiles Handled Records on ${logfiles}",
-		"target":"aliasByNode(${logfiles}.logfiles-*.logfiles_stats.records_handled, 0, 1)"
+		"target":"aliasByNode(${logfiles}.logfiles-*.logfiles_stats.records_handled, 0, 1)",
+		"params":"yMin=0"
 	},
 	{
 		"title":"6. LogFiles Handled Connections on ${logfiles}",
-		"target":"aliasByNode(${logfiles}.logfiles-*.logfiles_stats.connections_handled, 0, 1)"
+		"target":"aliasByNode(${logfiles}.logfiles-*.logfiles_stats.connections_handled, 0, 1)",
+		"params":"yMin=0"
 	},
 	{
 		"title":"7. Queue Channels Usage % on ${queue}",
 		"target":"aliasByNode(${queue}.queue-*.queue_channel_stats-*.usage, 0, 1)",
+		"params":"yMin=0&yMax=100",
 		"query":"${continent}-*.queue-*.queue_channel_stats-*",
 		"regex":"queue_channel_stats-(.*)",
 		"index":2
 	},
 	{
 		"title":"8. Queue Handled Records on ${queue}",
-		"target":"aliasByNode(${queue}.queue-*.queue_node_stats.records_per_sec, 0, 1)"
+		"target":"aliasByNode(${queue}.queue-*.queue_node_stats.records_per_sec, 0, 1)",
+		"params":"yMin=0"
 	},
 	{
 		"title":"9. Queue Handled Connections on ${queue}",
-		"target":"aliasByNode(${queue}.queue-*.queue_node_stats.handled_connections, 0, 1)"
+		"target":"aliasByNode(${queue}.queue-*.queue_node_stats.handled_connections, 0, 1)",
+		"params":"yMin=0"
 	},
 	{
 		"title":"10. DHTSync Queue High-Prio Channel Usage on ${dhtsync}",
-		"target":"aliasByNode(${dhtsync}.cacti_dht.cacti_dht_sync_stats.user_yield_records, 0, 1)"
+		"target":"aliasByNode(${dhtsync}.cacti_dht.cacti_dht_sync_stats.user_yield_records, 0, 1)",
+		"params":"yMin=0"
 	},
 	{
 		"title":"11. DHTSync Queue Records/s on ${dhtsync}",
-		"target":"aliasByNode(${dhtsync}.cacti_dht.cacti_dht_sync_stats.records_handled, 0, 1)"
+		"target":"aliasByNode(${dhtsync}.cacti_dht.cacti_dht_sync_stats.records_handled, 0, 1)",
+		"params":"yMin=0"
 	},
 	{
 		"title":"12. DHTSync Queue Connections on ${dhtsync}",
-		"target":"aliasByNode(${dhtsync}.cacti_dht.cacti_dht_sync_stats.connections_handled, 0, 1)"
+		"target":"aliasByNode(${dhtsync}.cacti_dht.cacti_dht_sync_stats.connections_handled, 0, 1)",
+		"params":"yMin=0"
 	}
 	],
 	"dataConditional":[

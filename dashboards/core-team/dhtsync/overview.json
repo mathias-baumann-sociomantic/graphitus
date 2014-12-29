@@ -9,11 +9,13 @@
 	"data": [
 	{
 		"title": "Queue Records/s on ${server}",
-		"target": "aliasByNode(${server}.cacti_dht.cacti_dht_sync_stats.records_handled, 0)"
+		"target": "aliasByNode(${server}.cacti_dht.cacti_dht_sync_stats.records_handled, 0)",
+		"params": "yMin=0"
 	},
 	{
 		"title": "Queue Connections on ${server}",
-		"target": "aliasByNode(${server}.cacti_dht.cacti_dht_sync_stats.connections_handled, 0)"
+		"target": "aliasByNode(${server}.cacti_dht.cacti_dht_sync_stats.connections_handled, 0)",
+		"params": "yMin=0"
 	},
 	{
 		"title": "Queue Bytes/s Sent on ${server}",
