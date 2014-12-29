@@ -15,23 +15,28 @@
 	},
 	{
 		"title":"2. DHT Non-Data Memory Usage on ${server}",
-		"target":"groupByNode(aliasSub(keepLastValue(${server}.dht-*.{process_mem_stats,dht_stats}.{total_bytes,rss}),\"^keepLastValue\\((.*)\\.(.*)\\.(.*)\\.(.*)\",\"\\1-\\2.\\4\"),0,\"diffSeries\")"
+		"target":"groupByNode(aliasSub(keepLastValue(${server}.dht-*.{process_mem_stats,dht_stats}.{total_bytes,rss}),\"^keepLastValue\\((.*)\\.(.*)\\.(.*)\\.(.*)\",\"\\1-\\2.\\4\"),0,\"diffSeries\")",
+		"params":"yMax=0"
 	},
 	{
 		"title":"3. DHT handled records on ${server}",
-		"target":"aliasByNode(${server}.dht-*.dht_stats.handled_records, 0, 1)"
+		"target":"aliasByNode(${server}.dht-*.dht_stats.handled_records, 0, 1)",
+		"params":"yMin=0"
 	},
 	{
 		"title":"4. DHT handled connections on ${server}",
-		"target":"aliasByNode(${server}.dht-*.dht_stats.handled_connections, 0, 1)"
+		"target":"aliasByNode(${server}.dht-*.dht_stats.handled_connections, 0, 1)",
+		"params":"yMin=0"
 	},
 	{
 		"title":"5. DHT bytes/s sent on ${server}",
-		"target":"aliasByNode(${server}.dht-*.dht_stats.bytes_sent, 0, 1)"
+		"target":"aliasByNode(${server}.dht-*.dht_stats.bytes_sent, 0, 1)",
+		"params":"yMin=0"
 	},
 	{
 		"title":"6. DHT bytes/s received on ${server}",
-		"target":"aliasByNode(${server}.dht-*.dht_stats.bytes_received, 0, 1)"
+		"target":"aliasByNode(${server}.dht-*.dht_stats.bytes_received, 0, 1)",
+		"params":"yMin=0"
 	}
 	],
 	"parameters": {

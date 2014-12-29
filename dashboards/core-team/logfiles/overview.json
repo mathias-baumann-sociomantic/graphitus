@@ -10,19 +10,23 @@
 	"data":[
 	{
 		"title":"1. LogFiles bytes/s sent on ${server}",
-		"target":"aliasByNode(${server}.logfiles-*.logfiles_stats.bytes_sent, 0, 1)"
+		"target":"aliasByNode(${server}.logfiles-*.logfiles_stats.bytes_sent, 0, 1)",
+		"params":"yMin=0"
 	},
 	{
 		"title":"2. LogFiles bytes/s received on ${server}",
-		"target":"aliasByNode(${server}.logfiles-*.logfiles_stats.bytes_received, 0, 1)"
+		"target":"aliasByNode(${server}.logfiles-*.logfiles_stats.bytes_received, 0, 1)",
+		"params":"yMin=0"
 	},
 	{
 		"title":"3. LogFiles handled records on ${server}",
-		"target":"aliasByNode(${server}.logfiles-*.logfiles_stats.records_handled, 0, 1)"
+		"target":"aliasByNode(${server}.logfiles-*.logfiles_stats.records_handled, 0, 1)",
+		"params":"yMin=0"
 	},
 	{
 		"title":"4. LogFiles handled connections on ${server}",
-		"target":"aliasByNode(${server}.logfiles-*.logfiles_stats.connections_handled, 0, 1)"
+		"target":"aliasByNode(${server}.logfiles-*.logfiles_stats.connections_handled, 0, 1)",
+		"params":"yMin=0"
 	}
 	],
 	"dataConditional":[

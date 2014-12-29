@@ -11,19 +11,23 @@
 	"data": [
 	{
 		"title": "Connections for ${queue} Queue on ${server}",
-		"target": "aliasByNode(${server}.queue-${queue}.queue_node_stats.handled_connections, 0, 1)"
+		"target": "aliasByNode(${server}.queue-${queue}.queue_node_stats.handled_connections, 0, 1)",
+		"params": "yMin=0"
 	},
 	{
 		"title": "Processed Records/s for ${queue} Queue on ${server}",
-		"target": "aliasByNode(${server}.queue-${queue}.queue_node_stats.records_per_sec, 0, 1)"
+		"target": "aliasByNode(${server}.queue-${queue}.queue_node_stats.records_per_sec, 0, 1)",
+		"params": "yMin=0"
 	},
 	{
 		"title": "Kb/s Sent for ${queue} Queue on ${server}",
-		"target": "aliasByNode(${server}.queue-${queue}.queue_node_stats.data_sent, 0, 1)"
+		"target": "aliasByNode(${server}.queue-${queue}.queue_node_stats.data_sent, 0, 1)",
+		"params": "yMin=0"
 	},
 	{
 		"title": "Kb/s Received for ${queue} Queue on ${server}",
-		"target": "aliasByNode(${server}.queue-${queue}.queue_node_stats.data_received, 0, 1)"
+		"target": "aliasByNode(${server}.queue-${queue}.queue_node_stats.data_received, 0, 1)",
+		"params": "yMin=0"
 	}
 	],
 	"parameters": {
