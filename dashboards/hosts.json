@@ -85,6 +85,16 @@
 		"index":0
 	},
 	{
+		"title":"07. Disk Usage [${explode}] [/boot]",
+		"target": [
+			"alias(${explode}.cacti_df-boot.cacti_df.DISKFREE_used, \"Used\")",
+			"alias(${explode}.cacti_df-boot.cacti_df.DISKFREE_available, \"Free\")"
+		],
+		"params":"areaMode=stacked",
+		"query":"${server}.${metric_filter}-boot.cacti_df.DISKFREE_used",
+		"index":0
+	},
+	{
 		"title":"07. Disk Usage [${explode}] [/srv]",
 		"target": [
 			"alias(${explode}.cacti_df-srv.cacti_df.DISKFREE_used, \"Used\")",
@@ -92,6 +102,16 @@
 		],
 		"params":"areaMode=stacked",
 		"query":"${server}.${metric_filter}-srv.cacti_df.DISKFREE_used",
+		"index":0
+	},
+	{
+		"title":"07. Disk Usage [${explode}] [/srv-storage]",
+		"target": [
+			"alias(${explode}.cacti_df-srv-storage.cacti_df.DISKFREE_used, \"Used\")",
+			"alias(${explode}.cacti_df-srv-storage.cacti_df.DISKFREE_available, \"Free\")"
+		],
+		"params":"areaMode=stacked",
+		"query":"${server}.${metric_filter}-srv-storage.cacti_df.DISKFREE_used",
 		"index":0
 	},
 	{
