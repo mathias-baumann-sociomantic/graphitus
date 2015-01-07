@@ -352,18 +352,13 @@ And the corresponding ```parameters``` section:
 Dynamically Defined Graphs
 --------------------------
 
-Dynamically defined Graphs are very similar to dynamic parameters. Instead of getting a select menu to pick among several options, all options used and for each one a graph is generated:
+Dynamically defined Graphs are very similar to dynamic parameters. Instead of getting a select menu to pick among several options, all options used and for each one a graph is generated.
 
+There are 2 ways to specify dynamically defined Graphs: ```dataTemplates``` and ```dataConditional```. Both use a variable ```${explode}``` to be used in both the ```title``` and ```target``` of the graphs generated, and both use an entry ```query``` in combination with ```regex``` and ```index``` (optionally) to match multiple metrics and substitute them in the ```${explode}``` variable. They differ however on how this ```explode``` behaves:
+
+* ```dataTemplates``` will generate one graph per each entry matching the query, and substitute on each one the content of ```${explode}``` by the matching part of the defined ```query```:
 
 ```javascript
-{      
-    "title":" Stats",
-        "width" : 500,
-        "defaultLineWidth":1,
-        "timeBack":"6h",
-        "height" : 300,
-        "columns" : 2, 
-        "refresh" : true, 
         "dataTemplates" : [ 
         {      
             "title":"Nginx ${continent}-${explode} Requests/sec", 
@@ -373,26 +368,31 @@ Dynamically defined Graphs are very similar to dynamic parameters. Instead of ge
             "index" : 0, 
             "params" : "yMin=0&hideLegend=false"
         }      
-    ],     
-        "data":[ 
-        { 
-            "title":"${continent} Nginx Total Requests/sec", 
-            "target" : "groupByNode(${continent}-*.nginx.nginx_*,3,\"sumSeries\")", 
-            "params" : "yMin=0&hideLegend=false" 
-        }, 
-        ],     
-        "parameters": { 
-            "continent": { 
-                "EU" : {"continent" : "eu" }, 
-                "US" : {"continent" : "us" }, 
-                "AP" : {"continent" : "ap" } 
-            } 
-        }                        
-}              
+    ],
 ```
 
-In the example above, for each server number one graph will be generated (and also a statically defined "global" graph). For each generated graph the `${explode}` variable will be replaced with the matched regex at the given index.
-The available options are basically the same as for dynamic parameters.
+In the example above, graphite will perform a query against graphite to fetch all the metrics matching the specified search string. It will then gather only the metric index (level) specified by ```index``` (which in this case is the host level) and apply the regular expression defined by ```regex```. Keep in mind this regexp is time-consuming in your browser, so if you want to match the whole metric level you can omit the ```regex``` entry and save some browser cpu usage.
+
+For each server number matching the aforementioned query, *one graph will be generated*, and on each one the `${explode}` variable will be replaced with the matched regex at the given index.
+
+* ```dataConditional``` will generate only one graph including all the matches from the query enclosed in curly brackets, so that graphite expands each one internally as a different target for the same graph. This is useful to build graphs of common metrics based on a different metric:
+
+```javascript
+        "dataConditional" : [ 
+        {      
+            "title":"Load average on mem-dht servers", 
+            "target" : "aliasByNode(${continent}-${explode}.cacti_load.cacti_load.STAT_loadavg,0,3)", 
+            "query" : "${continent}-*.dht-*", 
+            "regex" : "-(.*)", 
+            "index" : 0, 
+            "params" : "yMin=0&hideLegend=false"
+        }      
+    ],
+```
+
+This example will generate *only one graph* which includes one line per each of the server numbers matching the query (in this case any server in the selected continent which is running mem-dht) and the line will represent the load average metric. The substitution of ```${explode}``` will result here in something like ```{041,042,043,044}```.
+
+All the other available options are basically the same as for dynamic parameters.
 
 Timezone support
 ------------------
