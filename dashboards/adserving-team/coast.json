@@ -1,0 +1,32 @@
+{
+        "title":"Coast",
+	"width" : 560,
+	"height" : 220,
+	"defaultLineWidth" : 1,
+	"timeBack":"2h",
+	"refresh" : true,
+	"legend" : false,
+	"data":[
+	{
+	    "title":"${continent} Coast Stats",
+            "target": [
+                    "aliasByNode(scale(${continent}-*.cacti_coast.cacti_coast_stats.*_put,0.033333333),0,3)"
+            ]
+	},
+	{
+	    "title":"${continent} Coast Errors",
+            "target": [
+                    "aliasByNode(scale(${continent}-*.cacti_coast.cacti_coast_stats.*_errors,0.033333333),0,3)"
+            ]  
+	}
+	],
+	"parameters": {
+		"continent": {
+			"All": {"continent" : "*" },
+			"EU" : {"continent" : "eu" },
+			"US" : {"continent" : "us" },
+			"AP" : {"continent" : "ap" },
+                        "USAP" : {"continent" : "usap" }
+			}
+	}
+}

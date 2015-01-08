@@ -1,0 +1,38 @@
+{
+        "title":"Shore API",
+	"width" : 560,
+	"height" : 220,
+	"defaultLineWidth" : 1,
+	"timeBack":"2h",
+	"refresh" : true,
+	"legend" : false,
+	"data":[
+	{
+	    "title":"${continent} Admedia Writtens",
+            "target": [
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_api_stats.admedium,0.0033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_api_stats.cache_hit,0.0033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_api_stats.invalid,0.0033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_api_stats.download_failed,0.0033333333),0,3)"
+            ]
+	},
+	{
+	    "title":"${continent} Processed Loglines",
+            "target": [
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_api_stats.logline,0.0033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_api_stats.bots,0.0033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_api_stats.inactive,0.0033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_api_stats.admedium,0.0033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_api_stats.cache_hit,0.0033333333),0,3)"
+            ]  
+	}
+	],
+	"parameters": {
+		"continent": {
+			"All": {"continent" : "*" },
+			"EU" : {"continent" : "eu" },
+			"US" : {"continent" : "us" },
+			"AP" : {"continent" : "ap" }
+			}
+	}
+}

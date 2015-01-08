@@ -2,6 +2,18 @@
     "rows": [
 
         {"id": "adserving-team/overview"},
+        {"id": "adserving-team/jet"},
+        {"id": "adserving-team/wave"},
+        {"id": "adserving-team/nautica"},
+        {"id": "adserving-team/coast"},
+        {"id": "adserving-team/sponge"},
+        {"id": "adserving-team/shore/feed"},
+        {"id": "adserving-team/shore/stream"},
+        {"id": "adserving-team/shore/api"},
+        {"id": "adserving-team/wave-clean/delete-mode"},
+        {"id": "adserving-team/wave-clean/invalidate-mode"},
+        {"id": "adserving-team/wave-clean/orphan-images"},
+        {"id": "adserving-team/wave-clean/related-products-mode"},
 
         {"id": "core-team/overview"},
         {"id": "core-team/dht/overview"},
