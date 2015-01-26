@@ -3,8 +3,36 @@
 Testing using fig
 =================
 
-Installing fig + docker
------------------------
+Installing docker
+-----------------
+
+[docker](https://www.docker.com) lets you run isolated containers (like very
+lightweight virtual machines) from images, without having to pollute your
+current working environment with several unrelated packages and configurations.
+
+To install docker (in Ubuntu Precise) usually is enough with:
+```sh
+# install the backported kernel
+sudo apt-get update
+sudo apt-get install linux-image-generic-lts-raring linux-headers-generic-lts-raring
+# Add docker Ubuntu repository
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
+	--recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+sudo sh -c "echo deb https://get.docker.com/ubuntu docker main \
+	> /etc/apt/sources.list.d/docker.list"
+sudo apt-get update
+sudo apt-get install lxc-docker
+# Add your user to the docker group
+adduser $USER docker
+```
+
+This will install a newer kernel, so **you need to reboot** after you the
+install. For more details on Docker installation (or how to install in other
+platforms), please take a look at the
+[Docker Install Guides](https://docs.docker.com/installation/#installation).
+
+Installing fig
+--------------
 
 [fig](http://www.fig.sh/) uses [docker](https://docker.com/) to easily setup
 a testing environment. Fig installation is super easy:
