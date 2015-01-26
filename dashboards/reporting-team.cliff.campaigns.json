@@ -1,0 +1,33 @@
+{
+    "title":"Cliff AP Campaign Stats",
+    "width" : 490,
+    "defaultLineWidth":1,
+    "timeBack":"6h",
+    "height" : 220,
+    "refresh" : false,
+    "refreshIntervalSeconds" : 180,
+    "legend" : false,
+    "data":[
+        {
+            "height" : 500,
+            "title":"Bids",
+            "target": [                
+                "aliasSub(${continent}-*.cliff.cliff_cid-${campaign}.bids,\".*(cid-[0-9]*).*\",\"1\")"
+            ],
+            "params" : "lineWidth=2&areaAlpha=0.4&areaMode=all"
+        }
+    ],
+    "parameters": {
+        "continent": {
+            "AP" : {"continent" : "ap" },
+            "EU" : {"continent" : "eu" },
+            "US" : {"continent" : "us" },
+            "All": {"continent" : "*" }
+            },
+        "campaign" : {
+            "type" : "text",
+            "defaultValue" : "6052",
+            "regexp" : "^[0-9]+$"
+        }
+    }            
+}
