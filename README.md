@@ -12,16 +12,15 @@ current working environment with several unrelated packages and configurations.
 
 To install docker (in Ubuntu Precise) usually is enough with:
 ```sh
-# install the backported kernel
-sudo apt-get update
-sudo apt-get install linux-image-generic-lts-raring linux-headers-generic-lts-raring
 # Add docker Ubuntu repository
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
 	--recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
 sudo sh -c "echo deb https://get.docker.com/ubuntu docker main \
 	> /etc/apt/sources.list.d/docker.list"
 sudo apt-get update
-sudo apt-get install lxc-docker
+# install Docker and a newer backported kernel
+sudo apt-get install lxc-docker install linux-image-generic-lts-trusty \
+		linux-headers-generic-lts-trusty
 # Add your user to the docker group
 adduser $USER docker
 ```
@@ -42,23 +41,6 @@ sudo apt-get update
 sudo apt-get install python-pip
 sudo pip install -U fig
 ```
-
-Docker might be a bit more complicated, specially for old Ubuntu versions like
-precise (12.04). But here is a short summary:
-
-```sh
-echo 'echo deb https://get.docker.com/ubuntu docker main' |
-	sudo tee /etc/apt/sources.list.d/docker.list
-sudo apt-get update
-sudo apt-get install python-pip lxc-docker linux-image-generic-lts-trusty \
-		linux-headers-generic-lts-trusty
-# If you have an old kernel, you'll need to restart for docker to work properly
-sudo reboot
-```
-
-If you want to install for another system or you get into any problems, please
-consult the [Docker Ubuntu Install
-Guide](https://docs.docker.com/installation/ubuntulinux/).
 
 Running the test using fig
 --------------------------
