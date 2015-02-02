@@ -1,5 +1,5 @@
 {
-    "title":"Reef Test US Campaign Stats",
+    "title":"Reef Live Campaign Stats",
     "width" : 490,
     "defaultLineWidth":1,
     "timeBack":"2h",
@@ -55,19 +55,19 @@
     ],
     "parameters": {
         "continent": {
-            "US" : {"continent" : "us" },
-            "AP" : {"continent" : "ap" },
+            "All": {"continent" : "*" },
             "EU" : {"continent" : "eu" },
-            "All": {"continent" : "*" }
+            "AP" : {"continent" : "ap" },
+            "US" : {"continent" : "us" }
             },
         "version" : {
-            "test" : { "version" : "{001,022,013}" },
             "live" : { "version" : "{137,011,010}" },
+            "test" : { "version" : "{001,022,013}" },
             "All" : { "version" : "*" }
         },
         "campaign" : {
             "type" : "text",
-            "defaultValue" : "114",
+            "defaultValue" : "1",
             "regexp" : "^[0-9]+$"
         }
     }            

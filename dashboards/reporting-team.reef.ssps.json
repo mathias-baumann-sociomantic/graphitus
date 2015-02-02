@@ -1,5 +1,5 @@
 {
-    "title":"Reef Live US SSP Stats",
+    "title":"Reef Live SSP Stats",
     "width" : 490,
     "defaultLineWidth":1,
     "timeBack":"12h",
@@ -48,10 +48,10 @@
     ],
     "parameters": {
         "continent": {
-            "US" : {"continent" : "us" },
+            "All": {"continent" : "*" },
             "EU" : {"continent" : "eu" },
-            "AP" : {"continent" : "ap" },
-            "All": {"continent" : "*" }
+            "US" : {"continent" : "us" },
+            "AP" : {"continent" : "ap" }
             },
         "version" : {
             "live" : { "version" : "{137,011,010}" },

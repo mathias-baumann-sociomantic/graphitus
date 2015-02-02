@@ -1,5 +1,5 @@
 {
-    "title":"Reef Live EU Advertiser Stats",
+    "title":"Reef Live Advertiser Stats",
     "width" : 490,
     "defaultLineWidth":1,
     "timeBack":"12h",
@@ -34,10 +34,10 @@
     ],
     "parameters": {
         "continent": {
+            "All": {"continent" : "*" },
             "EU" : {"continent" : "eu" },
             "US" : {"continent" : "us" },
-            "AP" : {"continent" : "ap" },
-            "All": {"continent" : "*" }
+            "AP" : {"continent" : "ap" }
             },
         "version" : {
             "live" : { "version" : "{137,011,010}" },

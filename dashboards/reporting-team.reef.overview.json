@@ -1,5 +1,5 @@
 {
-    "title":"Reef Test US Stats",
+    "title":"Reef Live Stats",
     "width" : 490,
     "defaultLineWidth":1,
     "timeBack":"6h",
@@ -160,14 +160,14 @@
     ],
     "parameters": {
         "continent": {
-            "US" : {"continent" : "us" },
             "EU" : {"continent" : "eu" },
+            "US" : {"continent" : "us" },
             "AP" : {"continent" : "ap" },
             "All": {"continent" : "*" }
             },
         "version" : {
-            "test" : { "version" : "{001,022,013}" },
             "live" : { "version" : "{137,011,010}" },
+            "test" : { "version" : "{001,022,013}" },
             "All" : { "version" : "*" }
         }
     }            
