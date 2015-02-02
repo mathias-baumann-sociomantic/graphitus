@@ -1,8 +1,8 @@
 {
 	"title":"Sonar Tracking Debug",
-	"width" : 300,
+	"width" : 600,
 	"defaultLineWidth":1,
-	"timeBack":"6h",
+	"timeBack":"7d",
 	"height" : 250,
 	"refresh" : true,
 	"data":[
@@ -11,84 +11,39 @@
 		"target" : "aliasSub(groupByNode(ap-012.tracking-ssp.tracking_debug-ssp_${ssp_ap}.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')"
 	},
 	{
-		"title":"AP Debugs SSP ${ssp_ap} Daily",
-		"target" : "aliasSub(groupByNode(ap-012.tracking-ssp.tracking_debug-ssp_${ssp_ap}.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')",
-		"params": "from=-24hours"
-	},
-	{
-		"title":"AP Debugs SSP ${ssp_ap} Weekly",
-		"target" : "aliasSub(groupByNode(ap-012.tracking-ssp.tracking_debug-ssp_${ssp_ap}.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')",
-		"params": "from=-7days"
-	},
-	{
 		"title":"AP Debug Errors ${error_ap}",
 		"target" : "groupByNode(ap-012.tracking-ssp.tracking_debug-ssp_${ssp_ap}.${error_ap}, 3, 'sumSeries')"
 	},
 	{
-		"title":"AP Debug Errors ${error_ap} Daily",
-		"target" : "groupByNode(ap-012.tracking-ssp.tracking_debug-ssp_${ssp_ap}.${error_ap}, 3, 'sumSeries')",
-		"params": "from=-24hours"
-	},
-	{
-		"title":"AP Debug Errors ${error_ap} Weekly",
-		"target" : "groupByNode(ap-012.tracking-ssp.tracking_debug-ssp_${ssp_ap}.${error_ap}, 3, 'sumSeries')",
-		"params": "from=-7days"
+		"title":"AP Debug Percentage ${ssp_ap}",
+		"target" : "aliasSub(removeAboveValue(asPercent(groupByNode(ap-012.tracking-ssp.tracking_debug-ssp_${ssp_ap}.*, 2, 'sumSeries'),sumSeries(ap-{137,011,010}.reef.reef_ssp-${ssp_ap}.loglines)), 100), '.*tracking_debug-ssp_(.*), sum.*\\)', '\\1')",
+		"legend" : true
 	},
 	{
 		"title":"US Debugs SSP ${ssp_us}",
-		"target" : "aliasSub(groupByNode(us-*.tracking-ssp.tracking_debug-ssp_${ssp_us}.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')"
-	},
-	{
-		"title":"US Debugs SSP ${ssp_us} Daily",
-		"target" : "aliasSub(groupByNode(us-*.tracking-ssp.tracking_debug-ssp_${ssp_us}.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')",
-		"params": "from=-24hours"
-	},
-	{
-		"title":"US Debugs SSP ${ssp_us} Weekly",
-		"target" : "aliasSub(groupByNode(us-*.tracking-ssp.tracking_debug-ssp_${ssp_us}.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')",
-		"params": "from=-7days"
+		"target" : "aliasSub(groupByNode(us-049.tracking-ssp.tracking_debug-ssp_${ssp_us}.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')"
 	},
 	{
 		"title":"US Debugs Errors ${error_us}",
 		"target" : "groupByNode(us-049.tracking-ssp.tracking_debug-ssp_${ssp_us}.${error_us}, 3, 'sumSeries')"
 	},
 	{
-		"title":"US Debugs Errors ${error_us} Daily",
-		"target" : "groupByNode(us-049.tracking-ssp.tracking_debug-ssp_${ssp_us}.${error_us}, 3, 'sumSeries')",
-		"params": "from=-24hours"
-	},
-	{
-		"title":"US Debugs Errors ${error_us} Weekly",
-		"target" : "groupByNode(us-049.tracking-ssp.tracking_debug-ssp_${ssp_us}.${error_us}, 3, 'sumSeries')",
-		"params": "from=-7days"
+		"title":"US Debug Percentage ${ssp_us}",
+		"target" : "aliasSub(removeAboveValue(asPercent(groupByNode(us-049.tracking-ssp.tracking_debug-ssp_${ssp_us}.*, 2, 'sumSeries'),sumSeries(us-{137,011,010}.reef.reef_ssp-${ssp_us}.loglines)), 100), '.*tracking_debug-ssp_(.*), sum.*\\)', '\\1')",
+		"legend" : true
 	},
 	{
 		"title":"EU Debugs SSP ${ssp_eu}",
 		"target" : "aliasSub(groupByNode(eu-023.tracking-ssp.tracking_debug-ssp_${ssp_eu}.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')"
 	},
 	{
-		"title":"EU Debugs SSP ${ssp_eu} Daily",
-		"target" : "aliasSub(groupByNode(eu-023.tracking-ssp.tracking_debug-ssp_${ssp_eu}.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')",
-		"params": "from=-24hours"
-	},
-	{
-		"title":"EU Debugs SSP ${ssp_eu} Weekly",
-		"target" : "aliasSub(groupByNode(eu-023.tracking-ssp.tracking_debug-ssp_${ssp_eu}.*, 2, 'sumSeries'), 'tracking_debug-ssp_', '')",
-		"params": "from=-7days"
-	},
-	{
 		"title":"EU Debug Errors ${error_eu}",
 		"target" : "groupByNode(eu-023.tracking-ssp.tracking_debug-ssp_${ssp_eu}.${error_eu}, 3, 'sumSeries')"
 	},
 	{
-		"title":"EU Debug Errors ${error_eu} Daily",
-		"target" : "groupByNode(eu-023.tracking-ssp.tracking_debug-ssp_${ssp_eu}.${error_eu}, 3, 'sumSeries')",
-		"params": "from=-24hours"
-	},
-	{
-		"title":"EU Debug Errors ${error_eu} Weekly",
-		"target" : "groupByNode(eu-023.tracking-ssp.tracking_debug-ssp_${ssp_eu}.${error_eu}, 3, 'sumSeries')",
-		"params": "from=-7days"
+		"title":"EU Debug Percentage ${ssp_eu}",
+		"target" : "aliasSub(removeAboveValue(asPercent(groupByNode(eu-023.tracking-ssp.tracking_debug-ssp_${ssp_eu}.*, 2, 'sumSeries'),sumSeries(eu-{137,011,010}.reef.reef_ssp-${ssp_eu}.loglines)), 100), '.*tracking_debug-ssp_(.*), sum.*\\)', '\\1')",
+		"legend" : true
 	}
 	],
         "parameters": {
