@@ -2,7 +2,7 @@
 	"title": "Queues Overview",
 	"width": 540,
 	"defaultLineWidth": 1,
-	"timeBack": "6h",
+	"timeBack": "2w",
 	"height": 280,
 	"columns": 2,
 	"refresh": true,

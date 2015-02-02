@@ -2,7 +2,7 @@
 	"title":"Core-Team overview for ${continent}",
 	"width":400,
 	"defaultLineWidth":1,
-	"timeBack":"6h",
+	"timeBack":"2w",
 	"height":200,
 	"columns":3,
 	"refresh":true,

@@ -2,7 +2,7 @@
 	"title":"DHT overview for ${server}",
 	"width":490,
 	"defaultLineWidth":1,
-	"timeBack":"6h",
+	"timeBack":"2w",
 	"height":220,
 	"columns":2,
 	"refresh":true,
