@@ -16,7 +16,7 @@
 	},
 	{
 		"title":"AP Debug Percentage ${ssp_ap}",
-		"target" : "aliasSub(asPercent(groupByNode(ap-012.tracking-ssp.tracking_debug-ssp_${ssp_ap}.*, 2, 'sumSeries'),sumSeries(ap-{137,011,010}.reef.reef_ssp-${ssp_ap}.loglines)), '.*tracking_debug-ssp_(.*), .*\\)', '\\1')",
+		"target" : "aliasSub(removeAboveValue(asPercent(groupByNode(ap-012.tracking-ssp.tracking_debug-ssp_${ssp_ap}.*, 2, 'sumSeries'),sumSeries(ap-{137,011,010}.reef.reef_ssp-${ssp_ap}.loglines)), 100), '.*tracking_debug-ssp_(.*), sum.*\\)', '\\1')",
 		"legend" : true
 	},
 	{
@@ -29,7 +29,7 @@
 	},
 	{
 		"title":"US Debug Percentage ${ssp_us}",
-		"target" : "aliasSub(asPercent(groupByNode(us-049.tracking-ssp.tracking_debug-ssp_${ssp_us}.*, 2, 'sumSeries'),sumSeries(us-{137,011,010}.reef.reef_ssp-${ssp_us}.loglines)), '.*tracking_debug-ssp_(.*), .*\\)', '\\1')",
+		"target" : "aliasSub(removeAboveValue(asPercent(groupByNode(us-049.tracking-ssp.tracking_debug-ssp_${ssp_us}.*, 2, 'sumSeries'),sumSeries(us-{137,011,010}.reef.reef_ssp-${ssp_us}.loglines)), 100), '.*tracking_debug-ssp_(.*), sum.*\\)', '\\1')",
 		"legend" : true
 	},
 	{
@@ -42,7 +42,7 @@
 	},
 	{
 		"title":"EU Debug Percentage ${ssp_eu}",
-		"target" : "aliasSub(asPercent(groupByNode(eu-023.tracking-ssp.tracking_debug-ssp_${ssp_eu}.*, 2, 'sumSeries'),sumSeries(eu-{137,011,010}.reef.reef_ssp-${ssp_eu}.loglines)), '.*tracking_debug-ssp_(.*), .*\\)', '\\1')",
+		"target" : "aliasSub(removeAboveValue(asPercent(groupByNode(eu-023.tracking-ssp.tracking_debug-ssp_${ssp_eu}.*, 2, 'sumSeries'),sumSeries(eu-{137,011,010}.reef.reef_ssp-${ssp_eu}.loglines)), 100), '.*tracking_debug-ssp_(.*), sum.*\\)', '\\1')",
 		"legend" : true
 	}
 	],
