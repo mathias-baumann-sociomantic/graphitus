@@ -42,7 +42,8 @@
         {"id": "core-team/queues/channels-usage"},
 
         {"id": "reporting-team.overview"},
-        {"id": "reporting-team.cliff"},
+        {"id": "reporting-team.cliff.overview"},
+        {"id": "reporting-team.cliff.campaigns"},
         {"id": "reporting-team.coral"},
         {"id": "reporting-team.hydrosphere.eu"},
         {"id": "reporting-team.hydrosphere.us"},
