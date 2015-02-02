@@ -39,11 +39,11 @@
 		},
 		"channel": {
 			"type": "dynamic",
-			"query": "${server}.queue-${queue}.queue_channel_stats-*",
+			"query": "${server}.queue-${queue}.queue_channel_stats-admedia*",
 			"index": 2,
 			"regex": "queue_channel_stats-(.*)",
 			"showAll": true,
-			"showAllValue": "*"
+			"showAllValue": "admedia*"
 		}
 	}
 }
