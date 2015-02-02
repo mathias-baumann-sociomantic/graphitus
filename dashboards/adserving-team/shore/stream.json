@@ -1,0 +1,61 @@
+{
+        "title":"Shore Stream",
+	"width" : 560,
+	"height" : 220,
+	"defaultLineWidth" : 1,
+	"timeBack":"2h",
+	"refresh" : true,
+	"legend" : false,
+	"data":[
+	{
+	    "title":"${continent} Admedia Writtens",
+            "target": [
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_stream_stats.admedium,0.0033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_stream_stats.cache_hit,0.0033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_stream_stats.invalid,0.0033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_stream_stats.download_failed,0.0033333333),0,3)"
+            ]
+	},
+	{
+	    "title":"${continent} Processed Loglines",
+            "target": [
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_stream_stats.loglines,0.0033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_stream_stats.bots,0.0033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_stream_stats.inactive,0.0033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_stream_stats.admedium,0.0033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_stream_stats.cache_hit,0.0033333333),0,3)"
+            ]  
+	},
+        {
+            "title":"${continent} Errors",
+            "target": [
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_stream_stats.parse_error,0.0033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_stream_stats.invalid_admedia,0.0033333333),0,3)"
+            ]
+        },
+        {
+            "title":"${continent} Cache Stats",
+            "target": [
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_stream_stats.cache_hit,0.0033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_stream_stats.cache_size,0.0033333333),0,3)"
+            ]
+        }
+	],
+        "dataConditional":[
+        {
+                "title":"${continent} Cache Efficiency",
+                "target":"aliasByNode(asPercent(${explode}.cacti_shore.cacti_shore_stream_stats.cache_hit,sumSeries(${explode}.cacti_shore.cacti_shore_stream_stats.cache_hit,${explode}.cacti_shore.cacti_shore_stream_stats.admedium)), 0)",
+                "params":"yMin=0&yMax=100",
+                "query":"${continent}-*.cacti_shore.cacti_shore_stream_stats.*",
+                "index":0
+        }
+        ],
+	"parameters": {
+		"continent": {
+			"All": {"continent" : "*" },
+			"EU" : {"continent" : "eu" },
+			"US" : {"continent" : "us" },
+			"AP" : {"continent" : "ap" }
+			}
+	}
+}

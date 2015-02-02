@@ -1,0 +1,85 @@
+{
+	"title":"Nautica",
+	"width" : 400,
+	"columns": 6,
+	"defaultLineWidth":1,
+	"timeBack":"6h",
+	"height" : 141,
+	"refresh" : true,
+	"legend" : false,
+	"defaultParameters":"fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+	"dataTemplates":[
+	{
+		"title":"Nautica Tracking-Records Totals Stats [${continent} ${explode}]",
+		"target": [
+			"alias(scale(${continent}-*.${explode}.nautica_stats.Trcking_Rcrds_Rtrvd, 0.03333), \"Total Tracking Records Received\")",
+			"alias(scale(${continent}-*.${explode}.nautica_stats.Trcking_Parse_Errs, 0.03333), \"Tracking Records Parse Errors\")",
+			"alias(scale(${continent}-*.${explode}.nautica_stats.JSON_Parse_Errors, 0.03333), \"Traking Records JSON Errors\")",
+			"alias(scale(${continent}-*.${explode}.nautica_stats.Unknwn_Trckng_Rcrds, 0.03333), \"Unknown Tracking Records\")"
+		],
+		"query":"${continent}-*.nautica-*.nautica_stats",
+		"index":1
+	},
+	{
+		"title":"Nautica Tracking-Records Ratios Stats [${continent} ${explode}]",
+		"target": [
+			"alias(scale(${continent}-*.${explode}.nautica_stats.RtioRcrds1Ad2TtlAds, 0.03333), \"Ratio Of Tracking Records With 1 Admeduim To Total Records\")",
+			"alias(scale(${continent}-*.${explode}.nautica_stats.RtioRcrdsNoAd2TtlAd, 0.03333), \"Ratio Of Tracking Records With No Admedia To Total Records\")"
+		],
+		"query":"${continent}-*.nautica-*.nautica_stats",
+		"index":1
+	},
+	{
+		"title":"Nautica DHT Totals Stats [${continent} ${explode}]",
+		"target": [
+			"alias(scale(${continent}-*.${explode}.nautica_stats.WrtnRltdPrdctsTotal, 0.003333), \"Total Profiles Written\")",
+			"alias(scale(${continent}-*.${explode}.nautica_stats.WrtnRltdPrdctsPrfls, 0.003333), \"Total Related-Products Profiles Written\")",
+			"alias(scale(${continent}-*.${explode}.nautica_stats.WrtnRltdPrdcts_C_BS, 0.003333), \"Total Category-BS Written\")",
+			"alias(scale(${continent}-*.${explode}.nautica_stats.WrtnRltdPrdcts_M_BS, 0.003333), \"Total Manufacturer-BS Written\")",
+			"alias(scale(${continent}-*.${explode}.nautica_stats.WrtnRltdPrdcts_S_BS, 0.003333), \"Total Shop-BS Written\")",
+			"alias(scale(${continent}-*.${explode}.nautica_stats.Admedia_Removed, 0.003333), \"Total Admedia Removed\")",
+			"alias(scale(${continent}-*.${explode}.nautica_stats.FinalRltdsPrdctsFew, 0.003333), \"Profiles With Few Related-Profiles\")",
+			"alias(scale(${continent}-*.${explode}.nautica_stats.FinalRltdPrdctsZero, 0.003333), \"Profiles With Zero Related-Products\")"
+		],
+		"query":"${continent}-*.nautica-*.nautica_stats",
+		"index":1
+	},
+	{
+		"title":"Nautica DHT Ratios Stats [${continent} ${explode}]",
+		"target": [
+			"alias(scale(${continent}-*.${explode}.nautica_stats.RatioFew2TotalWrtn, 0.003333), \"Ratio of Profile with Few Records / Total Written\")",
+			"alias(scale(${continent}-*.${explode}.nautica_stats.RatioZero2TotalWrtn, 0.003333), \"Ratio of Profile with Zero Records / Total Written\")"
+		],
+		"query":"${continent}-*.nautica-*.nautica_stats",
+		"index":1
+	},
+	{
+		"title":"Nautica Processing Stats [${continent} ${explode}]",
+		"target": [
+			"alias(scale(${continent}-*.${explode}.nautica_stats.BS_Created_Ctgry, 0.003333), \"Num. Of Created Bestsellers Categories\")",
+			"alias(scale(${continent}-*.${explode}.nautica_stats.BS_Created_Mnfctr, 0.003333), \"Num. Of Created Bestsellers Manufacturers\")",
+			"alias(scale(${continent}-*.${explode}.nautica_stats.MD_Frm_Other_Adpans, 0.003333), \"Metadata From Other Adpans (Hash Collision)\")",
+			"alias(scale(${continent}-*.${explode}.nautica_stats.Duplct_Items_Rmvd, 0.003333), \"Duplicate Items Removed\")"
+		],
+		"query":"${continent}-*.nautica-*.nautica_stats",
+		"index":1
+	},
+	{
+		"title":"Nautica Processing Stats (Total) [${continent} ${explode}]",
+		"target": [
+			"alias(scale(${continent}-*.${explode}.nautica_stats.Ttl_Prfls_Cnt_Rcrds, 0.003333), \"Total Products in Log Lines\")"
+		],
+		"query":"${continent}-*.nautica-*.nautica_stats",
+		"index":1
+	}
+        ],
+        "data": [
+        ],
+        "parameters": {
+                "continent": {
+                        "EU" : {"continent" : "eu" },
+                        "US" : {"continent" : "us" },
+                        "AP" : {"continent" : "ap" }
+                        }
+        }
+}

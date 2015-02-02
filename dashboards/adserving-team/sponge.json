@@ -1,0 +1,32 @@
+{
+        "title":"Sponge",
+	"width" : 560,
+	"height" : 220,
+	"defaultLineWidth" : 1,
+	"timeBack":"2h",
+	"refresh" : true,
+	"legend" : false,
+	"data":[
+	{
+	    "title":"${continent} Sponge Records Scanned",
+            "target": [
+                    "aliasByNode(scale(${continent}-*.cacti_sponge.*.records_scanned,0.033333333),0,3)"
+            ]
+	},
+	{
+	    "title":"${continent} Sponge Records Removed",
+            "target": [
+                    "aliasByNode(scale(${continent}-*.cacti_sponge.*.records_removed,0.033333333),0,3)"
+            ]  
+	}
+	],
+	"parameters": {
+		"continent": {
+			"All": {"continent" : "*" },
+			"EU" : {"continent" : "eu" },
+			"US" : {"continent" : "us" },
+			"AP" : {"continent" : "ap" },
+                        "USAP" : {"continent" : "usap" }
+			}
+	}
+}

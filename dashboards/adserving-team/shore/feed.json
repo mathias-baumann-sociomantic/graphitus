@@ -1,0 +1,49 @@
+{
+        "title":"Shore Feed",
+	"width" : 560,
+	"height" : 220,
+	"defaultLineWidth" : 1,
+	"timeBack":"2h",
+	"refresh" : true,
+	"legend" : false,
+	"data":[
+	{
+	    "title":"${continent} Processed Records",
+            "target": [
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_feed_stats*.feed_record,0.033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_feed_stats*.cache_hit,0.033333333),0,3)"
+            ]
+	},
+	{
+	    "title":"${continent} Defective Feeds",
+            "target": [
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_feed_stats*.feeds,0.033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_feed_stats*.defective_feed,0.033333333),0,3)"
+            ]  
+	},
+        {
+            "title":"${continent} Errors",
+            "target": [
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_feed_stats*.errors,0.033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_feed_stats*.send_failures,0.033333333),0,3)"
+            ]
+        },
+        {
+            "title":"${continent} Activities",
+            "target": [
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_feed_stats*.new_admedia,0.033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_feed_stats*.changed,0.033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_feed_stats*.retired,0.033333333),0,3)",
+                    "aliasByNode(scale(${continent}-*.cacti_shore.cacti_shore_feed_stats*.stale,0.033333333),0,3)"
+            ]
+        }
+	],
+	"parameters": {
+		"continent": {
+			"All": {"continent" : "*" },
+			"EU" : {"continent" : "eu" },
+			"US" : {"continent" : "us" },
+			"AP" : {"continent" : "ap" }
+			}
+	}
+}
