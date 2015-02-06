@@ -41,6 +41,8 @@
         {"id": "core-team/queues/aggregates"},
         {"id": "core-team/queues/channels-usage"},
 
+        {"id": "optimization-team/madtom"},
+
         {"id": "reporting-team/overview"},
         {"id": "reporting-team/cliff.overview"},
         {"id": "reporting-team/cliff.campaigns"},
@@ -190,7 +192,6 @@
 
         {"id": "to-be-removed/processes.aqua"},
         {"id": "to-be-removed/processes.jet"},
-        {"id": "to-be-removed/processes.madtom"},
         {"id": "to-be-removed/processes.propulsor.aggregates"},
         {"id": "to-be-removed/processes.propulsor.backend-requests"},
         {"id": "to-be-removed/processes.propulsor.bidding-requests"},
