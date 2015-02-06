@@ -41,6 +41,7 @@
         {"id": "core-team/queues/aggregates"},
         {"id": "core-team/queues/channels-usage"},
 
+        {"id": "optimization-team/bidding"},
         {"id": "optimization-team/madtom"},
 
         {"id": "reporting-team/overview"},
