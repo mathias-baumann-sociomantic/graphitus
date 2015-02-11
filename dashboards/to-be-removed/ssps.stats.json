@@ -11,25 +11,25 @@
 		{
 			"title": "Bidding Requests/s (${continent}-${server}/${ssp})",
 			"target" : [
-				"aliasSub(aliasByNode(groupByNode(scale(timeShift(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, \"45s\"),0.033333333),2,\"sumSeries\"),0),\"^.*-\", \"\")"
+				"aliasSub(aliasByNode(groupByNode(scale(keepLastValue(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 1),0.033333333),2,\"sumSeries\"),0),\"^.*-\", \"\")"
 			]
 		},
 		{
 			"title": "Bids/s (${continent}-${server}/${ssp})",
 			"target" : [
-				"aliasSub(aliasByNode(groupByNode(scale(timeShift(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.bids, \"45s\"),0.033333333),2,\"sumSeries\"),0),\"^.*-\", \"\")"
+				"aliasSub(aliasByNode(groupByNode(scale(keepLastValue(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.bids, 1),0.033333333),2,\"sumSeries\"),0),\"^.*-\", \"\")"
 			]
 		},
 		{
 			"title": "Bid %age (Bids to Bid Requests) (${continent}-${server}/${ssp})",
 			"target" : [
-				"aliasSub(asPercent(groupByNode( scale( timeShift(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.bids, \"45s\"), 0.033333333), 2, \"sumSeries\"), groupByNode( scale( timeShift(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, \"45s\"), 0.033333333), 2, \"sumSeries\")), \"^.*-(.*)\\)\", \"\\1\")"
+				"aliasSub(asPercent(groupByNode( scale( keepLastValue(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.bids, 1), 0.033333333), 2, \"sumSeries\"), groupByNode( scale( keepLastValue(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 1), 0.033333333), 2, \"sumSeries\")), \"^.*-(.*)\\)\", \"\\1\")"
 			]
 		},
 		{
 			"title": "Wins/s (${continent}/${ssp})",
 			"target" : [
-				"aliasSub(aliasByNode(groupByNode(scale(timeShift(${reef_server}.reef.reef_ssp-${ssp}*.loglines, \"45s\"),0.033333333),2,\"sumSeries\"),0),\"^.*-\", \"\")"
+				"aliasSub(aliasByNode(groupByNode(scale(keepLastValue(${reef_server}.reef.reef_ssp-${ssp}*.loglines, 1),0.033333333),2,\"sumSeries\"),0),\"^.*-\", \"\")"
 			]
 		},
 		{
@@ -41,49 +41,55 @@
 		{
 			"title": "Propulsor FE Errors/s (%) (${continent}-${server}/${ssp})",
 			"target" : [
-				"aliasSub(asPercent(timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.errors, 2, \"sumSeries\"), \"45s\"), timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), \"45s\")), \"^.*stats-(.*)\\..*\", \"\\1\")"
+				"aliasSub(asPercent(keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.errors, 2, \"sumSeries\"), 1), keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), 1)), \"^.*stats-(.*)\\..*\", \"\\1\")"
 			]
 		},
 		{
 			"title": "Propulsor FE User Match Errors/s (%) (${continent}-${server}/${ssp})",
 			"target" : [
-				"aliasSub(asPercent(timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.userid_errors, 2, \"sumSeries\"), \"45s\"), timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), \"45s\")), \"^.*stats-(.*)\\..*\", \"\\1\")"
+				"aliasSub(asPercent(keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.userid_errors, 2, \"sumSeries\"), 1), keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), 1)), \"^.*stats-(.*)\\..*\", \"\\1\")"
+			]
+		},
+		{
+			"title": "Propulsor GeoIP Errors/s (%) (${continent}-${server}/${ssp})",
+			"target" : [
+				"aliasSub(asPercent(keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.geoip_errors, 2, \"sumSeries\"), 1), keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), 1)), \"^.*stats-(.*)\\..*\", \"\\1\")"
 			]
 		},
 		{
 			"title": "Propulsor FE Blocked Referrers/s (%) (${continent}-${server}/${ssp})",
 			"target" : [
-				"asPercent(timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.blocked_referrers, 2, \"sumSeries\"), \"45s\"), timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), \"45s\"))"
+				"asPercent(keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.blocked_referrers, 2, \"sumSeries\"), 1), keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), 1))"
 			]
 		},
 		{
 			"title": "Propulsor FE AdSize Errors/s (%) (${continent}-${server}/${ssp})",
 			"target" : [
-				"asPercent(timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.adsize_errors, 2, \"sumSeries\"), \"45s\"), timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), \"45s\"))"
+				"asPercent(keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.adsize_errors, 2, \"sumSeries\"), 1), keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), 1))"
 			]
 		},
 		{
 			"title": "New Connections/s (${continent}-${server}/${ssp})",
 			"target" : [
-				"aliasSub(aliasByNode(groupByNode(timeShift(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.new_ssp_connections, \"45s\"),2,\"sumSeries\"),0),\"^.*-\", \"\")"
+				"aliasSub(aliasByNode(groupByNode(keepLastValue(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.new_ssp_connections, 1),2,\"sumSeries\"),0),\"^.*-\", \"\")"
 			]
 		},
 		{
 			"title": "Total Connections (${continent}-${server}/${ssp})",
 			"target" : [
-				"aliasSub(aliasByNode(groupByNode(timeShift(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.ssp_connections, \"45s\"),2,\"sumSeries\"),0),\"^.*-\", \"\")"
+				"aliasSub(aliasByNode(groupByNode(keepLastValue(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.ssp_connections, 1),2,\"sumSeries\"),0),\"^.*-\", \"\")"
 			]
 		},
 		{
 			"title": "Test Requests/s (${continent}-${server}/${ssp})",
 			"target" : [
-				"aliasSub(aliasByNode(groupByNode(scale(timeShift(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.tests, \"45s\"),0.033333333),2,\"sumSeries\"),0),\"^.*-\", \"\")"
+				"aliasSub(aliasByNode(groupByNode(scale(keepLastValue(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.tests, 1),0.033333333),2,\"sumSeries\"),0),\"^.*-\", \"\")"
 			]
 		},
 		{
 			"title": "User Matching Requests/s (${continent}/${ssp})",
 			"target" : [
-				"aliasSub(aliasByNode(groupByNode(scale(timeShift(${continent}-*.cacti_aqua*.cacti_aqua_ssp-${ssp}.total_processed, \"45s\"),0.033333333),2,\"sumSeries\"),0),\"^.*-\", \"\")"
+				"aliasSub(aliasByNode(groupByNode(scale(keepLastValue(${continent}-*.cacti_aqua*.cacti_aqua_ssp-${ssp}.total_processed, 1),0.033333333),2,\"sumSeries\"),0),\"^.*-\", \"\")"
 			]
 		}
 	],
