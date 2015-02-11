@@ -51,6 +51,12 @@
 			]
 		},
 		{
+			"title": "Propulsor GeoIP Errors/s (%) (${continent}-${server}/${ssp})",
+			"target" : [
+				"aliasSub(asPercent(timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.geoip_errors, 2, \"sumSeries\"), \"45s\"), timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), \"45s\")), \"^.*stats-(.*)\\..*\", \"\\1\")"
+			]
+		},
+		{
 			"title": "Propulsor FE Blocked Referrers/s (%) (${continent}-${server}/${ssp})",
 			"target" : [
 				"asPercent(timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.blocked_referrers, 2, \"sumSeries\"), \"45s\"), timeShift(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), \"45s\"))"
