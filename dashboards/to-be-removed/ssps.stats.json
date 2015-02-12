@@ -41,31 +41,31 @@
 		{
 			"title": "Propulsor FE Errors/s (%) (${continent}-${server}/${ssp})",
 			"target" : [
-				"aliasSub(asPercent(keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.errors, 2, \"sumSeries\"), 1), keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), 1)), \"^.*stats-(.*)\\..*\", \"\\1\")"
+				"aliasSub(asPercent(keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.errors, 2, \"sumSeries\"), 1), keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), 1)), \"^.*stats-([^)]*)\\).*$\", \"\\1\")"
 			]
 		},
 		{
 			"title": "Propulsor FE User Match Errors/s (%) (${continent}-${server}/${ssp})",
 			"target" : [
-				"aliasSub(asPercent(keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.userid_errors, 2, \"sumSeries\"), 1), keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), 1)), \"^.*stats-(.*)\\..*\", \"\\1\")"
+				"aliasSub(asPercent(keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.userid_errors, 2, \"sumSeries\"), 1), keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), 1)), \"^.*stats-([^)]*)\\).*$\", \"\\1\")"
 			]
 		},
 		{
 			"title": "Propulsor GeoIP Errors/s (%) (${continent}-${server}/${ssp})",
 			"target" : [
-				"aliasSub(asPercent(keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.geoip_errors, 2, \"sumSeries\"), 1), keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), 1)), \"^.*stats-(.*)\\..*\", \"\\1\")"
+				"aliasSub(asPercent(keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.geoip_errors, 2, \"sumSeries\"), 1), keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), 1)), \"^.*stats-([^)]*)\\).*$\", \"\\1\")"
 			]
 		},
 		{
 			"title": "Propulsor FE Blocked Referrers/s (%) (${continent}-${server}/${ssp})",
 			"target" : [
-				"asPercent(keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.blocked_referrers, 2, \"sumSeries\"), 1), keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), 1))"
+				"aliasSub(asPercent(keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.blocked_referrers, 2, \"sumSeries\"), 1), keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), 1)), \"^.*stats-([^)]*)\\).*$\", \"\\1\")"
 			]
 		},
 		{
 			"title": "Propulsor FE AdSize Errors/s (%) (${continent}-${server}/${ssp})",
 			"target" : [
-				"asPercent(keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.adsize_errors, 2, \"sumSeries\"), 1), keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), 1))"
+				"aliasSub(asPercent(keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.adsize_errors, 2, \"sumSeries\"), 1), keepLastValue(groupByNode(${continent}-${server}.cacti_propulsor*.cacti_propulsor_fe_stats-${ssp}.requests, 2, \"sumSeries\"), 1)), \"^.*stats-([^)]*)\\).*$\", \"\\1\")"
 			]
 		},
 		{
