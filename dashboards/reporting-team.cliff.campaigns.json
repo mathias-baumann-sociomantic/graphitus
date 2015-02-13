@@ -12,16 +12,13 @@
             "height" : 500,
             "title":"Bids",
             "target": [                
-                "aliasSub(${continent}-*.cliff.cliff_cid-${campaign}.bids,\".*(cid-[0-9]*).*\",\"1\")"
+                "aliasByNode(*-*.cliff.cliff_cid-${campaign}.bids,0)"
             ],
             "params" : "lineWidth=2&areaAlpha=0.4&areaMode=all"
         }
     ],
     "parameters": {
         "continent": {
-            "AP" : {"continent" : "ap" },
-            "EU" : {"continent" : "eu" },
-            "US" : {"continent" : "us" },
             "All": {"continent" : "*" }
             },
         "campaign" : {
