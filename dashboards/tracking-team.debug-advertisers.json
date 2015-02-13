@@ -11,32 +11,32 @@
 	"data":[
 		{
 			"title":"AP Debugs By Advertiser",
-			"target" : "highestMax(aliasSub(groupByNode(ap-*.tracking-adv.tracking_debug-adv_*.*, 2, 'sumSeries'), 'tracking_debug-adv_', ''), 50)"
+			"target" : "highestMax(aliasByNode(aggregates.ap.tracking_debug-adv.by-adv.*, 4), 50)"
 		},
 		{
 			"title":"US Debugs By Advertiser",
-			"target" : "highestMax(aliasSub(groupByNode(us-*.tracking-adv.tracking_debug-adv_*.*, 2, 'sumSeries'), 'tracking_debug-adv_', ''), 50)"
+			"target" : "highestMax(aliasByNode(aggregates.us.tracking_debug-adv.by-adv.*, 4), 50)"
 		},
 		{
 			"title":"EU Debugs By Advertiser",
-			"target" : "highestMax(aliasSub(groupByNode(eu-*.tracking-adv.tracking_debug-adv_*.*, 2, 'sumSeries'), 'tracking_debug-adv_', ''), 50)"
+			"target" : "highestMax(aliasByNode(aggregates.eu.tracking_debug-adv.by-adv.*, 4), 50)"
 		},
 		{
 			"title":"AP Debug By Errors",
-			"target" : "groupByNode(ap-012.tracking-adv.tracking_debug-adv_*.*, 3, 'sumSeries')"
+			"target" : "aliasByNode(aggregates.ap.tracking_debug-adv.by-type.*, 4)"
 		},
 		{
 			"title":"US Debugs By Errors",
-			"target" : "groupByNode(us-049.tracking-adv.tracking_debug-adv_*.*, 3, 'sumSeries')"
+			"target" : "aliasByNode(aggregates.us.tracking_debug-adv.by-type.*, 4)"
 		},
 		{
 			"title":"EU Debug By Errors",
-			"target" : "groupByNode(eu-023.tracking-adv.tracking_debug-adv_*.*, 3, 'sumSeries')"
+			"target" : "aliasByNode(aggregates.eu.tracking_debug-adv.by-type.*, 4)"
 		}
 	],
 	"parametersUnused": {
 			"continent": {
-					"All" : {"continent" : "*" },
+					"All" : {"continent" : "all" },
 					"EU" : {"continent" : "eu" },
 					"US" : {"continent" : "us" },
 					"AP" : {"continent" : "ap" },
