@@ -1,9 +1,9 @@
 {
 	"title":"Eel Pixel Tracking Stats",
-	"width" : 600,
+	"width" : 450,
 	"defaultLineWidth":1,
 	"staircase": "step",
-	"timeBack":"6h",
+	"timeBack":"1d",
 	"height" : 400,
 	"refresh" : true,
 	"defaultParameters":"minXStep=0",
@@ -12,20 +12,44 @@
 	"data":[
 	{
 		"title":"Pixel Response Times HTTP",
-		"target" : "aliasSub(aliasSub(maximumAbove(eu-023.eel.eel_stats-*_http.elapsedtime,0.5), 'eu-023.eel.eel_stats-', ''), '_http.elapsedtime', '')"
+		"target" : "aliasSub(averageAbove(eu-023.eel.eel_stats-${datacenter}_http_*.elapsedtime,0.5), '.*_https?_(.*).elapsedtime', '\\1')"
+	},
+	{
+		"title":"Pixel Response Moving Average HTTP",
+		"target" : "aliasSub(averageAbove(movingAverage(eu-023.eel.eel_stats-${datacenter}_http_*.elapsedtime,20), 0.5), '.*_https?_(.*).elapsedtime\\,.*', '\\1')"
 	},
 	{
 		"title":"Pixel Response Times HTTPS",
-		"target" : "aliasSub(aliasSub(maximumAbove(eu-023.eel.eel_stats-*_https.elapsedtime,0.5), 'eu-023.eel.eel_stats-', ''), '_https.elapsedtime', '')"
+		"target" : "aliasSub(averageAbove(eu-023.eel.eel_stats-${datacenter}_https_*.elapsedtime,0.5), '.*_https?_(.*).elapsedtime', '\\1')"
+	},
+	{
+		"title":"Pixel Response Moving Average HTTPS",
+		"target" : "aliasSub(averageAbove(movingAverage(eu-023.eel.eel_stats-${datacenter}_https_*.elapsedtime,20), 0.5), '.*_https?_(.*).elapsedtime\\,.*', '\\1')"
 	},
 	{
 		"title":"Pixel Status HTTP",
-		"target" : "aliasSub(aliasSub(eu-023.eel.eel_stats-*_http.status, 'eu-023.eel.eel_stats-', ''), '_http.elapsedtime', '')"
+		"target" : "aliasSub(eu-023.eel.eel_stats-${datacenter}_http_*.status, '.*_https?_(.*).status', '\\1')"
+	},
+	{
+		"title":"Pixel Status Moving Average HTTP",
+		"target" : "aliasSub(averageAbove(movingAverage(eu-023.eel.eel_stats-${datacenter}_http_*.status,20), 1), '.*_https?_(.*).status\\,.*', '\\1')"
 	},
 	{
 		"title":"Pixel Status HTTPS",
-		"target" : "aliasSub(aliasSub(maximumAbove(eu-023.eel.eel_stats-*_https.status,0.5), 'eu-023.eel.eel_stats-', ''), '_https.elapsedtime', '')"
+		"target" : "aliasSub(eu-023.eel.eel_stats-${datacenter}_https_*.status, '.*_https?_(.*).status', '\\1')"
+	},
+	{
+		"title":"Pixel Status Moving Average HTTPS",
+		"target" : "aliasSub(averageAbove(movingAverage(eu-023.eel.eel_stats-${datacenter}_https_*.status,20), 1), '.*_https?_(.*).status\\,.*', '\\1')"
 	}
-	]
+	],
+        "parameters": {
+		"datacenter" : {
+		    "all" : { "datacenter" : "*" },
+		    "eu" : { "datacenter" : "eu" },
+		    "us" : { "datacenter" : "us" },
+		    "ap" : { "datacenter" : "ap" }
+		}
+	}
 }
 
