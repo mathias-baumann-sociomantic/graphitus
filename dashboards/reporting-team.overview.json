@@ -43,6 +43,22 @@
 			"params":"lineWidth=2"
 		},
 		{  
+			"title":"${continent} Sonar Actions/s",
+			"target":[
+				"alias(scale(sumSeries(${us}-*.sonar.sonar_stats.action_counter), 0.033333), 'us')",
+				"alias(scale(sumSeries(${ap}-*.sonar.sonar_stats.action_counter), 0.033333), 'ap')",
+				"alias(scale(sumSeries(${eu}-*.sonar.sonar_stats.action_counter), 0.033333), 'eu')"
+			]
+		},
+		{
+			"title":"${continent} Sonar Queue Overflow/s",
+			"target":[
+				"alias(scale(sumSeries(${us}-*.sonar.sonar_stats.qover_counter), 0.033333), 'us')",
+				"alias(scale(sumSeries(${ap}-*.sonar.sonar_stats.qover_counter), 0.033333), 'ap')",
+				"alias(scale(sumSeries(${eu}-*.sonar.sonar_stats.qover_counter), 0.033333), 'eu')"
+			]
+		},
+		{
 			"title":"${continent} Hydrosphere Loglines In /s",
 			"target":[  
 				"aliasSub(aliasSub(cactiStyle(aliasByNode(scale(stacked(${us}-*.cacti_hydrosphere.cacti_hydrosphere_stats-*.logline_in, '${us}'),0.033333), 0,2)), '.*_stats-[^2].*',''),'${us}-[^ ]*(.*Current.*)', '${us} in/s\\1')",

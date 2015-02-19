@@ -45,6 +45,7 @@
         {"id": "reporting-team.cliff.overview"},
         {"id": "reporting-team.cliff.campaigns"},
         {"id": "reporting-team.coral"},
+        {"id": "reporting-team.sonar"},
         {"id": "reporting-team.hydrosphere.eu"},
         {"id": "reporting-team.hydrosphere.us"},
         {"id": "reporting-team.hydrosphere.ap"},
