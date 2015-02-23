@@ -57,7 +57,7 @@
 				"continent-nice" : "EU" },
 			"US" : {"continent" : "{us-026,us-030,us-031,us-032,us-033,us-034,us-035,us-040,us-041,us-042,us-043,us-046}",
 				"continent-nice" : "US" },
-			"AP" : {"continent" : "{ap-002,ap-035}",
+			"AP" : {"continent" : "{ap-002,ap-035,ap-064,ap-065,ap-066,ap-067}",
 				"continent-nice" : "AP" },
 			"USAP" : {"continent" : "{usap-001,usap-009}",
 				"continent-nice" : "US / AP" },
