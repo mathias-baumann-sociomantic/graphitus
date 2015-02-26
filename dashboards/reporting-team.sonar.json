@@ -1,0 +1,33 @@
+{
+    "title": "Sonar Stats",
+    "width": 400,
+    "defaultLineWidth": 1,
+    "timeBack": "24h",
+    "height": 300,
+    "refresh": true,
+    "legend": true,
+    "defaultParameters": "fontSize=9&areaMode=none&lineWidth=1&yMin=0",
+    "dataTemplates": [
+    {
+        "title":"${explode} - Sonar - Stats/sec",
+        "target" : [
+            "alias(scale(${explode}.sonar.sonar_stats.action_counter, 0.033333), \"Actions\")",
+            "alias(scale(${explode}.sonar.sonar_stats.optout_counter, 0.033333), \"Optouts\")",
+            "alias(scale(${explode}.sonar.sonar_stats.queue_counter, 0.033333), \"Queue requests\")",
+            "alias(scale(${explode}.sonar.sonar_stats.qover_counter, 0.033333), \"Queue overflow\")"
+        ],
+        "query" : "${continent}-*.sonar.sonar_stats",
+        "index" : 0
+    }
+    ],
+    "data":[
+    ],
+    "parameters": {
+        "continent": {
+            "EU" : {"continent" : "eu"},
+            "US" : {"continent" : "us"},
+            "AP" : {"continent" : "ap"},
+            "All" : {"continent" : "*"}
+        }
+    }
+}
