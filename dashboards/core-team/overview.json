@@ -10,7 +10,7 @@
 	"data":[
 	{
 		"title":"1. DHT Memory Usage % on ${dht}",
-		"target":"aliasByNode(${dht}.dht-*.process_mem_stats.percentage, 0, 1)",
+		"target":"aliasByNode(groupByNode(${dht}.dht-*.process_mem_stats.percentage,0,\"sumSeries\"), 0)",
 		"params":"yMin=0&yMax=100"
 	},
 	{
