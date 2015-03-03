@@ -9,11 +9,10 @@
 	"dataTemplates" : [
 	{
 		"title":"DHT Memory Usage % on ${explode}",
-		"target":"alias(scale(divideSeries(sumSeries(${explode}.dht-*.process_mem_stats.rss), ${explode}.cacti_memory.cacti_memory.STAT_memtotal), 100), \"% mem usage\")",
-		"query":"${server}.dht-*.process_mem_stats.rss",
-		"regex":"^(.*)",
+		"target":"aliasByNode(${explode}.dht-*.process_mem_stats.percentage, 1)",
+		"query":"${server}.dht-*.process_mem_stats.percentage",
 		"index":0,
-		"params":"yMin=0&areaMode=all&areaAlpha=0.5&yMax=100"
+		"params":"yMin=0&areaMode=stacked&areaAlpha=0.5&colorList=6666FF,3333FF,0000FF,0000CC,000099,000066&yMax=100"
 	}
 	],
 	"data":[
