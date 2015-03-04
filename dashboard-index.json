@@ -54,10 +54,10 @@
         {"id": "reporting-team.reef.campaigns"},
         {"id": "reporting-team.reef.advertisers"},
 
-        {"id": "tracking-team.debug-advertisers"},
-        {"id": "tracking-team.debug-ssps-summary"},
-        {"id": "tracking-team.debug-ssps-detailed"},
-        {"id": "tracking-team.eel"},
+        {"id": "tracking-team/debug-advertisers"},
+        {"id": "tracking-team/debug-ssps-summary"},
+        {"id": "tracking-team/debug-ssps-detailed"},
+        {"id": "tracking-team/eel"},
 
         {"id": "to-be-removed/cactitus.propulsor.all.backend.aggregates"},
         {"id": "to-be-removed/cactitus.propulsor.all.backend.cpu-usage"},
