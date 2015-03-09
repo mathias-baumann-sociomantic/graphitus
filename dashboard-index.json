@@ -55,8 +55,7 @@
         {"id": "reporting-team/reef.advertisers"},
 
         {"id": "tracking-team/debug-advertisers"},
-        {"id": "tracking-team/debug-ssps-summary"},
-        {"id": "tracking-team/debug-ssps-detailed"},
+        {"id": "tracking-team/debug-ssps"},
         {"id": "tracking-team/eel"},
 
         {"id": "to-be-removed/cactitus.propulsor.all.backend.aggregates"},
