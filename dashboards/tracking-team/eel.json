@@ -12,35 +12,35 @@
 	"data":[
 	{
 		"title":"Pixel Response Times HTTP",
-		"target" : "aliasSub(eu-023.eel.eel_stats-${datacenter}_http_${pixel}.elapsedtime, '.*_https?_(.*).elapsedtime', '\\1')"
+		"target" : "aliasSub(${datacenter}-{023,012,049}.eel.eel_stats-${datacenter}_http_${pixel}.elapsedtime, '.*_https?_(.*).elapsedtime', '\\1')"
 	},
 	{
 		"title":"Pixel Response Moving Average HTTP",
-		"target" : "aliasSub(movingAverage(eu-023.eel.eel_stats-${datacenter}_http_${pixel}.elapsedtime,20), '.*_https?_(.*).elapsedtime\\,.*', '\\1')"
+		"target" : "aliasSub(movingAverage(${datacenter}-{023,012,049}.eel.eel_stats-${datacenter}_http_${pixel}.elapsedtime,20), '.*_https?_(.*).elapsedtime\\,.*', '\\1')"
 	},
 	{
 		"title":"Pixel Response Times HTTPS",
-		"target" : "aliasSub(eu-023.eel.eel_stats-${datacenter}_https_${pixel}.elapsedtime, '.*_https?_(.*).elapsedtime', '\\1')"
+		"target" : "aliasSub(${datacenter}-{023,012,049}.eel.eel_stats-${datacenter}_https_${pixel}.elapsedtime, '.*_https?_(.*).elapsedtime', '\\1')"
 	},
 	{
 		"title":"Pixel Response Moving Average HTTPS",
-		"target" : "aliasSub(movingAverage(eu-023.eel.eel_stats-${datacenter}_https_${pixel}.elapsedtime,20), '.*_https?_(.*).elapsedtime\\,.*', '\\1')"
+		"target" : "aliasSub(movingAverage(${datacenter}-{023,012,049}.eel.eel_stats-${datacenter}_https_${pixel}.elapsedtime,20), '.*_https?_(.*).elapsedtime\\,.*', '\\1')"
 	},
 	{
 		"title":"Pixel Status HTTP",
-		"target" : "aliasSub(eu-023.eel.eel_stats-${datacenter}_http_${pixel}.status, '.*_https?_(.*).status', '\\1')"
+		"target" : "aliasSub(${datacenter}-{023,012,049}.eel.eel_stats-${datacenter}_http_${pixel}.status, '.*_https?_(.*).status', '\\1')"
 	},
 	{
 		"title":"Pixel Status Moving Average HTTP",
-		"target" : "aliasSub(movingAverage(eu-023.eel.eel_stats-${datacenter}_http_${pixel}.status,20), '.*_https?_(.*).status\\,.*', '\\1')"
+		"target" : "aliasSub(movingAverage(${datacenter}-{023,012,049}.eel.eel_stats-${datacenter}_http_${pixel}.status,20), '.*_https?_(.*).status\\,.*', '\\1')"
 	},
 	{
 		"title":"Pixel Status HTTPS",
-		"target" : "aliasSub(eu-023.eel.eel_stats-${datacenter}_https_${pixel}.status, '.*_https?_(.*).status', '\\1')"
+		"target" : "aliasSub(${datacenter}-{023,012,049}.eel.eel_stats-${datacenter}_https_${pixel}.status, '.*_https?_(.*).status', '\\1')"
 	},
 	{
 		"title":"Pixel Status Moving Average HTTPS",
-		"target" : "aliasSub(movingAverage(eu-023.eel.eel_stats-${datacenter}_https_${pixel}.status,20), '.*_https?_(.*).status\\,.*', '\\1')"
+		"target" : "aliasSub(movingAverage(${datacenter}-{023,012,049}.eel.eel_stats-${datacenter}_https_${pixel}.status,20), '.*_https?_(.*).status\\,.*', '\\1')"
 	}
 	],
         "parameters": {
@@ -52,7 +52,7 @@
 		},
 		"pixel" : {
 		    "type": "dynamic",
-		    "query": "eu-023.eel.eel_stats-${datacenter}_http_*.elapsedtime",
+		    "query": "${datacenter}-{023,012,049}.eel.eel_stats-${datacenter}_http_*.elapsedtime",
 		    "index": 2,
 		    "regex": "eel_stats-.*_http_(.*)",
 		    "showAll": true
