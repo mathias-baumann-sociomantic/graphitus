@@ -4,14 +4,18 @@
 	"defaultLineWidth": 1,
 	"timeBack": "6h",
 	"height": 400,
-	"columns": 2,
+	"columns": 1,
 	"refresh": true,
 	"legend": false,
 	"defaultParameters": "yMin=0&yMax=100",
 	"data": [
 	{
-		"title": "Queue Channel ${channel} Usage % for Queue ${queue} on ${server}",
-		"target": "aliasSub(aliasByNode(${server}.queue-${queue}.queue_channel_stats-${channel}.usage,0,1,2), \"(.*)\\.queue-(.*)\\.queue_stats-(.*)\", \"\\1.\\2.\\3\")"
+		"title": "OLD Queue Channel ${channel} Usage % for Queue ${queue} on ${server}",
+		"target": "aliasSub(aliasByNode(${server}.queue-${queue}.queue_channel_stats-${channel}.usage,0,1,2), \"(.*)\\.queue-(.*)\\.queue_channel_stats-(.*)\", \"\\1.\\2.\\3\")"
+	},
+	{
+		"title": "NEW Queue Channel ${channel} Usage % for Queue ${queue} on ${server}",
+		"target": "aliasSub(aliasByNode(${server}.queue-${queue}.queue_channel_stats_new-${channel}.percent,0,1,2), \"(.*)\\.queue-(.*)\\.queue_channel_stats_new-(.*)\", \"\\1.\\2.\\3\")"
 	}
 	],
 	"parameters": {
