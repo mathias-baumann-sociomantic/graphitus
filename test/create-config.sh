@@ -1,6 +1,6 @@
 #!/bin/sh
 
-url="http://127.0.0.1:8080"
+url="http://localhost:8080"
 
 test -e config.json && {
 	echo "Config already exists, please remove 'config.json' and try" \
