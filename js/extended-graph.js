@@ -29,6 +29,11 @@ var palette = new Rickshaw.Color.Palette({
 	scheme: 'colorwheel'
 });
 
+function getRickshawPaletteColor() {
+	if ( palette.runningIndex == palette.scheme.length ) { palette.runningIndex = 0; }
+	return palette.color();
+}
+
 function setRickshawPalette(toScheme) {
 	palette.scheme = toScheme;
 	palette.runningIndex=0;
@@ -218,7 +223,7 @@ function renderExtendedGraph(target, data) {
 function transformGraphiteData(data) {
 	resultData = _.map(data, function(item) {
 		return {
-			"color": palette.color(),
+			"color": getRickshawPaletteColor(),
 			"name": item.target.replace(/_/g, ' '),
 			"data": graphiteToRickshawModel(item.datapoints)
 		};
