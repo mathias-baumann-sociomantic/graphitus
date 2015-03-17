@@ -1,0 +1,89 @@
+{
+    "title":"Reef Slow Live Stats",
+    "width" : 490,
+    "defaultLineWidth":1,
+    "timeBack":"6h",
+    "height" : 220,
+    "refresh" : true,
+    "refreshIntervalSeconds" : 300,
+    "legend" : false,
+    "data":[
+        {
+            "title":"Loglines",
+            "target": [
+                "cactiStyle(aliasByNode(scale(sortByMinima(${continent}-${version}.cacti_reef.cacti_reef_stats.loglines),0.03333),0))"
+            ],
+            "params" : "yMin=0&areaAlpha=0.5&areaMode=all&lineWidth=2&colorList=%23B34BFD,%23C87CFF,%239D63FF,%235E00FF,%238C00FF,%23B969FB,%23F85F00,%23F8002D,%23F82700"
+        },
+        {
+            "title":"Failed Cids/s",
+            "target": [
+                "aliasByNode(scale(${continent}-${version}.cacti_reef.cacti_reef_stats.lgln_cidsfailed,0.033333),0,3)"
+            ],
+            "params" : "lineWidth=2&areaAlpha=0.4&areaMode=all&colorList=%2303FF28,%2300B01A,%23008714,%2353925D"
+        },
+        {
+            "title":"Failed Cids %",
+            "target": [
+                "aliasByNode(asPercent(${continent}-${version}.cacti_reef.cacti_reef_stats.lgln_cidsfailed,${continent}-${version}.cacti_reef.cacti_reef_stats.loglines),0,3)"
+            ],
+            "params" : "lineWidth=2&areaAlpha=0.4&areaMode=all&colorList=%2303FF28,%2300B01A,%23008714,%2353925D"
+        },
+        {
+            "title":"SSP Stats [High Vol]",
+            "target": [
+                "aliasSub(aliasByNode(averageAbove(scale(${continent}-${version}.reef.reef_ssp-*.loglines,0.03333333),30),2),\"reef_ssp-\",\"\")"
+            ],
+            "params" : "lineWidth=2"
+        },
+        {
+            "height" : 500,
+            "title":"SSP Stats [Low Vol]",
+            "target": [
+                "aliasSub(aliasByNode(averageBelow(scale(${continent}-${version}.reef.reef_ssp-*.loglines,0.03333333),30),2),\"reef_ssp-\",\"\")"
+            ],
+            "params" : "lineWidth=2"
+        },
+        {
+            "title":"SSP 4 Highest Avg FailedCids",
+            "target": [
+                "aliasSub(aliasByNode(movingAverage(highestAverage(asPercent(${continent}-${version}.reef.reef_ssp-*.failedcids,offset(${continent}-${version}.reef.reef_ssp-*.loglines,0.0001)),4),40),2),\"reef_ssp-\",\"\")"
+            ],
+            "params" : ""
+        },
+        {
+            "title":"SSP 4 Highest Avg Errors",
+            "target": [
+                "aliasSub(aliasByNode(movingAverage(highestAverage(asPercent(${continent}-${version}.reef.reef_ssp-*.errors,offset(${continent}-${version}.reef.reef_ssp-*.loglines,0.0001)),4),40),2),\"reef_ssp-\",\"\")"
+            ],
+            "params" : "lineWidth=2"
+        },
+        {
+            "title":"CIDs 5 Highest Avg Failedcids",
+            "target": [
+                "aliasSub(aliasByNode(movingAverage(highestAverage(asPercent(${continent}-${version}.reef.reef_cid-*.failedcids,removeBelowValue(${continent}-${version}.reef.reef_cid-*.loglines,5)),5),40),2),\"reef_cid-\",\"\")"
+            ],
+            "params" : "lineWidth=2"
+        },
+        {
+            "title":"Advertisers 5 Highest Avg Errors",
+            "target": [
+                "aliasSub(aliasByNode(movingAverage(highestAverage(asPercent(${continent}-${version}.reef.reef_adv-*.errors,${continent}-${version}.reef.reef_adv-*.loglines),5),40),2),\"reef_adv-\",\"\")"
+            ],
+            "params" : "lineWidth=2"
+        }
+    ],
+    "parameters": {
+        "continent": {
+            "EU" : {"continent" : "eu" },
+            "US" : {"continent" : "us" },
+            "AP" : {"continent" : "ap" },
+            "All": {"continent" : "*" }
+            },
+        "version" : {
+            "live" : { "version" : "{137,011,010}" },
+            "test" : { "version" : "{001,022,013}" },
+            "All" : { "version" : "*" }
+        }
+    }            
+}
