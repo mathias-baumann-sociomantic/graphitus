@@ -10,7 +10,7 @@
 		{  
 			"title":"${continent} - Tracking Queue Channel Usage",
 			"target":[  
-				"aliasSub(aliasSub(aliasByNode(movingAverage(${continent}-*.queue-*.queue_channel_stats-{reef,coral,cliff,tracking}.usage, 10),0,2),'queue_channel_stats-(.*)','\\1'),'tracking','hydro')"
+				"aliasSub(aliasSub(aliasByNode(movingAverage(${continent}-*.queue-*.queue_channel_stats-{reef,coral,cliff,tracking}.percent, 10),0,2),'queue_channel_stats-(.*)','\\1'),'tracking','hydro')"
 			],
 			"params":"yMin=0&yMax=101"
 		},

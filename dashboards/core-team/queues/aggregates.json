@@ -11,19 +11,19 @@
 	"data": [
 	{
 		"title": "Aggregated Connections for ${queue} Queue on ${continent}",
-		"target": "alias(sum(${continent}-*.queue-${queue}.queue_node_stats.handled_connections), \"connections\")"
+		"target": "alias(sum(${continent}-*.queue-${queue}.queue_node_stats.handling_connections), \"connections\")"
 	},
 	{
 		"title": "Aggregated Processed Records/s for ${queue} Queue on ${continent}",
-		"target": "alias(sum(${continent}-*.queue-${queue}.queue_node_stats.records_per_sec), \"records/s\")"
+		"target": "alias(scale(sum(${continent}-*.queue-${queue}.queue_node_stats.records_handled),0.03333), \"records/s\")"
 	},
 	{
-		"title": "Aggregated Kb/s Sent for ${queue} Queue on ${continent}",
-		"target": "alias(sum(${continent}-*.queue-${queue}.queue_node_stats.data_sent), \"kb/s sent\")"
+		"title": "Aggregated Bytes/s Sent for ${queue} Queue on ${continent}",
+		"target": "alias(scale(sum(${continent}-*.queue-${queue}.queue_node_stats.bytes_sent),0.03333), \"b/s sent\")"
 	},
 	{
-		"title": "Aggregated Kb/s Received for ${queue} Queue on ${continent}",
-		"target": "alias(sum(${continent}-*.queue-${queue}.queue_node_stats.data_received), \"kb/s recv\")"
+		"title": "Aggregated Bytes/s Received for ${queue} Queue on ${continent}",
+		"target": "alias(scale(sum(${continent}-*.queue-${queue}.queue_node_stats.bytes_received),0.03333), \"b/s recv\")"
 	}
 	],
 	"parameters": {
