@@ -38,14 +38,14 @@
         },
         {
             "title":"${continent} Admedia Queue Usage",
-            "target": "aliasByNode(${continent}-*.queue-admedia.*.usage,0,2)",
+            "target": "aliasByNode(${continent}-*.queue-admedia.*.percent,0,2)",
             "params": "yMin=0&yMax=100"
         },
         {
             "title":"${continent} Shore/Shore API Tracking Queue Usage",
             "target": [
-                    "aliasByNode(${continent}-*.queue-tracking.queue_channel_stats-shore.usage,0,2)",
-                    "aliasByNode(${continent}-*.queue-tracking.queue_channel_stats-shore_api.usage,0,2)"
+                    "aliasByNode(${continent}-*.queue-tracking.queue_channel_stats-shore.percent,0,2)",
+                    "aliasByNode(${continent}-*.queue-tracking.queue_channel_stats-shore_api.percent,0,2)"
             ],
             "params": "yMin=0&yMax=100"
         },
