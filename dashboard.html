@@ -72,7 +72,7 @@ $(document).ready(function() {
                     </li>
                     <li>
                     <label>
-                    <button class="btn btn-mini btn-primary pull-right hspacer" onclick="updateGraph(<%=idx%>);">Update</button>
+                    <button class="btn btn-mini btn-primary pull-right hspacer" onclick="updateGraph(<%=idx%>,'forced');">Update</button>
                     </label>
                     </li>
                     </ul>
@@ -154,23 +154,23 @@ $(document).ready(function() {
            <ul id="options" class="dropdown-menu" style="width: 200px;">
                     <li>
                     <label class="checkbox" style="margin: 10px">
-                        <input type="checkbox" id="average" name="average" <% if(config.averageSeries) { %>checked="checked"<% } %> onchange="updateGraphs()" />Average Series
+                        <input type="checkbox" id="average" name="average" <% if(config.averageSeries) { %>checked="checked"<% } %> onchange="updateGraphs('forced')" />Average Series
                     </label>
                     </li>
                     <li>
                     <label class="checkbox" style="margin: 10px">
-                        <input type="checkbox" id="sum" name="sum" <% if(config.sumSeries) { %>checked="checked"<% } %> onchange="updateGraphs()" />Sum Series
+                        <input type="checkbox" id="sum" name="sum" <% if(config.sumSeries) { %>checked="checked"<% } %> onchange="updateGraphs('forced')" />Sum Series
                     </label>
                     </li>
                     <li class="divider"></li>
                     <li> 
                     <label class="checkbox" style="margin: 10px">
-                        <input type="checkbox" id="legend" name="legend" <% if(config.legend && config.legend!=="false") {%> checked="checked" <% } %> onchange="updateGraphs()" /> Show Legend
+                        <input type="checkbox" id="legend" name="legend" <% if(config.legend && config.legend!=="false") {%> checked="checked" <% } %> onchange="updateGraphs('forced')" /> Show Legend
                     </label>
                     </li>
                     <li>
                     <label class="checkbox" style="margin: 10px">
-                        <input type="checkbox" id="events" name="events" <% if(config.showEvents && config.showEvents!=="false") {%> checked="checked" <% } %> onchange="updateGraphs()" /> Show Events
+                        <input type="checkbox" id="events" name="events" <% if(config.showEvents && config.showEvents!=="false") {%> checked="checked" <% } %> onchange="updateGraphs('forced')" /> Show Events
                     </label>
                     </li>
                     <li>
@@ -198,7 +198,7 @@ $(document).ready(function() {
         </li>
         <li class="divider-vertical"></li>
         <li>
-            <button class="btn btn-mini btn-primary pull-right hspacer" style="margin-top:8px" onclick="updateGraphs();return false;"><i class="fa fa-circle-arrow-right"></i> Update</button>
+            <button class="btn btn-mini btn-primary pull-right hspacer" style="margin-top:8px" onclick="updateGraphs('forced');return false;"><i class="fa fa-circle-arrow-right"></i> Update</button>
         </li>
         <li class="divider-vertical"></li>
         <li class="hidden-zoom3">
