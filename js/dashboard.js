@@ -133,13 +133,17 @@ function loadDashboard() {
 }
 
 function updateGraphs() {
+	updateGraphs("no-force")
+}
+
+function updateGraphs(forceMode) {
 	updateDashboardTitle();
 	console.log("Updating graphs, start time: " + lastUpdate);
 	showProgress();
 
 	$("#permalink").attr("href", generatePermalink());
 	for (var i = 0; i < config.data.length; i++) {
-		updateGraph(i);
+		updateGraph(i,forceMode);
 	}
 
 	lastExecution = Math.floor((new Date() - lastUpdate) / 1000);
@@ -149,18 +153,28 @@ function updateGraphs() {
 }
 
 function updateGraph(idx) {
+	updateGraph(idx,"no-force")
+}
+
+function updateGraph(idx,forceMode) {
 	var graph = config.data[idx];
 	$('#title' + idx).html(applyParameters(graph.title));
 	$('#sLink' + idx).attr('href', buildUrl(idx, graph, graph.title, config.width / 2, config.height / 2, "render"));
 	$('#mLink' + idx).attr('href', buildUrl(idx, graph, graph.title, config.width, config.height, "render"));
 	$('#lLink' + idx).attr('href', buildUrl(idx, graph, graph.title, config.width * 2, config.height * 2, "render"));
 	$('#gLink' + idx).attr('href', buildUrl(idx, graph, graph.title, 0, 0, "graphlot"));
-	$('#img' + idx).attr('src', buildUrl(idx, graph, "", config.width, config.height, "render"));
+	var old_img_src = $('#img' + idx).attr('src');
+	$('#img' + idx).attr('src', buildUrl(idx, graph, "", config.width, config.height, "render", forceMode));
+	var new_img_src = $('#img' + idx).attr('src');
+	if ( old_img_src == new_img_src ) { console.log('Updated img src unchanged (no actual update): ' + old_img_src); };
 	rawTargets[idx] = buildUrl(idx, graph, graph.title, config.width, config.height, "render");
 	$('#source' + idx).val(getGraphSource(graph));
 }
 
 function buildUrl(idx, graph, chartTitle, width, height, graphiteOperation) {
+	buildUrl(idx, graph, chartTitle, width, height, graphiteOperation,"no-force")
+}
+function buildUrl(idx, graph, chartTitle, width, height, graphiteOperation, forceMode) {
 	var params = "&lineWidth=" + config.defaultLineWidth + "&title=" + encodeURIComponent(chartTitle) + "&tz=" + $("#tz").val();
 	if (config.defaultParameters) {
 		params = params + "&" + config.defaultParameters;
@@ -187,7 +201,7 @@ function buildUrl(idx, graph, chartTitle, width, height, graphiteOperation) {
 	var size = "&width=" + width + "&height=" + height;
 
 	var refreshStep = (config.refreshIntervalSeconds > graphitusConfig.minimumRefresh) ? config.refreshIntervalSeconds : graphitusConfig.minimumRefresh;
-	var prevent_cache = "&preventCache=" + (new Date().getTime() / 1000 / refreshStep | 0);
+	var prevent_cache = "&preventCache=" + ( ( forceMode == "forced" ) ? (new Date().getTime()) : (new Date().getTime() / 1000 / refreshStep | 0) );
 
 	targetUri = "";
 	var targets = (typeof graph.target == 'string') ? new Array(graph.target) : graph.target;
