@@ -5,7 +5,7 @@
     "columns" : 1,
     "defaultLineWidth" : 1,
     "timeBack" : "6h",
-    "refresh" : false,
+    "refresh" : true,
     "refreshIntervalSeconds" : 180,
     "legend" : false,
     "data": [
