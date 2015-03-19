@@ -42,6 +42,7 @@
         {"id": "core-team/queues/channels-usage"},
 
         {"id": "optimization-team/bidding"},
+        {"id": "optimization-team/campaigns"},
         {"id": "optimization-team/madtom"},
 
         {"id": "reporting-team/overview"},
