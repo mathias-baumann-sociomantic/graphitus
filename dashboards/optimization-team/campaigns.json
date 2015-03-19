@@ -1,0 +1,43 @@
+{
+    "title" : "Campaign Statistics",
+    "width" : 640,
+    "height" : 320,
+    "defaultLineWidth" : 1,
+    "timeBack" : "6h",
+    "refresh" : false,
+    "refreshIntervalSeconds" : 180,
+    "legend" : false,
+    "data": [
+        {
+            "title" : "Bids/sec (cliff)",
+            "target": [
+                "sum(aliasByNode(*-*.cliff.cliff_cid-${campaign}.bids,0))"
+            ],
+            "params" : "lineWidth=2&areaAlpha=0.4&areaMode=all"
+        },
+        {
+            "title" : "Wins/sec (reef loglines)",
+            "target": [
+                "aliasSub(aliasByNode(scale(${continent}-{137,011,010}.reef.reef_cid-${campaign}.loglines,0.03333333),2),\"reef_cid-\",\"\")"
+            ],
+            "params" : "lineWidth=2&areaAlpha=0.4&areaMode=all"
+        },
+        {
+            "title" : "Win Ratio (%)",
+            "target" : [
+                "asPercent(aliasSub(aliasByNode(scale(${continent}-{137,011,010}.reef.reef_cid-${campaign}.loglines,0.03333333),2),\"reef_cid-\",\"\"), sum(aliasByNode(*-*.cliff.cliff_cid-${campaign}.bids,0)))"
+            ],
+            "params" : "lineWidth=2&areaAlpha=0.4&areaMode=all"
+        }
+    ],
+    "parameters": {
+        "continent": {
+            "All": {"continent" : "*" }
+        },
+        "campaign" : {
+            "type" : "text",
+            "defaultValue" : "1",
+            "regexp" : "^[0-9]+$"
+        }
+    }
+}
