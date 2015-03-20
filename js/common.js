@@ -228,3 +228,12 @@ function getMetricsListFromTargetUri(targetUri) {
 
 	return (metricsList);
 }
+
+function noenter() {
+	if (window.event && window.event.keyCode == 13) {
+		updateGraphs();
+		return false;
+	} else {
+		return true;
+	}
+}
