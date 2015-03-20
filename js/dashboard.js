@@ -8,6 +8,7 @@ var parameterDependencies = new Array();
 var dynamicParams = new Array();
 var rawTargets = new Array();
 var textValuesCurrent = new Array();
+var cookiepath = "/";
 
 function renderGraphitus() {
 	$('#dashboards-view').hide();
@@ -564,20 +565,20 @@ function hideProgress() {
 
 function useHours() {
 	$("#start,#end").val("");
-	$.removeCookie('remember_start');
-	$.removeCookie('remember_end');
+	$.removeCookie('remember_start', { path: cookiepath });
+	$.removeCookie('remember_end', { path: cookiepath });
 	if ($("#timeBack").val() != "") {
-		$.cookie('remember_timeBack', ($("#timeBack").val()));
+		$.cookie('remember_timeBack', ($("#timeBack").val()), { path: cookiepath });
 		updateGraphs();
 	}
 }
 
 function useDateRange() {
 	$("#timeBack").val("");
-	$.removeCookie('remember_timeBack');
+	$.removeCookie('remember_timeBack', { path: cookiepath });
 	if ($("#start").val() != "" && $("#end").val() != "") {
-		$.cookie('remember_start', ($("#start").val()));
-		$.cookie('remember_end', ($("#end").val()));
+		$.cookie('remember_start', ($("#start").val()), { path: cookiepath });
+		$.cookie('remember_end', ($("#end").val()), { path: cookiepath });
 		updateGraphs();
 	}
 }
@@ -821,24 +822,24 @@ function initializeGraphParams() {
 }
 
 function setTimezone() {
+	$.cookie('graphitus.timezone', $("#tz").val(), { path: cookiepath });
 	console.log("timezone set: " + $("#tz").val());
-	$.cookie('graphitus.timezone', $("#tz").val());
 }
 
 function loadTimezone() {
 	var tz = "";
 	if (queryParam("tz")) {
 		tz = queryParam("tz");
-		console.log("timezone loaded from url param: [" + tz + "]");
+	} else if ($.cookie('graphitus.timezone')) {
+		tz = $.cookie('graphitus.timezone');
 	} else if (config.tz) {
 		tz = config.tz;
-		console.log("timezone loaded from dashboard config: [" + tz + "]");
 	} else {
-		tz = $.cookie('graphitus.timezone');
-		console.log("timezone loaded from cookie: [" + tz + "]");
+		tz = "GMT"
 	}
 	if (tz && tz !== "") {
 		$("#tz").val(tz);
+		$.cookie('graphitus.timezone', tz, { path: cookiepath });
 	}
 }
 
