@@ -247,21 +247,26 @@ function calculateEffectiveTarget(target) {
 }
 
 function renderTextValidate(paramGroupName, regexp) {
-	var re = new RegExp(regexp);
-        if (!re.test($('#' + paramGroupName).val())) {
-		document.getElementById(paramGroupName).style.backgroundColor = "#FFAAAA";
-		return false;
-	} else {
-		document.getElementById(paramGroupName).style.backgroundColor = "white";
+	if ( regexp == "onfocus" ) {
+		document.getElementById(paramGroupName).style.backgroundColor = "#FFFFFF";
 		return true;
 	}
+	if ( regexp ) {
+		var re = new RegExp(regexp);
+	    if (!re.test($('#' + paramGroupName).val())) {
+			document.getElementById(paramGroupName).style.backgroundColor = "#FFECEC";
+			return false;
+		}
+	}
+	document.getElementById(paramGroupName).style.backgroundColor = "#EAFFEA";
+	return true;
 }
 
 function renderParamToolbar() {
 	if (config.parameters) {
 		$.each(config.parameters, function(paramGroupName, paramGroup) {
 			if (paramGroup.type && paramGroup.type == "text") {
-				$("#parametersToolbarContent").append('<input type="text" class="input-small" placeholder="' + paramGroup.defaultValue + '" id="' + paramGroupName + '" name="' + paramGroupName + '" value="' + getDefaultValue(paramGroupName, paramGroup) + '" onchange="updateGraphs()" />');
+				$("#parametersToolbarContent").append('<input type="text" class="input-small" placeholder="' + paramGroup.defaultValue + '" id="' + paramGroupName + '" name="' + paramGroupName + '" value="' + getDefaultValue(paramGroupName, paramGroup) + '" onkeypress="return noenter()" onchange="updateGraphs()" onblur="renderTextValidate(\'' + paramGroupName + "','" + paramGroup.regexp + '\')" onfocus="renderTextValidate(' + "'" + paramGroupName + "','onfocus'" + ')" />');
 			} else {
 				var tmplParamSel = $('#tmpl-parameter-sel').html();
 				$("#parametersToolbarContent").append(_.template(tmplParamSel, {

@@ -289,7 +289,7 @@ Consider the following configuration for the ```parameters``` section of the con
 }
 ```
 
-This will add parameter named ```campaign``` with default value "114". Input will be checked agains regular expression, defined in "regexp". All fields are mandatory.
+This will add parameter named ```campaign``` with default value "114". If a "regexp" is defined, input will be validated against this regular expression.
 
 Naming and grouping techniques
 ------------------------------
