@@ -7,7 +7,7 @@
     "eventsDateFormat": "HH:mm:ss DD/MM/YYYY",
     "eventsTimezone": "Europe/Berlin",
     "minimumRefresh": 60,
-    "defaultColorList" : "blue,green,red,purple,brown,yellow,aqua,grey,magenta,pink,gold,rose",
+    "defaultColorList" : "blue,green,red,purple,brown,aqua,grey,magenta,pink,gold,rose,#F08549,#C868EA,#2A1A2D,#25674B,#F67892,#7E1103,#F525A0,#1A5B86,#8C6315,#002855",
 
     "timezones": ["GMT", "Europe/Berlin"]
 }
