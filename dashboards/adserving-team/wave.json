@@ -12,31 +12,31 @@
 	{
 		"title":"${explode} - Wave Changes + Images generated",
 		"target": [
-			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_stats.admedia_written, 0.03333), \"Admedia updated/s\"))",
-			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_stats.admedia_retired, 0.03333), \"Admedia retired/s\"))",
-			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_stats.download_failures, 0.03333), \"Bad downloads\"))",
-			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_stats.images_invalid, 0.03333), \"Invalid images/s\"))",
-			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_stats.images_generated, 0.03333), \"Images generated/s\"))"
+			"cactiStyle(alias(scale(${explode}.wave.wave_stats.admedia_written, 0.03333), \"Admedia updated/s\"))",
+			"cactiStyle(alias(scale(${explode}.wave.wave_stats.admedia_retired, 0.03333), \"Admedia retired/s\"))",
+			"cactiStyle(alias(scale(${explode}.wave.wave_stats.download_failures, 0.03333), \"Bad downloads\"))",
+			"cactiStyle(alias(scale(${explode}.wave.wave_stats.images_invalid, 0.03333), \"Invalid images/s\"))",
+			"cactiStyle(alias(scale(${explode}.wave.wave_stats.images_generated, 0.03333), \"Images generated/s\"))"
 		],
-		"query":"${continent}-*.cacti_wave.cacti_wave_stats.*",
+		"query":"${continent}-*.wave.wave_stats.*",
 		"index":0
 	},
 	{
 		"title":"${explode} - Wave Changes + Images generated",
 		"target": [
-			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_stats.images_generated, 0.003333), \"Images generated/s\"))",
-			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_stats.admedia_retired, 1.3333), \"Admedia Retired/100s\"))"
+			"cactiStyle(alias(scale(${explode}.wave.wave_stats.images_generated, 0.003333), \"Images generated/s\"))",
+			"cactiStyle(alias(scale(${explode}.wave.wave_stats.admedia_retired, 1.3333), \"Admedia Retired/100s\"))"
 		],
-		"query":"${continent}-*.cacti_wave.cacti_wave_stats.*",
+		"query":"${continent}-*.wave.wave_stats.*",
 		"index":0
 	},
 	{
 		"title":"${explode} - Wave Errors",
 		"target": [
-			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_stats.download_failures, 0.003333), \"Download failures/s\"))",
-			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_stats.images_invalid, 0.003333), \"Images invalid/s\"))"
+			"cactiStyle(alias(scale(${explode}.wave.wave_stats.download_failures, 0.003333), \"Download failures/s\"))",
+			"cactiStyle(alias(scale(${explode}.wave.wave_stats.images_invalid, 0.003333), \"Images invalid/s\"))"
 		],
-		"query":"${continent}-*.cacti_wave.cacti_wave_stats.*",
+		"query":"${continent}-*.wave.wave_stats.*",
 		"index":0
 	}
 	],
