@@ -12,28 +12,28 @@
 	{
 		"title":"${explode} - Wave Clean Invalidate Totals",
 		"target": [
-			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_inv.TotalAdmediaProcess, 0.03333), \"Total Admedia Processed\"))",
-			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_inv.TotalInvalidated, 0.03333), \"Total Admedia Invalidated\"))"
+			"cactiStyle(alias(scale(${explode}.wave.wave_clean_inv.TotalAdmediaProcess, 0.03333), \"Total Admedia Processed\"))",
+			"cactiStyle(alias(scale(${explode}.wave.wave_clean_inv.TotalInvalidated, 0.03333), \"Total Admedia Invalidated\"))"
 		],
-		"query":"${continent}-*.cacti_wave.cacti_wave_clean_inv",
+		"query":"${continent}-*.wave.wave_clean_inv",
 		"index":0
         },
 
 	{
 		"title":"${explode} - Wave Clean Invalidate Ratios",
 		"target": [
-			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_inv.RatioInvaldat2Total, 0.03333), \"Ratio Invalidated / Total Admedia\"))"
+			"cactiStyle(alias(scale(${explode}.wave.wave_clean_inv.RatioInvaldat2Total, 0.03333), \"Ratio Invalidated / Total Admedia\"))"
 		],
-		"query":"${continent}-*.cacti_wave.cacti_wave_clean_inv",
+		"query":"${continent}-*.wave.wave_clean_inv",
 		"index":0
         },
 	{
 		"title":"${explode} - Wave Clean Invalidate Mem",
 		"target": [
-			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_inv.MemoryAllocated, 0.03333), \"Memory Allocated\"))",
-			"cactiStyle(alias(scale(${explode}.cacti_wave.cacti_wave_clean_inv.MemoryFree, 0.03333), \"Memory Free\"))"
+			"cactiStyle(alias(scale(${explode}.wave.wave_clean_inv.MemoryAllocated, 0.03333), \"Memory Allocated\"))",
+			"cactiStyle(alias(scale(${explode}.wave.wave_clean_inv.MemoryFree, 0.03333), \"Memory Free\"))"
 		],
-		"query":"${continent}-*.cacti_wave.cacti_wave_clean_inv",
+		"query":"${continent}-*.wave.wave_clean_inv",
 		"index":0
         }
 	],

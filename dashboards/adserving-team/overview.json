@@ -30,11 +30,11 @@
         },
         {
             "title":"${continent} Wave Admedia Written",
-            "target":"aliasByNode(scale(${continent}-*.cacti_wave.cacti_wave_stats.admedia_written,0.033333333),0,2)"
+            "target":"aliasByNode(scale(${continent}-*.wave.wave_stats.admedia_written,0.033333333),0,2)"
         },
         {
             "title":"${continent} Wave Images Generated",
-            "target":"aliasByNode(scale(${continent}-*.cacti_wave.cacti_wave_stats.images_generated,0.033333333),0,2)"
+            "target":"aliasByNode(scale(${continent}-*.wave.wave_stats.images_generated,0.033333333),0,2)"
         },
         {
             "title":"${continent} Admedia Queue Usage",
@@ -67,7 +67,7 @@
 		"title":"Wave server disk usage % on ${continent}",
 		"target":"aliasByNode(asPercent(${explode}.cacti_df-mnt-static.cacti_df.DISKFREE_used,sumSeriesWithWildcards(${explode}.cacti_df-mnt-static.cacti_df.*,3)), 0)",
 		"params":"yMin=0&yMax=100",
-		"query":"${continent}-*.cacti_wave.*",
+		"query":"${continent}-*.wave.*",
 		"index":0
 	}
 	],
