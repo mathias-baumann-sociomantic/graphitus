@@ -11,7 +11,7 @@
         {
             "height" : 500,
             "title":"Bids",
-            "target": [                
+            "target": [
                 "aliasByNode(*-*.cliff.cliff_cid-${campaign}.bids,0)"
             ],
             "params" : "lineWidth=2&areaAlpha=0.4&areaMode=all"
@@ -26,5 +26,6 @@
             "defaultValue" : "6052",
             "regexp" : "^[0-9]+$"
         }
-    }            
+    }
 }
+
