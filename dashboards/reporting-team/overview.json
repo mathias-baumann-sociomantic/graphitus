@@ -77,7 +77,7 @@
 		{
 			"title":"${continent} Coral Loglines/s",
 			"target":[
-				"cactiStyle(aliasByNode(scale(sortByMaxima(${continent}-{137,022,010}.cacti_coral.cacti_coral_stats.loglines),0.03333),0))"
+				"cactiStyle(aliasByNode(scale(sortByMaxima(${continent}-{137,022,010}.coral.coral_stats.loglines),0.03333),0))"
 			],
 			"params":"yMin=0&areaAlpha=0.5&areaMode=all&lineWidth=2&colorList=%2300476B,%230076B3,%2300A8FF"
 		},
