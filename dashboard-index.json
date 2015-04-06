@@ -58,6 +58,7 @@
         {"id": "reporting-team/reef/individual/ssps"},
         {"id": "reporting-team/reef/individual/campaigns"},
         {"id": "reporting-team/reef/individual/advertisers"},
+        {"id": "reporting-team/snapper"},
 
         {"id": "tracking-team/debug-advertisers"},
         {"id": "tracking-team/debug-ssps"},

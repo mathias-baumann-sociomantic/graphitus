@@ -1,0 +1,58 @@
+{
+    "title":"Snapper Stats",
+    "width" : 490,
+    "defaultLineWidth":1,
+    "timeBack":"6h",
+    "height" : 220,
+    "refresh" : true,
+    "legend" : false,
+    "data": [
+        {
+            "title" : "Memory Usage",
+            "params" : "areaAlpha=0.4&areaMode=all&yMin=0",
+            "target" : "aliasByNode(sortByMinima(${continent}-${version}.snapper.snapper_stats.memory),0,3)"
+        },
+        {
+            "title" : "Adpans Read",
+            "params" : "yMin=0&lineWidth=2",
+            "target" : "aliasByNode(${continent}-${version}.snapper.snapper_stats.adpans_being_read,0,3)"
+        },
+        {
+            "title" : "Advertiser Loglines Processed",
+            "params" : "yMin=0&lineWidth=2",
+            "target" : "aliasByNode(${continent}-${version}.snapper.snapper_stats.advertiser_loglines_processed,0,3)"
+        },
+        {
+            "title" : "SSP Loglines Processed",
+            "params" : "yMin=0&lineWidth=2",
+            "target" : "aliasByNode(${continent}-${version}.snapper.snapper_stats.ssp_loglines_processed,0,3)"
+        },
+        {
+            "title" : "Loglines Average Process Time",
+            "params" : "yMin=0&lineWidth=2",
+            "target" : "aliasByNode(${continent}-${version}.snapper.snapper_stats.batch_loglines_average_process_time,0,3)"
+        },
+        {
+            "title" : "Loglines Median Process Time",
+            "params" : "yMin=0&lineWidth=2",
+            "target" : "aliasByNode(${continent}-${version}.snapper.snapper_stats.batch_loglines_median_process_time,0,3)"
+        },
+        {
+            "title" : "Long UTM Values Found",
+            "params" : "yMin=0&lineWidth=2",
+            "target" : "aliasByNode(${continent}-${version}.snapper.snapper_stats.long_utm_values,0,3)"
+        }
+    ],
+    "parameters": {
+        "continent": {
+            "All": {"continent" : "*" },
+            "EU" : {"continent" : "eu" },
+            "US" : {"continent" : "us" },
+            "AP" : {"continent" : "ap" }
+            },
+        "version" : {
+            "All" : { "version" : "*" },
+            "live" : { "version" : "{137,011,010}" }
+        }
+    }
+}
