@@ -6,34 +6,42 @@
 	"height":220,
 	"refresh":true,
 	"legend":true,
-    "defaultParameters":"yMin=0&fontSize=9&areaMode=All&areaAlpha=0.4&colorList=blue,green,red",
-	"dataTemplates":[		
+	"defaultParameters":"yMinLeft=0&yMaxLeft=100&&yMinRight=0&fontSize=9&areaMode=first&areaAlpha=0.4&colorList=blue,darkred",
+	"dataTemplates":[
 	{
-		"title":"${explode} DHT Handled Connections [Node 1]",
-    	"target": "alias(${explode}.dht-1.dht_stats.handled_connections, \"Handled Connections\")",
+		"title":"${explode}.dht-1 DHT Handled Connections",
+		"target": [
+			"alias(${explode}.dht-1.dht_stats.handling_connections_pcnt, \"% of maximum connections\")",
+			"alias(secondYAxis(${explode}.dht-1.dht_stats.handled_connections), \"number of connections\")"
+		],
 		"query":"${server}.dht-1.dht_stats",
-		"regex":"^(.*)",
 		"index":0
 	},
 	{
-		"title":"${explode} DHT Handled Connections [Node 2]",
-		"target": "alias(${explode}.dht-2.dht_stats.handled_connections, \"Handled Connections\")",
+		"title":"${explode}.dht-2 DHT Handled Connections",
+		"target": [
+			"alias(${explode}.dht-2.dht_stats.handling_connections_pcnt, \"% of maximum connections\")",
+			"alias(secondYAxis(${explode}.dht-2.dht_stats.handled_connections), \"number of connections\")"
+		],
 		"query":"${server}.dht-2.dht_stats",
-		"regex":"^(.*)",
 		"index":0
 	},
 	{
-		"title":"${explode} DHT Handled Connections [Node 3]",
-		"target": "alias(${explode}.dht-3.dht_stats.handled_connections, \"Handled Connections\")",
+		"title":"${explode}.dht-3 DHT Handled Connections",
+		"target": [
+			"alias(${explode}.dht-3.dht_stats.handling_connections_pcnt, \"% of maximum connections\")",
+			"alias(secondYAxis(${explode}.dht-3.dht_stats.handled_connections), \"number of connections\")"
+		],
 		"query":"${server}.dht-3.dht_stats",
-		"regex":"^(.*)",
 		"index":0
 	},
 	{
-		"title":"${explode} DHT Handled Connections [Node 4]",
-		"target": "alias(${explode}.dht-4.dht_stats.handled_connections, \"Handled Connections\")",
+		"title":"${explode}.dht-4 DHT Handled Connections",
+		"target": [
+			"alias(${explode}.dht-4.dht_stats.handling_connections_pcnt, \"% of maximum connections\")",
+			"alias(secondYAxis(${explode}.dht-4.dht_stats.handled_connections), \"number of connections\")"
+		],
 		"query":"${server}.dht-4.dht_stats",
-		"regex":"^(.*)",
 		"index":0
 	}
 	],
@@ -51,7 +59,6 @@
 			"type":"dynamic",
 			"query":"${continent}-*.dht-1.dht_stats",
 			"index":0,
-			"regex":"(.*)",
 			"showAll": true,
 			"showAllValue":"${continent}-*"
 		}

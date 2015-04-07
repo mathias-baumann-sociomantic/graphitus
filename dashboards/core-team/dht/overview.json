@@ -24,8 +24,8 @@
 		"params":"yMin=0"
 	},
 	{
-		"title":"4. DHT handled connections on ${server}",
-		"target":"aliasByNode(${server}.dht-*.dht_stats.handled_connections, 0, 1)",
+		"title":"4. DHT handled connections % on ${server}",
+		"target":"aliasByNode(${server}.dht-*.dht_stats.handling_connections_pcnt, 0, 1)",
 		"params":"yMin=0"
 	},
 	{
