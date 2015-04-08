@@ -19,9 +19,9 @@
 		"params":"yMin=0"
 	},
 	{
-		"title":"3. DHT Handled Connections on ${dht}",
-		"target":"aliasByNode(${dht}.dht-*.dht_stats.handled_connections, 0, 1)",
-		"params":"yMin=0"
+		"title":"3. DHT Handled Connections % on ${dht}",
+		"target":"aliasByNode(${dht}.dht-*.dht_stats.handling_connections_pcnt, 0, 1)",
+		"params":"yMin=0&yMax=100"
 	},
 	{
 		"title":"5. LogFiles Handled Records on ${logfiles}",
