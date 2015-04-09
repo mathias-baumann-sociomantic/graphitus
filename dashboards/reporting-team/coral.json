@@ -16,24 +16,20 @@
 
         },
         {
-            "title" : "Aggregate Delay Average",
+            "title" : "Aggregate Delay Average / Max",
             "params" : "yMin=0&lineWidth=2",
-            "target" : "aliasByNode(${continent}-${version}.coral.coral_stats.aggr_delay_avg,0,3)"
+            "target" : [
+                "aliasByNode(${continent}-${version}.coral.coral_stats.aggr_delay_avg,0,3)",
+                "aliasByNode(${continent}-${version}.coral.coral_stats.aggr_delay_max,0,3)"
+            ]
         },
         {
-            "title" : "Aggregate Delay Max",
+            "title" : "Profiles Written Average / Max",
             "params" : "yMin=0&lineWidth=2",
-            "target" : "aliasByNode(${continent}-${version}.coral.coral_stats.aggr_delay_max,0,3)"
-        },
-        {
-            "title" : "Average Profiles Written",
-            "params" : "yMin=0&lineWidth=2",
-            "target" : "aliasByNode(${continent}-${version}.coral.coral_stats.avg_profiles_written,0,3)"
-        },
-        {
-            "title" : "Current Profiles Written",
-            "params" : "yMin=0&lineWidth=2",
-            "target" : "aliasByNode(${continent}-${version}.coral.coral_stats.cur_profiles_written,0,3)"
+            "target" : [
+                "aliasByNode(${continent}-${version}.coral.coral_stats.avg_profiles_written,0,3)",
+                "aliasByNode(${continent}-${version}.coral.coral_stats.cur_profiles_written,0,3)"
+            ]
         },
         {
             "title":"ConversionErrors",
