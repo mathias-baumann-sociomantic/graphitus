@@ -35,16 +35,17 @@
             "title":"ConversionErrors",
             "target": [
 			"aliasByNode(scale(${continent}-${version}.coral.coral_stats.conversion_errors,0.033333),3)"
-			]
+			],
+            "params" : "yMin=0"
         },
 	{
 		"title" : "Currency Mappings",
-		"params" : "lineWidth=2",
+		"params" : "yMin=0&lineWidth=2",
 		"target" : "aliasByNode(${continent}-${version}.coral.coral_stats.currency_mappings,0,3)"
 	},
 	{
 		"title" : "Referrer Map",
-		"params" : "lineWidth=2",
+		"params" : "yMin=0&lineWidth=2",
 		"target" : "aliasByNode(${continent}-${version}.coral.coral_stats.referrer_map,0,3)"
 	},
 	{
@@ -61,7 +62,7 @@
 		"title" : "Click Maps",
 		"target" : [
 			"aliasByNode(${continent}-${version}.coral.coral_stats.click_map,0,3)" ],
-		"params" : "areaMode=all&areaAlpha=0.4"
+		"params" : "yMin=0&areaMode=all&areaAlpha=0.4"
 	},
 	{
 		"title" : "Memory Usage",
