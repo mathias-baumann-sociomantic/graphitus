@@ -17,28 +17,28 @@
 		{
 			"title":"${continent} Reef Loglines/s",
 			"target":[
-				"cactiStyle(aliasByNode(scale(sortByMaxima(${continent}-{137,011,010}.cacti_reef.cacti_reef_stats.loglines),0.03333),0))"
+				"cactiStyle(aliasByNode(scale(sortByMaxima(${continent}-{137,011,010}.reef.reef_stats.loglines),0.03333),0))"
 			],
 			"params":"yMin=0&areaAlpha=0.5&areaMode=all&lineWidth=2&colorList=%23B34B00,%23C87C00,%239D6300,%235E0000,%238C0000,%23B96900,%23F85F00,%23F80000,%23F82700"
 		},
 		{
 			"title":"${continent} Reef Logline Errors %",
 			"target":[
-				"lineWidth(aliasByNode(asPercent(${continent}-{137,011,010}.cacti_reef.cacti_reef_stats.lgln_processing,${continent}-{137,011,010}.cacti_reef.cacti_reef_stats.loglines),0,3),3)",
-				"lineWidth(aliasByNode(asPercent(${continent}-{137,011,010}.cacti_reef.cacti_reef_stats.lgln_input,${continent}-{137,011,010}.cacti_reef.cacti_reef_stats.loglines),0,3),2)"
+				"lineWidth(aliasByNode(asPercent(${continent}-{137,011,010}.reef.reef_stats.lgln_processing,${continent}-{137,011,010}.reef.reef_stats.loglines),0,3),3)",
+				"lineWidth(aliasByNode(asPercent(${continent}-{137,011,010}.reef.reef_stats.lgln_input,${continent}-{137,011,010}.reef.reef_stats.loglines),0,3),2)"
 			]
 		},
 		{
 			"title":"${continent} Reef Failed Cids %",
 			"target":[
-				"aliasByNode(sortByTotal(asPercent(${continent}-{137,011,010}.cacti_reef.cacti_reef_stats.lgln_cidsfailed,${continent}-{137,011,010}.cacti_reef.cacti_reef_stats.loglines)),0,3)"
+				"aliasByNode(sortByTotal(asPercent(${continent}-{137,011,010}.reef.reef_stats.lgln_cidsfailed,${continent}-{137,011,010}.reef.reef_stats.loglines)),0,3)"
 			],
 			"params":"lineWidth=2&areaAlpha=0.4&areaMode=all&colorList=%2303FF28,%2300B01A,%23008714,%2353925D"
 		},
 		{
 			"title":"${continent} Reef SQL Queries/s",
 			"target":[
-				"aliasByNode(scale(${continent}-{137,011,010}.cacti_reef.cacti_reef_stats.sql_queries,0.033333),0,3)"
+				"aliasByNode(scale(${continent}-{137,011,010}.reef.reef_stats.sql_queries,0.033333),0,3)"
 			],
 			"params":"lineWidth=2"
 		},

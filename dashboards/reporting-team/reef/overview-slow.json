@@ -11,21 +11,21 @@
         {
             "title":"Loglines",
             "target": [
-                "cactiStyle(aliasByNode(scale(sortByMinima(${continent}-${version}.cacti_reef.cacti_reef_stats.loglines),0.03333),0))"
+                "cactiStyle(aliasByNode(scale(sortByMinima(${continent}-${version}.reef.reef_stats.loglines),0.03333),0))"
             ],
             "params" : "yMin=0&areaAlpha=0.5&areaMode=all&lineWidth=2&colorList=%23B34BFD,%23C87CFF,%239D63FF,%235E00FF,%238C00FF,%23B969FB,%23F85F00,%23F8002D,%23F82700"
         },
         {
             "title":"Failed Cids/s",
             "target": [
-                "aliasByNode(scale(${continent}-${version}.cacti_reef.cacti_reef_stats.lgln_cidsfailed,0.033333),0,3)"
+                "aliasByNode(scale(${continent}-${version}.reef.reef_stats.lgln_cidsfailed,0.033333),0,3)"
             ],
             "params" : "lineWidth=2&areaAlpha=0.4&areaMode=all&colorList=%2303FF28,%2300B01A,%23008714,%2353925D"
         },
         {
             "title":"Failed Cids %",
             "target": [
-                "aliasByNode(asPercent(${continent}-${version}.cacti_reef.cacti_reef_stats.lgln_cidsfailed,${continent}-${version}.cacti_reef.cacti_reef_stats.loglines),0,3)"
+                "aliasByNode(asPercent(${continent}-${version}.reef.reef_stats.lgln_cidsfailed,${continent}-${version}.reef.reef_stats.loglines),0,3)"
             ],
             "params" : "lineWidth=2&areaAlpha=0.4&areaMode=all&colorList=%2303FF28,%2300B01A,%23008714,%2353925D"
         },
