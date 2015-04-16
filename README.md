@@ -19,7 +19,7 @@ sudo sh -c "echo deb https://get.docker.com/ubuntu docker main \
 	> /etc/apt/sources.list.d/docker.list"
 sudo apt-get update
 # install Docker and a newer backported kernel
-sudo apt-get install lxc-docker install linux-image-generic-lts-trusty \
+sudo apt-get install lxc-docker linux-image-generic-lts-trusty \
 		linux-headers-generic-lts-trusty
 # Add your user to the docker group
 adduser $USER docker
