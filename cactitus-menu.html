@@ -161,7 +161,7 @@ function buildCactitus(json) {
 (function() {
 	$.ajax({
                 type: "get",
-                url: "dashboard-index.json",
+                url: graphitusConfig.dashboardListUrl,
                 dataType: 'json',
                 success: buildCactitus
 	});
