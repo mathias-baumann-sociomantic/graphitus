@@ -19,14 +19,16 @@
             "title":"Logline Errors",
             "target": [
                 "aliasSub(aliasSub(scale(${continent}-${version}.reef.reef_stats.lgln_processing,0.033333),\"\\..*\\..*$\",\" Processing\"),\"scale\\(\",\"\")",
-                "aliasSub(aliasSub(scale(${continent}-${version}.reef.reef_stats.lgln_input,0.033333),\"\\..*\\..*$\",\" Input\"),\"scale\\(\",\"\")"
+                "aliasSub(aliasSub(scale(${continent}-${version}.reef.reef_stats.lgln_input,0.033333),\"\\..*\\..*$\",\" Input\"),\"scale\\(\",\"\")",
+                "aliasSub(aliasSub(scale(${continent}-${version}.reef.reef_stats.lgln_decryption,0.033333),\"\\..*\\..*$\",\" Decryption\"),\"scale\\(\",\"\")"
             ]
         },
         {
             "title":"Logline Errors %",
             "target": [
                 "lineWidth(aliasByNode(asPercent(${continent}-${version}.reef.reef_stats.lgln_processing,${continent}-${version}.reef.reef_stats.loglines),0,3),3)",
-                "lineWidth(aliasByNode(asPercent(${continent}-${version}.reef.reef_stats.lgln_input,${continent}-${version}.reef.reef_stats.loglines),0,3),2)"
+                "lineWidth(aliasByNode(asPercent(${continent}-${version}.reef.reef_stats.lgln_input,${continent}-${version}.reef.reef_stats.loglines),0,3),2)",
+                "lineWidth(aliasByNode(asPercent(${continent}-${version}.reef.reef_stats.lgln_decryption,${continent}-${version}.reef.reef_stats.loglines),0,3),2)"
             ]
         },
         {
@@ -113,6 +115,14 @@
                 "aliasByNode(${continent}-${version}.reef.reef_stats.aggr_delay_*,0,3)"
             ],
             "params" : "lineWidth=2"
+        },
+        {
+            "title":"Metadata",
+            "target": [
+                "aliasByNode(${continent}-${version}.reef.reef_stats.*metadata,0,3)"
+            ],
+            "params" :
+                "lineWidth=2&yMin=0&colorList=%23CC6600,%23FFCC66,%238F4700,%23B28F47,%23723900,%238E7239&areaAlpha=0.4&areaMode=all"
         }
     ],
     "parameters": {
